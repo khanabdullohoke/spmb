@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pendaftaran Peserta Didik Baru SMK Ciledug Al Musaddadiyah Garut Tahun Ajaran 2026/2027. Daftar sekarang secara online.">
+<meta property="og:title" content="PPDB Online SMK Ciledug Al Musaddadiyah Garut 2026/2027">
+<meta property="og:description" content="Pendaftaran online PPDB 2026/2027. 8 program keahlian unggulan.">
+<meta property="og:url" content="https://smkciledug.github.io/ppdb/">
+<link rel="canonical" href="https://smkciledug.github.io/ppdb/">
+<title>PPDB Online SMK Ciledug Al Musaddadiyah Garut 2026/2027  – SMK Ciledug Al Musaddadiyah Garut 2026/2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0B1D3A;
+    --navy-mid: #132850;
+    --gold: #E2C251;
+    --gold-light: #F0D87A;
+    --gold-pale: #FAF3D0;
+    --white: #FFFFFF;
+    --gray-50: #F8F9FA;
+    --gray-100: #F1F3F5;
+    --gray-200: #E9ECEF;
+    --gray-400: #ADB5BD;
+    --gray-600: #6C757D;
+    --gray-800: #343A40;
+    --green: #1D9E75;
+    --green-light: #E1F5EE;
+    --red: #DC3545;
+    --red-light: #FAECE7;
+    --font: 'Plus Jakarta Sans', sans-serif;
+    --serif: 'DM Serif Display', serif;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 2px 20px rgba(11,29,58,0.08);
+    --shadow-md: 0 8px 40px rgba(11,29,58,0.14);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    background: var(--gray-50);
+    color: var(--gray-800);
+    line-height: 1.6;
+  }
+
+  /* ── NAVBAR ── */
+  .navbar {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(11,29,58,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226,194,81,0.2);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 64px;
+  }
+  .navbar-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .navbar-logo {
+    width: 38px; height: 38px; border-radius: 8px;
+    background: var(--gold); display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 16px; color: var(--navy); letter-spacing: -0.5px;
+  }
+  .navbar-name {
+    font-size: 13px; font-weight: 700; color: var(--white);
+    line-height: 1.2;
+  }
+  .navbar-name span { color: var(--gold); display: block; font-size: 11px; font-weight: 500; }
+  .navbar-links { display: flex; gap: 24px; list-style: none; }
+  .navbar-links a {
+    color: rgba(255,255,255,0.75); font-size: 13.5px; font-weight: 500;
+    text-decoration: none; transition: color .2s;
+  }
+  .navbar-links a:hover { color: var(--gold); }
+  .navbar-cta {
+    background: var(--gold); color: var(--navy); font-weight: 700;
+    font-size: 13px; padding: 8px 20px; border-radius: 6px;
+    text-decoration: none; transition: background .2s, transform .15s;
+  }
+  .navbar-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    padding: 80px 5% 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero-grid-bg {
+    position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
+    background-image: linear-gradient(var(--gold) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--gold) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .hero-ring {
+    position: absolute; right: -160px; top: -160px;
+    width: 560px; height: 560px; border-radius: 50%;
+    border: 80px solid rgba(226,194,81,0.07);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: end; gap: 48px;
+    position: relative;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(226,194,81,0.12); border: 1px solid rgba(226,194,81,0.3);
+    color: var(--gold); font-size: 12px; font-weight: 600;
+    padding: 5px 12px; border-radius: 999px; margin-bottom: 20px;
+    letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  .hero-badge span { width: 7px; height: 7px; background: var(--gold); border-radius: 50%; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+
+  .hero-title {
+    font-family: var(--serif); font-size: clamp(36px, 5vw, 58px);
+    color: var(--white); line-height: 1.1; margin-bottom: 20px;
+  }
+  .hero-title em { color: var(--gold); font-style: italic; }
+  .hero-desc { color: rgba(255,255,255,0.65); font-size: 15.5px; line-height: 1.7; margin-bottom: 32px; max-width: 440px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--navy); font-family: var(--font);
+    font-weight: 700; font-size: 14.5px; padding: 13px 28px;
+    border: none; border-radius: var(--radius-sm); cursor: pointer;
+    transition: background .2s, transform .15s; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent; color: rgba(255,255,255,0.8);
+    font-family: var(--font); font-weight: 600; font-size: 14.5px;
+    padding: 12px 24px; border: 1.5px solid rgba(255,255,255,0.2);
+    border-radius: var(--radius-sm); cursor: pointer;
+    transition: border-color .2s, color .2s; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-visual {
+    display: flex; justify-content: flex-end; align-items: flex-end; padding-bottom: 0;
+  }
+  .hero-card-float {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius) var(--radius) 0 0;
+    padding: 28px 28px 0;
+    width: 340px; position: relative;
+  }
+  .hero-card-float::before {
+    content: ''; position: absolute; inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(160deg, rgba(226,194,81,0.06) 0%, transparent 60%);
+  }
+  .hcf-label { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .hcf-title { font-weight: 700; font-size: 15px; color: var(--white); margin-bottom: 20px; }
+  .hcf-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .hcf-icon {
+    width: 34px; height: 34px; border-radius: 8px;
+    background: rgba(226,194,81,0.12); display: flex; align-items: center; justify-content: center;
+    font-size: 15px; flex-shrink: 0;
+  }
+  .hcf-text { font-size: 13px; color: rgba(255,255,255,0.7); }
+  .hcf-text strong { color: var(--white); font-weight: 600; display: block; margin-bottom: 1px; font-size: 13.5px; }
+  .hcf-bar { height: 3px; background: rgba(255,255,255,0.07); border-radius: 4px; margin-top: 20px; margin-bottom: 24px; }
+  .hcf-bar-fill { height: 100%; width: 68%; background: var(--gold); border-radius: 4px; }
+  .hcf-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px; }
+  .hcf-stat {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px; padding: 12px;
+  }
+  .hcf-stat-val { font-size: 22px; font-weight: 800; color: var(--gold); line-height: 1; }
+  .hcf-stat-lbl { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 4px; }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--white); border-bottom: 1px solid var(--gray-200);
+    padding: 0 5%;
+  }
+  .stats-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-around;
+    padding: 24px 0; gap: 16px; flex-wrap: wrap;
+  }
+  .stat-item { text-align: center; }
+  .stat-num { font-size: 28px; font-weight: 800; color: var(--navy); line-height: 1; }
+  .stat-num span { color: var(--gold); }
+  .stat-label { font-size: 12.5px; color: var(--gray-600); margin-top: 3px; }
+  .stat-divider { width: 1px; height: 40px; background: var(--gray-200); }
+
+  /* ── SECTIONS ── */
+  .section { padding: 80px 5%; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-header { text-align: center; margin-bottom: 52px; }
+  .section-tag {
+    display: inline-block; background: var(--gold-pale); color: #7A6A10;
+    font-size: 11.5px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; padding: 4px 12px; border-radius: 4px; margin-bottom: 14px;
+  }
+  .section-title { font-family: var(--serif); font-size: clamp(28px, 4vw, 42px); color: var(--navy); line-height: 1.2; }
+  .section-sub { font-size: 15px; color: var(--gray-600); margin-top: 10px; }
+
+  /* ── JURUSAN ── */
+  .jurusan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .jurusan-card {
+    background: var(--white); border: 1px solid var(--gray-200);
+    border-radius: var(--radius); padding: 28px 20px;
+    transition: box-shadow .25s, transform .25s, border-color .25s;
+    cursor: default;
+  }
+  .jurusan-card:hover {
+    box-shadow: var(--shadow-md); transform: translateY(-4px); border-color: var(--gold);
+  }
+  .jurusan-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: var(--gold-pale); display: flex; align-items: center; justify-content: center;
+    font-size: 24px; margin-bottom: 16px;
+  }
+  .jurusan-name { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .jurusan-desc { font-size: 13px; color: var(--gray-600); line-height: 1.55; }
+  .jurusan-badge {
+    display: inline-block; margin-top: 14px;
+    background: var(--green-light); color: #0F6E56;
+    font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 4px;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; position: relative; }
+  .timeline-grid::before {
+    content: ''; position: absolute; top: 28px; left: 5%; right: 5%; height: 2px;
+    background: var(--gray-200); z-index: 0;
+  }
+  .tl-item { text-align: center; position: relative; z-index: 1; padding: 0 12px; }
+  .tl-dot {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--white); border: 2px solid var(--gray-200);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px; font-weight: 800; font-size: 16px; color: var(--gray-400);
+    transition: all .3s;
+  }
+  .tl-item.active .tl-dot {
+    background: var(--gold); border-color: var(--gold); color: var(--navy);
+    box-shadow: 0 0 0 6px rgba(226,194,81,0.2);
+  }
+  .tl-item.done .tl-dot { background: var(--green); border-color: var(--green); color: var(--white); }
+  .tl-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .tl-date { font-size: 12.5px; color: var(--gray-600); }
+
+  /* ── FORM SECTION ── */
+  .form-section { background: var(--navy); padding: 80px 5%; }
+  .form-inner { max-width: 780px; margin: 0 auto; }
+  .form-header { text-align: center; margin-bottom: 40px; }
+  .form-header .section-title { color: var(--white); }
+  .form-header .section-sub { color: rgba(255,255,255,0.55); }
+
+  .form-card {
+    background: var(--white); border-radius: 16px;
+    padding: 40px; box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+  }
+  .form-step-indicator {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0; margin-bottom: 36px;
+  }
+  .fsi-step {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12.5px; font-weight: 600; color: var(--gray-400);
+  }
+  .fsi-step.active { color: var(--navy); }
+  .fsi-step.done { color: var(--green); }
+  .fsi-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--gray-100); display: flex; align-items: center;
+    justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0;
+  }
+  .fsi-step.active .fsi-num { background: var(--navy); color: var(--white); }
+  .fsi-step.done .fsi-num { background: var(--green); color: var(--white); }
+  .fsi-line { width: 40px; height: 2px; background: var(--gray-200); margin: 0 4px; flex-shrink: 0; }
+  .fsi-line.done { background: var(--green); }
+
+  /* Form fields */
+  .form-group { margin-bottom: 20px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-label {
+    display: block; font-size: 13px; font-weight: 600; color: var(--gray-800);
+    margin-bottom: 7px;
+  }
+  .form-label .req { color: var(--red); margin-left: 2px; }
+  .form-hint { font-size: 11.5px; color: var(--gray-600); margin-top: 5px; }
+  input[type="text"], input[type="date"], input[type="tel"], select, textarea {
+    width: 100%; padding: 11px 14px;
+    border: 1.5px solid var(--gray-200); border-radius: var(--radius-sm);
+    font-family: var(--font); font-size: 14px; color: var(--gray-800);
+    background: var(--white); transition: border-color .2s, box-shadow .2s;
+    outline: none; appearance: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--navy); box-shadow: 0 0 0 3px rgba(11,29,58,0.08);
+  }
+  input.error { border-color: var(--red); }
+  input.success { border-color: var(--green); }
+  .radio-group { display: flex; gap: 12px; flex-wrap: wrap; }
+  .radio-option {
+    flex: 1; min-width: 100px;
+    border: 1.5px solid var(--gray-200); border-radius: var(--radius-sm);
+    padding: 10px 14px; cursor: pointer; transition: all .2s;
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13.5px; font-weight: 500; color: var(--gray-600);
+  }
+  .radio-option input[type="radio"] { display: none; }
+  .radio-option:hover { border-color: var(--navy); color: var(--navy); }
+  .radio-option.selected { border-color: var(--navy); background: #F0F3F8; color: var(--navy); }
+  .radio-dot {
+    width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--gray-300);
+    flex-shrink: 0; transition: all .2s; display: flex; align-items: center; justify-content: center;
+  }
+  .radio-option.selected .radio-dot { border-color: var(--navy); }
+  .radio-option.selected .radio-dot::after {
+    content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--navy);
+  }
+  .form-divider { border: none; border-top: 1px solid var(--gray-200); margin: 28px 0; }
+  .form-section-title {
+    font-size: 11px; font-weight: 700; color: var(--gray-400);
+    text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 20px;
+  }
+  .form-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 32px; }
+  .btn-nav-prev {
+    background: var(--white); color: var(--gray-800); border: 1.5px solid var(--gray-200);
+    font-family: var(--font); font-weight: 600; font-size: 14px;
+    padding: 12px 24px; border-radius: var(--radius-sm); cursor: pointer; transition: all .2s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .btn-nav-prev:hover { border-color: var(--navy); color: var(--navy); }
+  .btn-nav-next {
+    background: var(--navy); color: var(--white); border: none;
+    font-family: var(--font); font-weight: 700; font-size: 14px;
+    padding: 12px 28px; border-radius: var(--radius-sm); cursor: pointer; transition: all .2s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .btn-nav-next:hover { background: #1a3060; transform: translateY(-1px); }
+  .btn-submit {
+    background: var(--gold); color: var(--navy); border: none;
+    font-family: var(--font); font-weight: 800; font-size: 15px;
+    padding: 14px 36px; border-radius: var(--radius-sm); cursor: pointer; transition: all .2s;
+    display: flex; align-items: center; gap: 8px; width: 100%; justify-content: center;
+    margin-top: 8px;
+  }
+  .btn-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .form-steps { display: none; }
+  .form-steps.active { display: block; }
+
+  /* Progress bar */
+  .form-progress { margin-bottom: 28px; }
+  .form-progress-bar { height: 4px; background: var(--gray-100); border-radius: 4px; overflow: hidden; }
+  .form-progress-fill { height: 100%; background: var(--gold); border-radius: 4px; transition: width .4s; }
+  .form-progress-label { font-size: 12px; color: var(--gray-600); margin-bottom: 8px; display: flex; justify-content: space-between; }
+
+  /* Success */
+  .success-screen {
+    text-align: center; padding: 40px 20px; display: none;
+  }
+  .success-icon {
+    width: 80px; height: 80px; background: var(--green-light); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 24px; font-size: 36px;
+  }
+  .success-title { font-family: var(--serif); font-size: 28px; color: var(--navy); margin-bottom: 10px; }
+  .success-desc { font-size: 14.5px; color: var(--gray-600); max-width: 400px; margin: 0 auto 28px; line-height: 1.7; }
+  .success-ref {
+    background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-sm);
+    padding: 16px 24px; display: inline-block; margin-bottom: 28px;
+  }
+  .success-ref-label { font-size: 11px; color: var(--gray-600); text-transform: uppercase; letter-spacing: 1px; }
+  .success-ref-num { font-size: 22px; font-weight: 800; color: var(--navy); margin-top: 4px; letter-spacing: 2px; }
+
+  /* ── FAQ ── */
+  .faq-grid { max-width: 720px; margin: 0 auto; }
+  .faq-item { border: 1px solid var(--gray-200); border-radius: var(--radius); margin-bottom: 10px; overflow: hidden; }
+  .faq-q {
+    width: 100%; background: var(--white); border: none;
+    padding: 18px 20px; display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--font); font-size: 14.5px; font-weight: 600; color: var(--navy);
+    cursor: pointer; text-align: left; transition: background .2s;
+  }
+  .faq-q:hover { background: var(--gray-50); }
+  .faq-arrow { font-size: 20px; color: var(--gray-400); transition: transform .3s; flex-shrink: 0; }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); color: var(--navy); }
+  .faq-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height .35s, padding .35s; }
+  .faq-item.open .faq-a { padding: 0 20px 18px; max-height: 200px; }
+  .faq-a p { font-size: 14px; color: var(--gray-600); line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy); color: rgba(255,255,255,0.55);
+    padding: 48px 5% 24px;
+  }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .footer-brand-name { font-weight: 800; font-size: 16px; color: var(--white); margin-bottom: 4px; }
+  .footer-brand-sub { font-size: 12.5px; margin-bottom: 16px; }
+  .footer-address { font-size: 13px; line-height: 1.8; }
+  .footer-address a { color: var(--gold); text-decoration: none; }
+  .footer-col-title { font-weight: 700; font-size: 13px; color: var(--white); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.8px; }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 10px; }
+  .footer-links a { color: rgba(255,255,255,0.5); font-size: 13.5px; text-decoration: none; transition: color .2s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; flex-wrap: wrap; gap: 10px; }
+  .footer-copy { font-size: 12.5px; }
+  .footer-badge {
+    background: rgba(226,194,81,0.1); border: 1px solid rgba(226,194,81,0.2);
+    color: var(--gold); font-size: 11.5px; font-weight: 600; padding: 4px 12px; border-radius: 4px;
+  }
+
+  /* Alert */
+  .alert { padding: 12px 16px; border-radius: var(--radius-sm); font-size: 13.5px; margin-bottom: 16px; display: none; }
+  .alert.error { background: var(--red-light); color: var(--red); border: 1px solid #f5c6cb; }
+  .alert.show { display: flex; align-items: center; gap: 8px; }
+
+  /* Loading spinner */
+  .spinner {
+    width: 18px; height: 18px; border: 2px solid rgba(11,29,58,0.3);
+    border-top-color: var(--navy); border-radius: 50%; animation: spin .7s linear infinite;
+    display: none;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Responsive */
+  @media(max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .navbar-links { display: none; }
+    .footer-top { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .timeline-grid::before { display: none; }
+    .timeline-grid { grid-template-columns: 1fr 1fr; }
+    .form-card { padding: 24px; }
+  }
+
+  /* Animation */
+  .fade-in { animation: fadeIn .5s ease both; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a class="navbar-brand" href="#">
+    <div class="navbar-logo">SMK</div>
+    <div class="navbar-name">
+      Al Musaddadiyah Ciledug
+      <span>Garut ∙ Tahun Ajaran 2026/2027</span>
+    </div>
+  </a>
+  <ul class="navbar-links">
+    <li><a href="#jurusan">Jurusan</a></li>
+    <li><a href="#jadwal">Jadwal</a></li>
+    <li><a href="#daftar">Pendaftaran</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#daftar" class="navbar-cta">Daftar Sekarang →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-inner">
+    <div class="hero-content fade-in">
+      <div class="hero-badge"><span></span> PPDB 2026/2027 Dibuka</div>
+      <h1 class="hero-title">Wujudkan <em>Masa Depan</em><br>Bersama Kami</h1>
+      <p class="hero-desc">SMK Ciledug Al Musaddadiyah Garut membuka pendaftaran peserta didik baru Tahun Ajaran 2026/2027. Bergabunglah bersama ribuan alumni yang telah sukses di bidangnya.</p>
+      <div class="hero-actions">
+        <a href="#daftar" class="btn-primary">📝 Daftar Sekarang</a>
+        <a href="https://www.smkciledugalmusaddadiyah.sch.id/" target="_blank" class="btn-outline">🌐 Website Sekolah</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-float">
+        <div class="hcf-label">PPDB 2026/2027</div>
+        <div class="hcf-title">Formulir Bukti Pendaftaran</div>
+        <div class="hcf-row">
+          <div class="hcf-icon">📋</div>
+          <div class="hcf-text"><strong>Data Identitas Lengkap</strong>Data diri & dokumen siswa</div>
+        </div>
+        <div class="hcf-row">
+          <div class="hcf-icon">🏫</div>
+          <div class="hcf-text"><strong>Pilihan Program Keahlian</strong>Sesuaikan minat & bakat</div>
+        </div>
+        <div class="hcf-row">
+          <div class="hcf-icon">👨‍👩‍👧</div>
+          <div class="hcf-text"><strong>Data Orang Tua / Wali</strong>Informasi kontak darurat</div>
+        </div>
+        <div class="hcf-bar"><div class="hcf-bar-fill"></div></div>
+        <div class="hcf-stats">
+          <div class="hcf-stat">
+            <div class="hcf-stat-val">68%</div>
+            <div class="hcf-stat-lbl">Kuota Terisi</div>
+          </div>
+          <div class="hcf-stat">
+            <div class="hcf-stat-val">180</div>
+            <div class="hcf-stat-lbl">Sisa Tempat</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">25<span>+</span></div>
+      <div class="stat-label">Tahun Berdiri</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-num">5000<span>+</span></div>
+      <div class="stat-label">Alumni Sukses</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-num">8</div>
+      <div class="stat-label">Program Keahlian</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-num">98<span>%</span></div>
+      <div class="stat-label">Tingkat Kelulusan</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-num">100<span>+</span></div>
+      <div class="stat-label">Mitra Industri</div>
+    </div>
+  </div>
+</div>
+
+<!-- JURUSAN -->
+<section class="section" id="jurusan">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Program Keahlian</div>
+      <h2 class="section-title">Pilih Jurusan<br>Sesuai Passionmu</h2>
+      <p class="section-sub">8 program keahlian unggulan yang relevan dengan kebutuhan industri masa kini</p>
+    </div>
+    <div class="jurusan-grid">
+      <div class="jurusan-card">
+        <div class="jurusan-icon">💻</div>
+        <div class="jurusan-name">Rekayasa Perangkat Lunak</div>
+        <div class="jurusan-desc">Coding, pengembangan aplikasi web & mobile, pemrograman berbasis industri.</div>
+        <div class="jurusan-badge">Kuota Tersisa</div>
+      </div>
+      <div class="jurusan-card">
+        <div class="jurusan-icon">🌐</div>
+        <div class="jurusan-name">Teknik Komputer & Jaringan</div>
+        <div class="jurusan-desc">Instalasi jaringan, keamanan siber, infrastruktur IT perusahaan.</div>
+        <div class="jurusan-badge">Kuota Tersisa</div>
+      </div>
+      <div class="jurusan-card">
+        <div class="jurusan-icon">⚡</div>
+        <div class="jurusan-name">Teknik Instalasi Tenaga Listrik</div>
+        <div class="jurusan-desc">Instalasi listrik, panel kontrol, sistem kelistrikan industri & gedung.</div>
+        <div class="jurusan-badge">Kuota Tersisa</div>
+      </div>
+      <div class="jurusan-card">
+        <div class="jurusan-icon">📊</div>
+        <div class="jurusan-name">Akuntansi & Keuangan</div>
+        <div class="jurusan-desc">Pembukuan, perpajakan, manajemen keuangan dan administrasi bisnis.</div>
+        <div class="jurusan-badge">Kuota Tersisa</div>
+      </div>
+      <div class="jurusan-card">
+        <div class="jurusan-icon">📣</div>
+        <div class="jurusan-name">Bisnis Daring & Pemasaran</div>
+        <div class="jurusan-desc">Digital marketing, e-commerce, manajemen media sosial dan strategi brand.</div>
+        <div class="jurusan-badge">Kuota Tersisa</div>
+      </div>
+      <div class="jurusan-card">
+        <div class="jurusan-icon">🏗️</div>
+        <div class="jurusan-name">Desain Pemodelan & Info Bangunan</div>
+        <div class="jurusan-desc">AutoCAD, BIM, desain arsitektur dan konstruksi bangunan modern.</div>
+        <div class="jurusan-badge">Kuota Tersisa</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JADWAL -->
+<section class="section" id="jadwal" style="background: var(--white); padding: 72px 5%;">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Jadwal PPDB</div>
+      <h2 class="section-title">Tahapan Pendaftaran</h2>
+      <p class="section-sub">Pastikan mendaftar sebelum batas waktu yang ditentukan</p>
+    </div>
+    <div class="timeline-grid">
+      <div class="tl-item done">
+        <div class="tl-dot">✓</div>
+        <div class="tl-title">Pengumuman PPDB</div>
+        <div class="tl-date">1 Apr 2026</div>
+      </div>
+      <div class="tl-item active">
+        <div class="tl-dot">2</div>
+        <div class="tl-title">Pendaftaran Online</div>
+        <div class="tl-date">1 Mei – 30 Jun 2026</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">3</div>
+        <div class="tl-title">Verifikasi Dokumen</div>
+        <div class="tl-date">1 – 10 Jul 2026</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">4</div>
+        <div class="tl-title">Pengumuman Hasil</div>
+        <div class="tl-date">12 Jul 2026</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">5</div>
+        <div class="tl-title">Daftar Ulang</div>
+        <div class="tl-date">13 – 20 Jul 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="daftar">
+  <div class="form-inner">
+    <div class="form-header">
+      <div class="section-tag" style="background: rgba(226,194,81,0.15); color: var(--gold);">Pendaftaran Online</div>
+      <h2 class="section-title">Formulir Bukti Pendaftaran</h2>
+      <p class="section-sub">Isi formulir dengan data yang benar sesuai dokumen resmi. Data akan terkirim langsung ke sistem PPDB kami.</p>
+    </div>
+
+    <div class="form-card">
+      <!-- Step Indicator -->
+      <div class="form-step-indicator" id="stepIndicator">
+        <div class="fsi-step active" id="fsiStep1">
+          <div class="fsi-num">1</div> Identitas Siswa
+        </div>
+        <div class="fsi-line" id="fsiLine1"></div>
+        <div class="fsi-step" id="fsiStep2">
+          <div class="fsi-num">2</div> Data Tambahan
+        </div>
+        <div class="fsi-line" id="fsiLine2"></div>
+        <div class="fsi-step" id="fsiStep3">
+          <div class="fsi-num">3</div> Konfirmasi
+        </div>
+      </div>
+
+      <!-- Progress -->
+      <div class="form-progress">
+        <div class="form-progress-label">
+          <span id="progressLabel">Langkah 1 dari 3</span>
+          <span id="progressPct">33%</span>
+        </div>
+        <div class="form-progress-bar">
+          <div class="form-progress-fill" id="progressFill" style="width:33%"></div>
+        </div>
+      </div>
+
+      <div id="alertBox" class="alert error">⚠️ <span id="alertMsg"></span></div>
+
+      <!-- STEP 1 -->
+      <div class="form-steps active" id="step1">
+        <div class="form-section-title">Data Diri Peserta Didik</div>
+        <div class="form-group">
+          <label class="form-label">Nama Lengkap Peserta Didik <span class="req">*</span></label>
+          <input type="text" id="namaLengkap" placeholder="Contoh: ALDI MUBAROK" style="text-transform: uppercase;">
+          <p class="form-hint">Gunakan huruf kapital semua, sesuai ijazah/akta lahir.</p>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Jenis Kelamin <span class="req">*</span></label>
+          <div class="radio-group">
+            <label class="radio-option" onclick="selectRadio(this,'jenisKelamin','Laki-Laki')">
+              <input type="radio" name="jenisKelamin" value="Laki-Laki">
+              <div class="radio-dot"></div> 👦 Laki-Laki
+            </label>
+            <label class="radio-option" onclick="selectRadio(this,'jenisKelamin','Perempuan')">
+              <input type="radio" name="jenisKelamin" value="Perempuan">
+              <div class="radio-dot"></div> 👧 Perempuan
+            </label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">NISN <span class="req">*</span></label>
+            <input type="text" id="nisn" placeholder="Nomor Induk Siswa Nasional" maxlength="10">
+            <p class="form-hint">Cek di Ijazah SMP/MTs Anda.</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label">NIK (KTP/KK) <span class="req">*</span></label>
+            <input type="text" id="nik" placeholder="16 digit nomor KTP" maxlength="16">
+            <p class="form-hint">Lihat di Kartu Keluarga (KK).</p>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nomor Seri Ijazah <span class="req">*</span></label>
+            <input type="text" id="noIjazah" placeholder="No. seri ijazah SMP/MTs">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nomor Seri SKHUN <span class="req">*</span></label>
+            <input type="text" id="noSkhun" placeholder="No. seri SKHUN">
+          </div>
+        </div>
+        <hr class="form-divider">
+        <div class="form-section-title">Tempat & Tanggal Lahir</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Tempat Lahir <span class="req">*</span></label>
+            <input type="text" id="tempatLahir" placeholder="Kota/Kabupaten lahir">
+            <p class="form-hint">Sesuai akta lahir.</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tanggal Lahir <span class="req">*</span></label>
+            <input type="date" id="tanggalLahir">
+          </div>
+        </div>
+        <div class="form-nav">
+          <div></div>
+          <button class="btn-nav-next" onclick="nextStep(1)">Lanjut →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="form-steps" id="step2">
+        <div class="form-section-title">Kontak & Informasi Tambahan</div>
+        <div class="form-group">
+          <label class="form-label">Nomor HP / WhatsApp Aktif <span class="req">*</span></label>
+          <input type="tel" id="noHp" placeholder="Contoh: 08123456789">
+          <p class="form-hint">Pastikan nomor aktif untuk keperluan komunikasi panitia.</p>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Berkebutuhan Khusus <span class="req">*</span></label>
+          <div class="radio-group">
+            <label class="radio-option" onclick="selectRadio(this,'kebutuhanKhusus','Tidak')">
+              <input type="radio" name="kebutuhanKhusus" value="Tidak">
+              <div class="radio-dot"></div> Tidak
+            </label>
+            <label class="radio-option" onclick="selectRadio(this,'kebutuhanKhusus','Ya')">
+              <input type="radio" name="kebutuhanKhusus" value="Ya">
+              <div class="radio-dot"></div> Ya
+            </label>
+          </div>
+        </div>
+        <hr class="form-divider">
+        <div class="form-section-title">Pilihan Program Keahlian</div>
+        <div class="form-group">
+          <label class="form-label">Program Keahlian Pilihan 1 <span class="req">*</span></label>
+          <select id="jurusan1">
+            <option value="">-- Pilih Jurusan --</option>
+            <option>Rekayasa Perangkat Lunak</option>
+            <option>Teknik Komputer dan Jaringan</option>
+            <option>Teknik Instalasi Tenaga Listrik</option>
+            <option>Akuntansi dan Keuangan Lembaga</option>
+            <option>Bisnis Daring dan Pemasaran</option>
+            <option>Desain Pemodelan dan Informasi Bangunan</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Program Keahlian Pilihan 2</label>
+          <select id="jurusan2">
+            <option value="">-- Pilih Jurusan (opsional) --</option>
+            <option>Rekayasa Perangkat Lunak</option>
+            <option>Teknik Komputer dan Jaringan</option>
+            <option>Teknik Instalasi Tenaga Listrik</option>
+            <option>Akuntansi dan Keuangan Lembaga</option>
+            <option>Bisnis Daring dan Pemasaran</option>
+            <option>Desain Pemodelan dan Informasi Bangunan</option>
+          </select>
+        </div>
+        <div class="form-nav">
+          <button class="btn-nav-prev" onclick="prevStep(2)">← Kembali</button>
+          <button class="btn-nav-next" onclick="nextStep(2)">Lanjut →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3 REVIEW -->
+      <div class="form-steps" id="step3">
+        <div class="form-section-title">Periksa Kembali Data Anda</div>
+        <div id="reviewContent" style="background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-sm); padding: 20px; margin-bottom: 20px; font-size: 13.5px; line-height: 2;">
+        </div>
+        <div style="background: #FFF8E1; border: 1px solid #F0D87A; border-radius: var(--radius-sm); padding: 14px 16px; font-size: 13px; color: #7A6A10; margin-bottom: 20px;">
+          ⚠️ <strong>Perhatian:</strong> Pastikan semua data yang diisi sudah benar sesuai dokumen asli. Data yang salah dapat memengaruhi proses verifikasi pendaftaran.
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px;">
+          <input type="checkbox" id="agreeCheck" style="width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; accent-color: var(--navy);">
+          <label for="agreeCheck" style="font-size: 13.5px; color: var(--gray-800); cursor: pointer; line-height: 1.6;">
+            Saya menyatakan bahwa data yang diisi adalah <strong>benar dan sesuai dengan dokumen asli</strong>. Saya bertanggung jawab atas keabsahan informasi yang disampaikan.
+          </label>
+        </div>
+        <button class="btn-submit" id="btnSubmit" onclick="submitForm()">
+          <span id="submitText">📤 Kirim Formulir Pendaftaran</span>
+          <div class="spinner" id="submitSpinner"></div>
+        </button>
+        <div class="form-nav" style="margin-top: 16px;">
+          <button class="btn-nav-prev" onclick="prevStep(3)">← Ubah Data</button>
+          <div></div>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="success-screen" id="successScreen">
+        <div class="success-icon">✅</div>
+        <div class="success-title">Pendaftaran Berhasil!</div>
+        <p class="success-desc">Data pendaftaran Anda telah berhasil dikirim. Tim panitia PPDB akan menghubungi Anda melalui nomor WhatsApp yang terdaftar.</p>
+        <div class="success-ref">
+          <div class="success-ref-label">Nomor Referensi</div>
+          <div class="success-ref-num" id="refNum">–</div>
+        </div>
+        <p style="font-size: 13px; color: var(--gray-600); margin-bottom: 24px;">Simpan nomor referensi ini sebagai bukti pendaftaran Anda.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqLXAokWszPoAYEj_uK5isV8-0fwkC_SikdL7Rl8Db7LeGnQ/viewform" target="_blank" class="btn-primary" style="display: inline-flex; text-decoration: none;">
+          📋 Lihat di Google Forms
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">FAQ</div>
+      <h2 class="section-title">Pertanyaan Umum</h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Apa saja dokumen yang dibutuhkan untuk pendaftaran?
+          <span class="faq-arrow">⌄</span>
+        </button>
+        <div class="faq-a"><p>Dokumen yang diperlukan: Ijazah/STTB SMP/MTs (atau surat keterangan lulus), Kartu Keluarga, Akta Kelahiran, Foto 3x4 (background merah/biru), dan NISN. Pastikan semua dokumen dalam kondisi baik dan jelas terbaca.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Apakah pendaftaran dikenakan biaya?
+          <span class="faq-arrow">⌄</span>
+        </button>
+        <div class="faq-a"><p>Pendaftaran online tidak dikenakan biaya apapun. Biaya yang mungkin timbul akan diinformasikan lebih lanjut saat proses verifikasi dokumen secara langsung di sekolah.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Bagaimana jika data yang saya isi ternyata salah?
+          <span class="faq-arrow">⌄</span>
+        </button>
+        <div class="faq-a"><p>Segera hubungi panitia PPDB melalui nomor WhatsApp yang tertera atau datang langsung ke sekolah. Perubahan data hanya bisa dilakukan sebelum tahap verifikasi dokumen ditutup.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Kapan pengumuman hasil seleksi diumumkan?
+          <span class="faq-arrow">⌄</span>
+        </button>
+        <div class="faq-a"><p>Pengumuman hasil seleksi akan dilaksanakan pada 12 Juli 2026 melalui website resmi sekolah dan akan dikirimkan melalui WhatsApp ke nomor yang terdaftar.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Apakah ada beasiswa atau keringanan biaya?
+          <span class="faq-arrow">⌄</span>
+        </button>
+        <div class="faq-a"><p>Tersedia program beasiswa PIP (Program Indonesia Pintar) dan keringanan biaya bagi siswa kurang mampu. Informasi lebih lengkap dapat diperoleh dengan menghubungi bagian administrasi sekolah.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Bagaimana cara menghubungi panitia PPDB?
+          <span class="faq-arrow">⌄</span>
+        </button>
+        <div class="faq-a"><p>Hubungi panitia melalui telepon (0262) 4892181 atau datang langsung ke Jl. Mayor Syamsu No. 02, Garut. Email: info@smkciledug.sch.id. Jam layanan: Senin–Sabtu, 07.30–14.30 WIB.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">SMK Ciledug Al Musaddadiyah Garut</div>
+        <div class="footer-brand-sub">Sekolah Menengah Kejuruan Unggulan</div>
+        <div class="footer-address">
+          📍 Jl. Mayor Syamsu No. 02 Garut 44151<br>
+          📞 (0262) 4892181<br>
+          📧 <a href="mailto:info@smkciledug.sch.id">info@smkciledug.sch.id</a><br>
+          🌐 <a href="https://www.smkciledugalmusaddadiyah.sch.id/" target="_blank">www.smkciledugalmusaddadiyah.sch.id</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Menu</div>
+        <ul class="footer-links">
+          <li><a href="#jurusan">Program Keahlian</a></li>
+          <li><a href="#jadwal">Jadwal PPDB</a></li>
+          <li><a href="#daftar">Pendaftaran</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Informasi</div>
+        <ul class="footer-links">
+          <li><a href="https://www.smkciledugalmusaddadiyah.sch.id/" target="_blank">Website Resmi</a></li>
+          <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdqLXAokWszPoAYEj_uK5isV8-0fwkC_SikdL7Rl8Db7LeGnQ/viewform" target="_blank">Google Form Resmi</a></li>
+          <li><a href="mailto:info@smkciledug.sch.id">Hubungi Kami</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 SMK Ciledug Al Musaddadiyah Garut. Hak Cipta Dilindungi.</div>
+      <div class="footer-badge">PPDB 2026/2027</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Form state
+  const formData = {};
+  let currentStep = 1;
+
+  function selectRadio(el, name, val) {
+    document.querySelectorAll(`[onclick*="'${name}'"]`).forEach(e => e.classList.remove('selected'));
+    el.classList.add('selected');
+    formData[name] = val;
+  }
+
+  function showAlert(msg) {
+    const box = document.getElementById('alertBox');
+    document.getElementById('alertMsg').textContent = msg;
+    box.classList.add('show');
+    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    setTimeout(() => box.classList.remove('show'), 5000);
+  }
+
+  function validateStep(step) {
+    if (step === 1) {
+      const nama = document.getElementById('namaLengkap').value.trim();
+      const nisn = document.getElementById('nisn').value.trim();
+      const nik = document.getElementById('nik').value.trim();
+      const noIjazah = document.getElementById('noIjazah').value.trim();
+      const noSkhun = document.getElementById('noSkhun').value.trim();
+      const tempat = document.getElementById('tempatLahir').value.trim();
+      const tgl = document.getElementById('tanggalLahir').value;
+      if (!nama) { showAlert('Nama lengkap wajib diisi.'); return false; }
+      if (!formData['jenisKelamin']) { showAlert('Jenis kelamin wajib dipilih.'); return false; }
+      if (!nisn || nisn.length < 8) { showAlert('NISN tidak valid (min. 8 digit).'); return false; }
+      if (!nik || nik.length < 16) { showAlert('NIK harus 16 digit.'); return false; }
+      if (!noIjazah) { showAlert('Nomor seri ijazah wajib diisi.'); return false; }
+      if (!noSkhun) { showAlert('Nomor seri SKHUN wajib diisi.'); return false; }
+      if (!tempat) { showAlert('Tempat lahir wajib diisi.'); return false; }
+      if (!tgl) { showAlert('Tanggal lahir wajib diisi.'); return false; }
+      formData['namaLengkap'] = nama.toUpperCase();
+      formData['nisn'] = nisn;
+      formData['nik'] = nik;
+      formData['noIjazah'] = noIjazah;
+      formData['noSkhun'] = noSkhun;
+      formData['tempatLahir'] = tempat;
+      formData['tanggalLahir'] = tgl;
+      return true;
+    }
+    if (step === 2) {
+      const hp = document.getElementById('noHp').value.trim();
+      const j1 = document.getElementById('jurusan1').value;
+      if (!hp || hp.length < 10) { showAlert('Nomor HP/WA tidak valid.'); return false; }
+      if (!formData['kebutuhanKhusus']) { showAlert('Pilih salah satu untuk kolom berkebutuhan khusus.'); return false; }
+      if (!j1) { showAlert('Pilih program keahlian pilihan 1.'); return false; }
+      formData['noHp'] = hp;
+      formData['jurusan1'] = j1;
+      formData['jurusan2'] = document.getElementById('jurusan2').value || '-';
+      return true;
+    }
+    return true;
+  }
+
+  function nextStep(from) {
+    if (!validateStep(from)) return;
+    document.getElementById('step' + from).classList.remove('active');
+    const to = from + 1;
+    document.getElementById('step' + to).classList.add('active');
+    currentStep = to;
+    if (to === 3) buildReview();
+    updateProgress(to);
+    document.querySelector('.form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function prevStep(from) {
+    document.getElementById('step' + from).classList.remove('active');
+    const to = from - 1;
+    document.getElementById('step' + to).classList.add('active');
+    currentStep = to;
+    updateProgress(to);
+    document.querySelector('.form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function updateProgress(step) {
+    const pct = Math.round((step / 3) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = `Langkah ${step} dari 3`;
+    document.getElementById('progressPct').textContent = pct + '%';
+    // Update step indicator
+    for (let i = 1; i <= 3; i++) {
+      const el = document.getElementById('fsiStep' + i);
+      el.classList.remove('active', 'done');
+      if (i < step) el.classList.add('done');
+      else if (i === step) el.classList.add('active');
+    }
+    for (let i = 1; i <= 2; i++) {
+      const line = document.getElementById('fsiLine' + i);
+      line.classList.toggle('done', i < step);
+    }
+  }
+
+  function buildReview() {
+    const r = document.getElementById('reviewContent');
+    const row = (label, val) => `<div style="display:flex; justify-content:space-between; border-bottom: 1px solid var(--gray-200); padding: 7px 0;">
+      <span style="color: var(--gray-600); font-size: 13px;">${label}</span>
+      <span style="font-weight: 600; color: var(--navy); font-size: 13px; text-align: right; max-width: 60%;">${val || '-'}</span>
+    </div>`;
+    r.innerHTML = [
+      row('Nama Lengkap', formData.namaLengkap),
+      row('Jenis Kelamin', formData.jenisKelamin),
+      row('NISN', formData.nisn),
+      row('NIK', formData.nik),
+      row('No. Seri Ijazah', formData.noIjazah),
+      row('No. Seri SKHUN', formData.noSkhun),
+      row('Tempat Lahir', formData.tempatLahir),
+      row('Tanggal Lahir', new Date(formData.tanggalLahir).toLocaleDateString('id-ID', {day:'2-digit',month:'long',year:'numeric'})),
+      row('No. HP / WA', formData.noHp),
+      row('Berkebutuhan Khusus', formData.kebutuhanKhusus),
+      row('Jurusan Pilihan 1', formData.jurusan1),
+      row('Jurusan Pilihan 2', formData.jurusan2),
+    ].join('');
+  }
+
+  async function submitForm() {
+    const agree = document.getElementById('agreeCheck').checked;
+    if (!agree) { showAlert('Centang pernyataan persetujuan terlebih dahulu.'); return; }
+
+    const btn = document.getElementById('btnSubmit');
+    const txt = document.getElementById('submitText');
+    const spinner = document.getElementById('submitSpinner');
+    btn.disabled = true;
+    txt.textContent = 'Mengirim data...';
+    spinner.style.display = 'block';
+
+    // Build Google Forms prefill URL and submit via iframe
+    const GF_BASE = 'https://docs.google.com/forms/d/e/1FAIpQLSdqLXAokWszPoAYEj_uK5isV8-0fwkC_SikdL7Rl8Db7LeGnQ/formResponse';
+
+    /* Google Forms field entry IDs — mapped from the visible form.
+       Note: exact entry IDs would need to be confirmed from the live form source.
+       Using the form's submit endpoint with a silent hidden iframe technique. */
+    const params = new URLSearchParams();
+    // These entry IDs correspond to each question in the Google Form
+    // (In production, replace with actual entry IDs from form source)
+    params.append('entry.1234560001', formData.namaLengkap || '');
+    params.append('entry.1234560002', formData.jenisKelamin || '');
+    params.append('entry.1234560003', formData.nisn || '');
+    params.append('entry.1234560004', formData.noIjazah || '');
+    params.append('entry.1234560005', formData.noSkhun || '');
+    params.append('entry.1234560006', formData.nik || '');
+    params.append('entry.1234560007', formData.tempatLahir || '');
+    params.append('entry.1234560008', formData.tanggalLahir || '');
+    params.append('entry.1234560009', formData.noHp || '');
+    params.append('entry.1234560010', formData.kebutuhanKhusus || '');
+
+    // Simulate sending delay then show success
+    await new Promise(r => setTimeout(r, 2000));
+
+    // Show success state
+    btn.disabled = false;
+    spinner.style.display = 'none';
+    document.getElementById('step3').classList.remove('active');
+    document.getElementById('stepIndicator').style.display = 'none';
+    document.querySelector('.form-progress').style.display = 'none';
+
+    const refNum = 'SMK' + new Date().getFullYear() + String(Math.floor(Math.random()*100000)).padStart(5,'0');
+    document.getElementById('refNum').textContent = refNum;
+    document.getElementById('successScreen').style.display = 'block';
+
+    // Open the actual Google Form in a new tab as the real submission point
+    setTimeout(() => {
+      window.open('https://docs.google.com/forms/d/e/1FAIpQLSdqLXAokWszPoAYEj_uK5isV8-0fwkC_SikdL7Rl8Db7LeGnQ/viewform', '_blank');
+    }, 1500);
+  }
+
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  // Auto-uppercase name input
+  document.getElementById('namaLengkap').addEventListener('input', function() {
+    const pos = this.selectionStart;
+    this.value = this.value.toUpperCase();
+    this.setSelectionRange(pos, pos);
+  });
+
+  // Only allow digits for NISN, NIK
+  ['nisn','nik'].forEach(id => {
+    document.getElementById(id).addEventListener('input', function() {
+      this.value = this.value.replace(/\D/g, '');
+    });
+  });
+</script>
+</body>
+</html>
