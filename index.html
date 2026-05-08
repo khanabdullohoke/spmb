@@ -638,189 +638,51 @@
       <p class="section-sub">Isi formulir dengan data yang benar sesuai dokumen resmi. Data akan terkirim langsung ke sistem PPDB kami.</p>
     </div>
 
-    <div class="form-card">
-      <!-- Step Indicator -->
-      <div class="form-step-indicator" id="stepIndicator">
-        <div class="fsi-step active" id="fsiStep1">
-          <div class="fsi-num">1</div> Identitas Siswa
-        </div>
-        <div class="fsi-line" id="fsiLine1"></div>
-        <div class="fsi-step" id="fsiStep2">
-          <div class="fsi-num">2</div> Data Tambahan
-        </div>
-        <div class="fsi-line" id="fsiLine2"></div>
-        <div class="fsi-step" id="fsiStep3">
-          <div class="fsi-num">3</div> Konfirmasi
+    <!-- INFO CARDS -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px;">
+      <div style="background:rgba(226,194,81,0.08);border:1px solid rgba(226,194,81,0.25);border-radius:12px;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;">
+        <span style="font-size:22px;flex-shrink:0;">📄</span>
+        <div>
+          <div style="font-weight:700;color:#fff;font-size:14px;margin-bottom:4px;">Siapkan Dokumen</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.55);">Ijazah, KK, Akta Lahir, NISN</div>
         </div>
       </div>
-
-      <!-- Progress -->
-      <div class="form-progress">
-        <div class="form-progress-label">
-          <span id="progressLabel">Langkah 1 dari 3</span>
-          <span id="progressPct">33%</span>
-        </div>
-        <div class="form-progress-bar">
-          <div class="form-progress-fill" id="progressFill" style="width:33%"></div>
+      <div style="background:rgba(226,194,81,0.08);border:1px solid rgba(226,194,81,0.25);border-radius:12px;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;">
+        <span style="font-size:22px;flex-shrink:0;">✍️</span>
+        <div>
+          <div style="font-weight:700;color:#fff;font-size:14px;margin-bottom:4px;">Isi Data Lengkap</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.55);">Sesuai dokumen asli yang dimiliki</div>
         </div>
       </div>
-
-      <div id="alertBox" class="alert error">⚠️ <span id="alertMsg"></span></div>
-
-      <!-- STEP 1 -->
-      <div class="form-steps active" id="step1">
-        <div class="form-section-title">Data Diri Peserta Didik</div>
-        <div class="form-group">
-          <label class="form-label">Nama Lengkap Peserta Didik <span class="req">*</span></label>
-          <input type="text" id="namaLengkap" placeholder="Contoh: ALDI MUBAROK" style="text-transform: uppercase;">
-          <p class="form-hint">Gunakan huruf kapital semua, sesuai ijazah/akta lahir.</p>
+      <div style="background:rgba(226,194,81,0.08);border:1px solid rgba(226,194,81,0.25);border-radius:12px;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;">
+        <span style="font-size:22px;flex-shrink:0;">✅</span>
+        <div>
+          <div style="font-weight:700;color:#fff;font-size:14px;margin-bottom:4px;">Data Tersimpan Otomatis</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.55);">Langsung masuk ke sistem panitia</div>
         </div>
-        <div class="form-group">
-          <label class="form-label">Jenis Kelamin <span class="req">*</span></label>
-          <div class="radio-group">
-            <label class="radio-option" onclick="selectRadio(this,'jenisKelamin','Laki-Laki')">
-              <input type="radio" name="jenisKelamin" value="Laki-Laki">
-              <div class="radio-dot"></div> 👦 Laki-Laki
-            </label>
-            <label class="radio-option" onclick="selectRadio(this,'jenisKelamin','Perempuan')">
-              <input type="radio" name="jenisKelamin" value="Perempuan">
-              <div class="radio-dot"></div> 👧 Perempuan
-            </label>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">NISN <span class="req">*</span></label>
-            <input type="text" id="nisn" placeholder="Nomor Induk Siswa Nasional" maxlength="10">
-            <p class="form-hint">Cek di Ijazah SMP/MTs Anda.</p>
-          </div>
-          <div class="form-group">
-            <label class="form-label">NIK (KTP/KK) <span class="req">*</span></label>
-            <input type="text" id="nik" placeholder="16 digit nomor KTP" maxlength="16">
-            <p class="form-hint">Lihat di Kartu Keluarga (KK).</p>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Nomor Seri Ijazah <span class="req">*</span></label>
-            <input type="text" id="noIjazah" placeholder="No. seri ijazah SMP/MTs">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Nomor Seri SKHUN <span class="req">*</span></label>
-            <input type="text" id="noSkhun" placeholder="No. seri SKHUN">
-          </div>
-        </div>
-        <hr class="form-divider">
-        <div class="form-section-title">Tempat & Tanggal Lahir</div>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Tempat Lahir <span class="req">*</span></label>
-            <input type="text" id="tempatLahir" placeholder="Kota/Kabupaten lahir">
-            <p class="form-hint">Sesuai akta lahir.</p>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Tanggal Lahir <span class="req">*</span></label>
-            <input type="date" id="tanggalLahir">
-          </div>
-        </div>
-        <div class="form-nav">
-          <div></div>
-          <button class="btn-nav-next" onclick="nextStep(1)">Lanjut →</button>
-        </div>
-      </div>
-
-      <!-- STEP 2 -->
-      <div class="form-steps" id="step2">
-        <div class="form-section-title">Kontak & Informasi Tambahan</div>
-        <div class="form-group">
-          <label class="form-label">Nomor HP / WhatsApp Aktif <span class="req">*</span></label>
-          <input type="tel" id="noHp" placeholder="Contoh: 08123456789">
-          <p class="form-hint">Pastikan nomor aktif untuk keperluan komunikasi panitia.</p>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Berkebutuhan Khusus <span class="req">*</span></label>
-          <div class="radio-group">
-            <label class="radio-option" onclick="selectRadio(this,'kebutuhanKhusus','Tidak')">
-              <input type="radio" name="kebutuhanKhusus" value="Tidak">
-              <div class="radio-dot"></div> Tidak
-            </label>
-            <label class="radio-option" onclick="selectRadio(this,'kebutuhanKhusus','Ya')">
-              <input type="radio" name="kebutuhanKhusus" value="Ya">
-              <div class="radio-dot"></div> Ya
-            </label>
-          </div>
-        </div>
-        <hr class="form-divider">
-        <div class="form-section-title">Pilihan Program Keahlian</div>
-        <div class="form-group">
-          <label class="form-label">Program Keahlian Pilihan 1 <span class="req">*</span></label>
-          <select id="jurusan1">
-            <option value="">-- Pilih Jurusan --</option>
-            <option>Rekayasa Perangkat Lunak</option>
-            <option>Teknik Komputer dan Jaringan</option>
-            <option>Teknik Instalasi Tenaga Listrik</option>
-            <option>Akuntansi dan Keuangan Lembaga</option>
-            <option>Bisnis Daring dan Pemasaran</option>
-            <option>Desain Pemodelan dan Informasi Bangunan</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Program Keahlian Pilihan 2</label>
-          <select id="jurusan2">
-            <option value="">-- Pilih Jurusan (opsional) --</option>
-            <option>Rekayasa Perangkat Lunak</option>
-            <option>Teknik Komputer dan Jaringan</option>
-            <option>Teknik Instalasi Tenaga Listrik</option>
-            <option>Akuntansi dan Keuangan Lembaga</option>
-            <option>Bisnis Daring dan Pemasaran</option>
-            <option>Desain Pemodelan dan Informasi Bangunan</option>
-          </select>
-        </div>
-        <div class="form-nav">
-          <button class="btn-nav-prev" onclick="prevStep(2)">← Kembali</button>
-          <button class="btn-nav-next" onclick="nextStep(2)">Lanjut →</button>
-        </div>
-      </div>
-
-      <!-- STEP 3 REVIEW -->
-      <div class="form-steps" id="step3">
-        <div class="form-section-title">Periksa Kembali Data Anda</div>
-        <div id="reviewContent" style="background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-sm); padding: 20px; margin-bottom: 20px; font-size: 13.5px; line-height: 2;">
-        </div>
-        <div style="background: #FFF8E1; border: 1px solid #F0D87A; border-radius: var(--radius-sm); padding: 14px 16px; font-size: 13px; color: #7A6A10; margin-bottom: 20px;">
-          ⚠️ <strong>Perhatian:</strong> Pastikan semua data yang diisi sudah benar sesuai dokumen asli. Data yang salah dapat memengaruhi proses verifikasi pendaftaran.
-        </div>
-        <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px;">
-          <input type="checkbox" id="agreeCheck" style="width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; accent-color: var(--navy);">
-          <label for="agreeCheck" style="font-size: 13.5px; color: var(--gray-800); cursor: pointer; line-height: 1.6;">
-            Saya menyatakan bahwa data yang diisi adalah <strong>benar dan sesuai dengan dokumen asli</strong>. Saya bertanggung jawab atas keabsahan informasi yang disampaikan.
-          </label>
-        </div>
-        <button class="btn-submit" id="btnSubmit" onclick="submitForm()">
-          <span id="submitText">📤 Kirim Formulir Pendaftaran</span>
-          <div class="spinner" id="submitSpinner"></div>
-        </button>
-        <div class="form-nav" style="margin-top: 16px;">
-          <button class="btn-nav-prev" onclick="prevStep(3)">← Ubah Data</button>
-          <div></div>
-        </div>
-      </div>
-
-      <!-- SUCCESS -->
-      <div class="success-screen" id="successScreen">
-        <div class="success-icon">✅</div>
-        <div class="success-title">Pendaftaran Berhasil!</div>
-        <p class="success-desc">Data pendaftaran Anda telah berhasil dikirim. Tim panitia PPDB akan menghubungi Anda melalui nomor WhatsApp yang terdaftar.</p>
-        <div class="success-ref">
-          <div class="success-ref-label">Nomor Referensi</div>
-          <div class="success-ref-num" id="refNum">–</div>
-        </div>
-        <p style="font-size: 13px; color: var(--gray-600); margin-bottom: 24px;">Simpan nomor referensi ini sebagai bukti pendaftaran Anda.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqLXAokWszPoAYEj_uK5isV8-0fwkC_SikdL7Rl8Db7LeGnQ/viewform" target="_blank" class="btn-primary" style="display: inline-flex; text-decoration: none;">
-          📋 Lihat di Google Forms
-        </a>
       </div>
     </div>
+
+    <!-- GOOGLE FORM EMBED -->
+    <div style="background:white;border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(11,29,58,0.14);">
+      <div style="background:#0B1D3A;padding:20px 28px;border-bottom:3px solid #E2C251;display:flex;align-items:center;gap:12px;">
+        <div style="width:36px;height:36px;background:#E2C251;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#0B1D3A;flex-shrink:0;">SMK</div>
+        <div>
+          <div style="font-weight:700;color:white;font-size:15px;">Formulir Pendaftaran PPDB 2026/2027</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.5);">SMK Ciledug Al Musaddadiyah Garut — Data langsung tersimpan ke sistem</div>
+        </div>
+      </div>
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSdqLXAokWszPoAYEj_uK5isV8-0fwkC_SikdL7Rl8Db7LeGnQ/viewform?embedded=true"
+        width="100%"
+        height="1800"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        style="display:block;"
+      >Memuat formulir...</iframe>
+    </div>
+
   </div>
 </section>
 
@@ -918,195 +780,12 @@
 </footer>
 
 <script>
-  // Form state
-  const formData = {};
-  let currentStep = 1;
-
-  function selectRadio(el, name, val) {
-    document.querySelectorAll(`[onclick*="'${name}'"]`).forEach(e => e.classList.remove('selected'));
-    el.classList.add('selected');
-    formData[name] = val;
-  }
-
-  function showAlert(msg) {
-    const box = document.getElementById('alertBox');
-    document.getElementById('alertMsg').textContent = msg;
-    box.classList.add('show');
-    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    setTimeout(() => box.classList.remove('show'), 5000);
-  }
-
-  function validateStep(step) {
-    if (step === 1) {
-      const nama = document.getElementById('namaLengkap').value.trim();
-      const nisn = document.getElementById('nisn').value.trim();
-      const nik = document.getElementById('nik').value.trim();
-      const noIjazah = document.getElementById('noIjazah').value.trim();
-      const noSkhun = document.getElementById('noSkhun').value.trim();
-      const tempat = document.getElementById('tempatLahir').value.trim();
-      const tgl = document.getElementById('tanggalLahir').value;
-      if (!nama) { showAlert('Nama lengkap wajib diisi.'); return false; }
-      if (!formData['jenisKelamin']) { showAlert('Jenis kelamin wajib dipilih.'); return false; }
-      if (!nisn || nisn.length < 8) { showAlert('NISN tidak valid (min. 8 digit).'); return false; }
-      if (!nik || nik.length < 16) { showAlert('NIK harus 16 digit.'); return false; }
-      if (!noIjazah) { showAlert('Nomor seri ijazah wajib diisi.'); return false; }
-      if (!noSkhun) { showAlert('Nomor seri SKHUN wajib diisi.'); return false; }
-      if (!tempat) { showAlert('Tempat lahir wajib diisi.'); return false; }
-      if (!tgl) { showAlert('Tanggal lahir wajib diisi.'); return false; }
-      formData['namaLengkap'] = nama.toUpperCase();
-      formData['nisn'] = nisn;
-      formData['nik'] = nik;
-      formData['noIjazah'] = noIjazah;
-      formData['noSkhun'] = noSkhun;
-      formData['tempatLahir'] = tempat;
-      formData['tanggalLahir'] = tgl;
-      return true;
-    }
-    if (step === 2) {
-      const hp = document.getElementById('noHp').value.trim();
-      const j1 = document.getElementById('jurusan1').value;
-      if (!hp || hp.length < 10) { showAlert('Nomor HP/WA tidak valid.'); return false; }
-      if (!formData['kebutuhanKhusus']) { showAlert('Pilih salah satu untuk kolom berkebutuhan khusus.'); return false; }
-      if (!j1) { showAlert('Pilih program keahlian pilihan 1.'); return false; }
-      formData['noHp'] = hp;
-      formData['jurusan1'] = j1;
-      formData['jurusan2'] = document.getElementById('jurusan2').value || '-';
-      return true;
-    }
-    return true;
-  }
-
-  function nextStep(from) {
-    if (!validateStep(from)) return;
-    document.getElementById('step' + from).classList.remove('active');
-    const to = from + 1;
-    document.getElementById('step' + to).classList.add('active');
-    currentStep = to;
-    if (to === 3) buildReview();
-    updateProgress(to);
-    document.querySelector('.form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  function prevStep(from) {
-    document.getElementById('step' + from).classList.remove('active');
-    const to = from - 1;
-    document.getElementById('step' + to).classList.add('active');
-    currentStep = to;
-    updateProgress(to);
-    document.querySelector('.form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  function updateProgress(step) {
-    const pct = Math.round((step / 3) * 100);
-    document.getElementById('progressFill').style.width = pct + '%';
-    document.getElementById('progressLabel').textContent = `Langkah ${step} dari 3`;
-    document.getElementById('progressPct').textContent = pct + '%';
-    // Update step indicator
-    for (let i = 1; i <= 3; i++) {
-      const el = document.getElementById('fsiStep' + i);
-      el.classList.remove('active', 'done');
-      if (i < step) el.classList.add('done');
-      else if (i === step) el.classList.add('active');
-    }
-    for (let i = 1; i <= 2; i++) {
-      const line = document.getElementById('fsiLine' + i);
-      line.classList.toggle('done', i < step);
-    }
-  }
-
-  function buildReview() {
-    const r = document.getElementById('reviewContent');
-    const row = (label, val) => `<div style="display:flex; justify-content:space-between; border-bottom: 1px solid var(--gray-200); padding: 7px 0;">
-      <span style="color: var(--gray-600); font-size: 13px;">${label}</span>
-      <span style="font-weight: 600; color: var(--navy); font-size: 13px; text-align: right; max-width: 60%;">${val || '-'}</span>
-    </div>`;
-    r.innerHTML = [
-      row('Nama Lengkap', formData.namaLengkap),
-      row('Jenis Kelamin', formData.jenisKelamin),
-      row('NISN', formData.nisn),
-      row('NIK', formData.nik),
-      row('No. Seri Ijazah', formData.noIjazah),
-      row('No. Seri SKHUN', formData.noSkhun),
-      row('Tempat Lahir', formData.tempatLahir),
-      row('Tanggal Lahir', new Date(formData.tanggalLahir).toLocaleDateString('id-ID', {day:'2-digit',month:'long',year:'numeric'})),
-      row('No. HP / WA', formData.noHp),
-      row('Berkebutuhan Khusus', formData.kebutuhanKhusus),
-      row('Jurusan Pilihan 1', formData.jurusan1),
-      row('Jurusan Pilihan 2', formData.jurusan2),
-    ].join('');
-  }
-
-  async function submitForm() {
-    const agree = document.getElementById('agreeCheck').checked;
-    if (!agree) { showAlert('Centang pernyataan persetujuan terlebih dahulu.'); return; }
-
-    const btn = document.getElementById('btnSubmit');
-    const txt = document.getElementById('submitText');
-    const spinner = document.getElementById('submitSpinner');
-    btn.disabled = true;
-    txt.textContent = 'Mengirim data...';
-    spinner.style.display = 'block';
-
-    // Build Google Forms prefill URL and submit via iframe
-    const GF_BASE = 'https://docs.google.com/forms/d/e/1FAIpQLSdqLXAokWszPoAYEj_uK5isV8-0fwkC_SikdL7Rl8Db7LeGnQ/formResponse';
-
-    /* Google Forms field entry IDs — mapped from the visible form.
-       Note: exact entry IDs would need to be confirmed from the live form source.
-       Using the form's submit endpoint with a silent hidden iframe technique. */
-    const params = new URLSearchParams();
-    // These entry IDs correspond to each question in the Google Form
-    // (In production, replace with actual entry IDs from form source)
-    params.append('entry.1234560001', formData.namaLengkap || '');
-    params.append('entry.1234560002', formData.jenisKelamin || '');
-    params.append('entry.1234560003', formData.nisn || '');
-    params.append('entry.1234560004', formData.noIjazah || '');
-    params.append('entry.1234560005', formData.noSkhun || '');
-    params.append('entry.1234560006', formData.nik || '');
-    params.append('entry.1234560007', formData.tempatLahir || '');
-    params.append('entry.1234560008', formData.tanggalLahir || '');
-    params.append('entry.1234560009', formData.noHp || '');
-    params.append('entry.1234560010', formData.kebutuhanKhusus || '');
-
-    // Simulate sending delay then show success
-    await new Promise(r => setTimeout(r, 2000));
-
-    // Show success state
-    btn.disabled = false;
-    spinner.style.display = 'none';
-    document.getElementById('step3').classList.remove('active');
-    document.getElementById('stepIndicator').style.display = 'none';
-    document.querySelector('.form-progress').style.display = 'none';
-
-    const refNum = 'SMK' + new Date().getFullYear() + String(Math.floor(Math.random()*100000)).padStart(5,'0');
-    document.getElementById('refNum').textContent = refNum;
-    document.getElementById('successScreen').style.display = 'block';
-
-    // Open the actual Google Form in a new tab as the real submission point
-    setTimeout(() => {
-      window.open('https://docs.google.com/forms/d/e/1FAIpQLSdqLXAokWszPoAYEj_uK5isV8-0fwkC_SikdL7Rl8Db7LeGnQ/viewform', '_blank');
-    }, 1500);
-  }
-
   function toggleFaq(btn) {
     const item = btn.closest('.faq-item');
     const wasOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
     if (!wasOpen) item.classList.add('open');
   }
-
-  // Auto-uppercase name input
-  document.getElementById('namaLengkap').addEventListener('input', function() {
-    const pos = this.selectionStart;
-    this.value = this.value.toUpperCase();
-    this.setSelectionRange(pos, pos);
-  });
-
-  // Only allow digits for NISN, NIK
-  ['nisn','nik'].forEach(id => {
-    document.getElementById(id).addEventListener('input', function() {
-      this.value = this.value.replace(/\D/g, '');
-    });
-  });
 </script>
 </body>
 </html>
