@@ -674,66 +674,63 @@
 
       <!-- Step Indicator -->
       <div class="form-step-indicator" id="stepIndicator">
-        <div class="fsi-step active" id="fsi1">
-          <div class="fsi-num">1</div>
-          <span>Data Siswa</span>
-        </div>
+        <div class="fsi-step active" id="fsi1"><div class="fsi-num">1</div><span>Data Siswa</span></div>
         <div class="fsi-line" id="fsiLine1"></div>
-        <div class="fsi-step" id="fsi2">
-          <div class="fsi-num">2</div>
-          <span>Data Sekolah</span>
-        </div>
+        <div class="fsi-step" id="fsi2"><div class="fsi-num">2</div><span>Alamat & Info</span></div>
         <div class="fsi-line" id="fsiLine2"></div>
-        <div class="fsi-step" id="fsi3">
-          <div class="fsi-num">3</div>
-          <span>Data Orang Tua</span>
-        </div>
+        <div class="fsi-step" id="fsi3"><div class="fsi-num">3</div><span>Asal Sekolah</span></div>
+        <div class="fsi-line" id="fsiLine3"></div>
+        <div class="fsi-step" id="fsi4"><div class="fsi-num">4</div><span>Orang Tua/Wali</span></div>
       </div>
 
       <!-- Progress -->
       <div class="form-progress">
         <div class="form-progress-label">
-          <span id="progressLabel">Langkah 1 dari 3 — Data Identitas Siswa</span>
-          <span id="progressPct">33%</span>
+          <span id="progressLabel">Langkah 1 dari 4 — Identitas Peserta Didik</span>
+          <span id="progressPct">25%</span>
         </div>
-        <div class="form-progress-bar"><div class="form-progress-fill" id="progressFill" style="width:33%"></div></div>
+        <div class="form-progress-bar"><div class="form-progress-fill" id="progressFill" style="width:25%"></div></div>
       </div>
 
       <div id="alertBox" class="alert error"></div>
 
-      <!-- STEP 1: Data Siswa -->
+      <!-- STEP 1: Identitas Siswa -->
       <div class="form-steps active" id="step1">
-        <div class="form-section-title">📋 Identitas Calon Siswa</div>
+        <div class="form-section-title">📋 Identitas Calon Peserta Didik</div>
 
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label">Nama Lengkap <span class="req">*</span></label>
-            <input type="text" id="namaLengkap" placeholder="Sesuai ijazah/akta lahir" autocomplete="off">
+            <label class="form-label">Nama Lengkap Peserta Didik <span class="req">*</span></label>
+            <input type="text" id="namaLengkap" placeholder="Sesuai ijazah/akta lahir">
           </div>
           <div class="form-group">
-            <label class="form-label">NISN <span class="req">*</span></label>
-            <input type="text" id="nisn" placeholder="10 digit angka" maxlength="10">
-            <div class="form-hint">Nomor Induk Siswa Nasional dari sekolah asal</div>
+            <label class="form-label">Jenis Kelamin <span class="req">*</span></label>
+            <div class="radio-group">
+              <label class="radio-option" onclick="selectRadio(this,'jenisKelamin','Laki-Laki')"><input type="radio" name="jenisKelamin" value="Laki-Laki"><div class="radio-dot"></div> Laki-Laki</label>
+              <label class="radio-option" onclick="selectRadio(this,'jenisKelamin','Perempuan')"><input type="radio" name="jenisKelamin" value="Perempuan"><div class="radio-dot"></div> Perempuan</label>
+            </div>
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label">Jenis Kelamin <span class="req">*</span></label>
-            <div class="radio-group">
-              <label class="radio-option" onclick="selectRadio(this,'jenisKelamin','Laki-laki')">
-                <input type="radio" name="jenisKelamin" value="Laki-laki">
-                <div class="radio-dot"></div> Laki-laki
-              </label>
-              <label class="radio-option" onclick="selectRadio(this,'jenisKelamin','Perempuan')">
-                <input type="radio" name="jenisKelamin" value="Perempuan">
-                <div class="radio-dot"></div> Perempuan
-              </label>
-            </div>
+            <label class="form-label">Nomor Induk Siswa Nasional (NISN) <span class="req">*</span></label>
+            <input type="text" id="nisn" placeholder="Contoh: 3098127518" maxlength="10">
           </div>
           <div class="form-group">
-            <label class="form-label">Tanggal Lahir <span class="req">*</span></label>
-            <input type="date" id="tanggalLahir">
+            <label class="form-label">Nomor Induk Kependudukan (NIK) <span class="req">*</span></label>
+            <input type="text" id="nik" placeholder="16 digit NIK sesuai KK" maxlength="16">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nomor Seri Ijazah SMP/MTs <span class="req">*</span></label>
+            <input type="text" id="nomorIjazah" placeholder="Contoh: 124202500998009">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nomor Seri SKHUN <span class="req">*</span></label>
+            <input type="text" id="nomorSkhun" placeholder="Contoh: 400.3.11.1/11/PKBM-AM">
           </div>
         </div>
 
@@ -743,159 +740,426 @@
             <input type="text" id="tempatLahir" placeholder="Nama kota/kabupaten">
           </div>
           <div class="form-group">
-            <label class="form-label">Agama <span class="req">*</span></label>
-            <select id="agama">
-              <option value="">— Pilih Agama —</option>
-              <option>Islam</option>
-              <option>Kristen</option>
-              <option>Katolik</option>
-              <option>Hindu</option>
-              <option>Buddha</option>
-              <option>Konghucu</option>
-            </select>
+            <label class="form-label">Tanggal Lahir <span class="req">*</span></label>
+            <input type="date" id="tanggalLahir">
           </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Alamat Lengkap <span class="req">*</span></label>
-          <textarea id="alamat" rows="3" placeholder="Jl. / Desa / RT-RW / Kecamatan / Kabupaten"></textarea>
         </div>
 
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label">No. HP / WhatsApp Siswa <span class="req">*</span></label>
+            <label class="form-label">Nomor HP / WhatsApp Aktif <span class="req">*</span></label>
             <input type="tel" id="noHpSiswa" placeholder="08xx-xxxx-xxxx">
           </div>
           <div class="form-group">
-            <label class="form-label">NIK (KTP/KK) <span class="req">*</span></label>
-            <input type="text" id="nik" placeholder="16 digit NIK" maxlength="16">
+            <label class="form-label">Email Aktif <span class="req">*</span></label>
+            <input type="text" id="emailSiswa" placeholder="contoh@gmail.com">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nama Media Sosial</label>
+            <input type="text" id="medsos" placeholder="Contoh: @namaakun">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Berkebutuhan Khusus <span class="req">*</span></label>
+            <select id="berkebutuhanKhusus">
+              <option value="">— Pilih —</option>
+              <option>Tidak</option>
+              <option>Tunanetra</option>
+              <option>Tunarungu</option>
+              <option>Tunawicara</option>
+              <option>Tunadaksa</option>
+              <option>Tunagrahita</option>
+              <option>Autis</option>
+              <option>Lainnya</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Penerima PIP <span class="req">*</span></label>
+            <div class="radio-group">
+              <label class="radio-option" onclick="selectRadio(this,'pip','Ya')"><input type="radio" name="pip" value="Ya"><div class="radio-dot"></div> Ya</label>
+              <label class="radio-option" onclick="selectRadio(this,'pip','Tidak')"><input type="radio" name="pip" value="Tidak"><div class="radio-dot"></div> Tidak</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tinggi Badan (cm) <span class="req">*</span></label>
+            <input type="text" id="tinggiBadan" placeholder="Contoh: 165">
           </div>
         </div>
 
         <div class="form-nav">
           <div></div>
-          <button class="btn-nav-next" onclick="goStep(2)">Lanjut — Data Sekolah &rarr;</button>
+          <button class="btn-nav-next" onclick="goStep(2)">Lanjut — Alamat &amp; Info &rarr;</button>
         </div>
       </div>
 
-      <!-- STEP 2: Data Sekolah -->
+      <!-- STEP 2: Alamat & Informasi Tambahan -->
       <div class="form-steps" id="step2">
-        <div class="form-section-title">🏫 Asal Sekolah & Program Keahlian</div>
+        <div class="form-section-title">🏠 Alamat Tempat Tinggal</div>
 
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label">Asal Sekolah (SMP/MTs) <span class="req">*</span></label>
-            <input type="text" id="asalSekolah" placeholder="Nama lengkap sekolah asal">
+            <label class="form-label">Dusun / RT / RW <span class="req">*</span></label>
+            <input type="text" id="dusunRtRw" placeholder="Contoh: Kp. Jangkurang RT 01/02">
           </div>
           <div class="form-group">
-            <label class="form-label">Tahun Lulus <span class="req">*</span></label>
-            <select id="tahunLulus">
-              <option value="">— Pilih Tahun —</option>
-              <option>2026</option>
-              <option>2025</option>
-              <option>2024</option>
-              <option>2023</option>
-            </select>
+            <label class="form-label">Kelurahan / Desa <span class="req">*</span></label>
+            <input type="text" id="kelurahan" placeholder="Contoh: Sukamentri">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Kecamatan <span class="req">*</span></label>
+            <input type="text" id="kecamatan" placeholder="Contoh: Garut Kota">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Kabupaten / Kota <span class="req">*</span></label>
+            <input type="text" id="kabupaten" placeholder="Contoh: Garut">
           </div>
         </div>
 
         <div class="form-group">
-          <label class="form-label">Pilihan Program Keahlian <span class="req">*</span></label>
-          <div class="radio-group" style="flex-direction:column;gap:8px;">
-            <label class="radio-option" style="min-width:unset;width:100%;" onclick="selectRadio(this,'jurusan','Akuntansi Keuangan Lembaga')">
-              <input type="radio" name="jurusan" value="Akuntansi Keuangan Lembaga">
-              <div class="radio-dot"></div> 📊 Akuntansi Keuangan Lembaga
-            </label>
-            <label class="radio-option" style="min-width:unset;width:100%;" onclick="selectRadio(this,'jurusan','Bisnis Digital')">
-              <input type="radio" name="jurusan" value="Bisnis Digital">
-              <div class="radio-dot"></div> 🛒 Bisnis Digital
-            </label>
-            <label class="radio-option" style="min-width:unset;width:100%;" onclick="selectRadio(this,'jurusan','Desain Komunikasi Visual')">
-              <input type="radio" name="jurusan" value="Desain Komunikasi Visual">
-              <div class="radio-dot"></div> 🎨 Desain Komunikasi Visual
-            </label>
-            <label class="radio-option" style="min-width:unset;width:100%;" onclick="selectRadio(this,'jurusan','Teknik Komputer & Jaringan')">
-              <input type="radio" name="jurusan" value="Teknik Komputer & Jaringan">
-              <div class="radio-dot"></div> 🌐 Teknik Komputer & Jaringan
-            </label>
-            <label class="radio-option" style="min-width:unset;width:100%;" onclick="selectRadio(this,'jurusan','Teknik Kendaraan Ringan')">
-              <input type="radio" name="jurusan" value="Teknik Kendaraan Ringan">
-              <div class="radio-dot"></div> 🚗 Teknik Kendaraan Ringan (TKR)
-            </label>
-            <label class="radio-option" style="min-width:unset;width:100%;" onclick="selectRadio(this,'jurusan','Teknik Sepeda Motor')">
-              <input type="radio" name="jurusan" value="Teknik Sepeda Motor">
-              <div class="radio-dot"></div> 🏍️ Teknik Sepeda Motor (TSM)
-            </label>
-            <label class="radio-option" style="min-width:unset;width:100%;" onclick="selectRadio(this,'jurusan','Manajemen Perkantoran')">
-              <input type="radio" name="jurusan" value="Manajemen Perkantoran">
-              <div class="radio-dot"></div> 🗂️ Manajemen Perkantoran
-            </label>
-          </div>
-        </div>
-
-        <div class="form-nav">
-          <button class="btn-nav-prev" onclick="goStep(1)">&larr; Kembali</button>
-          <button class="btn-nav-next" onclick="goStep(3)">Lanjut — Data Orang Tua &rarr;</button>
-        </div>
-      </div>
-
-      <!-- STEP 3: Data Orang Tua -->
-      <div class="form-steps" id="step3">
-        <div class="form-section-title">👨‍👩‍👧 Data Orang Tua / Wali</div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Nama Ayah <span class="req">*</span></label>
-            <input type="text" id="namaAyah" placeholder="Nama lengkap ayah kandung">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Nama Ibu <span class="req">*</span></label>
-            <input type="text" id="namaIbu" placeholder="Nama lengkap ibu kandung">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">No. HP Orang Tua / Wali <span class="req">*</span></label>
-            <input type="tel" id="noHpOrtu" placeholder="08xx-xxxx-xxxx">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Pekerjaan Orang Tua</label>
-            <input type="text" id="pekerjaanOrtu" placeholder="Contoh: Wiraswasta, PNS, dll">
-          </div>
-        </div>
-
-        <hr class="form-divider">
-        <div class="form-section-title" style="margin-bottom:16px;">📝 Informasi Tambahan</div>
-
-        <div class="form-group">
-          <label class="form-label">Dari mana mengetahui informasi PPDB ini?</label>
-          <select id="sumberInfo">
-            <option value="">— Pilih sumber informasi —</option>
-            <option>Media Sosial (Instagram/Facebook/TikTok)</option>
-            <option>Website Sekolah</option>
-            <option>Teman / Saudara</option>
-            <option>Guru / Bimbingan Konseling</option>
-            <option>Brosur / Spanduk</option>
+          <label class="form-label">Provinsi <span class="req">*</span></label>
+          <select id="provinsi">
+            <option value="">— Pilih Provinsi —</option>
+            <option>Jawa Barat</option><option>Jawa Tengah</option><option>Jawa Timur</option>
+            <option>DKI Jakarta</option><option>DI Yogyakarta</option><option>Banten</option>
+            <option>Sumatera Utara</option><option>Sumatera Selatan</option><option>Sumatera Barat</option>
+            <option>Kalimantan Barat</option><option>Kalimantan Timur</option><option>Sulawesi Selatan</option>
             <option>Lainnya</option>
           </select>
         </div>
 
-        <div class="form-group">
-          <label class="form-label">Catatan / Pesan (opsional)</label>
-          <textarea id="catatan" rows="3" placeholder="Pertanyaan, kondisi khusus, atau informasi tambahan lainnya..."></textarea>
+        <hr class="form-divider">
+        <div class="form-section-title">🚌 Informasi Perjalanan & Tempat Tinggal</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Jenis Tempat Tinggal <span class="req">*</span></label>
+            <select id="jenisTinggal">
+              <option value="">— Pilih —</option>
+              <option>Bersama Kedua Orangtua</option>
+              <option>Bersama Ayah</option>
+              <option>Bersama Ibu</option>
+              <option>Bersama Wali</option>
+              <option>Kos / Indekos</option>
+              <option>Asrama</option>
+              <option>Lainnya</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Alat Transportasi ke Sekolah <span class="req">*</span></label>
+            <select id="transportasi">
+              <option value="">— Pilih —</option>
+              <option>Jalan Kaki</option>
+              <option>Sepeda</option>
+              <option>Membawa Kendaraan Sendiri</option>
+              <option>Angkutan Umum</option>
+              <option>Diantar Orang Tua</option>
+              <option>Ojek Online</option>
+              <option>Lainnya</option>
+            </select>
+          </div>
         </div>
 
-        <!-- Disclaimer -->
-        <div style="background:rgba(27,63,160,0.05);border:1px solid rgba(27,63,160,0.15);border-radius:8px;padding:14px 16px;margin-bottom:24px;display:flex;align-items:flex-start;gap:10px;">
-          <span style="font-size:18px;flex-shrink:0;margin-top:1px;">ℹ️</span>
-          <p style="font-size:12.5px;color:var(--gray-600);line-height:1.65;margin:0;">
-            Dengan mengklik <strong>Kirim Pendaftaran</strong>, Anda menyatakan bahwa data yang diisi adalah benar dan sesuai dokumen resmi. Data ini akan tersimpan di Google Sheets panitia PPDB SMK Ciledug Al Musaddadiyah Garut.
-          </p>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Jarak Tempuh ke Sekolah (km) <span class="req">*</span></label>
+            <input type="text" id="jarakTempuh" placeholder="Contoh: 2,8">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Waktu Tempuh ke Sekolah (menit) <span class="req">*</span></label>
+            <input type="text" id="waktuTempuh" placeholder="Contoh: 10">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Jumlah Saudara Kandung <span class="req">*</span></label>
+          <input type="text" id="jumlahSaudara" placeholder="Contoh: 2">
+        </div>
+
+        <div class="form-nav">
+          <button class="btn-nav-prev" onclick="goStep(1)">&larr; Kembali</button>
+          <button class="btn-nav-next" onclick="goStep(3)">Lanjut — Asal Sekolah &rarr;</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Asal Sekolah & Pilihan Jurusan -->
+      <div class="form-steps" id="step3">
+        <div class="form-section-title">🏫 Data Asal Sekolah</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Jenis Asal Sekolah <span class="req">*</span></label>
+            <div class="radio-group">
+              <label class="radio-option" onclick="selectRadio(this,'jenisSekolah','Negeri')"><input type="radio" name="jenisSekolah" value="Negeri"><div class="radio-dot"></div> Negeri</label>
+              <label class="radio-option" onclick="selectRadio(this,'jenisSekolah','Swasta')"><input type="radio" name="jenisSekolah" value="Swasta"><div class="radio-dot"></div> Swasta</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nama Sekolah Asal <span class="req">*</span></label>
+            <input type="text" id="namaSekolah" placeholder="Contoh: PKBM AL-MANSHUR">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Kecamatan Sekolah Asal <span class="req">*</span></label>
+            <input type="text" id="kecamatanSekolah" placeholder="Contoh: Cilawu">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Kabupaten Sekolah Asal <span class="req">*</span></label>
+            <input type="text" id="kabupatenSekolah" placeholder="Contoh: Garut">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Provinsi Sekolah Asal <span class="req">*</span></label>
+          <select id="provinsiSekolah">
+            <option value="">— Pilih Provinsi —</option>
+            <option>Jawa Barat</option><option>Jawa Tengah</option><option>Jawa Timur</option>
+            <option>DKI Jakarta</option><option>DI Yogyakarta</option><option>Banten</option>
+            <option>Lainnya</option>
+          </select>
+        </div>
+
+        <hr class="form-divider">
+        <div class="form-section-title">🎯 Pilihan Program Keahlian</div>
+
+        <div class="form-group">
+          <label class="form-label">Pilihan Pertama <span class="req">*</span></label>
+          <select id="pilihan1">
+            <option value="">— Pilih Program Keahlian —</option>
+            <option>Akuntansi Keuangan Lembaga</option>
+            <option>Bisnis Digital</option>
+            <option>Desain Komunikasi Visual</option>
+            <option>Teknik Jaringan Komputer</option>
+            <option>Teknik Kendaraan Ringan</option>
+            <option>Teknik Sepeda Motor</option>
+            <option>Manajemen Perkantoran</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Pilihan Kedua</label>
+          <select id="pilihan2">
+            <option value="">— Pilih Program Keahlian —</option>
+            <option>Akuntansi Keuangan Lembaga</option>
+            <option>Bisnis Digital</option>
+            <option>Desain Komunikasi Visual</option>
+            <option>Teknik Jaringan Komputer</option>
+            <option>Teknik Kendaraan Ringan</option>
+            <option>Teknik Sepeda Motor</option>
+            <option>Manajemen Perkantoran</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Pilihan Ketiga</label>
+          <select id="pilihan3">
+            <option value="">— Pilih Program Keahlian —</option>
+            <option>Akuntansi Keuangan Lembaga</option>
+            <option>Bisnis Digital</option>
+            <option>Desain Komunikasi Visual</option>
+            <option>Teknik Jaringan Komputer</option>
+            <option>Teknik Kendaraan Ringan</option>
+            <option>Teknik Sepeda Motor</option>
+            <option>Manajemen Perkantoran</option>
+          </select>
         </div>
 
         <div class="form-nav">
           <button class="btn-nav-prev" onclick="goStep(2)">&larr; Kembali</button>
+          <button class="btn-nav-next" onclick="goStep(4)">Lanjut — Orang Tua/Wali &rarr;</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Data Orang Tua / Wali -->
+      <div class="form-steps" id="step4">
+
+        <!-- AYAH -->
+        <div class="form-section-title">👨 Data Ayah Kandung</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nama Lengkap Ayah Kandung <span class="req">*</span></label>
+            <input type="text" id="namaAyah" placeholder="Nama lengkap">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Masih Hidup <span class="req">*</span></label>
+            <div class="radio-group">
+              <label class="radio-option" onclick="selectRadio(this,'ayahHidup','Ya')"><input type="radio" name="ayahHidup" value="Ya"><div class="radio-dot"></div> Ya</label>
+              <label class="radio-option" onclick="selectRadio(this,'ayahHidup','Tidak')"><input type="radio" name="ayahHidup" value="Tidak"><div class="radio-dot"></div> Tidak</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Tempat Lahir Ayah</label>
+            <input type="text" id="tempatLahirAyah" placeholder="Kota/Kabupaten">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tanggal Lahir Ayah</label>
+            <input type="date" id="tanggalLahirAyah">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Pekerjaan Ayah</label>
+            <input type="text" id="pekerjaanAyah" placeholder="Contoh: Wiraswasta, PNS">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Pendidikan Ayah</label>
+            <select id="pendidikanAyah">
+              <option value="">— Pilih —</option>
+              <option>Tidak Sekolah</option><option>SD/Sederajat</option><option>SMP/Sederajat</option>
+              <option>SMA/SMK</option><option>D1/D2/D3</option><option>S1/D4</option><option>S2/S3</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Penghasilan Ayah per Bulan</label>
+            <select id="penghasilanAyah">
+              <option value="">— Pilih —</option>
+              <option>&lt; 1 juta</option><option>1 – 2 juta</option><option>2 – 3 juta</option>
+              <option>3 – 5 juta</option><option>5 – 10 juta</option><option>&gt; 10 juta</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nomor Telepon / HP Ayah</label>
+            <input type="tel" id="noHpAyah" placeholder="08xx-xxxx-xxxx">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Alamat Lengkap Ayah</label>
+          <textarea id="alamatAyah" rows="2" placeholder="Dusun / RT-RW / Desa / Kecamatan"></textarea>
+        </div>
+
+        <!-- IBU -->
+        <hr class="form-divider">
+        <div class="form-section-title">👩 Data Ibu Kandung</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nama Lengkap Ibu Kandung <span class="req">*</span></label>
+            <input type="text" id="namaIbu" placeholder="Nama lengkap">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Masih Hidup <span class="req">*</span></label>
+            <div class="radio-group">
+              <label class="radio-option" onclick="selectRadio(this,'ibuHidup','Ya')"><input type="radio" name="ibuHidup" value="Ya"><div class="radio-dot"></div> Ya</label>
+              <label class="radio-option" onclick="selectRadio(this,'ibuHidup','Tidak')"><input type="radio" name="ibuHidup" value="Tidak"><div class="radio-dot"></div> Tidak</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Tempat Lahir Ibu</label>
+            <input type="text" id="tempatLahirIbu" placeholder="Kota/Kabupaten">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tanggal Lahir Ibu</label>
+            <input type="date" id="tanggalLahirIbu">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Pekerjaan Ibu</label>
+            <input type="text" id="pekerjaanIbu" placeholder="Contoh: Ibu Rumah Tangga">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Pendidikan Ibu</label>
+            <select id="pendidikanIbu">
+              <option value="">— Pilih —</option>
+              <option>Tidak Sekolah</option><option>SD/Sederajat</option><option>SMP/Sederajat</option>
+              <option>SMA/SMK</option><option>D1/D2/D3</option><option>S1/D4</option><option>S2/S3</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Penghasilan Ibu per Bulan</label>
+            <select id="penghasilanIbu">
+              <option value="">— Pilih —</option>
+              <option>&lt; 1 juta</option><option>1 – 2 juta</option><option>2 – 3 juta</option>
+              <option>3 – 5 juta</option><option>5 – 10 juta</option><option>&gt; 10 juta</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nomor Telepon / HP Ibu <span class="req">*</span></label>
+            <input type="tel" id="noHpIbu" placeholder="08xx-xxxx-xxxx">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Alamat Lengkap Ibu</label>
+          <textarea id="alamatIbu" rows="2" placeholder="Dusun / RT-RW / Desa / Kecamatan"></textarea>
+        </div>
+
+        <!-- WALI -->
+        <hr class="form-divider">
+        <div class="form-section-title">🧑‍💼 Data Wali (isi jika berbeda dengan orang tua)</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nama Lengkap Wali</label>
+            <input type="text" id="namaWali" placeholder="Kosongkan jika tidak ada wali">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Pekerjaan Wali</label>
+            <input type="text" id="pekerjaanWali" placeholder="Contoh: Wiraswasta">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Tempat Lahir Wali</label>
+            <input type="text" id="tempatLahirWali" placeholder="Kota/Kabupaten">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tanggal Lahir Wali</label>
+            <input type="date" id="tanggalLahirWali">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Pendidikan Wali</label>
+            <select id="pendidikanWali">
+              <option value="">— Pilih —</option>
+              <option>Tidak Sekolah</option><option>SD/Sederajat</option><option>SMP/Sederajat</option>
+              <option>SMA/SMK</option><option>D1/D2/D3</option><option>S1/D4</option><option>S2/S3</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Penghasilan Wali per Bulan</label>
+            <select id="penghasilanWali">
+              <option value="">— Pilih —</option>
+              <option>&lt; 1 juta</option><option>1 – 2 juta</option><option>2 – 3 juta</option>
+              <option>3 – 5 juta</option><option>5 – 10 juta</option><option>&gt; 10 juta</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nomor HP Wali</label>
+            <input type="tel" id="noHpWali" placeholder="08xx-xxxx-xxxx">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Alamat Wali</label>
+            <input type="text" id="alamatWali" placeholder="Dusun / RT-RW / Desa">
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <hr class="form-divider">
+        <div style="background:rgba(27,63,160,0.05);border:1px solid rgba(27,63,160,0.15);border-radius:8px;padding:14px 16px;margin-bottom:24px;display:flex;align-items:flex-start;gap:10px;">
+          <span style="font-size:18px;flex-shrink:0;margin-top:1px;">ℹ️</span>
+          <p style="font-size:12.5px;color:var(--gray-600);line-height:1.65;margin:0;">
+            Dengan mengklik <strong>Kirim Pendaftaran</strong>, Anda menyatakan bahwa data yang diisi adalah benar dan sesuai dokumen resmi. Data tersimpan di Google Sheets panitia PPDB SMK Ciledug Al Musaddadiyah Garut.
+          </p>
+        </div>
+
+        <div class="form-nav">
+          <button class="btn-nav-prev" onclick="goStep(3)">&larr; Kembali</button>
           <button class="btn-submit" id="btnSubmit" onclick="submitForm()">
             <span id="btnText">📨 Kirim Pendaftaran</span>
             <div class="spinner" id="btnSpinner"></div>
@@ -912,7 +1176,7 @@
           <div class="success-ref-label">Nomor Referensi</div>
           <div class="success-ref-num" id="refNumber">—</div>
         </div>
-        <p style="font-size:13px;color:var(--gray-600);margin-bottom:20px;">Simpan nomor referensi ini untuk keperluan verifikasi. Cek WhatsApp Anda untuk konfirmasi.</p>
+        <p style="font-size:13px;color:var(--gray-600);margin-bottom:20px;">Simpan nomor referensi ini untuk keperluan verifikasi.</p>
         <a href="#jurusan" class="btn-primary" style="display:inline-flex;margin:0 auto;">← Kembali ke Beranda</a>
       </div>
 
@@ -1014,7 +1278,6 @@
 </footer>
 
 <script>
-  // ── FAQ ──
   function toggleFaq(btn) {
     const item = btn.closest('.faq-item');
     const wasOpen = item.classList.contains('open');
@@ -1022,83 +1285,113 @@
     if (!wasOpen) item.classList.add('open');
   }
 
-  // ── RADIO SELECT ──
   function selectRadio(label, name, value) {
     document.querySelectorAll(`[onclick*="'${name}'"]`).forEach(el => el.classList.remove('selected'));
     label.classList.add('selected');
     label.querySelector('input[type="radio"]').checked = true;
   }
 
-  // ── FORM DATA STORAGE ──
   let formData = {};
   let currentStep = 1;
+  const TOTAL_STEPS = 4;
 
-  // ── STEP NAVIGATION ──
   function goStep(step) {
     if (step > currentStep && !validateStep(currentStep)) return;
-
-    // Save data from current step
     saveStepData(currentStep);
-
-    // Update UI
     document.getElementById('step' + currentStep).classList.remove('active');
     document.getElementById('step' + step).classList.add('active');
-
-    // Update step indicator
     updateStepIndicator(step);
     currentStep = step;
-
-    // Scroll to form
     document.getElementById('daftar').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
+  function v(id) { return document.getElementById(id) ? document.getElementById(id).value.trim() : ''; }
+  function radio(name) { const el = document.querySelector(`input[name="${name}"]:checked`); return el ? el.value : ''; }
+
   function saveStepData(step) {
     if (step === 1) {
-      formData.namaLengkap = document.getElementById('namaLengkap').value.trim();
-      formData.nisn = document.getElementById('nisn').value.trim();
-      const jk = document.querySelector('input[name="jenisKelamin"]:checked');
-      formData.jenisKelamin = jk ? jk.value : '';
-      formData.tanggalLahir = document.getElementById('tanggalLahir').value;
-      formData.tempatLahir = document.getElementById('tempatLahir').value.trim();
-      formData.agama = document.getElementById('agama').value;
-      formData.alamat = document.getElementById('alamat').value.trim();
-      formData.noHpSiswa = document.getElementById('noHpSiswa').value.trim();
-      formData.nik = document.getElementById('nik').value.trim();
+      Object.assign(formData, {
+        namaLengkap: v('namaLengkap'), jenisKelamin: radio('jenisKelamin'),
+        nisn: v('nisn'), nik: v('nik'),
+        nomorIjazah: v('nomorIjazah'), nomorSkhun: v('nomorSkhun'),
+        tempatLahir: v('tempatLahir'), tanggalLahir: v('tanggalLahir'),
+        noHpSiswa: v('noHpSiswa'), emailSiswa: v('emailSiswa'),
+        medsos: v('medsos'), berkebutuhanKhusus: v('berkebutuhanKhusus'),
+        pip: radio('pip'), tinggiBadan: v('tinggiBadan'),
+      });
     } else if (step === 2) {
-      formData.asalSekolah = document.getElementById('asalSekolah').value.trim();
-      formData.tahunLulus = document.getElementById('tahunLulus').value;
-      const jur = document.querySelector('input[name="jurusan"]:checked');
-      formData.jurusan = jur ? jur.value : '';
+      Object.assign(formData, {
+        dusunRtRw: v('dusunRtRw'), kelurahan: v('kelurahan'),
+        kecamatan: v('kecamatan'), kabupaten: v('kabupaten'), provinsi: v('provinsi'),
+        jenisTinggal: v('jenisTinggal'), transportasi: v('transportasi'),
+        jarakTempuh: v('jarakTempuh'), waktuTempuh: v('waktuTempuh'),
+        jumlahSaudara: v('jumlahSaudara'),
+      });
     } else if (step === 3) {
-      formData.namaAyah = document.getElementById('namaAyah').value.trim();
-      formData.namaIbu = document.getElementById('namaIbu').value.trim();
-      formData.noHpOrtu = document.getElementById('noHpOrtu').value.trim();
-      formData.pekerjaanOrtu = document.getElementById('pekerjaanOrtu').value.trim();
-      formData.sumberInfo = document.getElementById('sumberInfo').value;
-      formData.catatan = document.getElementById('catatan').value.trim();
+      Object.assign(formData, {
+        jenisSekolah: radio('jenisSekolah'), namaSekolah: v('namaSekolah'),
+        kecamatanSekolah: v('kecamatanSekolah'), kabupatenSekolah: v('kabupatenSekolah'),
+        provinsiSekolah: v('provinsiSekolah'),
+        pilihan1: v('pilihan1'), pilihan2: v('pilihan2'), pilihan3: v('pilihan3'),
+      });
+    } else if (step === 4) {
+      Object.assign(formData, {
+        namaAyah: v('namaAyah'), ayahHidup: radio('ayahHidup'),
+        tempatLahirAyah: v('tempatLahirAyah'), tanggalLahirAyah: v('tanggalLahirAyah'),
+        pekerjaanAyah: v('pekerjaanAyah'), pendidikanAyah: v('pendidikanAyah'),
+        penghasilanAyah: v('penghasilanAyah'), noHpAyah: v('noHpAyah'), alamatAyah: v('alamatAyah'),
+        namaIbu: v('namaIbu'), ibuHidup: radio('ibuHidup'),
+        tempatLahirIbu: v('tempatLahirIbu'), tanggalLahirIbu: v('tanggalLahirIbu'),
+        pekerjaanIbu: v('pekerjaanIbu'), pendidikanIbu: v('pendidikanIbu'),
+        penghasilanIbu: v('penghasilanIbu'), noHpIbu: v('noHpIbu'), alamatIbu: v('alamatIbu'),
+        namaWali: v('namaWali'), pekerjaanWali: v('pekerjaanWali'),
+        tempatLahirWali: v('tempatLahirWali'), tanggalLahirWali: v('tanggalLahirWali'),
+        pendidikanWali: v('pendidikanWali'), penghasilanWali: v('penghasilanWali'),
+        noHpWali: v('noHpWali'), alamatWali: v('alamatWali'),
+      });
     }
   }
 
   function validateStep(step) {
     hideAlert();
     if (step === 1) {
-      if (!document.getElementById('namaLengkap').value.trim()) return showAlert('Nama lengkap wajib diisi.');
-      if (!document.getElementById('nisn').value.trim() || document.getElementById('nisn').value.trim().length < 10) return showAlert('NISN harus 10 digit angka.');
-      if (!document.querySelector('input[name="jenisKelamin"]:checked')) return showAlert('Pilih jenis kelamin.');
-      if (!document.getElementById('tanggalLahir').value) return showAlert('Tanggal lahir wajib diisi.');
-      if (!document.getElementById('tempatLahir').value.trim()) return showAlert('Tempat lahir wajib diisi.');
-      if (!document.getElementById('agama').value) return showAlert('Pilih agama.');
-      if (!document.getElementById('alamat').value.trim()) return showAlert('Alamat lengkap wajib diisi.');
-      if (!document.getElementById('noHpSiswa').value.trim()) return showAlert('Nomor HP siswa wajib diisi.');
-      if (!document.getElementById('nik').value.trim() || document.getElementById('nik').value.trim().length < 16) return showAlert('NIK harus 16 digit.');
+      if (!v('namaLengkap')) return showAlert('Nama lengkap peserta didik wajib diisi.');
+      if (!radio('jenisKelamin')) return showAlert('Pilih jenis kelamin.');
+      if (!v('nisn') || v('nisn').length < 8) return showAlert('NISN wajib diisi (minimal 8 digit).');
+      if (!v('nik') || v('nik').length < 16) return showAlert('NIK harus 16 digit.');
+      if (!v('nomorIjazah')) return showAlert('Nomor seri ijazah wajib diisi.');
+      if (!v('nomorSkhun')) return showAlert('Nomor seri SKHUN wajib diisi.');
+      if (!v('tempatLahir')) return showAlert('Tempat lahir wajib diisi.');
+      if (!v('tanggalLahir')) return showAlert('Tanggal lahir wajib diisi.');
+      if (!v('noHpSiswa')) return showAlert('Nomor HP/WA aktif wajib diisi.');
+      if (!v('emailSiswa')) return showAlert('Email aktif wajib diisi.');
+      if (!v('berkebutuhanKhusus')) return showAlert('Pilih status berkebutuhan khusus.');
+      if (!radio('pip')) return showAlert('Pilih status penerima PIP.');
+      if (!v('tinggiBadan')) return showAlert('Tinggi badan wajib diisi.');
     } else if (step === 2) {
-      if (!document.getElementById('asalSekolah').value.trim()) return showAlert('Asal sekolah wajib diisi.');
-      if (!document.getElementById('tahunLulus').value) return showAlert('Pilih tahun lulus.');
-      if (!document.querySelector('input[name="jurusan"]:checked')) return showAlert('Pilih program keahlian yang diminati.');
+      if (!v('dusunRtRw')) return showAlert('Dusun/RT/RW wajib diisi.');
+      if (!v('kelurahan')) return showAlert('Kelurahan/Desa wajib diisi.');
+      if (!v('kecamatan')) return showAlert('Kecamatan wajib diisi.');
+      if (!v('kabupaten')) return showAlert('Kabupaten/Kota wajib diisi.');
+      if (!v('provinsi')) return showAlert('Provinsi wajib dipilih.');
+      if (!v('jenisTinggal')) return showAlert('Pilih jenis tempat tinggal.');
+      if (!v('transportasi')) return showAlert('Pilih alat transportasi ke sekolah.');
+      if (!v('jarakTempuh')) return showAlert('Jarak tempuh wajib diisi.');
+      if (!v('waktuTempuh')) return showAlert('Waktu tempuh wajib diisi.');
+      if (!v('jumlahSaudara')) return showAlert('Jumlah saudara kandung wajib diisi.');
     } else if (step === 3) {
-      if (!document.getElementById('namaAyah').value.trim()) return showAlert('Nama ayah wajib diisi.');
-      if (!document.getElementById('namaIbu').value.trim()) return showAlert('Nama ibu wajib diisi.');
-      if (!document.getElementById('noHpOrtu').value.trim()) return showAlert('Nomor HP orang tua wajib diisi.');
+      if (!radio('jenisSekolah')) return showAlert('Pilih jenis asal sekolah.');
+      if (!v('namaSekolah')) return showAlert('Nama sekolah asal wajib diisi.');
+      if (!v('kecamatanSekolah')) return showAlert('Kecamatan sekolah asal wajib diisi.');
+      if (!v('kabupatenSekolah')) return showAlert('Kabupaten sekolah asal wajib diisi.');
+      if (!v('provinsiSekolah')) return showAlert('Provinsi sekolah asal wajib dipilih.');
+      if (!v('pilihan1')) return showAlert('Pilihan pertama program keahlian wajib dipilih.');
+    } else if (step === 4) {
+      if (!v('namaAyah')) return showAlert('Nama lengkap ayah kandung wajib diisi.');
+      if (!radio('ayahHidup')) return showAlert('Pilih status ayah (masih hidup/tidak).');
+      if (!v('namaIbu')) return showAlert('Nama lengkap ibu kandung wajib diisi.');
+      if (!radio('ibuHidup')) return showAlert('Pilih status ibu (masih hidup/tidak).');
+      if (!v('noHpIbu')) return showAlert('Nomor HP ibu wajib diisi.');
     }
     return true;
   }
@@ -1116,53 +1409,22 @@
   }
 
   function updateStepIndicator(activeStep) {
-    for (let i = 1; i <= 3; i++) {
+    for (let i = 1; i <= TOTAL_STEPS; i++) {
       const el = document.getElementById('fsi' + i);
       el.classList.remove('active', 'done');
       if (i < activeStep) el.classList.add('done');
       else if (i === activeStep) el.classList.add('active');
     }
-    for (let i = 1; i <= 2; i++) {
+    for (let i = 1; i <= TOTAL_STEPS - 1; i++) {
       const line = document.getElementById('fsiLine' + i);
-      line.classList.toggle('done', i < activeStep);
+      if (line) line.classList.toggle('done', i < activeStep);
     }
-    const labels = ['Data Identitas Siswa', 'Asal Sekolah & Program Keahlian', 'Data Orang Tua / Wali'];
-    const pcts = ['33%', '66%', '100%'];
-    document.getElementById('progressLabel').textContent = `Langkah ${activeStep} dari 3 — ${labels[activeStep - 1]}`;
+    const labels = ['Identitas Peserta Didik', 'Alamat & Informasi', 'Asal Sekolah & Jurusan', 'Data Orang Tua / Wali'];
+    const pcts = ['25%', '50%', '75%', '100%'];
+    document.getElementById('progressLabel').textContent = `Langkah ${activeStep} dari ${TOTAL_STEPS} — ${labels[activeStep - 1]}`;
     document.getElementById('progressPct').textContent = pcts[activeStep - 1];
     document.getElementById('progressFill').style.width = pcts[activeStep - 1];
   }
-
-  // ── SUBMIT TO GOOGLE SHEETS ──
-  // ============================================================
-  // PETUNJUK SETUP DATABASE (Google Sheets):
-  // 1. Buka Google Sheets baru → beri nama "PPDB 2026/2027"
-  // 2. Di menu Extensions → Apps Script
-  // 3. Hapus kode default, paste kode berikut:
-  //
-  //    function doPost(e) {
-  //      var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  //      var data = JSON.parse(e.postData.contents);
-  //      if (sheet.getLastRow() === 0) {
-  //        sheet.appendRow(['Timestamp','Ref','Nama','NISN','JK','Tgl Lahir','Tempat Lahir',
-  //          'Agama','Alamat','HP Siswa','NIK','Asal Sekolah','Thn Lulus','Jurusan',
-  //          'Nama Ayah','Nama Ibu','HP Ortu','Pekerjaan Ortu','Sumber Info','Catatan']);
-  //      }
-  //      sheet.appendRow([
-  //        new Date(), data.ref, data.namaLengkap, data.nisn, data.jenisKelamin,
-  //        data.tanggalLahir, data.tempatLahir, data.agama, data.alamat, data.noHpSiswa,
-  //        data.nik, data.asalSekolah, data.tahunLulus, data.jurusan,
-  //        data.namaAyah, data.namaIbu, data.noHpOrtu, data.pekerjaanOrtu,
-  //        data.sumberInfo, data.catatan
-  //      ]);
-  //      return ContentService.createTextOutput(JSON.stringify({status:'ok',ref:data.ref}))
-  //        .setMimeType(ContentService.MimeType.JSON);
-  //    }
-  //
-  // 4. Save → Deploy → New deployment → Web App
-  //    Execute as: Me | Who has access: Anyone
-  // 5. Copy URL deployment → paste di bawah (APPS_SCRIPT_URL)
-  // ============================================================
 
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwETSNFzUoI7FM264V5udfelpxeStUqnL4btP43hWOPoQcJG59hYVZgxCZCrt3Co8kN/exec';
 
@@ -1171,37 +1433,24 @@
     const yy = String(now.getFullYear()).slice(2);
     const mm = String(now.getMonth() + 1).padStart(2, '0');
     const dd = String(now.getDate()).padStart(2, '0');
-    const rnd = Math.floor(1000 + Math.random() * 9000);
-    return `PPDB${yy}${mm}${dd}-${rnd}`;
+    return `PPDB${yy}${mm}${dd}-${Math.floor(1000 + Math.random() * 9000)}`;
   }
 
   async function submitForm() {
-    if (!validateStep(3)) return;
-    saveStepData(3);
-
+    if (!validateStep(4)) return;
+    saveStepData(4);
     const btn = document.getElementById('btnSubmit');
     const btnText = document.getElementById('btnText');
     const spinner = document.getElementById('btnSpinner');
-
     btn.disabled = true;
     btnText.textContent = 'Mengirim...';
     spinner.style.display = 'block';
-
     const ref = generateRef();
     formData.ref = ref;
     formData.timestamp = new Date().toISOString();
-
     try {
-      if (APPS_SCRIPT_URL === 'GANTI_DENGAN_URL_APPS_SCRIPT_ANDA') {
-        // Demo mode — simulasi tanpa koneksi nyata
-        await new Promise(r => setTimeout(r, 1500));
-        showSuccess(ref);
-        return;
-      }
-
       await fetch(APPS_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
+        method: 'POST', mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
@@ -1215,7 +1464,7 @@
   }
 
   function showSuccess(ref) {
-    document.getElementById('step3').classList.remove('active');
+    document.getElementById('step4').classList.remove('active');
     document.getElementById('stepIndicator').style.display = 'none';
     document.querySelector('.form-progress').style.display = 'none';
     document.getElementById('refNumber').textContent = ref;
