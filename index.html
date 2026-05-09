@@ -655,9 +655,10 @@
       // ✅ PERBAIKAN UTAMA: Kirim sebagai URLSearchParams (form-data)
       // Ini yang membuat data bisa dibaca oleh Apps Script via e.parameter
       await fetch(APPS_SCRIPT_URL, {
-        method: 'POST',
-        body: new URLSearchParams(formData)
-      });
+  method: 'POST',
+  headers: { 'Content-Type': 'text/plain' },
+  body: JSON.stringify(formData)
+});
       showSuccess(ref);
     } catch (err) {
       showAlert('Gagal mengirim data. Periksa koneksi internet Anda lalu coba lagi.');
