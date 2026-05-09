@@ -9,7 +9,7 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --navy: #1B3FA0; --navy-mid: #1E3FA3; --gold: #E2C251; --gold-light: #F0D87A;
+    --navy: #1B3FA0; --navy-dark: #162f7a; --gold: #E2C251; --gold-light: #F0D87A;
     --gold-pale: #FAF3D0; --white: #FFFFFF; --gray-50: #F8F9FA; --gray-100: #F1F3F5;
     --gray-200: #E9ECEF; --gray-400: #ADB5BD; --gray-600: #6C757D; --gray-800: #343A40;
     --green: #1D9E75; --green-light: #E1F5EE; --red: #DC3545; --red-light: #FAECE7;
@@ -18,180 +18,304 @@
     --shadow: 0 2px 20px rgba(27,63,160,0.08); --shadow-md: 0 8px 40px rgba(27,63,160,0.14);
   }
   html { scroll-behavior: smooth; }
-  body { font-family: var(--font); background: var(--gray-50); color: var(--gray-800); line-height: 1.6; }
+  body { font-family: var(--font); background: var(--gray-50); color: var(--gray-800); line-height: 1.6; overflow-x: hidden; }
+
+  /* ── NAVBAR ── */
   .navbar {
     position: sticky; top: 0; z-index: 100; background: rgba(27,63,160,0.97);
     backdrop-filter: blur(12px); border-bottom: 1px solid rgba(226,194,81,0.2);
-    display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 60px;
   }
-  .navbar-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .navbar-logo { width: 38px; height: 38px; border-radius: 8px; background: var(--gold); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; color: var(--navy); }
-  .navbar-name { font-size: 13px; font-weight: 700; color: var(--white); line-height: 1.2; }
-  .navbar-name span { color: var(--gold); display: block; font-size: 11px; font-weight: 500; }
-  .navbar-links { display: flex; gap: 24px; list-style: none; }
-  .navbar-links a { color: rgba(255,255,255,0.75); font-size: 13.5px; font-weight: 500; text-decoration: none; transition: color .2s; }
+  .navbar-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; min-width: 0; }
+  .navbar-logo { width: 36px; height: 36px; flex-shrink: 0; border-radius: 8px; background: var(--gold); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: var(--navy); }
+  .navbar-name { font-size: 12px; font-weight: 700; color: var(--white); line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .navbar-name span { color: var(--gold); display: block; font-size: 10px; font-weight: 500; }
+  .navbar-links { display: flex; gap: 20px; list-style: none; }
+  .navbar-links a { color: rgba(255,255,255,0.75); font-size: 13px; font-weight: 500; text-decoration: none; transition: color .2s; }
   .navbar-links a:hover { color: var(--gold); }
-  .navbar-cta { background: var(--gold); color: var(--navy); font-weight: 700; font-size: 13px; padding: 8px 20px; border-radius: 6px; text-decoration: none; transition: background .2s, transform .15s; }
-  .navbar-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
-  .hero { background: var(--navy); padding: 80px 5% 0; overflow: hidden; position: relative; }
+  .navbar-cta { background: var(--gold); color: var(--navy); font-weight: 700; font-size: 12px; padding: 8px 16px; border-radius: 6px; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: background .2s; }
+  .navbar-cta:hover { background: var(--gold-light); }
+
+  /* ── HERO ── */
+  .hero { background: var(--navy); padding: 60px 5% 0; overflow: hidden; position: relative; }
   .hero-grid-bg { position: absolute; inset: 0; pointer-events: none; opacity: 0.04; background-image: linear-gradient(var(--gold) 1px, transparent 1px), linear-gradient(90deg, var(--gold) 1px, transparent 1px); background-size: 48px 48px; }
   .hero-ring { position: absolute; right: -160px; top: -160px; width: 560px; height: 560px; border-radius: 50%; border: 80px solid rgba(226,194,81,0.07); pointer-events: none; }
   .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 48px; position: relative; }
-  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(226,194,81,0.12); border: 1px solid rgba(226,194,81,0.3); color: var(--gold); font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 999px; margin-bottom: 20px; letter-spacing: 0.5px; text-transform: uppercase; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(226,194,81,0.12); border: 1px solid rgba(226,194,81,0.3); color: var(--gold); font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 999px; margin-bottom: 18px; letter-spacing: 0.5px; text-transform: uppercase; }
   .hero-badge span { width: 7px; height: 7px; background: var(--gold); border-radius: 50%; animation: pulse 1.5s infinite; }
   @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
-  .hero-title { font-family: var(--serif); font-size: clamp(36px, 5vw, 58px); color: var(--white); line-height: 1.1; margin-bottom: 20px; }
+  .hero-title { font-family: var(--serif); font-size: clamp(32px, 5vw, 56px); color: var(--white); line-height: 1.1; margin-bottom: 18px; }
   .hero-title em { color: var(--gold); font-style: italic; }
-  .hero-desc { color: rgba(255,255,255,0.65); font-size: 15.5px; line-height: 1.7; margin-bottom: 32px; max-width: 440px; }
+  .hero-desc { color: rgba(255,255,255,0.65); font-size: 15px; line-height: 1.7; margin-bottom: 28px; max-width: 440px; }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn-primary { background: var(--gold); color: var(--navy); font-family: var(--font); font-weight: 700; font-size: 14.5px; padding: 13px 28px; border: none; border-radius: var(--radius-sm); cursor: pointer; transition: background .2s, transform .15s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-primary { background: var(--gold); color: var(--navy); font-family: var(--font); font-weight: 700; font-size: 14px; padding: 12px 24px; border: none; border-radius: var(--radius-sm); cursor: pointer; transition: background .2s, transform .15s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
   .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
-  .btn-outline { background: transparent; color: rgba(255,255,255,0.8); font-family: var(--font); font-weight: 600; font-size: 14.5px; padding: 12px 24px; border: 1.5px solid rgba(255,255,255,0.2); border-radius: var(--radius-sm); cursor: pointer; transition: border-color .2s, color .2s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-outline { background: transparent; color: rgba(255,255,255,0.8); font-family: var(--font); font-weight: 600; font-size: 14px; padding: 11px 20px; border: 1.5px solid rgba(255,255,255,0.2); border-radius: var(--radius-sm); cursor: pointer; transition: border-color .2s, color .2s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
   .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
   .hero-visual { display: flex; justify-content: flex-end; align-items: flex-end; }
-  .hero-card-float { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius) var(--radius) 0 0; padding: 28px 28px 0; width: 340px; position: relative; }
-  .hero-card-float::before { content: ''; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(160deg, rgba(226,194,81,0.06) 0%, transparent 60%); }
-  .hcf-label { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-  .hcf-title { font-weight: 700; font-size: 15px; color: var(--white); margin-bottom: 20px; }
-  .hcf-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-  .hcf-icon { width: 34px; height: 34px; border-radius: 8px; background: rgba(226,194,81,0.12); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
-  .hcf-text { font-size: 13px; color: rgba(255,255,255,0.7); }
-  .hcf-text strong { color: var(--white); font-weight: 600; display: block; margin-bottom: 1px; font-size: 13.5px; }
-  .hcf-bar { height: 3px; background: rgba(255,255,255,0.07); border-radius: 4px; margin-top: 20px; margin-bottom: 24px; }
+  .hero-card-float { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius) var(--radius) 0 0; padding: 24px 24px 0; width: 320px; position: relative; }
+  .hcf-label { font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .hcf-title { font-weight: 700; font-size: 14px; color: var(--white); margin-bottom: 16px; }
+  .hcf-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .hcf-icon { width: 32px; height: 32px; border-radius: 8px; background: rgba(226,194,81,0.12); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+  .hcf-text { font-size: 12px; color: rgba(255,255,255,0.65); }
+  .hcf-text strong { color: var(--white); font-weight: 600; display: block; font-size: 12.5px; }
+  .hcf-bar { height: 3px; background: rgba(255,255,255,0.07); border-radius: 4px; margin: 16px 0 20px; }
   .hcf-bar-fill { height: 100%; width: 68%; background: var(--gold); border-radius: 4px; }
-  .hcf-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px; }
-  .hcf-stat { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 12px; }
-  .hcf-stat-val { font-size: 22px; font-weight: 800; color: var(--gold); line-height: 1; }
-  .hcf-stat-lbl { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 4px; }
+  .hcf-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+  .hcf-stat { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 10px; }
+  .hcf-stat-val { font-size: 20px; font-weight: 800; color: var(--gold); line-height: 1; }
+  .hcf-stat-lbl { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 3px; }
+
+  /* ── STATS BAR ── */
   .stats-bar { background: var(--white); border-bottom: 1px solid var(--gray-200); padding: 0 5%; }
-  .stats-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-around; padding: 24px 0; gap: 16px; flex-wrap: wrap; }
+  .stats-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-around; padding: 20px 0; gap: 16px; flex-wrap: wrap; }
   .stat-item { text-align: center; }
-  .stat-num { font-size: 28px; font-weight: 800; color: var(--navy); line-height: 1; }
+  .stat-num { font-size: 26px; font-weight: 800; color: var(--navy); line-height: 1; }
   .stat-num span { color: var(--gold); }
-  .stat-label { font-size: 12.5px; color: var(--gray-600); margin-top: 3px; }
-  .stat-divider { width: 1px; height: 40px; background: var(--gray-200); }
-  .section { padding: 80px 5%; }
+  .stat-label { font-size: 11.5px; color: var(--gray-600); margin-top: 2px; }
+  .stat-divider { width: 1px; height: 36px; background: var(--gray-200); }
+
+  /* ── SECTIONS ── */
+  .section { padding: 64px 5%; }
   .section-inner { max-width: 1100px; margin: 0 auto; }
-  .section-header { text-align: center; margin-bottom: 52px; }
-  .section-tag { display: inline-block; background: var(--gold-pale); color: #7A6A10; font-size: 11.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 4px; margin-bottom: 14px; }
-  .section-title { font-family: var(--serif); font-size: clamp(28px, 4vw, 42px); color: var(--navy); line-height: 1.2; }
-  .section-sub { font-size: 15px; color: var(--gray-600); margin-top: 10px; }
-  .jurusan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-  .jurusan-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 28px 20px; transition: box-shadow .25s, transform .25s, border-color .25s; }
-  .jurusan-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); border-color: var(--gold); }
-  .jurusan-icon { width: 52px; height: 52px; border-radius: 12px; background: var(--gold-pale); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 16px; }
-  .jurusan-name { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
-  .jurusan-desc { font-size: 13px; color: var(--gray-600); line-height: 1.55; }
-  .jurusan-badge { display: inline-block; margin-top: 14px; background: var(--green-light); color: #0F6E56; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 4px; }
-  .timeline-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; position: relative; }
-  .timeline-grid::before { content: ''; position: absolute; top: 28px; left: 5%; right: 5%; height: 2px; background: var(--gray-200); z-index: 0; }
-  .tl-item { text-align: center; position: relative; z-index: 1; padding: 0 12px; }
-  .tl-dot { width: 56px; height: 56px; border-radius: 50%; background: var(--white); border: 2px solid var(--gray-200); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-weight: 800; font-size: 16px; color: var(--gray-400); }
+  .section-header { text-align: center; margin-bottom: 44px; }
+  .section-tag { display: inline-block; background: var(--gold-pale); color: #7A6A10; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 4px; margin-bottom: 12px; }
+  .section-title { font-family: var(--serif); font-size: clamp(26px, 4vw, 40px); color: var(--navy); line-height: 1.2; }
+  .section-sub { font-size: 14.5px; color: var(--gray-600); margin-top: 8px; }
+
+  /* ── JURUSAN ── */
+  .jurusan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+  .jurusan-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 24px 18px; transition: box-shadow .25s, transform .25s, border-color .25s; }
+  .jurusan-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: var(--gold); }
+  .jurusan-icon { width: 48px; height: 48px; border-radius: 10px; background: var(--gold-pale); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 14px; }
+  .jurusan-name { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
+  .jurusan-desc { font-size: 12.5px; color: var(--gray-600); line-height: 1.55; }
+  .jurusan-badge { display: inline-block; margin-top: 12px; background: var(--green-light); color: #0F6E56; font-size: 10.5px; font-weight: 600; padding: 3px 9px; border-radius: 4px; }
+
+  /* ── TIMELINE ── */
+  .timeline-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; }
+  .timeline-grid::before { content: ''; position: absolute; top: 27px; left: 5%; right: 5%; height: 2px; background: var(--gray-200); z-index: 0; }
+  .tl-item { text-align: center; position: relative; z-index: 1; padding: 0 8px; }
+  .tl-dot { width: 54px; height: 54px; border-radius: 50%; background: var(--white); border: 2px solid var(--gray-200); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; font-weight: 800; font-size: 15px; color: var(--gray-400); }
   .tl-item.active .tl-dot { background: var(--gold); border-color: var(--gold); color: var(--navy); box-shadow: 0 0 0 6px rgba(226,194,81,0.2); }
   .tl-item.done .tl-dot { background: var(--green); border-color: var(--green); color: var(--white); }
-  .tl-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
-  .tl-date { font-size: 12.5px; color: var(--gray-600); }
-  .form-section { background: var(--navy); padding: 80px 5%; }
-  .form-inner { max-width: 780px; margin: 0 auto; }
-  .form-header { text-align: center; margin-bottom: 40px; }
+  .tl-title { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+  .tl-date { font-size: 11.5px; color: var(--gray-600); }
+
+  /* ── INFO RINGAN (pengganti 3 card berat) ── */
+  .info-strip {
+    display: flex; gap: 0; background: rgba(226,194,81,0.06);
+    border: 1px solid rgba(226,194,81,0.22); border-radius: var(--radius);
+    overflow: hidden; margin-bottom: 32px;
+  }
+  .info-strip-item { flex: 1; display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-right: 1px solid rgba(226,194,81,0.18); }
+  .info-strip-item:last-child { border-right: none; }
+  .info-strip-icon { font-size: 20px; flex-shrink: 0; }
+  .info-strip-text { font-size: 12.5px; color: rgba(255,255,255,0.55); line-height: 1.4; }
+  .info-strip-text strong { color: #fff; font-size: 13px; display: block; margin-bottom: 1px; }
+
+  /* ── FORM SECTION ── */
+  .form-section { background: var(--navy); padding: 64px 5%; }
+  .form-inner { max-width: 760px; margin: 0 auto; }
+  .form-header { text-align: center; margin-bottom: 28px; }
   .form-header .section-title { color: var(--white); }
-  .form-header .section-sub { color: rgba(255,255,255,0.55); }
-  .form-card { background: var(--white); border-radius: 16px; padding: 40px; box-shadow: 0 24px 80px rgba(0,0,0,0.3); }
-  .form-step-indicator { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 36px; }
-  .fsi-step { display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 600; color: var(--gray-400); }
+  .form-header .section-sub { color: rgba(255,255,255,0.5); }
+  .form-card { background: var(--white); border-radius: 16px; padding: 32px; box-shadow: 0 20px 60px rgba(0,0,0,0.25); }
+
+  /* ── STEP INDICATOR (mobile-fixed) ── */
+  .form-step-indicator {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0; margin-bottom: 28px; overflow: hidden; width: 100%;
+  }
+  .fsi-step {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 11.5px; font-weight: 600; color: var(--gray-400);
+    flex-shrink: 0; white-space: nowrap;
+  }
   .fsi-step.active { color: var(--navy); }
   .fsi-step.done { color: var(--green); }
-  .fsi-num { width: 28px; height: 28px; border-radius: 50%; background: var(--gray-100); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+  .fsi-num { width: 26px; height: 26px; border-radius: 50%; background: var(--gray-100); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
   .fsi-step.active .fsi-num { background: var(--navy); color: var(--white); }
   .fsi-step.done .fsi-num { background: var(--green); color: var(--white); }
-  .fsi-line { width: 40px; height: 2px; background: var(--gray-200); margin: 0 4px; flex-shrink: 0; }
+  .fsi-label { display: inline; }
+  .fsi-line { width: 28px; height: 2px; background: var(--gray-200); margin: 0 4px; flex-shrink: 0; }
   .fsi-line.done { background: var(--green); }
-  .form-group { margin-bottom: 20px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .form-label { display: block; font-size: 13px; font-weight: 600; color: var(--gray-800); margin-bottom: 7px; }
-  .form-label .req { color: var(--red); margin-left: 2px; }
-  input[type="text"], input[type="date"], input[type="tel"], select, textarea { width: 100%; padding: 11px 14px; border: 1.5px solid var(--gray-200); border-radius: var(--radius-sm); font-family: var(--font); font-size: 14px; color: var(--gray-800); background: var(--white); transition: border-color .2s, box-shadow .2s; outline: none; appearance: none; }
-  input:focus, select:focus, textarea:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(27,63,160,0.08); }
-  .radio-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .radio-option { flex: 1; min-width: 100px; border: 1.5px solid var(--gray-200); border-radius: var(--radius-sm); padding: 10px 14px; cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 500; color: var(--gray-600); }
-  .radio-option input[type="radio"] { display: none; }
-  .radio-option:hover { border-color: var(--navy); color: var(--navy); }
-  .radio-option.selected { border-color: var(--navy); background: #F0F3F8; color: var(--navy); }
-  .radio-dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--gray-300); flex-shrink: 0; transition: all .2s; display: flex; align-items: center; justify-content: center; }
-  .radio-option.selected .radio-dot { border-color: var(--navy); }
-  .radio-option.selected .radio-dot::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--navy); }
-  .form-divider { border: none; border-top: 1px solid var(--gray-200); margin: 28px 0; }
-  .form-section-title { font-size: 11px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 20px; }
-  .form-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 32px; }
-  .btn-nav-prev { background: var(--white); color: var(--gray-800); border: 1.5px solid var(--gray-200); font-family: var(--font); font-weight: 600; font-size: 14px; padding: 12px 24px; border-radius: var(--radius-sm); cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: 8px; }
-  .btn-nav-prev:hover { border-color: var(--navy); color: var(--navy); }
-  .btn-nav-next { background: var(--navy); color: var(--white); border: none; font-family: var(--font); font-weight: 700; font-size: 14px; padding: 12px 28px; border-radius: var(--radius-sm); cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: 8px; }
-  .btn-nav-next:hover { background: #1a3060; transform: translateY(-1px); }
-  .btn-submit { background: var(--gold); color: var(--navy); border: none; font-family: var(--font); font-weight: 800; font-size: 15px; padding: 14px 36px; border-radius: var(--radius-sm); cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: 8px; width: 100%; justify-content: center; margin-top: 8px; }
-  .btn-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
-  .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-  .form-steps { display: none; }
-  .form-steps.active { display: block; }
-  .form-progress { margin-bottom: 28px; }
+
+  /* ── PROGRESS ── */
+  .form-progress { margin-bottom: 24px; }
   .form-progress-bar { height: 4px; background: var(--gray-100); border-radius: 4px; overflow: hidden; }
   .form-progress-fill { height: 100%; background: var(--gold); border-radius: 4px; transition: width .4s; }
-  .form-progress-label { font-size: 12px; color: var(--gray-600); margin-bottom: 8px; display: flex; justify-content: space-between; }
-  .success-screen { text-align: center; padding: 40px 20px; display: none; }
-  .success-icon { width: 80px; height: 80px; background: var(--green-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 36px; }
-  .success-title { font-family: var(--serif); font-size: 28px; color: var(--navy); margin-bottom: 10px; }
-  .success-desc { font-size: 14.5px; color: var(--gray-600); max-width: 400px; margin: 0 auto 28px; line-height: 1.7; }
-  .success-ref { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-sm); padding: 16px 24px; display: inline-block; margin-bottom: 28px; }
-  .success-ref-label { font-size: 11px; color: var(--gray-600); text-transform: uppercase; letter-spacing: 1px; }
-  .success-ref-num { font-size: 22px; font-weight: 800; color: var(--navy); margin-top: 4px; letter-spacing: 2px; }
-  .faq-grid { max-width: 720px; margin: 0 auto; }
-  .faq-item { border: 1px solid var(--gray-200); border-radius: var(--radius); margin-bottom: 10px; overflow: hidden; }
-  .faq-q { width: 100%; background: var(--white); border: none; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; font-family: var(--font); font-size: 14.5px; font-weight: 600; color: var(--navy); cursor: pointer; text-align: left; transition: background .2s; }
-  .faq-q:hover { background: var(--gray-50); }
-  .faq-arrow { font-size: 20px; color: var(--gray-400); transition: transform .3s; flex-shrink: 0; }
-  .faq-item.open .faq-arrow { transform: rotate(180deg); color: var(--navy); }
-  .faq-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height .35s, padding .35s; }
-  .faq-item.open .faq-a { padding: 0 20px 18px; max-height: 200px; }
-  .faq-a p { font-size: 14px; color: var(--gray-600); line-height: 1.7; }
-  footer { background: var(--navy); color: rgba(255,255,255,0.55); padding: 48px 5% 24px; }
-  .footer-inner { max-width: 1100px; margin: 0 auto; }
-  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.07); }
-  .footer-brand-name { font-weight: 800; font-size: 16px; color: var(--white); margin-bottom: 4px; }
-  .footer-brand-sub { font-size: 12.5px; margin-bottom: 16px; }
-  .footer-address { font-size: 13px; line-height: 1.8; }
-  .footer-address a { color: var(--gold); text-decoration: none; }
-  .footer-col-title { font-weight: 700; font-size: 13px; color: var(--white); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.8px; }
-  .footer-links { list-style: none; }
-  .footer-links li { margin-bottom: 10px; }
-  .footer-links a { color: rgba(255,255,255,0.5); font-size: 13.5px; text-decoration: none; transition: color .2s; }
-  .footer-links a:hover { color: var(--gold); }
-  .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; flex-wrap: wrap; gap: 10px; }
-  .footer-copy { font-size: 12.5px; }
-  .footer-badge { background: rgba(226,194,81,0.1); border: 1px solid rgba(226,194,81,0.2); color: var(--gold); font-size: 11.5px; font-weight: 600; padding: 4px 12px; border-radius: 4px; }
-  .alert { padding: 12px 16px; border-radius: var(--radius-sm); font-size: 13.5px; margin-bottom: 16px; display: none; }
+  .form-progress-label { font-size: 11.5px; color: var(--gray-600); margin-bottom: 6px; display: flex; justify-content: space-between; }
+
+  /* ── FORM FIELDS ── */
+  .form-group { margin-bottom: 18px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-label { display: block; font-size: 12.5px; font-weight: 600; color: var(--gray-800); margin-bottom: 6px; }
+  .form-label .req { color: var(--red); margin-left: 2px; }
+  input[type="text"], input[type="date"], input[type="tel"], select, textarea {
+    width: 100%; padding: 10px 13px; border: 1.5px solid var(--gray-200);
+    border-radius: var(--radius-sm); font-family: var(--font); font-size: 13.5px;
+    color: var(--gray-800); background: var(--white); transition: border-color .2s, box-shadow .2s;
+    outline: none; appearance: none; -webkit-appearance: none;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(27,63,160,0.08); }
+  .radio-group { display: flex; gap: 10px; flex-wrap: wrap; }
+  .radio-option { flex: 1; min-width: 90px; border: 1.5px solid var(--gray-200); border-radius: var(--radius-sm); padding: 9px 12px; cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: var(--gray-600); }
+  .radio-option input[type="radio"] { display: none; }
+  .radio-option:hover { border-color: var(--navy); color: var(--navy); }
+  .radio-option.selected { border-color: var(--navy); background: #EEF2FB; color: var(--navy); }
+  .radio-dot { width: 15px; height: 15px; border-radius: 50%; border: 2px solid var(--gray-300); flex-shrink: 0; transition: all .2s; display: flex; align-items: center; justify-content: center; }
+  .radio-option.selected .radio-dot { border-color: var(--navy); }
+  .radio-option.selected .radio-dot::after { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--navy); }
+  .form-divider { border: none; border-top: 1px solid var(--gray-200); margin: 22px 0; }
+  .form-section-title { font-size: 10.5px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 18px; }
+  .form-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 28px; }
+  .btn-nav-prev { background: var(--white); color: var(--gray-800); border: 1.5px solid var(--gray-200); font-family: var(--font); font-weight: 600; font-size: 13.5px; padding: 10px 20px; border-radius: var(--radius-sm); cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: 6px; }
+  .btn-nav-prev:hover { border-color: var(--navy); color: var(--navy); }
+  .btn-nav-next { background: var(--navy); color: var(--white); border: none; font-family: var(--font); font-weight: 700; font-size: 13.5px; padding: 10px 24px; border-radius: var(--radius-sm); cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: 6px; }
+  .btn-nav-next:hover { background: var(--navy-dark); }
+  .btn-submit { background: var(--gold); color: var(--navy); border: none; font-family: var(--font); font-weight: 800; font-size: 14.5px; padding: 13px 32px; border-radius: var(--radius-sm); cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: 8px; width: 100%; justify-content: center; margin-top: 6px; }
+  .btn-submit:hover { background: var(--gold-light); }
+  .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  .form-steps { display: none; }
+  .form-steps.active { display: block; }
+  .alert { padding: 11px 14px; border-radius: var(--radius-sm); font-size: 13px; margin-bottom: 14px; display: none; }
   .alert.error { background: var(--red-light); color: var(--red); border: 1px solid #f5c6cb; }
   .alert.show { display: flex; align-items: center; gap: 8px; }
-  .spinner { width: 18px; height: 18px; border: 2px solid rgba(11,29,58,0.3); border-top-color: var(--navy); border-radius: 50%; animation: spin .7s linear infinite; display: none; }
+  .spinner { width: 16px; height: 16px; border: 2px solid rgba(11,29,58,0.25); border-top-color: var(--navy); border-radius: 50%; animation: spin .7s linear infinite; display: none; }
   @keyframes spin { to { transform: rotate(360deg); } }
-  @media(max-width: 768px) {
-    .hero-inner { grid-template-columns: 1fr; }
-    .hero-visual { display: none; }
-    .navbar-links { display: none; }
-    .footer-top { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; }
-    .timeline-grid::before { display: none; }
-    .timeline-grid { grid-template-columns: 1fr 1fr; }
-    .form-card { padding: 24px; }
-  }
+
+  /* ── DISCLAIMER NOTE ── */
+  .form-note { background: rgba(27,63,160,0.05); border: 1px solid rgba(27,63,160,0.12); border-radius: 8px; padding: 12px 14px; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 8px; }
+  .form-note p { font-size: 12px; color: var(--gray-600); line-height: 1.6; margin: 0; }
+
+  /* ── SUCCESS ── */
+  .success-screen { text-align: center; padding: 32px 16px; display: none; }
+  .success-icon { width: 72px; height: 72px; background: var(--green-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 32px; }
+  .success-title { font-family: var(--serif); font-size: 26px; color: var(--navy); margin-bottom: 10px; }
+  .success-desc { font-size: 14px; color: var(--gray-600); max-width: 380px; margin: 0 auto 24px; line-height: 1.7; }
+  .success-ref { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-sm); padding: 14px 22px; display: inline-block; margin-bottom: 24px; }
+  .success-ref-label { font-size: 10.5px; color: var(--gray-600); text-transform: uppercase; letter-spacing: 1px; }
+  .success-ref-num { font-size: 20px; font-weight: 800; color: var(--navy); margin-top: 3px; letter-spacing: 2px; }
+
+  /* ── FAQ ── */
+  .faq-grid { max-width: 700px; margin: 0 auto; }
+  .faq-item { border: 1px solid var(--gray-200); border-radius: var(--radius); margin-bottom: 8px; overflow: hidden; }
+  .faq-q { width: 100%; background: var(--white); border: none; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; font-family: var(--font); font-size: 14px; font-weight: 600; color: var(--navy); cursor: pointer; text-align: left; transition: background .2s; }
+  .faq-q:hover { background: var(--gray-50); }
+  .faq-arrow { font-size: 18px; color: var(--gray-400); transition: transform .3s; flex-shrink: 0; margin-left: 10px; }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); color: var(--navy); }
+  .faq-a { padding: 0 18px; max-height: 0; overflow: hidden; transition: max-height .35s, padding .35s; }
+  .faq-item.open .faq-a { padding: 0 18px 16px; max-height: 200px; }
+  .faq-a p { font-size: 13.5px; color: var(--gray-600); line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--navy); color: rgba(255,255,255,0.55); padding: 44px 5% 20px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 36px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .footer-brand-name { font-weight: 800; font-size: 15px; color: var(--white); margin-bottom: 4px; }
+  .footer-brand-sub { font-size: 12px; margin-bottom: 14px; }
+  .footer-address { font-size: 12.5px; line-height: 1.85; }
+  .footer-address a { color: var(--gold); text-decoration: none; }
+  .footer-col-title { font-weight: 700; font-size: 12px; color: var(--white); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.8px; }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 9px; }
+  .footer-links a { color: rgba(255,255,255,0.5); font-size: 13px; text-decoration: none; transition: color .2s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 18px; flex-wrap: wrap; gap: 10px; }
+  .footer-copy { font-size: 12px; }
+  .footer-badge { background: rgba(226,194,81,0.1); border: 1px solid rgba(226,194,81,0.2); color: var(--gold); font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 4px; }
+
+  /* ── FADE IN ── */
   .fade-in { animation: fadeIn .5s ease both; }
-  @keyframes fadeIn { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ═══════════════════════════════════════════
+     RESPONSIVE — MOBILE
+  ═══════════════════════════════════════════ */
+  @media (max-width: 768px) {
+    /* Navbar */
+    .navbar { padding: 0 4%; height: 56px; }
+    .navbar-links { display: none; }
+    .navbar-name { max-width: 160px; }
+
+    /* Hero */
+    .hero { padding: 48px 4% 0; }
+    .hero-inner { grid-template-columns: 1fr; gap: 0; }
+    .hero-visual { display: none; }
+    .hero-desc { max-width: 100%; font-size: 14px; }
+
+    /* Stats */
+    .stats-inner { gap: 12px; justify-content: center; }
+    .stat-divider { display: none; }
+    .stat-item { min-width: 80px; }
+    .stat-num { font-size: 22px; }
+    .stat-label { font-size: 10.5px; }
+
+    /* Sections */
+    .section { padding: 48px 4%; }
+
+    /* Jurusan */
+    .jurusan-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .jurusan-card { padding: 18px 14px; }
+
+    /* Timeline — stack vertically on mobile */
+    .timeline-grid { grid-template-columns: 1fr; gap: 0; }
+    .timeline-grid::before { display: none; }
+    .tl-item { display: flex; align-items: flex-start; gap: 14px; text-align: left; padding: 0 0 20px 0; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot { margin: 0; flex-shrink: 0; width: 44px; height: 44px; font-size: 13px; }
+    .tl-item::after { display: none; }
+
+    /* Info strip */
+    .info-strip { flex-direction: column; }
+    .info-strip-item { border-right: none; border-bottom: 1px solid rgba(226,194,81,0.18); }
+    .info-strip-item:last-child { border-bottom: none; }
+
+    /* Form section */
+    .form-section { padding: 48px 4%; }
+    .form-card { padding: 20px 16px; border-radius: 12px; }
+
+    /* Step indicator — mobile: show numbers only, hide labels */
+    .form-step-indicator { justify-content: center; gap: 0; }
+    .fsi-label { display: none; }
+    .fsi-step { gap: 0; }
+    .fsi-line { width: 20px; margin: 0 3px; }
+    .fsi-num { width: 30px; height: 30px; font-size: 12px; }
+
+    /* Form rows go single column */
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .form-row .form-group { margin-bottom: 16px; }
+
+    /* Nav buttons */
+    .form-nav { flex-direction: column-reverse; gap: 10px; }
+    .btn-nav-prev, .btn-nav-next { width: 100%; justify-content: center; }
+    .btn-submit { font-size: 14px; padding: 12px 24px; }
+
+    /* Radio wrap */
+    .radio-group { gap: 8px; }
+    .radio-option { font-size: 12.5px; padding: 8px 10px; }
+
+    /* Footer */
+    .footer-top { grid-template-columns: 1fr; gap: 28px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
+  }
+
+  @media (max-width: 400px) {
+    .jurusan-grid { grid-template-columns: 1fr; }
+    .navbar-cta { font-size: 11px; padding: 7px 12px; }
+  }
 </style>
 </head>
 <body>
 
+<!-- ═══ NAVBAR ═══ -->
 <nav class="navbar">
   <a class="navbar-brand" href="#">
     <div class="navbar-logo">SMK</div>
-    <div class="navbar-name">Al Musaddadiyah Ciledug<span>Garut ∙ Tahun Ajaran 2026/2027</span></div>
+    <div class="navbar-name">Al Musaddadiyah Ciledug<span>Garut · Tahun Ajaran 2026/2027</span></div>
   </a>
   <ul class="navbar-links">
     <li><a href="#jurusan">Jurusan</a></li>
@@ -202,6 +326,7 @@
   <a href="#daftar" class="navbar-cta">Daftar Sekarang →</a>
 </nav>
 
+<!-- ═══ HERO ═══ -->
 <section class="hero">
   <div class="hero-grid-bg"></div>
   <div class="hero-ring"></div>
@@ -218,9 +343,9 @@
     <div class="hero-visual">
       <div class="hero-card-float">
         <div class="hcf-label">PPDB 2026/2027</div>
-        <div class="hcf-title">Formulir Bukti Pendaftaran</div>
-        <div class="hcf-row"><div class="hcf-icon">📋</div><div class="hcf-text"><strong>Data Identitas Lengkap</strong>Data diri & dokumen siswa</div></div>
-        <div class="hcf-row"><div class="hcf-icon">🏫</div><div class="hcf-text"><strong>Pilihan Program Keahlian</strong>Sesuaikan minat & bakat</div></div>
+        <div class="hcf-title">Formulir Pendaftaran Online</div>
+        <div class="hcf-row"><div class="hcf-icon">📋</div><div class="hcf-text"><strong>Identitas Lengkap</strong>Data diri &amp; dokumen siswa</div></div>
+        <div class="hcf-row"><div class="hcf-icon">🏫</div><div class="hcf-text"><strong>Program Keahlian</strong>Sesuaikan minat &amp; bakat</div></div>
         <div class="hcf-row"><div class="hcf-icon">👨‍👩‍👧</div><div class="hcf-text"><strong>Data Orang Tua / Wali</strong>Informasi kontak darurat</div></div>
         <div class="hcf-bar"><div class="hcf-bar-fill"></div></div>
         <div class="hcf-stats">
@@ -232,6 +357,7 @@
   </div>
 </section>
 
+<!-- ═══ STATS BAR ═══ -->
 <div class="stats-bar">
   <div class="stats-inner">
     <div class="stat-item"><div class="stat-num">28<span>+</span></div><div class="stat-label">Tahun Berpengalaman</div></div>
@@ -246,26 +372,28 @@
   </div>
 </div>
 
+<!-- ═══ JURUSAN ═══ -->
 <section class="section" id="jurusan">
   <div class="section-inner">
     <div class="section-header">
       <div class="section-tag">Program Keahlian</div>
-      <h2 class="section-title">Pilih Jurusan<br>Sesuai Passionmu</h2>
+      <h2 class="section-title">Pilih Jurusan Sesuai Passionmu</h2>
       <p class="section-sub">7 program keahlian unggulan yang relevan dengan kebutuhan industri masa kini</p>
     </div>
     <div class="jurusan-grid">
       <div class="jurusan-card"><div class="jurusan-icon">📊</div><div class="jurusan-name">Akuntansi Keuangan Lembaga</div><div class="jurusan-desc">Kuasai ilmu keuangan, pembukuan, dan manajemen akuntansi untuk karir di perbankan dan perusahaan.</div><div class="jurusan-badge">Kuota Tersisa</div></div>
       <div class="jurusan-card"><div class="jurusan-icon">🛒</div><div class="jurusan-name">Bisnis Digital</div><div class="jurusan-desc">Pelajari e-commerce, digital marketing, dan strategi bisnis online untuk era ekonomi digital.</div><div class="jurusan-badge">Kuota Tersisa</div></div>
       <div class="jurusan-card"><div class="jurusan-icon">🎨</div><div class="jurusan-name">Desain Komunikasi Visual</div><div class="jurusan-desc">Ekspresikan kreativitasmu lewat desain grafis, branding, dan multimedia visual profesional.</div><div class="jurusan-badge">Kuota Tersisa</div></div>
-      <div class="jurusan-card"><div class="jurusan-icon">🌐</div><div class="jurusan-name">Teknik Komputer & Jaringan</div><div class="jurusan-desc">Kuasai infrastruktur IT, networking, dan keamanan siber yang dibutuhkan industri teknologi.</div><div class="jurusan-badge">Kuota Tersisa</div></div>
-      <div class="jurusan-card"><div class="jurusan-icon">🚗</div><div class="jurusan-name">Teknik Kendaraan Ringan (TKR)</div><div class="jurusan-desc">Teknik perawatan dan perbaikan kendaraan ringan sesuai standar bengkel resmi.</div><div class="jurusan-badge">Kuota Tersisa</div></div>
-      <div class="jurusan-card"><div class="jurusan-icon">🏍️</div><div class="jurusan-name">Teknik Sepeda Motor (TSM)</div><div class="jurusan-desc">Spesialisasi sepeda motor dengan bekal teknis dan jiwa wirausaha untuk membuka usaha sendiri.</div><div class="jurusan-badge">Kuota Tersisa</div></div>
+      <div class="jurusan-card"><div class="jurusan-icon">🌐</div><div class="jurusan-name">Teknik Komputer &amp; Jaringan</div><div class="jurusan-desc">Kuasai infrastruktur IT, networking, dan keamanan siber yang dibutuhkan industri teknologi.</div><div class="jurusan-badge">Kuota Tersisa</div></div>
+      <div class="jurusan-card"><div class="jurusan-icon">🚗</div><div class="jurusan-name">Teknik Kendaraan Ringan</div><div class="jurusan-desc">Teknik perawatan dan perbaikan kendaraan ringan sesuai standar bengkel resmi.</div><div class="jurusan-badge">Kuota Tersisa</div></div>
+      <div class="jurusan-card"><div class="jurusan-icon">🏍️</div><div class="jurusan-name">Teknik Sepeda Motor</div><div class="jurusan-desc">Spesialisasi sepeda motor dengan bekal teknis dan jiwa wirausaha untuk membuka usaha sendiri.</div><div class="jurusan-badge">Kuota Tersisa</div></div>
       <div class="jurusan-card"><div class="jurusan-icon">🗂️</div><div class="jurusan-name">Manajemen Perkantoran</div><div class="jurusan-desc">Kuasai administrasi modern, korespondensi, dan manajemen kantor berbasis teknologi terkini.</div><div class="jurusan-badge">Kuota Tersisa</div></div>
     </div>
   </div>
 </section>
 
-<section class="section" id="jadwal" style="background: var(--white); padding: 72px 5%;">
+<!-- ═══ JADWAL ═══ -->
+<section class="section" id="jadwal" style="background: var(--white); padding: 60px 5%;">
   <div class="section-inner">
     <div class="section-header">
       <div class="section-tag">Jadwal PPDB</div>
@@ -273,69 +401,86 @@
       <p class="section-sub">Pastikan mendaftar sebelum batas waktu yang ditentukan</p>
     </div>
     <div class="timeline-grid">
-      <div class="tl-item done"><div class="tl-dot">✓</div><div class="tl-title">Pengumuman PPDB</div><div class="tl-date">1 Apr 2026</div></div>
-      <div class="tl-item active"><div class="tl-dot">2</div><div class="tl-title">Pendaftaran Online</div><div class="tl-date">1 Mei – 30 Jun 2026</div></div>
-      <div class="tl-item"><div class="tl-dot">3</div><div class="tl-title">Verifikasi Dokumen</div><div class="tl-date">1 – 10 Jul 2026</div></div>
-      <div class="tl-item"><div class="tl-dot">4</div><div class="tl-title">Pengumuman Hasil</div><div class="tl-date">12 Jul 2026</div></div>
-      <div class="tl-item"><div class="tl-dot">5</div><div class="tl-title">Daftar Ulang</div><div class="tl-date">13 – 20 Jul 2026</div></div>
+      <div class="tl-item done"><div class="tl-dot">✓</div><div><div class="tl-title">Pengumuman PPDB</div><div class="tl-date">1 April 2026</div></div></div>
+      <div class="tl-item active"><div class="tl-dot">2</div><div><div class="tl-title">Pendaftaran Online</div><div class="tl-date">1 Mei – 30 Juni 2026</div></div></div>
+      <div class="tl-item"><div class="tl-dot">3</div><div><div class="tl-title">Verifikasi Dokumen</div><div class="tl-date">1 – 10 Juli 2026</div></div></div>
+      <div class="tl-item"><div class="tl-dot">4</div><div><div class="tl-title">Pengumuman Hasil</div><div class="tl-date">12 Juli 2026</div></div></div>
+      <div class="tl-item"><div class="tl-dot">5</div><div><div class="tl-title">Daftar Ulang</div><div class="tl-date">13 – 20 Juli 2026</div></div></div>
     </div>
   </div>
 </section>
 
+<!-- ═══ FORM ═══ -->
 <section class="form-section" id="daftar">
   <div class="form-inner">
     <div class="form-header">
       <div class="section-tag" style="background: rgba(226,194,81,0.15); color: var(--gold);">Pendaftaran Online</div>
       <h2 class="section-title">Formulir Pendaftaran PPDB</h2>
-      <p class="section-sub">Isi formulir dengan data yang benar sesuai dokumen resmi. Data akan tersimpan otomatis ke sistem database kami.</p>
+      <p class="section-sub">Isi formulir dengan data yang benar sesuai dokumen resmi. Data akan tersimpan otomatis ke sistem panitia.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:40px;">
-      <div style="background:rgba(226,194,81,0.08);border:1px solid rgba(226,194,81,0.25);border-radius:12px;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;"><span style="font-size:22px;flex-shrink:0;">📄</span><div><div style="font-weight:700;color:#fff;font-size:14px;margin-bottom:4px;">Siapkan Dokumen</div><div style="font-size:13px;color:rgba(255,255,255,0.55);">Ijazah, KK, Akta Lahir, NISN</div></div></div>
-      <div style="background:rgba(226,194,81,0.08);border:1px solid rgba(226,194,81,0.25);border-radius:12px;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;"><span style="font-size:22px;flex-shrink:0;">✍️</span><div><div style="font-weight:700;color:#fff;font-size:14px;margin-bottom:4px;">Isi Data Lengkap</div><div style="font-size:13px;color:rgba(255,255,255,0.55);">Sesuai dokumen asli yang dimiliki</div></div></div>
-      <div style="background:rgba(226,194,81,0.08);border:1px solid rgba(226,194,81,0.25);border-radius:12px;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;"><span style="font-size:22px;flex-shrink:0;">✅</span><div><div style="font-weight:700;color:#fff;font-size:14px;margin-bottom:4px;">Data Tersimpan Otomatis</div><div style="font-size:13px;color:rgba(255,255,255,0.55);">Langsung masuk ke Google Sheets panitia</div></div></div>
+
+    <!-- Info Strip ringan — menggantikan 3 card berat -->
+    <div class="info-strip">
+      <div class="info-strip-item">
+        <div class="info-strip-icon">📄</div>
+        <div class="info-strip-text"><strong>Siapkan Dokumen</strong>Ijazah, KK, Akta Lahir, NISN</div>
+      </div>
+      <div class="info-strip-item">
+        <div class="info-strip-icon">✍️</div>
+        <div class="info-strip-text"><strong>Isi Data Lengkap</strong>Sesuai dokumen asli yang dimiliki</div>
+      </div>
+      <div class="info-strip-item">
+        <div class="info-strip-icon">✅</div>
+        <div class="info-strip-text"><strong>Data Tersimpan Otomatis</strong>Langsung masuk ke Google Sheets panitia</div>
+      </div>
     </div>
 
     <div class="form-card">
+      <!-- Step Indicator -->
       <div class="form-step-indicator" id="stepIndicator">
-        <div class="fsi-step active" id="fsi1"><div class="fsi-num">1</div><span>Data Siswa</span></div>
+        <div class="fsi-step active" id="fsi1"><div class="fsi-num">1</div><span class="fsi-label">Data Siswa</span></div>
         <div class="fsi-line" id="fsiLine1"></div>
-        <div class="fsi-step" id="fsi2"><div class="fsi-num">2</div><span>Alamat & Info</span></div>
+        <div class="fsi-step" id="fsi2"><div class="fsi-num">2</div><span class="fsi-label">Alamat &amp; Info</span></div>
         <div class="fsi-line" id="fsiLine2"></div>
-        <div class="fsi-step" id="fsi3"><div class="fsi-num">3</div><span>Asal Sekolah</span></div>
+        <div class="fsi-step" id="fsi3"><div class="fsi-num">3</div><span class="fsi-label">Asal Sekolah</span></div>
         <div class="fsi-line" id="fsiLine3"></div>
-        <div class="fsi-step" id="fsi4"><div class="fsi-num">4</div><span>Orang Tua/Wali</span></div>
+        <div class="fsi-step" id="fsi4"><div class="fsi-num">4</div><span class="fsi-label">Orang Tua</span></div>
       </div>
+
+      <!-- Progress -->
       <div class="form-progress">
-        <div class="form-progress-label"><span id="progressLabel">Langkah 1 dari 4 — Identitas Peserta Didik</span><span id="progressPct">25%</span></div>
+        <div class="form-progress-label">
+          <span id="progressLabel">Langkah 1 dari 4 — Identitas Peserta Didik</span>
+          <span id="progressPct">25%</span>
+        </div>
         <div class="form-progress-bar"><div class="form-progress-fill" id="progressFill" style="width:25%"></div></div>
       </div>
+
       <div id="alertBox" class="alert error"></div>
 
       <!-- STEP 1 -->
       <div class="form-steps active" id="step1">
         <div class="form-section-title">📋 Identitas Calon Peserta Didik</div>
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">Nama Lengkap Peserta Didik <span class="req">*</span></label><input type="text" id="namaLengkap" placeholder="Sesuai ijazah/akta lahir"></div>
-          <div class="form-group"><label class="form-label">Jenis Kelamin <span class="req">*</span></label><div class="radio-group"><label class="radio-option" onclick="selectRadio(this,'jenisKelamin','Laki-Laki')"><input type="radio" name="jenisKelamin" value="Laki-Laki"><div class="radio-dot"></div> Laki-Laki</label><label class="radio-option" onclick="selectRadio(this,'jenisKelamin','Perempuan')"><input type="radio" name="jenisKelamin" value="Perempuan"><div class="radio-dot"></div> Perempuan</label></div></div>
-        </div>
+        <div class="form-group"><label class="form-label">Nama Lengkap Peserta Didik <span class="req">*</span></label><input type="text" id="namaLengkap" placeholder="Sesuai ijazah / akta lahir"></div>
+        <div class="form-group"><label class="form-label">Jenis Kelamin <span class="req">*</span></label><div class="radio-group"><label class="radio-option" onclick="selectRadio(this,'jenisKelamin','Laki-Laki')"><input type="radio" name="jenisKelamin" value="Laki-Laki"><div class="radio-dot"></div> Laki-Laki</label><label class="radio-option" onclick="selectRadio(this,'jenisKelamin','Perempuan')"><input type="radio" name="jenisKelamin" value="Perempuan"><div class="radio-dot"></div> Perempuan</label></div></div>
         <div class="form-row">
           <div class="form-group"><label class="form-label">NISN <span class="req">*</span></label><input type="text" id="nisn" placeholder="Contoh: 3098127518" maxlength="10"></div>
-          <div class="form-group"><label class="form-label">NIK <span class="req">*</span></label><input type="text" id="nik" placeholder="16 digit NIK sesuai KK" maxlength="16"></div>
+          <div class="form-group"><label class="form-label">NIK <span class="req">*</span></label><input type="text" id="nik" placeholder="16 digit sesuai KK" maxlength="16"></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label">Nomor Seri Ijazah SMP/MTs <span class="req">*</span></label><input type="text" id="nomorIjazah" placeholder="Contoh: 124202500998009"></div>
-          <div class="form-group"><label class="form-label">Nomor Seri SKHUN <span class="req">*</span></label><input type="text" id="nomorSkhun" placeholder="Contoh: 400.3.11.1/11/PKBM-AM"></div>
+          <div class="form-group"><label class="form-label">No. Seri Ijazah SMP/MTs <span class="req">*</span></label><input type="text" id="nomorIjazah" placeholder="Contoh: 124202500998009"></div>
+          <div class="form-group"><label class="form-label">No. Seri SKHUN <span class="req">*</span></label><input type="text" id="nomorSkhun" placeholder="Contoh: 400.3.11.1/11/PKBM"></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label">Tempat Lahir <span class="req">*</span></label><input type="text" id="tempatLahir" placeholder="Nama kota/kabupaten"></div>
+          <div class="form-group"><label class="form-label">Tempat Lahir <span class="req">*</span></label><input type="text" id="tempatLahir" placeholder="Nama kota / kabupaten"></div>
           <div class="form-group"><label class="form-label">Tanggal Lahir <span class="req">*</span></label><input type="date" id="tanggalLahir"></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label">Nomor HP / WhatsApp Aktif <span class="req">*</span></label><input type="tel" id="noHpSiswa" placeholder="08xx-xxxx-xxxx"></div>
+          <div class="form-group"><label class="form-label">No. HP / WhatsApp Aktif <span class="req">*</span></label><input type="tel" id="noHpSiswa" placeholder="08xx-xxxx-xxxx"></div>
           <div class="form-group"><label class="form-label">Email Aktif <span class="req">*</span></label><input type="text" id="emailSiswa" placeholder="contoh@gmail.com"></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label">Nama Media Sosial</label><input type="text" id="medsos" placeholder="Contoh: @namaakun"></div>
+          <div class="form-group"><label class="form-label">Nama Media Sosial</label><input type="text" id="medsos" placeholder="@namaakun"></div>
           <div class="form-group"><label class="form-label">Berkebutuhan Khusus <span class="req">*</span></label><select id="berkebutuhanKhusus"><option value="">— Pilih —</option><option>Tidak</option><option>Tunanetra</option><option>Tunarungu</option><option>Tunawicara</option><option>Tunadaksa</option><option>Tunagrahita</option><option>Autis</option><option>Lainnya</option></select></div>
         </div>
         <div class="form-row">
@@ -349,7 +494,7 @@
       <div class="form-steps" id="step2">
         <div class="form-section-title">🏠 Alamat Tempat Tinggal</div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label">Dusun / RT / RW <span class="req">*</span></label><input type="text" id="dusunRtRw" placeholder="Contoh: Kp. Jangkurang RT 01/02"></div>
+          <div class="form-group"><label class="form-label">Dusun / RT / RW <span class="req">*</span></label><input type="text" id="dusunRtRw" placeholder="Kp. Jangkurang RT 01/02"></div>
           <div class="form-group"><label class="form-label">Kelurahan / Desa <span class="req">*</span></label><input type="text" id="kelurahan" placeholder="Contoh: Sukamentri"></div>
         </div>
         <div class="form-row">
@@ -358,26 +503,27 @@
         </div>
         <div class="form-group"><label class="form-label">Provinsi <span class="req">*</span></label><select id="provinsi"><option value="">— Pilih Provinsi —</option><option>Jawa Barat</option><option>Jawa Tengah</option><option>Jawa Timur</option><option>DKI Jakarta</option><option>DI Yogyakarta</option><option>Banten</option><option>Sumatera Utara</option><option>Sumatera Selatan</option><option>Sumatera Barat</option><option>Kalimantan Barat</option><option>Kalimantan Timur</option><option>Sulawesi Selatan</option><option>Lainnya</option></select></div>
         <hr class="form-divider">
-        <div class="form-section-title">🚌 Informasi Perjalanan & Tempat Tinggal</div>
+        <div class="form-section-title">🚌 Informasi Perjalanan &amp; Tempat Tinggal</div>
         <div class="form-row">
           <div class="form-group"><label class="form-label">Jenis Tempat Tinggal <span class="req">*</span></label><select id="jenisTinggal"><option value="">— Pilih —</option><option>Bersama Kedua Orangtua</option><option>Bersama Ayah</option><option>Bersama Ibu</option><option>Bersama Wali</option><option>Kos / Indekos</option><option>Asrama</option><option>Lainnya</option></select></div>
-          <div class="form-group"><label class="form-label">Alat Transportasi ke Sekolah <span class="req">*</span></label><select id="transportasi"><option value="">— Pilih —</option><option>Jalan Kaki</option><option>Sepeda</option><option>Membawa Kendaraan Sendiri</option><option>Angkutan Umum</option><option>Diantar Orang Tua</option><option>Ojek Online</option><option>Lainnya</option></select></div>
+          <div class="form-group"><label class="form-label">Transportasi ke Sekolah <span class="req">*</span></label><select id="transportasi"><option value="">— Pilih —</option><option>Jalan Kaki</option><option>Sepeda</option><option>Kendaraan Sendiri</option><option>Angkutan Umum</option><option>Diantar Orang Tua</option><option>Ojek Online</option><option>Lainnya</option></select></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label">Jarak Tempuh ke Sekolah (km) <span class="req">*</span></label><input type="text" id="jarakTempuh" placeholder="Contoh: 2,8"></div>
-          <div class="form-group"><label class="form-label">Waktu Tempuh ke Sekolah (menit) <span class="req">*</span></label><input type="text" id="waktuTempuh" placeholder="Contoh: 10"></div>
+          <div class="form-group"><label class="form-label">Jarak ke Sekolah (km) <span class="req">*</span></label><input type="text" id="jarakTempuh" placeholder="Contoh: 2,8"></div>
+          <div class="form-group"><label class="form-label">Waktu Tempuh (menit) <span class="req">*</span></label><input type="text" id="waktuTempuh" placeholder="Contoh: 10"></div>
         </div>
         <div class="form-group"><label class="form-label">Jumlah Saudara Kandung <span class="req">*</span></label><input type="text" id="jumlahSaudara" placeholder="Contoh: 2"></div>
-        <div class="form-nav"><button class="btn-nav-prev" onclick="goStep(1)">← Kembali</button><button class="btn-nav-next" onclick="goStep(3)">Lanjut — Asal Sekolah →</button></div>
+        <div class="form-nav">
+          <button class="btn-nav-prev" onclick="goStep(1)">← Kembali</button>
+          <button class="btn-nav-next" onclick="goStep(3)">Lanjut — Asal Sekolah →</button>
+        </div>
       </div>
 
       <!-- STEP 3 -->
       <div class="form-steps" id="step3">
         <div class="form-section-title">🏫 Data Asal Sekolah</div>
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">Jenis Asal Sekolah <span class="req">*</span></label><div class="radio-group"><label class="radio-option" onclick="selectRadio(this,'jenisSekolah','Negeri')"><input type="radio" name="jenisSekolah" value="Negeri"><div class="radio-dot"></div> Negeri</label><label class="radio-option" onclick="selectRadio(this,'jenisSekolah','Swasta')"><input type="radio" name="jenisSekolah" value="Swasta"><div class="radio-dot"></div> Swasta</label></div></div>
-          <div class="form-group"><label class="form-label">Nama Sekolah Asal <span class="req">*</span></label><input type="text" id="namaSekolah" placeholder="Contoh: PKBM AL-MANSHUR"></div>
-        </div>
+        <div class="form-group"><label class="form-label">Jenis Asal Sekolah <span class="req">*</span></label><div class="radio-group"><label class="radio-option" onclick="selectRadio(this,'jenisSekolah','Negeri')"><input type="radio" name="jenisSekolah" value="Negeri"><div class="radio-dot"></div> Negeri</label><label class="radio-option" onclick="selectRadio(this,'jenisSekolah','Swasta')"><input type="radio" name="jenisSekolah" value="Swasta"><div class="radio-dot"></div> Swasta</label></div></div>
+        <div class="form-group"><label class="form-label">Nama Sekolah Asal <span class="req">*</span></label><input type="text" id="namaSekolah" placeholder="Contoh: PKBM AL-MANSHUR"></div>
         <div class="form-row">
           <div class="form-group"><label class="form-label">Kecamatan Sekolah Asal <span class="req">*</span></label><input type="text" id="kecamatanSekolah" placeholder="Contoh: Cilawu"></div>
           <div class="form-group"><label class="form-label">Kabupaten Sekolah Asal <span class="req">*</span></label><input type="text" id="kabupatenSekolah" placeholder="Contoh: Garut"></div>
@@ -388,7 +534,10 @@
         <div class="form-group"><label class="form-label">Pilihan Pertama <span class="req">*</span></label><select id="pilihan1"><option value="">— Pilih Program Keahlian —</option><option>Akuntansi Keuangan Lembaga</option><option>Bisnis Digital</option><option>Desain Komunikasi Visual</option><option>Teknik Jaringan Komputer</option><option>Teknik Kendaraan Ringan</option><option>Teknik Sepeda Motor</option><option>Manajemen Perkantoran</option></select></div>
         <div class="form-group"><label class="form-label">Pilihan Kedua</label><select id="pilihan2"><option value="">— Pilih Program Keahlian —</option><option>Akuntansi Keuangan Lembaga</option><option>Bisnis Digital</option><option>Desain Komunikasi Visual</option><option>Teknik Jaringan Komputer</option><option>Teknik Kendaraan Ringan</option><option>Teknik Sepeda Motor</option><option>Manajemen Perkantoran</option></select></div>
         <div class="form-group"><label class="form-label">Pilihan Ketiga</label><select id="pilihan3"><option value="">— Pilih Program Keahlian —</option><option>Akuntansi Keuangan Lembaga</option><option>Bisnis Digital</option><option>Desain Komunikasi Visual</option><option>Teknik Jaringan Komputer</option><option>Teknik Kendaraan Ringan</option><option>Teknik Sepeda Motor</option><option>Manajemen Perkantoran</option></select></div>
-        <div class="form-nav"><button class="btn-nav-prev" onclick="goStep(2)">← Kembali</button><button class="btn-nav-next" onclick="goStep(4)">Lanjut — Orang Tua/Wali →</button></div>
+        <div class="form-nav">
+          <button class="btn-nav-prev" onclick="goStep(2)">← Kembali</button>
+          <button class="btn-nav-next" onclick="goStep(4)">Lanjut — Orang Tua/Wali →</button>
+        </div>
       </div>
 
       <!-- STEP 4 -->
@@ -396,62 +545,65 @@
         <div class="form-section-title">👨 Data Ayah Kandung</div>
         <div class="form-row">
           <div class="form-group"><label class="form-label">Nama Lengkap Ayah Kandung <span class="req">*</span></label><input type="text" id="namaAyah" placeholder="Nama lengkap"></div>
-          <div class="form-group"><label class="form-label">Masih Hidup <span class="req">*</span></label><div class="radio-group"><label class="radio-option" onclick="selectRadio(this,'ayahHidup','Ya')"><input type="radio" name="ayahHidup" value="Ya"><div class="radio-dot"></div> Ya</label><label class="radio-option" onclick="selectRadio(this,'ayahHidup','Tidak')"><input type="radio" name="ayahHidup" value="Tidak"><div class="radio-dot"></div> Tidak</label></div></div>
+          <div class="form-group"><label class="form-label">Status <span class="req">*</span></label><div class="radio-group"><label class="radio-option" onclick="selectRadio(this,'ayahHidup','Ya')"><input type="radio" name="ayahHidup" value="Ya"><div class="radio-dot"></div> Masih Hidup</label><label class="radio-option" onclick="selectRadio(this,'ayahHidup','Tidak')"><input type="radio" name="ayahHidup" value="Tidak"><div class="radio-dot"></div> Almarhum</label></div></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label">Tempat Lahir Ayah</label><input type="text" id="tempatLahirAyah" placeholder="Kota/Kabupaten"></div>
+          <div class="form-group"><label class="form-label">Tempat Lahir Ayah</label><input type="text" id="tempatLahirAyah" placeholder="Kota / Kabupaten"></div>
           <div class="form-group"><label class="form-label">Tanggal Lahir Ayah</label><input type="date" id="tanggalLahirAyah"></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label">Pekerjaan Ayah</label><input type="text" id="pekerjaanAyah" placeholder="Contoh: Wiraswasta, PNS"></div>
-          <div class="form-group"><label class="form-label">Pendidikan Ayah</label><select id="pendidikanAyah"><option value="">— Pilih —</option><option>Tidak Sekolah</option><option>SD/Sederajat</option><option>SMP/Sederajat</option><option>SMA/SMK</option><option>D1/D2/D3</option><option>S1/D4</option><option>S2/S3</option></select></div>
+          <div class="form-group"><label class="form-label">Pekerjaan Ayah</label><input type="text" id="pekerjaanAyah" placeholder="Contoh: Wiraswasta"></div>
+          <div class="form-group"><label class="form-label">Pendidikan Terakhir Ayah</label><select id="pendidikanAyah"><option value="">— Pilih —</option><option>Tidak Sekolah</option><option>SD/Sederajat</option><option>SMP/Sederajat</option><option>SMA/SMK</option><option>D1/D2/D3</option><option>S1/D4</option><option>S2/S3</option></select></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label">Penghasilan Ayah per Bulan</label><select id="penghasilanAyah"><option value="">— Pilih —</option><option>&lt; 1 juta</option><option>1 – 2 juta</option><option>2 – 3 juta</option><option>3 – 5 juta</option><option>5 – 10 juta</option><option>&gt; 10 juta</option></select></div>
-          <div class="form-group"><label class="form-label">Nomor Telepon / HP Ayah</label><input type="tel" id="noHpAyah" placeholder="08xx-xxxx-xxxx"></div>
+          <div class="form-group"><label class="form-label">Penghasilan Ayah/Bulan</label><select id="penghasilanAyah"><option value="">— Pilih —</option><option>&lt; 1 juta</option><option>1 – 2 juta</option><option>2 – 3 juta</option><option>3 – 5 juta</option><option>5 – 10 juta</option><option>&gt; 10 juta</option></select></div>
+          <div class="form-group"><label class="form-label">No. Telepon / HP Ayah</label><input type="tel" id="noHpAyah" placeholder="08xx-xxxx-xxxx"></div>
         </div>
         <div class="form-group"><label class="form-label">Alamat Lengkap Ayah</label><textarea id="alamatAyah" rows="2" placeholder="Dusun / RT-RW / Desa / Kecamatan"></textarea></div>
+
         <hr class="form-divider">
         <div class="form-section-title">👩 Data Ibu Kandung</div>
         <div class="form-row">
           <div class="form-group"><label class="form-label">Nama Lengkap Ibu Kandung <span class="req">*</span></label><input type="text" id="namaIbu" placeholder="Nama lengkap"></div>
-          <div class="form-group"><label class="form-label">Masih Hidup <span class="req">*</span></label><div class="radio-group"><label class="radio-option" onclick="selectRadio(this,'ibuHidup','Ya')"><input type="radio" name="ibuHidup" value="Ya"><div class="radio-dot"></div> Ya</label><label class="radio-option" onclick="selectRadio(this,'ibuHidup','Tidak')"><input type="radio" name="ibuHidup" value="Tidak"><div class="radio-dot"></div> Tidak</label></div></div>
+          <div class="form-group"><label class="form-label">Status <span class="req">*</span></label><div class="radio-group"><label class="radio-option" onclick="selectRadio(this,'ibuHidup','Ya')"><input type="radio" name="ibuHidup" value="Ya"><div class="radio-dot"></div> Masih Hidup</label><label class="radio-option" onclick="selectRadio(this,'ibuHidup','Tidak')"><input type="radio" name="ibuHidup" value="Tidak"><div class="radio-dot"></div> Almarhumah</label></div></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label">Tempat Lahir Ibu</label><input type="text" id="tempatLahirIbu" placeholder="Kota/Kabupaten"></div>
+          <div class="form-group"><label class="form-label">Tempat Lahir Ibu</label><input type="text" id="tempatLahirIbu" placeholder="Kota / Kabupaten"></div>
           <div class="form-group"><label class="form-label">Tanggal Lahir Ibu</label><input type="date" id="tanggalLahirIbu"></div>
         </div>
         <div class="form-row">
           <div class="form-group"><label class="form-label">Pekerjaan Ibu</label><input type="text" id="pekerjaanIbu" placeholder="Contoh: Ibu Rumah Tangga"></div>
-          <div class="form-group"><label class="form-label">Pendidikan Ibu</label><select id="pendidikanIbu"><option value="">— Pilih —</option><option>Tidak Sekolah</option><option>SD/Sederajat</option><option>SMP/Sederajat</option><option>SMA/SMK</option><option>D1/D2/D3</option><option>S1/D4</option><option>S2/S3</option></select></div>
+          <div class="form-group"><label class="form-label">Pendidikan Terakhir Ibu</label><select id="pendidikanIbu"><option value="">— Pilih —</option><option>Tidak Sekolah</option><option>SD/Sederajat</option><option>SMP/Sederajat</option><option>SMA/SMK</option><option>D1/D2/D3</option><option>S1/D4</option><option>S2/S3</option></select></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label">Penghasilan Ibu per Bulan</label><select id="penghasilanIbu"><option value="">— Pilih —</option><option>&lt; 1 juta</option><option>1 – 2 juta</option><option>2 – 3 juta</option><option>3 – 5 juta</option><option>5 – 10 juta</option><option>&gt; 10 juta</option></select></div>
-          <div class="form-group"><label class="form-label">Nomor Telepon / HP Ibu <span class="req">*</span></label><input type="tel" id="noHpIbu" placeholder="08xx-xxxx-xxxx"></div>
+          <div class="form-group"><label class="form-label">Penghasilan Ibu/Bulan</label><select id="penghasilanIbu"><option value="">— Pilih —</option><option>&lt; 1 juta</option><option>1 – 2 juta</option><option>2 – 3 juta</option><option>3 – 5 juta</option><option>5 – 10 juta</option><option>&gt; 10 juta</option></select></div>
+          <div class="form-group"><label class="form-label">No. HP Ibu <span class="req">*</span></label><input type="tel" id="noHpIbu" placeholder="08xx-xxxx-xxxx"></div>
         </div>
         <div class="form-group"><label class="form-label">Alamat Lengkap Ibu</label><textarea id="alamatIbu" rows="2" placeholder="Dusun / RT-RW / Desa / Kecamatan"></textarea></div>
+
         <hr class="form-divider">
-        <div class="form-section-title">🧑‍💼 Data Wali (isi jika berbeda dengan orang tua)</div>
+        <div class="form-section-title">🧑‍💼 Data Wali (isi apabila berbeda dengan orang tua)</div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label">Nama Lengkap Wali</label><input type="text" id="namaWali" placeholder="Kosongkan jika tidak ada wali"></div>
+          <div class="form-group"><label class="form-label">Nama Lengkap Wali</label><input type="text" id="namaWali" placeholder="Kosongkan jika tidak ada"></div>
           <div class="form-group"><label class="form-label">Pekerjaan Wali</label><input type="text" id="pekerjaanWali" placeholder="Contoh: Wiraswasta"></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label">Tempat Lahir Wali</label><input type="text" id="tempatLahirWali" placeholder="Kota/Kabupaten"></div>
+          <div class="form-group"><label class="form-label">Tempat Lahir Wali</label><input type="text" id="tempatLahirWali" placeholder="Kota / Kabupaten"></div>
           <div class="form-group"><label class="form-label">Tanggal Lahir Wali</label><input type="date" id="tanggalLahirWali"></div>
         </div>
         <div class="form-row">
           <div class="form-group"><label class="form-label">Pendidikan Wali</label><select id="pendidikanWali"><option value="">— Pilih —</option><option>Tidak Sekolah</option><option>SD/Sederajat</option><option>SMP/Sederajat</option><option>SMA/SMK</option><option>D1/D2/D3</option><option>S1/D4</option><option>S2/S3</option></select></div>
-          <div class="form-group"><label class="form-label">Penghasilan Wali per Bulan</label><select id="penghasilanWali"><option value="">— Pilih —</option><option>&lt; 1 juta</option><option>1 – 2 juta</option><option>2 – 3 juta</option><option>3 – 5 juta</option><option>5 – 10 juta</option><option>&gt; 10 juta</option></select></div>
+          <div class="form-group"><label class="form-label">Penghasilan Wali/Bulan</label><select id="penghasilanWali"><option value="">— Pilih —</option><option>&lt; 1 juta</option><option>1 – 2 juta</option><option>2 – 3 juta</option><option>3 – 5 juta</option><option>5 – 10 juta</option><option>&gt; 10 juta</option></select></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label">Nomor HP Wali</label><input type="tel" id="noHpWali" placeholder="08xx-xxxx-xxxx"></div>
+          <div class="form-group"><label class="form-label">No. HP Wali</label><input type="tel" id="noHpWali" placeholder="08xx-xxxx-xxxx"></div>
           <div class="form-group"><label class="form-label">Alamat Wali</label><input type="text" id="alamatWali" placeholder="Dusun / RT-RW / Desa"></div>
         </div>
+
         <hr class="form-divider">
-        <div style="background:rgba(27,63,160,0.05);border:1px solid rgba(27,63,160,0.15);border-radius:8px;padding:14px 16px;margin-bottom:24px;display:flex;align-items:flex-start;gap:10px;">
-          <span style="font-size:18px;flex-shrink:0;margin-top:1px;">ℹ️</span>
-          <p style="font-size:12.5px;color:var(--gray-600);line-height:1.65;margin:0;">Dengan mengklik <strong>Kirim Pendaftaran</strong>, Anda menyatakan bahwa data yang diisi adalah benar dan sesuai dokumen resmi. Data tersimpan di Google Sheets panitia PPDB SMK Ciledug Al Musaddadiyah Garut.</p>
+        <div class="form-note">
+          <span style="font-size:16px;flex-shrink:0;">ℹ️</span>
+          <p>Dengan mengklik <strong>Kirim Pendaftaran</strong>, Anda menyatakan bahwa seluruh data yang diisi adalah benar dan sesuai dengan dokumen resmi. Data akan tersimpan secara otomatis di sistem panitia PPDB SMK Ciledug Al Musaddadiyah Garut.</p>
         </div>
         <div class="form-nav">
           <button class="btn-nav-prev" onclick="goStep(3)">← Kembali</button>
@@ -462,54 +614,80 @@
         </div>
       </div>
 
+      <!-- SUCCESS -->
       <div class="success-screen" id="successScreen">
         <div class="success-icon">🎉</div>
         <h3 class="success-title">Pendaftaran Berhasil!</h3>
-        <p class="success-desc">Data Anda telah berhasil tersimpan di sistem PPDB kami. Panitia akan menghubungi Anda untuk verifikasi dokumen.</p>
+        <p class="success-desc">Data Anda telah tersimpan di sistem PPDB kami. Panitia akan menghubungi Anda untuk proses verifikasi dokumen selanjutnya.</p>
         <div class="success-ref">
-          <div class="success-ref-label">Nomor Referensi</div>
+          <div class="success-ref-label">Nomor Referensi Pendaftaran</div>
           <div class="success-ref-num" id="refNumber">—</div>
         </div>
-        <p style="font-size:13px;color:var(--gray-600);margin-bottom:20px;">Simpan nomor referensi ini untuk keperluan verifikasi.</p>
+        <p style="font-size:12.5px;color:var(--gray-600);margin-bottom:20px;">Simpan nomor referensi ini untuk keperluan verifikasi lebih lanjut.</p>
         <a href="#jurusan" class="btn-primary" style="display:inline-flex;margin:0 auto;">← Kembali ke Beranda</a>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ═══ FAQ ═══ -->
 <section class="section" id="faq">
   <div class="section-inner">
-    <div class="section-header"><div class="section-tag">FAQ</div><h2 class="section-title">Pertanyaan Umum</h2></div>
+    <div class="section-header">
+      <div class="section-tag">FAQ</div>
+      <h2 class="section-title">Pertanyaan yang Sering Diajukan</h2>
+    </div>
     <div class="faq-grid">
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Apa saja dokumen yang dibutuhkan untuk pendaftaran?<span class="faq-arrow">⌄</span></button><div class="faq-a"><p>Ijazah/STTB SMP/MTs, Kartu Keluarga, Akta Kelahiran, Foto 3x4, dan NISN.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Apakah pendaftaran dikenakan biaya?<span class="faq-arrow">⌄</span></button><div class="faq-a"><p>Pendaftaran online tidak dikenakan biaya. Informasi biaya lanjutan akan diberikan saat verifikasi dokumen.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Bagaimana jika data yang saya isi ternyata salah?<span class="faq-arrow">⌄</span></button><div class="faq-a"><p>Hubungi panitia PPDB melalui WhatsApp atau datang langsung ke sekolah sebelum tahap verifikasi ditutup.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Kapan pengumuman hasil seleksi diumumkan?<span class="faq-arrow">⌄</span></button><div class="faq-a"><p>Pengumuman pada 12 Juli 2026 melalui website dan WhatsApp ke nomor terdaftar.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Apakah ada beasiswa atau keringanan biaya?<span class="faq-arrow">⌄</span></button><div class="faq-a"><p>Tersedia beasiswa PIP dan keringanan biaya. Hubungi bagian administrasi untuk informasi lebih lanjut.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Bagaimana cara menghubungi panitia PPDB?<span class="faq-arrow">⌄</span></button><div class="faq-a"><p>Telepon (0262) 4892181 | Email: info@smkciledug.sch.id | Senin–Sabtu, 07.30–14.30 WIB.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Dokumen apa saja yang perlu disiapkan?<span class="faq-arrow">⌄</span></button><div class="faq-a"><p>Ijazah/STTB SMP/MTs, Kartu Keluarga, Akta Kelahiran, Foto 3×4, dan NISN.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Apakah pendaftaran dikenakan biaya?<span class="faq-arrow">⌄</span></button><div class="faq-a"><p>Pendaftaran online tidak dikenakan biaya. Informasi biaya lanjutan akan disampaikan pada saat verifikasi dokumen.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Bagaimana jika data yang diisi tidak sesuai?<span class="faq-arrow">⌄</span></button><div class="faq-a"><p>Segera hubungi panitia PPDB melalui WhatsApp atau datang langsung ke sekolah sebelum tahap verifikasi ditutup.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Kapan pengumuman hasil seleksi?<span class="faq-arrow">⌄</span></button><div class="faq-a"><p>Pengumuman dijadwalkan pada 12 Juli 2026 melalui website resmi dan WhatsApp ke nomor terdaftar.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Apakah tersedia beasiswa atau keringanan biaya?<span class="faq-arrow">⌄</span></button><div class="faq-a"><p>Tersedia beasiswa PIP dan program keringanan biaya. Silakan hubungi bagian administrasi untuk informasi lebih lanjut.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Bagaimana cara menghubungi panitia PPDB?<span class="faq-arrow">⌄</span></button><div class="faq-a"><p>Telepon (0262) 4892181 · Email: info@smkciledug.sch.id · Senin–Sabtu, pukul 07.30–14.30 WIB.</p></div></div>
     </div>
   </div>
 </section>
 
+<!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
       <div>
         <div class="footer-brand-name">SMK Ciledug Al Musaddadiyah Garut</div>
         <div class="footer-brand-sub">Sekolah Menengah Kejuruan Unggulan</div>
-        <div class="footer-address">📍 Jl. Mayor Syamsu No. 02 Garut 44151<br>📞 (0262) 4892181<br>📧 <a href="mailto:info@smkciledug.sch.id">info@smkciledug.sch.id</a><br>🌐 <a href="https://www.smkciledugalmusaddadiyah.sch.id/" target="_blank">www.smkciledugalmusaddadiyah.sch.id</a></div>
+        <div class="footer-address">
+          📍 Jl. Mayor Syamsu No. 02 Garut 44151<br>
+          📞 (0262) 4892181<br>
+          📧 <a href="mailto:info@smkciledug.sch.id">info@smkciledug.sch.id</a><br>
+          🌐 <a href="https://www.smkciledugalmusaddadiyah.sch.id/" target="_blank">www.smkciledugalmusaddadiyah.sch.id</a>
+        </div>
       </div>
-      <div><div class="footer-col-title">Menu</div><ul class="footer-links"><li><a href="#jurusan">Program Keahlian</a></li><li><a href="#jadwal">Jadwal PPDB</a></li><li><a href="#daftar">Pendaftaran</a></li><li><a href="#faq">FAQ</a></li></ul></div>
-      <div><div class="footer-col-title">Informasi</div><ul class="footer-links"><li><a href="https://www.smkciledugalmusaddadiyah.sch.id/" target="_blank">Website Resmi</a></li><li><a href="#daftar">Formulir Pendaftaran</a></li><li><a href="mailto:info@smkciledug.sch.id">Hubungi Kami</a></li></ul></div>
+      <div>
+        <div class="footer-col-title">Navigasi</div>
+        <ul class="footer-links">
+          <li><a href="#jurusan">Program Keahlian</a></li>
+          <li><a href="#jadwal">Jadwal PPDB</a></li>
+          <li><a href="#daftar">Pendaftaran</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Informasi</div>
+        <ul class="footer-links">
+          <li><a href="https://www.smkciledugalmusaddadiyah.sch.id/" target="_blank">Website Resmi</a></li>
+          <li><a href="#daftar">Formulir Pendaftaran</a></li>
+          <li><a href="mailto:info@smkciledug.sch.id">Hubungi Kami</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-bottom"><div class="footer-copy">© 2026 SMK Ciledug Al Musaddadiyah Garut. Hak Cipta Dilindungi.</div><div class="footer-badge">PPDB 2026/2027</div></div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 SMK Ciledug Al Musaddadiyah Garut. Hak Cipta Dilindungi.</div>
+      <div class="footer-badge">PPDB 2026/2027</div>
+    </div>
   </div>
 </footer>
 
 <script>
-  // =============================================
-  // GANTI URL INI DENGAN URL APPS SCRIPT ANDA
-  // =============================================
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby36GdmCca90OTondbS1oV37phigdm1q9M1TjSX4Fkdd7FMTTRwKLk6EfZ1azeiqj5m/exec';
 
   function toggleFaq(btn) {
@@ -539,7 +717,7 @@
     document.getElementById('daftar').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  function v(id) { return document.getElementById(id) ? document.getElementById(id).value.trim() : ''; }
+  function v(id) { const el = document.getElementById(id); return el ? el.value.trim() : ''; }
   function radio(name) { const el = document.querySelector(`input[name="${name}"]:checked`); return el ? el.value : ''; }
 
   function saveStepData(step) {
@@ -556,44 +734,52 @@
 
   function validateStep(step) {
     hideAlert();
-    if (step === 1) {
-      if (!v('namaLengkap')) return showAlert('Nama lengkap peserta didik wajib diisi.');
-      if (!radio('jenisKelamin')) return showAlert('Pilih jenis kelamin.');
-      if (!v('nisn') || v('nisn').length < 8) return showAlert('NISN wajib diisi (minimal 8 digit).');
-      if (!v('nik') || v('nik').length < 16) return showAlert('NIK harus 16 digit.');
-      if (!v('nomorIjazah')) return showAlert('Nomor seri ijazah wajib diisi.');
-      if (!v('nomorSkhun')) return showAlert('Nomor seri SKHUN wajib diisi.');
-      if (!v('tempatLahir')) return showAlert('Tempat lahir wajib diisi.');
-      if (!v('tanggalLahir')) return showAlert('Tanggal lahir wajib diisi.');
-      if (!v('noHpSiswa')) return showAlert('Nomor HP/WA aktif wajib diisi.');
-      if (!v('emailSiswa')) return showAlert('Email aktif wajib diisi.');
-      if (!v('berkebutuhanKhusus')) return showAlert('Pilih status berkebutuhan khusus.');
-      if (!radio('pip')) return showAlert('Pilih status penerima PIP.');
-      if (!v('tinggiBadan')) return showAlert('Tinggi badan wajib diisi.');
-    } else if (step === 2) {
-      if (!v('dusunRtRw')) return showAlert('Dusun/RT/RW wajib diisi.');
-      if (!v('kelurahan')) return showAlert('Kelurahan/Desa wajib diisi.');
-      if (!v('kecamatan')) return showAlert('Kecamatan wajib diisi.');
-      if (!v('kabupaten')) return showAlert('Kabupaten/Kota wajib diisi.');
-      if (!v('provinsi')) return showAlert('Provinsi wajib dipilih.');
-      if (!v('jenisTinggal')) return showAlert('Pilih jenis tempat tinggal.');
-      if (!v('transportasi')) return showAlert('Pilih alat transportasi ke sekolah.');
-      if (!v('jarakTempuh')) return showAlert('Jarak tempuh wajib diisi.');
-      if (!v('waktuTempuh')) return showAlert('Waktu tempuh wajib diisi.');
-      if (!v('jumlahSaudara')) return showAlert('Jumlah saudara kandung wajib diisi.');
-    } else if (step === 3) {
-      if (!radio('jenisSekolah')) return showAlert('Pilih jenis asal sekolah.');
-      if (!v('namaSekolah')) return showAlert('Nama sekolah asal wajib diisi.');
-      if (!v('kecamatanSekolah')) return showAlert('Kecamatan sekolah asal wajib diisi.');
-      if (!v('kabupatenSekolah')) return showAlert('Kabupaten sekolah asal wajib diisi.');
-      if (!v('provinsiSekolah')) return showAlert('Provinsi sekolah asal wajib dipilih.');
-      if (!v('pilihan1')) return showAlert('Pilihan pertama program keahlian wajib dipilih.');
-    } else if (step === 4) {
-      if (!v('namaAyah')) return showAlert('Nama lengkap ayah kandung wajib diisi.');
-      if (!radio('ayahHidup')) return showAlert('Pilih status ayah (masih hidup/tidak).');
-      if (!v('namaIbu')) return showAlert('Nama lengkap ibu kandung wajib diisi.');
-      if (!radio('ibuHidup')) return showAlert('Pilih status ibu (masih hidup/tidak).');
-      if (!v('noHpIbu')) return showAlert('Nomor HP ibu wajib diisi.');
+    const checks = {
+      1: [
+        [!v('namaLengkap'), 'Nama lengkap peserta didik wajib diisi.'],
+        [!radio('jenisKelamin'), 'Jenis kelamin wajib dipilih.'],
+        [!v('nisn') || v('nisn').length < 8, 'NISN wajib diisi (minimal 8 digit).'],
+        [!v('nik') || v('nik').length < 16, 'NIK harus 16 digit sesuai Kartu Keluarga.'],
+        [!v('nomorIjazah'), 'Nomor seri ijazah wajib diisi.'],
+        [!v('nomorSkhun'), 'Nomor seri SKHUN wajib diisi.'],
+        [!v('tempatLahir'), 'Tempat lahir wajib diisi.'],
+        [!v('tanggalLahir'), 'Tanggal lahir wajib diisi.'],
+        [!v('noHpSiswa'), 'Nomor HP/WA aktif wajib diisi.'],
+        [!v('emailSiswa'), 'Alamat email aktif wajib diisi.'],
+        [!v('berkebutuhanKhusus'), 'Status berkebutuhan khusus wajib dipilih.'],
+        [!radio('pip'), 'Status penerima PIP wajib dipilih.'],
+        [!v('tinggiBadan'), 'Tinggi badan wajib diisi.'],
+      ],
+      2: [
+        [!v('dusunRtRw'), 'Dusun/RT/RW wajib diisi.'],
+        [!v('kelurahan'), 'Kelurahan/Desa wajib diisi.'],
+        [!v('kecamatan'), 'Kecamatan wajib diisi.'],
+        [!v('kabupaten'), 'Kabupaten/Kota wajib diisi.'],
+        [!v('provinsi'), 'Provinsi wajib dipilih.'],
+        [!v('jenisTinggal'), 'Jenis tempat tinggal wajib dipilih.'],
+        [!v('transportasi'), 'Alat transportasi wajib dipilih.'],
+        [!v('jarakTempuh'), 'Jarak tempuh ke sekolah wajib diisi.'],
+        [!v('waktuTempuh'), 'Waktu tempuh ke sekolah wajib diisi.'],
+        [!v('jumlahSaudara'), 'Jumlah saudara kandung wajib diisi.'],
+      ],
+      3: [
+        [!radio('jenisSekolah'), 'Jenis asal sekolah wajib dipilih.'],
+        [!v('namaSekolah'), 'Nama sekolah asal wajib diisi.'],
+        [!v('kecamatanSekolah'), 'Kecamatan sekolah asal wajib diisi.'],
+        [!v('kabupatenSekolah'), 'Kabupaten sekolah asal wajib diisi.'],
+        [!v('provinsiSekolah'), 'Provinsi sekolah asal wajib dipilih.'],
+        [!v('pilihan1'), 'Pilihan pertama program keahlian wajib dipilih.'],
+      ],
+      4: [
+        [!v('namaAyah'), 'Nama lengkap ayah kandung wajib diisi.'],
+        [!radio('ayahHidup'), 'Status ayah kandung wajib dipilih.'],
+        [!v('namaIbu'), 'Nama lengkap ibu kandung wajib diisi.'],
+        [!radio('ibuHidup'), 'Status ibu kandung wajib dipilih.'],
+        [!v('noHpIbu'), 'Nomor HP ibu wajib diisi.'],
+      ],
+    };
+    for (const [cond, msg] of (checks[step] || [])) {
+      if (cond) return showAlert(msg);
     }
     return true;
   }
@@ -605,10 +791,7 @@
     el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     return false;
   }
-
-  function hideAlert() {
-    document.getElementById('alertBox').classList.remove('show');
-  }
+  function hideAlert() { document.getElementById('alertBox').classList.remove('show'); }
 
   function updateStepIndicator(activeStep) {
     for (let i = 1; i <= TOTAL_STEPS; i++) {
@@ -617,7 +800,7 @@
       if (i < activeStep) el.classList.add('done');
       else if (i === activeStep) el.classList.add('active');
     }
-    for (let i = 1; i <= TOTAL_STEPS - 1; i++) {
+    for (let i = 1; i < TOTAL_STEPS; i++) {
       const line = document.getElementById('fsiLine' + i);
       if (line) line.classList.toggle('done', i < activeStep);
     }
@@ -639,29 +822,24 @@
   async function submitForm() {
     if (!validateStep(4)) return;
     saveStepData(4);
-
     const btn = document.getElementById('btnSubmit');
     const btnText = document.getElementById('btnText');
     const spinner = document.getElementById('btnSpinner');
     btn.disabled = true;
-    btnText.textContent = 'Mengirim...';
+    btnText.textContent = 'Mengirimkan data…';
     spinner.style.display = 'block';
-
     const ref = generateRef();
     formData.ref = ref;
     formData.timestamp = new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' });
-
     try {
-      // ✅ PERBAIKAN UTAMA: Kirim sebagai URLSearchParams (form-data)
-      // Ini yang membuat data bisa dibaca oleh Apps Script via e.parameter
       await fetch(APPS_SCRIPT_URL, {
-  method: 'POST',
-  headers: { 'Content-Type': 'text/plain' },
-  body: JSON.stringify(formData)
-});
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(formData)
+      });
       showSuccess(ref);
     } catch (err) {
-      showAlert('Gagal mengirim data. Periksa koneksi internet Anda lalu coba lagi.');
+      showAlert('Gagal mengirim data. Periksa koneksi internet Anda, lalu coba kembali.');
       btn.disabled = false;
       btnText.textContent = '📨 Kirim Pendaftaran';
       spinner.style.display = 'none';
