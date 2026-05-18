@@ -2,331 +2,492 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="description" content="SPMB Online SMK Ciledug Al Musaddadiyah Garut 2026/2027 — Pendaftaran Peserta Didik Baru">
 <title>SPMB Online SMK Ciledug Al Musaddadiyah Garut 2026/2027</title>
-
-<!-- PERFORMANCE: preconnect + font subset display=swap -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
-/* ── RESET & VARIABLES ── */
+/* ── RESET ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── TOKENS ── */
 :root{
-  --navy:#1B3FA0;--navy-d:#142e78;--navy-xl:#0e2060;
-  --gold:#E2C251;--gold-l:#F0D87A;--gold-p:#FAF3D0;--gold-t:rgba(226,194,81,.12);
-  --white:#fff;--g50:#F8F9FA;--g100:#F1F3F5;--g200:#E9ECEF;
-  --g400:#ADB5BD;--g600:#6C757D;--g800:#343A40;
-  --green:#1D9E75;--green-l:#E1F5EE;
-  --red:#C0392B;--red-l:#FAECE7;
+  --navy:#1B3FA0;--navy-d:#142e78;--navy-xl:#0d2260;--navy-rgb:27,63,160;
+  --gold:#E2C251;--gold-l:#EDD46A;--gold-d:#C9A93A;--gold-p:#FAF5DC;--gold-rgb:226,194,81;
+  --white:#fff;--g50:#F7F8FC;--g100:#F0F2F8;--g150:#E8ECFB;--g200:#DDE2F0;
+  --g400:#9BA5C0;--g600:#5E6A8A;--g800:#1E2540;
+  --green:#18A374;--green-l:#E3F8F1;--green-d:#0E7A55;
+  --red:#D93025;--red-l:#FDF0EE;
   --font:'Plus Jakarta Sans',sans-serif;
-  --serif:'DM Serif Display',serif;
-  --r:12px;--rs:8px;
-  --sh:0 2px 16px rgba(27,63,160,.08);
-  --sh-md:0 8px 32px rgba(27,63,160,.13);
-  /* Transition presets */
-  --t:.2s ease;
+  --r:14px;--rs:10px;--rxs:6px;
+  --sh-xs:0 1px 3px rgba(var(--navy-rgb),.07);
+  --sh:0 4px 20px rgba(var(--navy-rgb),.09);
+  --sh-md:0 8px 40px rgba(var(--navy-rgb),.13);
+  --sh-lg:0 20px 60px rgba(var(--navy-rgb),.18);
+  --t:.18s ease;
 }
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:var(--font);background:var(--g50);color:var(--g800);line-height:1.6;overflow-x:hidden}
 
-/* ── ACCESSIBILITY ── */
+/* ── A11Y ── */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
-a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--navy);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:2.5px solid var(--gold);outline-offset:3px;border-radius:4px}
 
 /* ── NAVBAR ── */
 .navbar{
   position:sticky;top:0;z-index:100;
-  background:rgba(27,63,160,.97);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(226,194,81,.18);
+  background:rgba(var(--navy-rgb),.98);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(var(--gold-rgb),.15);
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 5%;height:60px;
+  padding:0 5%;height:62px;
 }
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-logo{width:36px;height:36px;flex-shrink:0;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:var(--navy)}
-.nav-name{font-size:12px;font-weight:700;color:#fff;line-height:1.25;white-space:nowrap}
-.nav-name small{color:var(--gold);display:block;font-size:10px;font-weight:500}
-.nav-links{display:flex;gap:24px;list-style:none}
-.nav-links a{color:rgba(255,255,255,.72);font-size:13px;font-weight:500;text-decoration:none;transition:color var(--t)}
+.nav-brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nav-logo{
+  width:38px;height:38px;border-radius:9px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-d) 100%);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:11px;color:var(--navy);letter-spacing:.3px;
+  box-shadow:0 2px 8px rgba(var(--gold-rgb),.4);
+}
+.nav-name{font-size:12.5px;font-weight:700;color:#fff;line-height:1.25;white-space:nowrap}
+.nav-name small{color:rgba(var(--gold-rgb),.8);display:block;font-size:10px;font-weight:500;margin-top:1px}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{
+  color:rgba(255,255,255,.65);font-size:13px;font-weight:500;
+  text-decoration:none;transition:color var(--t);position:relative;padding-bottom:2px;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;
+  background:var(--gold);border-radius:2px;transition:width var(--t);
+}
 .nav-links a:hover{color:var(--gold)}
-.nav-cta{background:var(--gold);color:var(--navy);font-weight:700;font-size:12.5px;padding:8px 16px;border-radius:6px;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background var(--t),transform var(--t)}
-.nav-cta:hover{background:var(--gold-l);transform:translateY(-1px)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-d) 100%);
+  color:var(--navy);font-weight:700;font-size:12.5px;
+  padding:8px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;flex-shrink:0;
+  transition:opacity var(--t),transform var(--t);
+  box-shadow:0 2px 8px rgba(var(--gold-rgb),.35);
+}
+.nav-cta:hover{opacity:.88;transform:translateY(-1px)}
 
 /* ── HERO ── */
-.hero{background:var(--navy);padding:64px 5% 0;overflow:hidden;position:relative}
-.hero-dots{position:absolute;inset:0;pointer-events:none;opacity:.035;background-image:radial-gradient(var(--gold) 1px,transparent 1px);background-size:28px 28px}
-.hero-arc{position:absolute;right:-200px;top:-200px;width:600px;height:600px;border-radius:50%;border:88px solid rgba(226,194,81,.055);pointer-events:none}
-.hero-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 440px;align-items:end;gap:48px;position:relative}
-.badge{display:inline-flex;align-items:center;gap:7px;background:var(--gold-t);border:1px solid rgba(226,194,81,.28);color:var(--gold);font-size:11px;font-weight:700;padding:5px 13px;border-radius:999px;margin-bottom:18px;letter-spacing:.6px;text-transform:uppercase}
-.badge-dot{width:7px;height:7px;background:var(--gold);border-radius:50%;animation:pulse 1.8s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.75)}}
-.hero h1{font-family:var(--serif);font-size:clamp(30px,4.8vw,54px);color:#fff;line-height:1.1;margin-bottom:18px}
-.hero h1 em{color:var(--gold);font-style:italic}
-.hero-desc{color:rgba(255,255,255,.63);font-size:15px;line-height:1.72;margin-bottom:28px;max-width:430px}
+.hero{
+  background:linear-gradient(160deg,var(--navy-xl) 0%,var(--navy) 55%,#1f4db8 100%);
+  padding:72px 5% 0;overflow:hidden;position:relative;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1.5' cy='1.5' r='1.5' fill='%23E2C251' fill-opacity='.04'/%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;top:-160px;right:-160px;
+  width:560px;height:560px;border-radius:50%;
+  background:radial-gradient(circle,rgba(var(--gold-rgb),.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;align-items:end;gap:52px;position:relative;z-index:1}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(var(--gold-rgb),.1);border:1px solid rgba(var(--gold-rgb),.25);
+  color:var(--gold);font-size:10.5px;font-weight:700;
+  padding:5px 13px;border-radius:999px;margin-bottom:20px;
+  letter-spacing:.8px;text-transform:uppercase;
+}
+.badge-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
+.hero h1{
+  font-size:clamp(28px,4.5vw,52px);color:#fff;
+  line-height:1.08;margin-bottom:20px;font-weight:800;letter-spacing:-.5px;
+}
+.hero h1 em{
+  color:var(--gold);font-style:normal;
+  background:linear-gradient(90deg,var(--gold) 0%,var(--gold-l) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-desc{color:rgba(255,255,255,.6);font-size:15px;line-height:1.75;margin-bottom:30px;max-width:440px}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
-.btn-primary{background:var(--gold);color:var(--navy);font-family:var(--font);font-weight:700;font-size:14px;padding:12px 24px;border:none;border-radius:var(--rs);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:background var(--t),transform var(--t)}
-.btn-primary:hover{background:var(--gold-l);transform:translateY(-1px)}
-.btn-outline{background:transparent;color:rgba(255,255,255,.8);font-family:var(--font);font-weight:600;font-size:14px;padding:11px 20px;border:1.5px solid rgba(255,255,255,.2);border-radius:var(--rs);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:border-color var(--t),color var(--t)}
-.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
-/* hero float card */
-.hfc{background:rgba(255,255,255,.065);border:1px solid rgba(255,255,255,.1);border-radius:var(--r) var(--r) 0 0;padding:24px 24px 0;position:relative}
-.hfc-lbl{font-size:10px;color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
-.hfc-ttl{font-weight:700;font-size:14px;color:#fff;margin-bottom:16px}
-.hfc-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.hfc-ico{width:32px;height:32px;border-radius:8px;background:var(--gold-t);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
-.hfc-txt{font-size:12px;color:rgba(255,255,255,.6)}
-.hfc-txt strong{color:#fff;font-weight:600;display:block;font-size:12.5px}
-.hfc-bar{height:3px;background:rgba(255,255,255,.07);border-radius:4px;margin:18px 0 20px}
-.hfc-fill{height:100%;width:68%;background:var(--gold);border-radius:4px}
-.hfc-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
-.hfc-stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:10px}
-.hfc-val{font-size:20px;font-weight:800;color:var(--gold);line-height:1}
-.hfc-sl{font-size:10px;color:rgba(255,255,255,.38);margin-top:3px}
+.btn-primary{
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-d) 100%);
+  color:var(--navy);font-family:var(--font);font-weight:700;font-size:14px;
+  padding:13px 26px;border:none;border-radius:var(--rs);cursor:pointer;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  transition:opacity var(--t),transform var(--t);
+  box-shadow:0 4px 16px rgba(var(--gold-rgb),.4);
+}
+.btn-primary:hover{opacity:.88;transform:translateY(-2px)}
+.btn-outline{
+  background:rgba(255,255,255,.06);color:rgba(255,255,255,.8);font-family:var(--font);
+  font-weight:600;font-size:14px;padding:12px 22px;
+  border:1.5px solid rgba(255,255,255,.18);border-radius:var(--rs);cursor:pointer;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  transition:all var(--t);backdrop-filter:blur(8px);
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);background:rgba(var(--gold-rgb),.07)}
+
+/* Hero Float Card */
+.hfc{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--r) var(--r) 0 0;
+  padding:26px 24px 0;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+}
+.hfc-lbl{font-size:9.5px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:4px}
+.hfc-ttl{font-weight:700;font-size:14.5px;color:#fff;margin-bottom:18px}
+.hfc-row{display:flex;align-items:center;gap:11px;margin-bottom:11px}
+.hfc-ico{
+  width:34px;height:34px;border-radius:9px;flex-shrink:0;
+  background:rgba(var(--gold-rgb),.1);border:1px solid rgba(var(--gold-rgb),.15);
+  display:flex;align-items:center;justify-content:center;font-size:14px;
+}
+.hfc-txt{font-size:12px;color:rgba(255,255,255,.55)}
+.hfc-txt strong{color:rgba(255,255,255,.9);font-weight:600;display:block;font-size:12.5px;margin-bottom:1px}
+.hfc-bar{height:3px;background:rgba(255,255,255,.07);border-radius:4px;margin:18px 0 18px}
+.hfc-fill{height:100%;width:68%;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-l) 100%);border-radius:4px}
+.hfc-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.hfc-stat{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  border-radius:10px;padding:12px 14px;
+}
+.hfc-val{font-size:22px;font-weight:800;color:var(--gold);line-height:1}
+.hfc-sl{font-size:10px;color:rgba(255,255,255,.35);margin-top:4px}
 
 /* ── STATS BAR ── */
-.stats-bar{background:var(--white);border-bottom:1px solid var(--g200)}
-.stats-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-around;padding:20px 5%;gap:16px;flex-wrap:wrap}
+.stats-bar{background:var(--white);border-bottom:1px solid var(--g200);box-shadow:var(--sh-xs)}
+.stats-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-around;padding:22px 5%;gap:16px;flex-wrap:wrap}
 .s-item{text-align:center}
-.s-num{font-size:26px;font-weight:800;color:var(--navy);line-height:1}
+.s-num{font-size:26px;font-weight:800;color:var(--navy);line-height:1;letter-spacing:-.5px}
 .s-num span{color:var(--gold)}
-.s-lbl{font-size:11.5px;color:var(--g600);margin-top:2px}
-.s-div{width:1px;height:36px;background:var(--g200)}
+.s-lbl{font-size:11.5px;color:var(--g600);margin-top:3px;font-weight:500}
+.s-div{width:1px;height:40px;background:var(--g200)}
 
 /* ── SECTION ── */
-.sec{padding:64px 5%}
+.sec{padding:72px 5%}
 .sec-in{max-width:1100px;margin:0 auto}
-.sec-hd{text-align:center;margin-bottom:44px}
-.sec-tag{display:inline-block;background:var(--gold-p);color:#7A6A10;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:4px;margin-bottom:12px}
-.sec-ttl{font-family:var(--serif);font-size:clamp(24px,3.8vw,38px);color:var(--navy);line-height:1.2}
-.sec-sub{font-size:14.5px;color:var(--g600);margin-top:8px}
+.sec-hd{text-align:center;margin-bottom:48px}
+.sec-tag{
+  display:inline-block;background:var(--gold-p);color:#7A6208;
+  font-size:10.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+  padding:4px 13px;border-radius:5px;margin-bottom:13px;
+  border:1px solid rgba(var(--gold-rgb),.25);
+}
+.sec-ttl{font-size:clamp(22px,3.5vw,36px);color:var(--navy);line-height:1.15;font-weight:800;letter-spacing:-.3px}
+.sec-sub{font-size:14.5px;color:var(--g600);margin-top:9px}
 
 /* ── JURUSAN ── */
-.jurusan-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
-.j-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--r);padding:22px 18px;transition:box-shadow var(--t),transform var(--t),border-color var(--t);cursor:default}
-.j-card:hover{box-shadow:var(--sh-md);transform:translateY(-3px);border-color:rgba(226,194,81,.5)}
-.j-ico{width:46px;height:46px;border-radius:10px;background:var(--gold-p);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:13px}
-.j-name{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:5px}
-.j-desc{font-size:12.5px;color:var(--g600);line-height:1.55}
-.j-badge{display:inline-block;margin-top:11px;background:var(--green-l);color:#0F6E56;font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:4px}
+.jurusan-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:15px}
+.j-card{
+  background:var(--white);border:1px solid var(--g200);border-radius:var(--r);
+  padding:24px 20px;
+  transition:box-shadow var(--t),transform var(--t),border-color var(--t);
+  cursor:default;position:relative;overflow:hidden;
+}
+.j-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--gold) 0%,var(--gold-l) 100%);
+  transform:scaleX(0);transform-origin:left;transition:transform .3s ease;
+  border-radius:var(--r) var(--r) 0 0;
+}
+.j-card:hover{box-shadow:var(--sh-md);transform:translateY(-4px);border-color:var(--g200)}
+.j-card:hover::before{transform:scaleX(1)}
+.j-ico{
+  width:48px;height:48px;border-radius:12px;
+  background:linear-gradient(135deg,var(--gold-p) 0%,#FEF9E8 100%);
+  border:1px solid rgba(var(--gold-rgb),.2);
+  display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:15px;
+}
+.j-name{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.35}
+.j-desc{font-size:12.5px;color:var(--g600);line-height:1.6}
+.j-badge{
+  display:inline-block;margin-top:13px;
+  background:var(--green-l);color:var(--green-d);
+  font-size:10.5px;font-weight:600;padding:3px 10px;border-radius:5px;
+  border:1px solid rgba(24,163,116,.15);
+}
 
 /* ── TIMELINE ── */
-.tl-wrap{display:grid;grid-template-columns:repeat(5,1fr);position:relative}
-.tl-wrap::before{content:'';position:absolute;top:26px;left:5%;right:5%;height:2px;background:var(--g200);z-index:0}
-.tl-item{text-align:center;position:relative;z-index:1;padding:0 8px}
-.tl-dot{width:52px;height:52px;border-radius:50%;background:var(--white);border:2px solid var(--g200);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-weight:800;font-size:15px;color:var(--g400);transition:all var(--t)}
-.tl-item.active .tl-dot{background:var(--gold);border-color:var(--gold);color:var(--navy);box-shadow:0 0 0 6px rgba(226,194,81,.2)}
-.tl-item.done .tl-dot{background:var(--green);border-color:var(--green);color:#fff}
+.tl-wrap{display:grid;grid-template-columns:repeat(5,1fr);position:relative;gap:0}
+.tl-wrap::before{content:'';position:absolute;top:26px;left:calc(10% - 2px);right:calc(10% - 2px);height:2px;background:var(--g200);z-index:0}
+.tl-item{text-align:center;position:relative;z-index:1;padding:0 10px}
+.tl-dot{
+  width:52px;height:52px;border-radius:50%;background:var(--white);
+  border:2px solid var(--g200);display:flex;align-items:center;justify-content:center;
+  margin:0 auto 13px;font-weight:700;font-size:15px;color:var(--g400);
+  transition:all .25s;
+}
+.tl-item.active .tl-dot{
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-d) 100%);
+  border-color:var(--gold);color:var(--navy);
+  box-shadow:0 0 0 6px rgba(var(--gold-rgb),.15),var(--sh);
+}
+.tl-item.done .tl-dot{background:var(--green);border-color:var(--green);color:#fff;box-shadow:0 0 0 6px rgba(24,163,116,.1)}
 .tl-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:3px}
 .tl-date{font-size:11.5px;color:var(--g600)}
 
 /* ── INFO STRIP ── */
-.info-strip{display:flex;background:rgba(226,194,81,.06);border:1px solid rgba(226,194,81,.22);border-radius:var(--r);overflow:hidden;margin-bottom:28px}
-.is-item{flex:1;display:flex;align-items:center;gap:10px;padding:14px 16px;border-right:1px solid rgba(226,194,81,.18)}
+.info-strip{
+  display:flex;
+  background:rgba(var(--gold-rgb),.05);
+  border:1px solid rgba(var(--gold-rgb),.2);
+  border-radius:var(--r);overflow:hidden;margin-bottom:28px;
+}
+.is-item{flex:1;display:flex;align-items:center;gap:11px;padding:15px 17px;border-right:1px solid rgba(var(--gold-rgb),.15)}
 .is-item:last-child{border-right:none}
 .is-ico{font-size:20px;flex-shrink:0}
-.is-txt{font-size:12.5px;color:rgba(255,255,255,.55);line-height:1.4}
-.is-txt strong{color:#fff;font-size:13px;display:block;margin-bottom:1px}
+.is-txt{font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.45}
+.is-txt strong{color:#fff;font-size:13px;display:block;margin-bottom:2px;font-weight:600}
 
-/* ── FORM SECTION WRAPPER ── */
-.form-sec{background:var(--navy);padding:64px 5%}
-.form-in{max-width:740px;margin:0 auto}
+/* ── FORM SECTION ── */
+.form-sec{background:linear-gradient(170deg,var(--navy-xl) 0%,var(--navy) 100%);padding:72px 5%;position:relative;overflow:hidden}
+.form-sec::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1.5' cy='1.5' r='1.5' fill='%23E2C251' fill-opacity='.035'/%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.form-in{max-width:720px;margin:0 auto;position:relative;z-index:1}
 .form-hd{text-align:center;margin-bottom:28px}
-.form-hd .sec-tag{background:rgba(226,194,81,.15);color:var(--gold)}
+.form-hd .sec-tag{background:rgba(var(--gold-rgb),.12);color:var(--gold);border-color:rgba(var(--gold-rgb),.25)}
 .form-hd .sec-ttl{color:#fff}
-.form-hd .sec-sub{color:rgba(255,255,255,.5)}
+.form-hd .sec-sub{color:rgba(255,255,255,.48)}
 
 /* ── FORM CARD ── */
-.fc{background:var(--white);border-radius:16px;padding:32px;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.fc{
+  background:var(--white);border-radius:18px;padding:36px;
+  box-shadow:0 24px 80px rgba(0,0,0,.28),0 4px 20px rgba(0,0,0,.12);
+}
 
 /* ── STEP INDICATOR ── */
-.fsi{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:26px}
-.fsi-s{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:var(--g400);flex-shrink:0;white-space:nowrap}
+.fsi{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:28px}
+.fsi-s{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;color:var(--g400);flex-shrink:0;white-space:nowrap}
 .fsi-s.active{color:var(--navy)}
 .fsi-s.done{color:var(--green)}
-.fsi-n{width:26px;height:26px;border-radius:50%;background:var(--g100);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;transition:background var(--t),color var(--t)}
-.fsi-s.active .fsi-n{background:var(--navy);color:#fff}
-.fsi-s.done .fsi-n{background:var(--green);color:#fff}
+.fsi-n{
+  width:28px;height:28px;border-radius:50%;
+  background:var(--g100);border:1.5px solid var(--g200);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;flex-shrink:0;transition:all var(--t);
+}
+.fsi-s.active .fsi-n{background:var(--navy);color:#fff;border-color:var(--navy);box-shadow:0 0 0 4px rgba(var(--navy-rgb),.1)}
+.fsi-s.done .fsi-n{background:var(--green);color:#fff;border-color:var(--green)}
 .fsi-lbl{display:inline}
-.fsi-ln{width:28px;height:2px;background:var(--g200);margin:0 4px;flex-shrink:0;transition:background .4s}
+.fsi-ln{width:24px;height:2px;background:var(--g200);margin:0 5px;flex-shrink:0;transition:background .4s;border-radius:2px}
 .fsi-ln.done{background:var(--green)}
 
 /* ── PROGRESS ── */
-.fp{margin-bottom:22px}
-.fp-meta{font-size:11.5px;color:var(--g600);margin-bottom:6px;display:flex;justify-content:space-between}
+.fp{margin-bottom:24px}
+.fp-meta{font-size:11.5px;color:var(--g600);margin-bottom:7px;display:flex;justify-content:space-between;font-weight:500}
 .fp-bar{height:4px;background:var(--g100);border-radius:4px;overflow:hidden}
-.fp-fill{height:100%;background:var(--gold);border-radius:4px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.fp-fill{height:100%;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-l) 100%);border-radius:4px;transition:width .45s cubic-bezier(.4,0,.2,1)}
+
+/* ── DIVIDER ── */
+.fdiv{border:none;border-top:1px solid var(--g200);margin:24px 0}
+.fsttl{font-size:10.5px;font-weight:700;color:var(--g400);text-transform:uppercase;letter-spacing:1.3px;margin-bottom:18px}
 
 /* ── FORM FIELDS ── */
 .fg{margin-bottom:18px}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.fl{display:block;font-size:12.5px;font-weight:600;color:var(--g800);margin-bottom:6px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.fl{display:block;font-size:12.5px;font-weight:600;color:var(--g800);margin-bottom:7px}
 .fl .req{color:var(--red);margin-left:2px}
 input[type="text"],input[type="date"],input[type="tel"],input[type="email"],select,textarea{
   width:100%;padding:10px 13px;
-  border:1.5px solid var(--g200);
-  border-radius:var(--rs);
-  font-family:var(--font);font-size:13.5px;
-  color:var(--g800);background:var(--white);
-  transition:border-color var(--t),box-shadow var(--t);
+  border:1.5px solid var(--g200);border-radius:var(--rs);
+  font-family:var(--font);font-size:13.5px;color:var(--g800);
+  background:var(--white);
+  transition:border-color var(--t),box-shadow var(--t),background var(--t);
   outline:none;appearance:none;-webkit-appearance:none;
 }
 input:hover,select:hover,textarea:hover{border-color:var(--g400)}
-input:focus,select:focus,textarea:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgba(27,63,160,.08)}
-input.err,select.err,textarea.err{border-color:var(--red);box-shadow:0 0 0 3px rgba(192,57,43,.08)}
-.field-err{font-size:11.5px;color:var(--red);margin-top:4px;display:none}
+input:focus,select:focus,textarea:focus{
+  border-color:var(--navy);
+  box-shadow:0 0 0 3px rgba(var(--navy-rgb),.07);
+  background:#FAFBFF;
+}
+input.err,select.err,textarea.err{border-color:var(--red);box-shadow:0 0 0 3px rgba(217,48,37,.07)}
+.field-err{font-size:11.5px;color:var(--red);margin-top:5px;display:none;font-weight:500}
 .field-err.show{display:block}
 
 /* ── RADIO ── */
-.rg{display:flex;gap:10px;flex-wrap:wrap}
-.ro{flex:1;min-width:90px;border:1.5px solid var(--g200);border-radius:var(--rs);padding:9px 12px;cursor:pointer;transition:all var(--t);display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--g600);user-select:none}
+.rg{display:flex;gap:9px;flex-wrap:wrap}
+.ro{
+  flex:1;min-width:88px;border:1.5px solid var(--g200);border-radius:var(--rs);
+  padding:9px 12px;cursor:pointer;
+  transition:all var(--t);display:flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:500;color:var(--g600);user-select:none;
+}
 .ro input[type="radio"]{display:none}
-.ro:hover{border-color:var(--navy);color:var(--navy)}
+.ro:hover{border-color:var(--navy);color:var(--navy);background:var(--g50)}
 .ro.sel{border-color:var(--navy);background:#EEF2FB;color:var(--navy)}
 .ro.err-ro{border-color:var(--red)}
-.rd{width:15px;height:15px;border-radius:50%;border:2px solid var(--g300,#ced4da);flex-shrink:0;transition:all var(--t);display:flex;align-items:center;justify-content:center}
+.rd{
+  width:15px;height:15px;border-radius:50%;border:2px solid var(--g200);
+  flex-shrink:0;transition:all var(--t);display:flex;align-items:center;justify-content:center;
+}
 .ro.sel .rd{border-color:var(--navy)}
 .ro.sel .rd::after{content:'';width:7px;height:7px;border-radius:50%;background:var(--navy)}
-.fdiv{border:none;border-top:1px solid var(--g200);margin:22px 0}
-.fsttl{font-size:10.5px;font-weight:700;color:var(--g400);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:16px}
+
+/* ── ALERT ── */
+.alert{padding:11px 14px;border-radius:var(--rs);font-size:13px;margin-bottom:14px;display:none;align-items:flex-start;gap:8px}
+.alert.err{background:var(--red-l);color:var(--red);border:1px solid rgba(217,48,37,.2)}
+.alert.show{display:flex}
 
 /* ── NAV BUTTONS ── */
 .fn{display:flex;justify-content:space-between;align-items:center;margin-top:28px;gap:12px}
-.btn-prev{background:var(--white);color:var(--g800);border:1.5px solid var(--g200);font-family:var(--font);font-weight:600;font-size:13.5px;padding:10px 20px;border-radius:var(--rs);cursor:pointer;transition:all var(--t);display:flex;align-items:center;gap:6px}
-.btn-prev:hover{border-color:var(--navy);color:var(--navy)}
-.btn-next{background:var(--navy);color:#fff;border:none;font-family:var(--font);font-weight:700;font-size:13.5px;padding:10px 24px;border-radius:var(--rs);cursor:pointer;transition:background var(--t);display:flex;align-items:center;gap:6px}
-.btn-next:hover{background:var(--navy-d)}
-.btn-sub{background:var(--gold);color:var(--navy);border:none;font-family:var(--font);font-weight:800;font-size:14.5px;padding:13px 32px;border-radius:var(--rs);cursor:pointer;transition:background var(--t),opacity var(--t);display:flex;align-items:center;gap:8px;width:100%;justify-content:center;margin-top:6px}
-.btn-sub:hover:not(:disabled){background:var(--gold-l)}
-.btn-sub:disabled{opacity:.6;cursor:not-allowed}
+.btn-prev{
+  background:var(--white);color:var(--g800);border:1.5px solid var(--g200);
+  font-family:var(--font);font-weight:600;font-size:13.5px;padding:10px 20px;
+  border-radius:var(--rs);cursor:pointer;transition:all var(--t);
+  display:flex;align-items:center;gap:6px;
+}
+.btn-prev:hover{border-color:var(--navy);color:var(--navy);background:var(--g50)}
+.btn-next{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-d) 100%);
+  color:#fff;border:none;font-family:var(--font);font-weight:700;font-size:13.5px;
+  padding:10px 24px;border-radius:var(--rs);cursor:pointer;
+  transition:opacity var(--t),transform var(--t);
+  display:flex;align-items:center;gap:6px;box-shadow:0 3px 12px rgba(var(--navy-rgb),.3);
+}
+.btn-next:hover{opacity:.88;transform:translateY(-1px)}
+.btn-sub{
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-d) 100%);
+  color:var(--navy);border:none;font-family:var(--font);font-weight:800;font-size:14.5px;
+  padding:14px 32px;border-radius:var(--rs);cursor:pointer;
+  transition:opacity var(--t),transform var(--t);
+  display:flex;align-items:center;gap:9px;width:100%;justify-content:center;margin-top:6px;
+  box-shadow:0 4px 18px rgba(var(--gold-rgb),.4);
+}
+.btn-sub:hover:not(:disabled){opacity:.88;transform:translateY(-1px)}
+.btn-sub:disabled{opacity:.55;cursor:not-allowed;transform:none}
 
-/* ── STEPS VISIBILITY ── */
+/* ── STEPS ── */
 .fstep{display:none}
-.fstep.active{display:block;animation:fadeUp .35s ease both}
-@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-
-/* ── ALERT / TOAST ── */
-.alert{padding:11px 14px;border-radius:var(--rs);font-size:13px;margin-bottom:14px;display:none;align-items:flex-start;gap:8px}
-.alert.err{background:var(--red-l);color:var(--red);border:1px solid rgba(192,57,43,.2)}
-.alert.show{display:flex}
+.fstep.active{display:block;animation:fadeUp .3s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
 /* ── SPINNER ── */
-.spin{width:16px;height:16px;border:2px solid rgba(11,29,58,.2);border-top-color:var(--navy);border-radius:50%;animation:spin .7s linear infinite;display:none;flex-shrink:0}
+.spin{width:16px;height:16px;border:2px solid rgba(27,49,58,.2);border-top-color:var(--navy);border-radius:50%;animation:spin .7s linear infinite;display:none;flex-shrink:0}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* ── NOTE ── */
-.fnote{background:rgba(27,63,160,.05);border:1px solid rgba(27,63,160,.12);border-radius:8px;padding:12px 14px;margin-bottom:18px;display:flex;align-items:flex-start;gap:8px}
-.fnote p{font-size:12px;color:var(--g600);line-height:1.65;margin:0}
+.fnote{background:var(--g50);border:1px solid var(--g200);border-radius:10px;padding:13px 15px;margin-bottom:18px;display:flex;align-items:flex-start;gap:9px}
+.fnote p{font-size:12px;color:var(--g600);line-height:1.7;margin:0}
 
 /* ── SUCCESS ── */
 .success{text-align:center;padding:32px 16px;display:none;animation:fadeUp .5s ease both}
-.success-ico{width:72px;height:72px;background:var(--green-l);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:32px}
-.success h3{font-family:var(--serif);font-size:26px;color:var(--navy);margin-bottom:10px}
-.success p{font-size:14px;color:var(--g600);max-width:380px;margin:0 auto 24px;line-height:1.7}
-.ref-box{background:var(--g50);border:1px solid var(--g200);border-radius:var(--rs);padding:14px 22px;display:inline-block;margin-bottom:24px}
-.ref-lbl{font-size:10.5px;color:var(--g600);text-transform:uppercase;letter-spacing:1px}
-.ref-num{font-size:20px;font-weight:800;color:var(--navy);margin-top:3px;letter-spacing:2px}
+.success-ico{
+  width:76px;height:76px;
+  background:linear-gradient(135deg,var(--green-l) 0%,#D0F5E8 100%);
+  border:1px solid rgba(24,163,116,.2);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 22px;font-size:32px;
+  box-shadow:0 0 0 10px rgba(24,163,116,.06);
+}
+.success h3{font-size:26px;color:var(--navy);margin-bottom:11px;font-weight:800;letter-spacing:-.3px}
+.success p{font-size:14px;color:var(--g600);max-width:380px;margin:0 auto 24px;line-height:1.75}
+.ref-box{
+  background:linear-gradient(135deg,var(--g50) 0%,var(--g100) 100%);
+  border:1px solid var(--g200);border-radius:12px;
+  padding:16px 28px;display:inline-block;margin-bottom:24px;
+}
+.ref-lbl{font-size:10.5px;color:var(--g600);text-transform:uppercase;letter-spacing:1.2px;font-weight:600}
+.ref-num{font-size:22px;font-weight:800;color:var(--navy);margin-top:4px;letter-spacing:2px}
 
 /* ── FAQ ── */
 .faq-wrap{max-width:700px;margin:0 auto}
-.faq-item{border:1px solid var(--g200);border-radius:var(--r);margin-bottom:8px;overflow:hidden}
-.faq-q{width:100%;background:var(--white);border:none;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;font-family:var(--font);font-size:14px;font-weight:600;color:var(--navy);cursor:pointer;text-align:left;transition:background var(--t)}
+.faq-item{
+  border:1px solid var(--g200);border-radius:var(--r);
+  margin-bottom:8px;overflow:hidden;
+  transition:box-shadow var(--t);
+}
+.faq-item:hover{box-shadow:var(--sh-xs)}
+.faq-q{
+  width:100%;background:var(--white);border:none;
+  padding:17px 20px;display:flex;align-items:center;justify-content:space-between;
+  font-family:var(--font);font-size:14px;font-weight:600;color:var(--navy);
+  cursor:pointer;text-align:left;transition:background var(--t);
+}
 .faq-q:hover{background:var(--g50)}
-.faq-arr{font-size:18px;color:var(--g400);transition:transform .3s;flex-shrink:0;margin-left:10px}
+.faq-arr{font-size:18px;color:var(--g400);transition:transform .3s;flex-shrink:0;margin-left:12px}
 .faq-item.open .faq-arr{transform:rotate(180deg);color:var(--navy)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s ease;padding:0 18px}
-.faq-item.open .faq-a{max-height:200px;padding:0 18px 16px}
-.faq-a p{font-size:13.5px;color:var(--g600);line-height:1.7}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s ease;padding:0 20px}
+.faq-item.open .faq-a{max-height:200px;padding:0 20px 17px}
+.faq-a p{font-size:13.5px;color:var(--g600);line-height:1.75}
 
 /* ── FOOTER ── */
-footer{background:var(--navy);color:rgba(255,255,255,.55);padding:44px 5% 20px}
+footer{background:var(--navy-xl);color:rgba(255,255,255,.5);padding:48px 5% 22px}
 .ft-in{max-width:1100px;margin:0 auto}
-.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:36px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.07)}
-.ft-name{font-weight:800;font-size:15px;color:#fff;margin-bottom:4px}
-.ft-sub{font-size:12px;margin-bottom:14px}
-.ft-addr{font-size:12.5px;line-height:1.9}
-.ft-addr a{color:var(--gold);text-decoration:none}
-.ft-addr a:hover{text-decoration:underline}
-.ft-ctitle{font-weight:700;font-size:12px;color:#fff;margin-bottom:14px;text-transform:uppercase;letter-spacing:.8px}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.07)}
+.ft-name{font-weight:800;font-size:15px;color:#fff;margin-bottom:5px;letter-spacing:-.2px}
+.ft-sub{font-size:12px;margin-bottom:15px}
+.ft-addr{font-size:12.5px;line-height:2}
+.ft-addr a{color:var(--gold);text-decoration:none;transition:opacity var(--t)}
+.ft-addr a:hover{opacity:.75}
+.ft-ctitle{font-weight:700;font-size:11px;color:rgba(255,255,255,.5);margin-bottom:15px;text-transform:uppercase;letter-spacing:1px}
 .ft-links{list-style:none}
-.ft-links li{margin-bottom:9px}
-.ft-links a{color:rgba(255,255,255,.5);font-size:13px;text-decoration:none;transition:color var(--t)}
+.ft-links li{margin-bottom:10px}
+.ft-links a{color:rgba(255,255,255,.45);font-size:13px;text-decoration:none;transition:color var(--t)}
 .ft-links a:hover{color:var(--gold)}
-.ft-bot{display:flex;align-items:center;justify-content:space-between;padding-top:18px;flex-wrap:wrap;gap:10px}
+.ft-bot{display:flex;align-items:center;justify-content:space-between;padding-top:20px;flex-wrap:wrap;gap:10px}
 .ft-copy{font-size:12px}
-.ft-badge{background:rgba(226,194,81,.1);border:1px solid rgba(226,194,81,.2);color:var(--gold);font-size:11px;font-weight:600;padding:4px 12px;border-radius:4px}
-
-/* ── FADE IN UTILITY ── */
+.ft-badge{
+  background:rgba(var(--gold-rgb),.1);border:1px solid rgba(var(--gold-rgb),.18);
+  color:var(--gold);font-size:11px;font-weight:600;padding:4px 12px;border-radius:5px;
+}
 .fadein{animation:fadeUp .5s ease both}
 
-/* ═════════════════════════════
-   RESPONSIVE MOBILE
-═════════════════════════════ */
+/* ═══ RESPONSIVE ═══ */
 @media(max-width:768px){
-  /* Navbar */
-  .navbar{padding:0 4%;height:54px}
+  .navbar{padding:0 4%;height:56px}
   .nav-links{display:none}
-  /* Hero */
-  .hero{padding:44px 4% 0}
+  .hero{padding:48px 4% 0}
   .hero-in{grid-template-columns:1fr}
   .hero-visual{display:none}
   .hero-desc{font-size:14px;max-width:100%}
-  /* Stats */
   .stats-in{padding:18px 4%;gap:14px}
   .s-div{display:none}
   .s-num{font-size:22px}
-  /* Sections */
-  .sec{padding:48px 4%}
-  /* Jurusan */
+  .sec{padding:52px 4%}
   .jurusan-grid{grid-template-columns:1fr 1fr;gap:10px}
   .j-card{padding:16px 14px}
-  /* Timeline */
   .tl-wrap{grid-template-columns:1fr;gap:0}
   .tl-wrap::before{display:none}
   .tl-item{display:flex;align-items:flex-start;gap:14px;text-align:left;padding-bottom:20px}
   .tl-item:last-child{padding-bottom:0}
   .tl-dot{margin:0;flex-shrink:0;width:44px;height:44px;font-size:13px}
-  /* Info strip */
   .info-strip{flex-direction:column}
-  .is-item{border-right:none;border-bottom:1px solid rgba(226,194,81,.18)}
+  .is-item{border-right:none;border-bottom:1px solid rgba(var(--gold-rgb),.15)}
   .is-item:last-child{border-bottom:none}
-  /* Form */
-  .form-sec{padding:48px 4%}
-  .fc{padding:20px 16px;border-radius:12px}
-  /* Step indicator */
+  .form-sec{padding:52px 4%}
+  .fc{padding:22px 16px;border-radius:14px}
   .fsi-lbl{display:none}
   .fsi-s{gap:0}
-  .fsi-ln{width:18px;margin:0 3px}
+  .fsi-ln{width:16px;margin:0 3px}
   .fsi-n{width:30px;height:30px;font-size:12px}
-  /* Form rows */
   .frow{grid-template-columns:1fr;gap:0}
   .frow .fg{margin-bottom:16px}
-  /* Nav buttons */
   .fn{flex-direction:column-reverse;gap:10px}
   .btn-prev,.btn-next{width:100%;justify-content:center}
-  .btn-sub{font-size:14px;padding:12px 24px}
-  /* Radio */
+  .btn-sub{font-size:14px;padding:13px 24px}
   .rg{gap:8px}
   .ro{font-size:12.5px;padding:8px 10px}
-  /* Footer */
-  .ft-top{grid-template-columns:1fr;gap:26px}
+  .ft-top{grid-template-columns:1fr;gap:28px}
   .ft-bot{flex-direction:column;align-items:flex-start;gap:8px}
 }
 @media(max-width:400px){
   .jurusan-grid{grid-template-columns:1fr}
-  .nav-cta{font-size:11px;padding:7px 12px}
+  .nav-cta{font-size:11.5px;padding:7px 12px}
 }
 </style>
 </head>
 <body>
 
-<!-- Skip nav for accessibility -->
 <a class="sr-only" href="#daftar">Lompat ke formulir pendaftaran</a>
 
-<!-- ══ NAVBAR ══ -->
+<!-- NAVBAR -->
 <nav class="navbar" role="navigation" aria-label="Navigasi utama">
   <a class="nav-brand" href="#" aria-label="SMK Ciledug Al Musaddadiyah Garut">
     <div class="nav-logo" aria-hidden="true">SMK</div>
@@ -341,13 +502,11 @@ footer{background:var(--navy);color:rgba(255,255,255,.55);padding:44px 5% 20px}
   <a href="#daftar" class="nav-cta">Daftar Sekarang →</a>
 </nav>
 
-<!-- ══ HERO ══ -->
+<!-- HERO -->
 <section class="hero" aria-label="Informasi SPMB">
-  <div class="hero-dots" aria-hidden="true"></div>
-  <div class="hero-arc" aria-hidden="true"></div>
   <div class="hero-in">
     <div class="fadein">
-      <div class="badge" role="status"><span class="badge-dot" aria-hidden="true"></span> SPMB 2026/2027 Dibuka</div>
+      <div class="badge" role="status"><span class="badge-dot" aria-hidden="true"></span>SPMB 2026/2027 Dibuka</div>
       <h1>Wujudkan <em>Masa Depan</em><br>Bersama Kami</h1>
       <p class="hero-desc">SMK Ciledug Al Musaddadiyah Garut membuka pendaftaran peserta didik baru Tahun Ajaran 2026/2027. Bergabunglah bersama ribuan alumni yang telah sukses di bidangnya.</p>
       <div class="hero-actions">
@@ -372,7 +531,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.55);padding:44px 5% 20px}
   </div>
 </section>
 
-<!-- ══ STATS BAR ══ -->
+<!-- STATS BAR -->
 <div class="stats-bar" role="region" aria-label="Statistik sekolah">
   <div class="stats-in">
     <div class="s-item"><div class="s-num">28<span>+</span></div><div class="s-lbl">Tahun Berpengalaman</div></div>
@@ -381,13 +540,13 @@ footer{background:var(--navy);color:rgba(255,255,255,.55);padding:44px 5% 20px}
     <div class="s-div" aria-hidden="true"></div>
     <div class="s-item"><div class="s-num">7</div><div class="s-lbl">Program Keahlian</div></div>
     <div class="s-div" aria-hidden="true"></div>
-    <div class="s-item"><div class="s-num">30<span>+</span></div><div class="s-lbl"> Guru Tersertifikasi Profesional</div></div>
+    <div class="s-item"><div class="s-num">30<span>+</span></div><div class="s-lbl">Guru Tersertifikasi Profesional</div></div>
     <div class="s-div" aria-hidden="true"></div>
     <div class="s-item"><div class="s-num">A<span>+</span></div><div class="s-lbl">Akreditasi BAN-S/M</div></div>
   </div>
 </div>
 
-<!-- ══ JURUSAN ══ -->
+<!-- JURUSAN -->
 <section class="sec" id="jurusan" aria-labelledby="ttl-jurusan">
   <div class="sec-in">
     <div class="sec-hd">
@@ -396,19 +555,19 @@ footer{background:var(--navy);color:rgba(255,255,255,.55);padding:44px 5% 20px}
       <p class="sec-sub">7 program keahlian unggulan yang relevan dengan kebutuhan industri masa kini</p>
     </div>
     <div class="jurusan-grid">
-      <article class="j-card"><div class="j-ico" aria-hidden="true">📊</div><h3 class="j-name">Akuntansi Keuangan Lembaga</h3><p class="j-desc">Kuasai ilmu keuangan, pembukuan, dan manajemen akuntansi untuk karir di perbankan dan perusahaan.</p><span class="j-badge">Kuota Tersisa</span></article>
-      <article class="j-card"><div class="j-ico" aria-hidden="true">🛒</div><h3 class="j-name">Bisnis Digital</h3><p class="j-desc">Pelajari e-commerce, digital marketing, dan strategi bisnis online untuk era ekonomi digital.</p><span class="j-badge">Kuota Tersisa</span></article>
-      <article class="j-card"><div class="j-ico" aria-hidden="true">🎨</div><h3 class="j-name">Desain Komunikasi Visual</h3><p class="j-desc">Ekspresikan kreativitasmu lewat desain grafis, branding, dan multimedia visual profesional.</p><span class="j-badge">Kuota Tersisa</span></article>
-      <article class="j-card"><div class="j-ico" aria-hidden="true">🌐</div><h3 class="j-name">Teknik Komputer &amp; Jaringan</h3><p class="j-desc">Kuasai infrastruktur IT, networking, dan keamanan siber yang dibutuhkan industri teknologi.</p><span class="j-badge">Kuota Tersisa</span></article>
-      <article class="j-card"><div class="j-ico" aria-hidden="true">🚗</div><h3 class="j-name">Teknik Kendaraan Ringan</h3><p class="j-desc">Teknik perawatan dan perbaikan kendaraan ringan sesuai standar bengkel resmi.</p><span class="j-badge">Kuota Tersisa</span></article>
-      <article class="j-card"><div class="j-ico" aria-hidden="true">🏍️</div><h3 class="j-name">Teknik Sepeda Motor</h3><p class="j-desc">Spesialisasi sepeda motor dengan bekal teknis dan jiwa wirausaha untuk membuka usaha sendiri.</p><span class="j-badge">Kuota Tersisa</span></article>
-      <article class="j-card"><div class="j-ico" aria-hidden="true">🗂️</div><h3 class="j-name">Manajemen Perkantoran</h3><p class="j-desc">Kuasai administrasi modern, korespondensi, dan manajemen kantor berbasis teknologi terkini.</p><span class="j-badge">Kuota Tersisa</span></article>
+      <article class="j-card"><div class="j-ico">📊</div><h3 class="j-name">Akuntansi Keuangan Lembaga</h3><p class="j-desc">Kuasai ilmu keuangan, pembukuan, dan manajemen akuntansi untuk karir di perbankan dan perusahaan.</p><span class="j-badge">Kuota Tersisa</span></article>
+      <article class="j-card"><div class="j-ico">🛒</div><h3 class="j-name">Bisnis Digital</h3><p class="j-desc">Pelajari e-commerce, digital marketing, dan strategi bisnis online untuk era ekonomi digital.</p><span class="j-badge">Kuota Tersisa</span></article>
+      <article class="j-card"><div class="j-ico">🎨</div><h3 class="j-name">Desain Komunikasi Visual</h3><p class="j-desc">Ekspresikan kreativitasmu lewat desain grafis, branding, dan multimedia visual profesional.</p><span class="j-badge">Kuota Tersisa</span></article>
+      <article class="j-card"><div class="j-ico">🌐</div><h3 class="j-name">Teknik Komputer &amp; Jaringan</h3><p class="j-desc">Kuasai infrastruktur IT, networking, dan keamanan siber yang dibutuhkan industri teknologi.</p><span class="j-badge">Kuota Tersisa</span></article>
+      <article class="j-card"><div class="j-ico">🚗</div><h3 class="j-name">Teknik Kendaraan Ringan</h3><p class="j-desc">Teknik perawatan dan perbaikan kendaraan ringan sesuai standar bengkel resmi.</p><span class="j-badge">Kuota Tersisa</span></article>
+      <article class="j-card"><div class="j-ico">🏍️</div><h3 class="j-name">Teknik Sepeda Motor</h3><p class="j-desc">Spesialisasi sepeda motor dengan bekal teknis dan jiwa wirausaha untuk membuka usaha sendiri.</p><span class="j-badge">Kuota Tersisa</span></article>
+      <article class="j-card"><div class="j-ico">🗂️</div><h3 class="j-name">Manajemen Perkantoran</h3><p class="j-desc">Kuasai administrasi modern, korespondensi, dan manajemen kantor berbasis teknologi terkini.</p><span class="j-badge">Kuota Tersisa</span></article>
     </div>
   </div>
 </section>
 
-<!-- ══ JADWAL ══ -->
-<section class="sec" id="jadwal" style="background:var(--white);padding:60px 5%" aria-labelledby="ttl-jadwal">
+<!-- JADWAL -->
+<section class="sec" id="jadwal" style="background:var(--white);padding:64px 5%" aria-labelledby="ttl-jadwal">
   <div class="sec-in">
     <div class="sec-hd">
       <div class="sec-tag">Jadwal SPMB</div>
@@ -425,7 +584,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.55);padding:44px 5% 20px}
   </div>
 </section>
 
-<!-- ══ FORM ══ -->
+<!-- FORM -->
 <section class="form-sec" id="daftar" aria-labelledby="ttl-daftar">
   <div class="form-in">
     <div class="form-hd">
@@ -435,9 +594,9 @@ footer{background:var(--navy);color:rgba(255,255,255,.55);padding:44px 5% 20px}
     </div>
 
     <div class="info-strip" role="note" aria-label="Persiapan pendaftaran">
-      <div class="is-item"><div class="is-ico" aria-hidden="true">📄</div><div class="is-txt"><strong>Siapkan Dokumen</strong>Ijazah, KK, Akta Lahir, NISN</div></div>
-      <div class="is-item"><div class="is-ico" aria-hidden="true">✍️</div><div class="is-txt"><strong>Isi Data Lengkap</strong>Sesuai dokumen asli yang dimiliki</div></div>
-      <div class="is-item"><div class="is-ico" aria-hidden="true">✅</div><div class="is-txt"><strong>Tersimpan Otomatis</strong>Langsung masuk ke sistem panitia</div></div>
+      <div class="is-item"><div class="is-ico">📄</div><div class="is-txt"><strong>Siapkan Dokumen</strong>Ijazah, KK, Akta Lahir, NISN</div></div>
+      <div class="is-item"><div class="is-ico">✍️</div><div class="is-txt"><strong>Isi Data Lengkap</strong>Sesuai dokumen asli yang dimiliki</div></div>
+      <div class="is-item"><div class="is-ico">✅</div><div class="is-txt"><strong>Tersimpan Otomatis</strong>Langsung masuk ke sistem panitia</div></div>
     </div>
 
     <div class="fc" role="main">
@@ -453,7 +612,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.55);padding:44px 5% 20px}
         <div class="fsi-s" id="fsi4"><div class="fsi-n">4</div><span class="fsi-lbl">Orang Tua</span></div>
       </nav>
 
-      <!-- Progress Bar -->
+      <!-- Progress -->
       <div class="fp" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" id="fpBar">
         <div class="fp-meta">
           <span id="fpLbl">Langkah 1 dari 4 — Identitas Peserta Didik</span>
@@ -462,10 +621,10 @@ footer{background:var(--navy);color:rgba(255,255,255,.55);padding:44px 5% 20px}
         <div class="fp-bar"><div class="fp-fill" id="fpFill" style="width:25%"></div></div>
       </div>
 
-      <!-- Alert Box -->
+      <!-- Alert -->
       <div class="alert err" id="alertBox" role="alert" aria-live="assertive"></div>
 
-      <!-- ── STEP 1: Identitas Peserta Didik ── -->
+      <!-- STEP 1 -->
       <fieldset class="fstep active" id="step1" aria-labelledby="s1-ttl">
         <legend class="fsttl" id="s1-ttl">📋 Identitas Calon Peserta Didik</legend>
         <div class="fg"><label class="fl" for="namaLengkap">Nama Lengkap <span class="req" aria-hidden="true">*</span></label><input type="text" id="namaLengkap" autocomplete="name" placeholder="Sesuai ijazah / akta lahir" required><div class="field-err" id="e-namaLengkap">Nama lengkap wajib diisi.</div></div>
@@ -497,7 +656,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.55);padding:44px 5% 20px}
         <div class="fn"><div></div><button type="button" class="btn-next" onclick="goStep(2)">Lanjut — Alamat &amp; Info →</button></div>
       </fieldset>
 
-      <!-- ── STEP 2: Alamat ── -->
+      <!-- STEP 2 -->
       <fieldset class="fstep" id="step2" aria-labelledby="s2-ttl">
         <legend class="fsttl" id="s2-ttl">🏠 Alamat Tempat Tinggal</legend>
         <div class="frow">
@@ -523,7 +682,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.55);padding:44px 5% 20px}
         <div class="fn"><button type="button" class="btn-prev" onclick="goStep(1)">← Kembali</button><button type="button" class="btn-next" onclick="goStep(3)">Lanjut — Asal Sekolah →</button></div>
       </fieldset>
 
-      <!-- ── STEP 3: Asal Sekolah ── -->
+      <!-- STEP 3 -->
       <fieldset class="fstep" id="step3" aria-labelledby="s3-ttl">
         <legend class="fsttl" id="s3-ttl">🏫 Data Asal Sekolah</legend>
         <div class="fg"><label class="fl">Jenis Asal Sekolah <span class="req" aria-hidden="true">*</span></label><div class="rg" role="radiogroup"><label class="ro" onclick="pickRadio(this,'jenisSekolah','Negeri')"><input type="radio" name="jenisSekolah" value="Negeri"><div class="rd" aria-hidden="true"></div>Negeri</label><label class="ro" onclick="pickRadio(this,'jenisSekolah','Swasta')"><input type="radio" name="jenisSekolah" value="Swasta"><div class="rd" aria-hidden="true"></div>Swasta</label></div><div class="field-err" id="e-jenisSekolah">Jenis sekolah wajib dipilih.</div></div>
@@ -541,7 +700,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.55);padding:44px 5% 20px}
         <div class="fn"><button type="button" class="btn-prev" onclick="goStep(2)">← Kembali</button><button type="button" class="btn-next" onclick="goStep(4)">Lanjut — Orang Tua/Wali →</button></div>
       </fieldset>
 
-      <!-- ── STEP 4: Orang Tua ── -->
+      <!-- STEP 4 -->
       <fieldset class="fstep" id="step4" aria-labelledby="s4-ttl">
         <legend class="fsttl" id="s4-ttl">👨 Data Ayah Kandung</legend>
         <div class="frow">
@@ -561,7 +720,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.55);padding:44px 5% 20px}
           <div class="fg"><label class="fl" for="noHpAyah">No. HP Ayah</label><input type="tel" id="noHpAyah" inputmode="tel" placeholder="08xx-xxxx-xxxx"></div>
         </div>
         <div class="fg"><label class="fl" for="alamatAyah">Alamat Lengkap Ayah</label><textarea id="alamatAyah" rows="2" placeholder="Dusun / RT-RW / Desa / Kecamatan"></textarea></div>
-
         <hr class="fdiv">
         <div class="fsttl">👩 Data Ibu Kandung</div>
         <div class="frow">
@@ -581,7 +739,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.55);padding:44px 5% 20px}
           <div class="fg"><label class="fl" for="noHpIbu">No. HP Ibu <span class="req" aria-hidden="true">*</span></label><input type="tel" id="noHpIbu" inputmode="tel" placeholder="08xx-xxxx-xxxx"><div class="field-err" id="e-noHpIbu">No. HP ibu wajib diisi.</div></div>
         </div>
         <div class="fg"><label class="fl" for="alamatIbu">Alamat Lengkap Ibu</label><textarea id="alamatIbu" rows="2" placeholder="Dusun / RT-RW / Desa / Kecamatan"></textarea></div>
-
         <hr class="fdiv">
         <div class="fsttl">🧑‍💼 Data Wali (isi apabila berbeda dengan orang tua)</div>
         <div class="frow">
@@ -600,7 +757,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.55);padding:44px 5% 20px}
           <div class="fg"><label class="fl" for="noHpWali">No. HP Wali</label><input type="tel" id="noHpWali" inputmode="tel" placeholder="08xx-xxxx-xxxx"></div>
           <div class="fg"><label class="fl" for="alamatWali">Alamat Wali</label><input type="text" id="alamatWali" placeholder="Dusun / RT-RW / Desa"></div>
         </div>
-
         <hr class="fdiv">
         <div class="fnote" role="note">
           <span style="font-size:16px;flex-shrink:0" aria-hidden="true">ℹ️</span>
@@ -615,7 +771,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.55);padding:44px 5% 20px}
         </div>
       </fieldset>
 
-      <!-- ── SUCCESS ── -->
+      <!-- SUCCESS -->
       <div class="success" id="successScreen" role="status" aria-live="polite">
         <div class="success-ico" aria-hidden="true">🎉</div>
         <h3>Pendaftaran Berhasil!</h3>
@@ -624,15 +780,15 @@ footer{background:var(--navy);color:rgba(255,255,255,.55);padding:44px 5% 20px}
           <div class="ref-lbl">Nomor Referensi Pendaftaran</div>
           <div class="ref-num" id="refNum">—</div>
         </div>
-        <p style="font-size:12.5px;color:var(--g600);margin-bottom:20px">Simpan nomor referensi ini untuk keperluan verifikasi lebih lanjut.</p>
+        <p style="font-size:12.5px;color:var(--g600);margin-bottom:22px">Simpan nomor referensi ini untuk keperluan verifikasi lebih lanjut.</p>
         <a href="#jurusan" class="btn-primary" style="display:inline-flex;margin:0 auto">← Kembali ke Beranda</a>
       </div>
 
-    </div><!-- /.fc -->
+    </div>
   </div>
 </section>
 
-<!-- ══ FAQ ══ -->
+<!-- FAQ -->
 <section class="sec" id="faq" aria-labelledby="ttl-faq">
   <div class="sec-in">
     <div class="sec-hd">
@@ -650,7 +806,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.55);padding:44px 5% 20px}
   </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
+<!-- FOOTER -->
 <footer>
   <div class="ft-in">
     <div class="ft-top">
@@ -690,233 +846,173 @@ footer{background:var(--navy);color:rgba(255,255,255,.55);padding:44px 5% 20px}
 </footer>
 
 <script>
-/* ═══════════════════════════════════════════════
-   SPMB FORM LOGIC — OPTIMIZED
-   - Per-field inline error (lebih ramah UX)
-   - Retry otomatis dengan exponential backoff
-   - Validasi email & numerik lebih ketat
-   - Scroll ke field error teratas
-   - Data tersimpan di closure (tidak global)
-═══════════════════════════════════════════════ */
 (function(){
   'use strict';
+  const SCRIPT_URL='https://script.google.com/macros/s/AKfycbzJuZDxkC-mGEWzwplPTU5Y8ucW9BZGp2ZEhRiFFQGPSiYQ8NpEC1TA5KmQzgaYAIqw/exec';
+  const TOTAL=4;
+  let cur=1,fd={};
+  const $=id=>document.getElementById(id);
+  const val=id=>{const e=$(id);return e?e.value.trim():''};
+  const rad=name=>{const e=document.querySelector(`input[name="${name}"]:checked`);return e?e.value:''};
+  const isEmail=s=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
+  const isPhone=s=>/^[0-9+\-\s]{8,16}$/.test(s);
+  const digits=s=>/^[0-9]+$/.test(s);
 
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzJuZDxkC-mGEWzwplPTU5Y8ucW9BZGp2ZEhRiFFQGPSiYQ8NpEC1TA5KmQzgaYAIqw/exec';
-  const TOTAL = 4;
-  let cur = 1;
-  let fd = {}; // form data accumulator
-
-  /* ── Helpers ── */
-  const $ = id => document.getElementById(id);
-  const val = id => { const e = $(id); return e ? e.value.trim() : ''; };
-  const rad = name => { const e = document.querySelector(`input[name="${name}"]:checked`); return e ? e.value : ''; };
-  const isEmail = s => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
-  const isPhone = s => /^[0-9+\-\s]{8,16}$/.test(s);
-  const digitsOnly = s => /^[0-9]+$/.test(s);
-
-  /* ── Radio selection ── */
-  window.pickRadio = function(lbl, name, value) {
-    document.querySelectorAll(`[onclick*="'${name}'"]`).forEach(el => el.classList.remove('sel'));
+  window.pickRadio=function(lbl,name){
+    document.querySelectorAll(`[onclick*="'${name}'"]`).forEach(el=>el.classList.remove('sel'));
     lbl.classList.add('sel');
-    lbl.querySelector('input[type="radio"]').checked = true;
-    clearFieldErr('e-' + name);
+    lbl.querySelector('input[type="radio"]').checked=true;
+    clearErr('e-'+name);
   };
 
-  /* ── FAQ toggle ── */
-  window.toggleFaq = function(btn) {
-    const item = btn.closest('.faq-item');
-    const wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-q').setAttribute('aria-expanded','false'); });
-    if (!wasOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+  window.toggleFaq=function(btn){
+    const item=btn.closest('.faq-item'),wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-q').setAttribute('aria-expanded','false')});
+    if(!wasOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true')}
   };
 
-  /* ── Inline field errors ── */
-  function setFieldErr(eid, show) {
-    const el = $(eid);
-    if (!el) return;
-    el.classList.toggle('show', show);
-    // find associated input/select/radio group
-    const inputId = eid.replace('e-','');
-    const input = $(inputId);
-    if (input) input.classList.toggle('err', show);
+  function setErr(id,show){
+    const el=$(id);if(!el)return;
+    el.classList.toggle('show',show);
+    const inp=$(id.replace('e-',''));
+    if(inp)inp.classList.toggle('err',show);
   }
-  function clearFieldErr(eid) { setFieldErr(eid, false); }
-  function clearAllErr() {
-    document.querySelectorAll('.field-err').forEach(e => e.classList.remove('show'));
-    document.querySelectorAll('.err-ro').forEach(e => e.classList.remove('err-ro'));
-    document.querySelectorAll('input.err,select.err,textarea.err').forEach(e => e.classList.remove('err'));
+  function clearErr(id){setErr(id,false)}
+  function clearAll(){
+    document.querySelectorAll('.field-err').forEach(e=>e.classList.remove('show'));
+    document.querySelectorAll('input.err,select.err,textarea.err').forEach(e=>e.classList.remove('err'));
     $('alertBox').classList.remove('show');
   }
-
-  /* ── Scroll to first error ── */
-  function scrollToFirstErr() {
-    const el = document.querySelector('.field-err.show, .alert.show');
-    if (el) el.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  function scrollErr(){
+    const el=document.querySelector('.field-err.show,.alert.show');
+    if(el)el.scrollIntoView({behavior:'smooth',block:'nearest'});
   }
 
-  /* ── Step validation ── */
-  const rules = {
-    1: [
-      ['namaLengkap', v => !!v, 'e-namaLengkap'],
-      ['jenisKelamin', (v,r) => !!r('jenisKelamin'), 'e-jenisKelamin', true],
-      ['nisn', v => digitsOnly(v) && v.length === 10, 'e-nisn'],
-      ['nik', v => digitsOnly(v) && v.length === 16, 'e-nik'],
-      ['nomorIjazah', v => !!v, 'e-nomorIjazah'],
-      ['nomorSkhun', v => !!v, 'e-nomorSkhun'],
-      ['tempatLahir', v => !!v, 'e-tempatLahir'],
-      ['tanggalLahir', v => !!v, 'e-tanggalLahir'],
-      ['noHpSiswa', v => isPhone(v), 'e-noHpSiswa'],
-      ['emailSiswa', v => isEmail(v), 'e-emailSiswa'],
-      ['berkebutuhanKhusus', v => !!v, 'e-berkebutuhanKhusus'],
-      ['pip', (v,r) => !!r('pip'), 'e-pip', true],
-      ['tinggiBadan', v => !!v && !isNaN(parseFloat(v)), 'e-tinggiBadan'],
+  const rules={
+    1:[
+      ['namaLengkap',v=>!!v,'e-namaLengkap'],
+      ['jenisKelamin',(v,r)=>!!r('jenisKelamin'),'e-jenisKelamin'],
+      ['nisn',v=>digits(v)&&v.length===10,'e-nisn'],
+      ['nik',v=>digits(v)&&v.length===16,'e-nik'],
+      ['nomorIjazah',v=>!!v,'e-nomorIjazah'],
+      ['nomorSkhun',v=>!!v,'e-nomorSkhun'],
+      ['tempatLahir',v=>!!v,'e-tempatLahir'],
+      ['tanggalLahir',v=>!!v,'e-tanggalLahir'],
+      ['noHpSiswa',v=>isPhone(v),'e-noHpSiswa'],
+      ['emailSiswa',v=>isEmail(v),'e-emailSiswa'],
+      ['berkebutuhanKhusus',v=>!!v,'e-berkebutuhanKhusus'],
+      ['pip',(v,r)=>!!r('pip'),'e-pip'],
+      ['tinggiBadan',v=>!!v&&!isNaN(parseFloat(v)),'e-tinggiBadan'],
     ],
-    2: [
-      ['dusunRtRw','e-dusunRtRw'],['kelurahan','e-kelurahan'],
-      ['kecamatan','e-kecamatan'],['kabupaten','e-kabupaten'],
-      ['provinsi','e-provinsi'],['jenisTinggal','e-jenisTinggal'],
-      ['transportasi','e-transportasi'],['jarakTempuh','e-jarakTempuh'],
-      ['waktuTempuh','e-waktuTempuh'],['jumlahSaudara','e-jumlahSaudara'],
+    2:[
+      ['dusunRtRw',v=>!!v,'e-dusunRtRw'],['kelurahan',v=>!!v,'e-kelurahan'],
+      ['kecamatan',v=>!!v,'e-kecamatan'],['kabupaten',v=>!!v,'e-kabupaten'],
+      ['provinsi',v=>!!v,'e-provinsi'],['jenisTinggal',v=>!!v,'e-jenisTinggal'],
+      ['transportasi',v=>!!v,'e-transportasi'],['jarakTempuh',v=>!!v,'e-jarakTempuh'],
+      ['waktuTempuh',v=>!!v,'e-waktuTempuh'],['jumlahSaudara',v=>!!v,'e-jumlahSaudara'],
     ],
-    3: [
-      ['jenisSekolah', (v,r) => !!r('jenisSekolah'), 'e-jenisSekolah', true],
-      ['namaSekolah','e-namaSekolah'],['kecamatanSekolah','e-kecamatanSekolah'],
-      ['kabupatenSekolah','e-kabupatenSekolah'],['provinsiSekolah','e-provinsiSekolah'],
-      ['pilihan1','e-pilihan1'],
+    3:[
+      ['jenisSekolah',(v,r)=>!!r('jenisSekolah'),'e-jenisSekolah'],
+      ['namaSekolah',v=>!!v,'e-namaSekolah'],
+      ['kecamatanSekolah',v=>!!v,'e-kecamatanSekolah'],
+      ['kabupatenSekolah',v=>!!v,'e-kabupatenSekolah'],
+      ['provinsiSekolah',v=>!!v,'e-provinsiSekolah'],
+      ['pilihan1',v=>!!v,'e-pilihan1'],
     ],
-    4: [
-      ['namaAyah','e-namaAyah'],
-      ['ayahHidup', (v,r) => !!r('ayahHidup'), 'e-ayahHidup', true],
-      ['namaIbu','e-namaIbu'],
-      ['ibuHidup', (v,r) => !!r('ibuHidup'), 'e-ibuHidup', true],
-      ['noHpIbu', v => isPhone(v), 'e-noHpIbu'],
+    4:[
+      ['namaAyah',v=>!!v,'e-namaAyah'],
+      ['ayahHidup',(v,r)=>!!r('ayahHidup'),'e-ayahHidup'],
+      ['namaIbu',v=>!!v,'e-namaIbu'],
+      ['ibuHidup',(v,r)=>!!r('ibuHidup'),'e-ibuHidup'],
+      ['noHpIbu',v=>isPhone(v),'e-noHpIbu'],
     ],
   };
 
-  function validateStep(step) {
-    clearAllErr();
-    let ok = true;
-    const list = rules[step] || [];
-    for (const rule of list) {
-      // Flexible rule format: [field, fn, eid, isRadio] or [field, eid] (shorthand for required)
-      let field, fn, eid;
-      if (typeof rule[1] === 'function') {
-        [field, fn, eid] = rule;
-      } else {
-        [field, eid] = rule;
-        fn = v => !!v;
-      }
-      const v = val(field);
-      const pass = fn(v, rad);
-      if (!pass) { setFieldErr(eid, true); ok = false; }
+  function validate(step){
+    clearAll();let ok=true;
+    for(const[field,fn,eid]of(rules[step]||[])){
+      if(!fn(val(field),rad)){setErr(eid,true);ok=false}
     }
-    if (!ok) scrollToFirstErr();
+    if(!ok)scrollErr();
     return ok;
   }
 
-  /* ── Save step data ── */
-  function saveStep(step) {
-    if (step === 1) Object.assign(fd, { namaLengkap:val('namaLengkap'), jenisKelamin:rad('jenisKelamin'), nisn:val('nisn'), nik:val('nik'), nomorIjazah:val('nomorIjazah'), nomorSkhun:val('nomorSkhun'), tempatLahir:val('tempatLahir'), tanggalLahir:val('tanggalLahir'), noHpSiswa:val('noHpSiswa'), emailSiswa:val('emailSiswa'), medsos:val('medsos'), berkebutuhanKhusus:val('berkebutuhanKhusus'), pip:rad('pip'), tinggiBadan:val('tinggiBadan') });
-    else if (step === 2) Object.assign(fd, { dusunRtRw:val('dusunRtRw'), kelurahan:val('kelurahan'), kecamatan:val('kecamatan'), kabupaten:val('kabupaten'), provinsi:val('provinsi'), jenisTinggal:val('jenisTinggal'), transportasi:val('transportasi'), jarakTempuh:val('jarakTempuh'), waktuTempuh:val('waktuTempuh'), jumlahSaudara:val('jumlahSaudara') });
-    else if (step === 3) Object.assign(fd, { jenisSekolah:rad('jenisSekolah'), namaSekolah:val('namaSekolah'), kecamatanSekolah:val('kecamatanSekolah'), kabupatenSekolah:val('kabupatenSekolah'), provinsiSekolah:val('provinsiSekolah'), pilihan1:val('pilihan1'), pilihan2:val('pilihan2'), pilihan3:val('pilihan3') });
-    else if (step === 4) Object.assign(fd, { namaAyah:val('namaAyah'), ayahHidup:rad('ayahHidup'), tempatLahirAyah:val('tempatLahirAyah'), tanggalLahirAyah:val('tanggalLahirAyah'), pekerjaanAyah:val('pekerjaanAyah'), pendidikanAyah:val('pendidikanAyah'), penghasilanAyah:val('penghasilanAyah'), noHpAyah:val('noHpAyah'), alamatAyah:val('alamatAyah'), namaIbu:val('namaIbu'), ibuHidup:rad('ibuHidup'), tempatLahirIbu:val('tempatLahirIbu'), tanggalLahirIbu:val('tanggalLahirIbu'), pekerjaanIbu:val('pekerjaanIbu'), pendidikanIbu:val('pendidikanIbu'), penghasilanIbu:val('penghasilanIbu'), noHpIbu:val('noHpIbu'), alamatIbu:val('alamatIbu'), namaWali:val('namaWali'), pekerjaanWali:val('pekerjaanWali'), tempatLahirWali:val('tempatLahirWali'), tanggalLahirWali:val('tanggalLahirWali'), pendidikanWali:val('pendidikanWali'), penghasilanWali:val('penghasilanWali'), noHpWali:val('noHpWali'), alamatWali:val('alamatWali') });
+  function save(step){
+    if(step===1)Object.assign(fd,{namaLengkap:val('namaLengkap'),jenisKelamin:rad('jenisKelamin'),nisn:val('nisn'),nik:val('nik'),nomorIjazah:val('nomorIjazah'),nomorSkhun:val('nomorSkhun'),tempatLahir:val('tempatLahir'),tanggalLahir:val('tanggalLahir'),noHpSiswa:val('noHpSiswa'),emailSiswa:val('emailSiswa'),medsos:val('medsos'),berkebutuhanKhusus:val('berkebutuhanKhusus'),pip:rad('pip'),tinggiBadan:val('tinggiBadan')});
+    else if(step===2)Object.assign(fd,{dusunRtRw:val('dusunRtRw'),kelurahan:val('kelurahan'),kecamatan:val('kecamatan'),kabupaten:val('kabupaten'),provinsi:val('provinsi'),jenisTinggal:val('jenisTinggal'),transportasi:val('transportasi'),jarakTempuh:val('jarakTempuh'),waktuTempuh:val('waktuTempuh'),jumlahSaudara:val('jumlahSaudara')});
+    else if(step===3)Object.assign(fd,{jenisSekolah:rad('jenisSekolah'),namaSekolah:val('namaSekolah'),kecamatanSekolah:val('kecamatanSekolah'),kabupatenSekolah:val('kabupatenSekolah'),provinsiSekolah:val('provinsiSekolah'),pilihan1:val('pilihan1'),pilihan2:val('pilihan2'),pilihan3:val('pilihan3')});
+    else if(step===4)Object.assign(fd,{namaAyah:val('namaAyah'),ayahHidup:rad('ayahHidup'),tempatLahirAyah:val('tempatLahirAyah'),tanggalLahirAyah:val('tanggalLahirAyah'),pekerjaanAyah:val('pekerjaanAyah'),pendidikanAyah:val('pendidikanAyah'),penghasilanAyah:val('penghasilanAyah'),noHpAyah:val('noHpAyah'),alamatAyah:val('alamatAyah'),namaIbu:val('namaIbu'),ibuHidup:rad('ibuHidup'),tempatLahirIbu:val('tempatLahirIbu'),tanggalLahirIbu:val('tanggalLahirIbu'),pekerjaanIbu:val('pekerjaanIbu'),pendidikanIbu:val('pendidikanIbu'),penghasilanIbu:val('penghasilanIbu'),noHpIbu:val('noHpIbu'),alamatIbu:val('alamatIbu'),namaWali:val('namaWali'),pekerjaanWali:val('pekerjaanWali'),tempatLahirWali:val('tempatLahirWali'),tanggalLahirWali:val('tanggalLahirWali'),pendidikanWali:val('pendidikanWali'),penghasilanWali:val('penghasilanWali'),noHpWali:val('noHpWali'),alamatWali:val('alamatWali')});
   }
 
-  /* ── Step navigation ── */
-  window.goStep = function(next) {
-    if (next > cur && !validateStep(cur)) return;
-    saveStep(cur);
-    $('step' + cur).classList.remove('active');
-    $('step' + next).classList.add('active');
-    cur = next;
-    updateUI(next);
-    $('daftar').scrollIntoView({ behavior:'smooth', block:'start' });
+  window.goStep=function(next){
+    if(next>cur&&!validate(cur))return;
+    save(cur);
+    $('step'+cur).classList.remove('active');
+    $('step'+next).classList.add('active');
+    cur=next;updateUI(next);
+    $('daftar').scrollIntoView({behavior:'smooth',block:'start'});
   };
 
-  function updateUI(step) {
-    const labels = ['Identitas Peserta Didik','Alamat & Informasi','Asal Sekolah & Jurusan','Data Orang Tua / Wali'];
-    const pcts = [25, 50, 75, 100];
-    $('fpLbl').textContent = `Langkah ${step} dari ${TOTAL} — ${labels[step-1]}`;
-    $('fpPct').textContent = pcts[step-1] + '%';
-    $('fpFill').style.width = pcts[step-1] + '%';
-    $('fpBar').setAttribute('aria-valuenow', pcts[step-1]);
-    for (let i = 1; i <= TOTAL; i++) {
-      const el = $('fsi' + i);
-      el.classList.remove('active','done');
-      el.removeAttribute('aria-current');
-      if (i < step) el.classList.add('done');
-      else if (i === step) { el.classList.add('active'); el.setAttribute('aria-current','step'); }
+  function updateUI(step){
+    const labels=['Identitas Peserta Didik','Alamat & Informasi','Asal Sekolah & Jurusan','Data Orang Tua / Wali'];
+    const pcts=[25,50,75,100];
+    $('fpLbl').textContent=`Langkah ${step} dari ${TOTAL} — ${labels[step-1]}`;
+    $('fpPct').textContent=pcts[step-1]+'%';
+    $('fpFill').style.width=pcts[step-1]+'%';
+    $('fpBar').setAttribute('aria-valuenow',pcts[step-1]);
+    for(let i=1;i<=TOTAL;i++){
+      const el=$('fsi'+i);
+      el.classList.remove('active','done');el.removeAttribute('aria-current');
+      if(i<step)el.classList.add('done');
+      else if(i===step){el.classList.add('active');el.setAttribute('aria-current','step')}
     }
-    for (let i = 1; i < TOTAL; i++) {
-      const ln = $('fl' + i);
-      if (ln) ln.classList.toggle('done', i < step);
+    for(let i=1;i<TOTAL;i++){
+      const ln=$('fl'+i);if(ln)ln.classList.toggle('done',i<step);
     }
   }
 
-  /* ── Reference number ── */
-  function makeRef() {
-    const n = new Date();
-    return 'SPMB' + String(n.getFullYear()).slice(2) + String(n.getMonth()+1).padStart(2,'0') + String(n.getDate()).padStart(2,'0') + '-' + (1000 + Math.floor(Math.random()*9000));
+  function makeRef(){
+    const n=new Date();
+    return'SPMB'+String(n.getFullYear()).slice(2)+String(n.getMonth()+1).padStart(2,'0')+String(n.getDate()).padStart(2,'0')+'-'+(1000+Math.floor(Math.random()*9000));
   }
 
-  /* ── Fetch with retry (exponential backoff) ── */
-  async function fetchWithRetry(url, body, retries = 3, delay = 800) {
-    for (let i = 0; i < retries; i++) {
-      try {
-        const res = await fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify(body),
-          signal: AbortSignal.timeout ? AbortSignal.timeout(15000) : undefined
-        });
-        if (res.ok || res.status === 302) return true; // GAS redirects OK
-        throw new Error('HTTP ' + res.status);
-      } catch (err) {
-        if (i === retries - 1) throw err;
-        await new Promise(r => setTimeout(r, delay * Math.pow(2, i)));
+  async function fetchRetry(url,body,tries=3,delay=800){
+    for(let i=0;i<tries;i++){
+      try{
+        const r=await fetch(url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(body),signal:AbortSignal.timeout?AbortSignal.timeout(15000):undefined});
+        if(r.ok||r.status===302)return true;
+        throw new Error('HTTP '+r.status);
+      }catch(e){
+        if(i===tries-1)throw e;
+        await new Promise(r=>setTimeout(r,delay*Math.pow(2,i)));
       }
     }
   }
 
-  /* ── Submit ── */
-  window.doSubmit = async function() {
-    if (!validateStep(4)) return;
-    saveStep(4);
-    const btn = $('btnSub');
-    const txt = $('btnTxt');
-    const spin = $('btnSpin');
-    btn.disabled = true;
-    txt.textContent = 'Mengirimkan data…';
-    spin.style.display = 'block';
-    const ref = makeRef();
-    fd.ref = ref;
-    fd.timestamp = new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' });
-    try {
-      await fetchWithRetry(SCRIPT_URL, fd);
+  window.doSubmit=async function(){
+    if(!validate(4))return;
+    save(4);
+    const btn=$('btnSub'),txt=$('btnTxt'),spin=$('btnSpin');
+    btn.disabled=true;txt.textContent='Mengirimkan data…';spin.style.display='block';
+    const ref=makeRef();fd.ref=ref;fd.timestamp=new Date().toLocaleString('id-ID',{timeZone:'Asia/Jakarta'});
+    try{
+      await fetchRetry(SCRIPT_URL,fd);
       showSuccess(ref);
-    } catch (err) {
-      const box = $('alertBox');
-      box.textContent = '⚠️ Gagal mengirim data. Periksa koneksi internet Anda, lalu coba kembali.';
-      box.classList.add('show');
-      box.scrollIntoView({ behavior:'smooth', block:'nearest' });
-      btn.disabled = false;
-      txt.textContent = '📨 Kirim Pendaftaran';
-      spin.style.display = 'none';
+    }catch(e){
+      const box=$('alertBox');
+      box.textContent='⚠️ Gagal mengirim data. Periksa koneksi internet Anda, lalu coba kembali.';
+      box.classList.add('show');box.scrollIntoView({behavior:'smooth',block:'nearest'});
+      btn.disabled=false;txt.textContent='📨 Kirim Pendaftaran';spin.style.display='none';
     }
   };
 
-  /* ── Show success ── */
-  function showSuccess(ref) {
+  function showSuccess(ref){
     $('step4').classList.remove('active');
-    $('fsiNav').style.display = 'none';
-    $('fpBar').style.display = 'none';
-    $('refNum').textContent = ref;
-    const ss = $('successScreen');
-    ss.style.display = 'block';
-    ss.focus && ss.focus();
-    ss.scrollIntoView({ behavior:'smooth', block:'start' });
+    $('fsiNav').style.display='none';$('fpBar').style.display='none';
+    $('refNum').textContent=ref;
+    const ss=$('successScreen');ss.style.display='block';
+    ss.scrollIntoView({behavior:'smooth',block:'start'});
   }
-
 })();
 </script>
 </body>
