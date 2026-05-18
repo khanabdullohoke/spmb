@@ -212,7 +212,7 @@ body{font-family:var(--font);background:var(--g50);color:var(--g800);line-height
 
 /* ── TIMELINE ── */
 .tl-wrap{display:grid;grid-template-columns:repeat(5,1fr);position:relative;gap:0}
-.tl-wrap::before{content:'';position:absolute;top:26px;left:calc(10% - 2px);right:calc(10% - 2px);height:2px;background:var(--g200);z-index:0}
+.tl-wrap::before{content:'';position:absolute;top:25px;left:calc(10% - 2px);right:calc(10% - 2px);height:2px;background:var(--g200);z-index:0}
 .tl-item{text-align:center;position:relative;z-index:1;padding:0 10px}
 .tl-dot{
   width:52px;height:52px;border-radius:50%;background:var(--white);
@@ -239,8 +239,8 @@ body{font-family:var(--font);background:var(--g50);color:var(--g800);line-height
 .is-item{flex:1;display:flex;align-items:center;gap:11px;padding:15px 17px;border-right:1px solid rgba(var(--gold-rgb),.15)}
 .is-item:last-child{border-right:none}
 .is-ico{font-size:20px;flex-shrink:0}
-.is-txt{font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.45}
-.is-txt strong{color:#fff;font-size:13px;display:block;margin-bottom:2px;font-weight:600}
+.is-txt{font-size:12.5px;color:var(--g600);line-height:1.45}
+.is-txt strong{color:var(--g800);font-size:13px;display:block;margin-bottom:2px;font-weight:700}
 
 /* ── FORM SECTION ── */
 .form-sec{background:linear-gradient(170deg,var(--navy-xl) 0%,var(--navy) 100%);padding:72px 5%;position:relative;overflow:hidden}
@@ -301,6 +301,13 @@ input[type="text"],input[type="date"],input[type="tel"],input[type="email"],sele
   transition:border-color var(--t),box-shadow var(--t),background var(--t);
   outline:none;appearance:none;-webkit-appearance:none;
 }
+select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239BA5C0' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 13px center;
+  padding-right:36px;
+}
+select option[value=""]{color:var(--g400)}
+select:invalid,select option:first-child{color:var(--g400)}
 input:hover,select:hover,textarea:hover{border-color:var(--g400)}
 input:focus,select:focus,textarea:focus{
   border-color:var(--navy);
@@ -362,6 +369,9 @@ input.err,select.err,textarea.err{border-color:var(--red);box-shadow:0 0 0 3px r
 }
 .btn-sub:hover:not(:disabled){opacity:.88;transform:translateY(-1px)}
 .btn-sub:disabled{opacity:.55;cursor:not-allowed;transform:none}
+
+/* ── FIELDSET RESET ── */
+fieldset{border:none;padding:0;margin:0;min-width:0}
 
 /* ── STEPS ── */
 .fstep{display:none}
@@ -469,6 +479,7 @@ footer{background:var(--navy-xl);color:rgba(255,255,255,.5);padding:48px 5% 22px
   .fsi-n{width:30px;height:30px;font-size:12px}
   .frow{grid-template-columns:1fr;gap:0}
   .frow .fg{margin-bottom:16px}
+  .frow .fg:last-child{margin-bottom:0}
   .fn{flex-direction:column-reverse;gap:10px}
   .btn-prev,.btn-next{width:100%;justify-content:center}
   .btn-sub{font-size:14px;padding:13px 24px}
@@ -858,10 +869,11 @@ footer{background:var(--navy-xl);color:rgba(255,255,255,.5);padding:48px 5% 22px
   const isPhone=s=>/^[0-9+\-\s]{8,16}$/.test(s);
   const digits=s=>/^[0-9]+$/.test(s);
 
-  window.pickRadio=function(lbl,name){
+  window.pickRadio=function(lbl,name,value){
     document.querySelectorAll(`[onclick*="'${name}'"]`).forEach(el=>el.classList.remove('sel'));
     lbl.classList.add('sel');
-    lbl.querySelector('input[type="radio"]').checked=true;
+    const radio=lbl.querySelector('input[type="radio"]');
+    if(radio){radio.value=value;radio.checked=true;}
     clearErr('e-'+name);
   };
 
@@ -874,13 +886,16 @@ footer{background:var(--navy-xl);color:rgba(255,255,255,.5);padding:48px 5% 22px
   function setErr(id,show){
     const el=$(id);if(!el)return;
     el.classList.toggle('show',show);
-    const inp=$(id.replace('e-',''));
-    if(inp)inp.classList.toggle('err',show);
+    // only apply .err to actual input/select/textarea elements
+    const inputId=id.replace(/^e-/,'');
+    const inp=$(inputId);
+    if(inp&&['INPUT','SELECT','TEXTAREA'].includes(inp.tagName))inp.classList.toggle('err',show);
   }
   function clearErr(id){setErr(id,false)}
   function clearAll(){
     document.querySelectorAll('.field-err').forEach(e=>e.classList.remove('show'));
     document.querySelectorAll('input.err,select.err,textarea.err').forEach(e=>e.classList.remove('err'));
+    document.querySelectorAll('.err-ro').forEach(e=>e.classList.remove('err-ro'));
     $('alertBox').classList.remove('show');
   }
   function scrollErr(){
@@ -979,7 +994,9 @@ footer{background:var(--navy-xl);color:rgba(255,255,255,.5);padding:48px 5% 22px
   async function fetchRetry(url,body,tries=3,delay=800){
     for(let i=0;i<tries;i++){
       try{
-        const r=await fetch(url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(body),signal:AbortSignal.timeout?AbortSignal.timeout(15000):undefined});
+        const opts={method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(body)};
+        if(typeof AbortSignal!=='undefined'&&AbortSignal.timeout)opts.signal=AbortSignal.timeout(15000);
+        const r=await fetch(url,opts);
         if(r.ok||r.status===302)return true;
         throw new Error('HTTP '+r.status);
       }catch(e){
