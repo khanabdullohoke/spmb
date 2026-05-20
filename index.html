@@ -7,7 +7,7 @@
 <title>SPMB Online SMK Ciledug Al Musaddadiyah Garut 2026/2027</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap&font-display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
 /* ── RESET ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -274,7 +274,7 @@ body{font-family:var(--font);background:var(--g50);color:var(--g800);line-height
 .fc{
   background:var(--white);border-radius:18px;padding:36px;
   box-shadow:0 24px 80px rgba(0,0,0,.3),0 4px 20px rgba(0,0,0,.14);
-  contain:layout;
+  contain:content;
 }
 
 /* ── STEP INDICATOR ── */
@@ -416,7 +416,8 @@ fieldset{border:none;padding:0;margin:0;min-width:0}
 .fnote p{font-size:12px;color:var(--g600);line-height:1.7;margin:0}
 
 /* ── SUCCESS ── */
-.success{text-align:center;padding:32px 16px;display:none;animation:fadeUp .5s ease both}
+.success{text-align:center;padding:32px 16px;display:none}
+.success.visible{display:block;animation:fadeUp .5s ease both}
 .success-ico{
   width:76px;height:76px;
   background:linear-gradient(135deg,var(--green-l) 0%,#D0F5E8 100%);
@@ -453,7 +454,7 @@ fieldset{border:none;padding:0;margin:0;min-width:0}
 .faq-arr{font-size:18px;color:var(--g400);transition:transform .3s;flex-shrink:0;margin-left:12px}
 .faq-item.open .faq-arr{transform:rotate(180deg);color:var(--navy)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s ease;padding:0 20px}
-.faq-item.open .faq-a{max-height:200px;padding:0 20px 17px}
+.faq-item.open .faq-a{max-height:400px;padding:0 20px 17px}
 .faq-a p{font-size:13.5px;color:var(--g600);line-height:1.75}
 
 /* ── FOOTER ── */
@@ -736,8 +737,8 @@ footer{background:#081e6a;color:rgba(255,255,255,.5);padding:48px 5% 22px}
         <hr class="fdiv">
         <div class="fsttl">🎯 Pilihan Program Keahlian</div>
         <div class="fg"><label class="fl" for="pilihan1">Pilihan Pertama <span class="req" aria-hidden="true">*</span></label><select id="pilihan1" required><option value="">— Pilih Program Keahlian —</option><option>Akuntansi Keuangan Lembaga</option><option>Bisnis Digital</option><option>Desain Komunikasi Visual</option><option>Teknik Jaringan Komputer</option><option>Teknik Kendaraan Ringan</option><option>Teknik Sepeda Motor</option><option>Manajemen Perkantoran</option></select><div class="field-err" id="e-pilihan1">Pilihan pertama wajib dipilih.</div></div>
-        <div class="fg"><label class="fl" for="pilihan2">Pilihan Kedua</label><select id="pilihan2"><option value="">— Pilih Program Keahlian —</option><option>Akuntansi Keuangan Lembaga</option><option>Bisnis Digital</option><option>Desain Komunikasi Visual</option><option>Teknik Jaringan Komputer</option><option>Teknik Kendaraan Ringan</option><option>Teknik Sepeda Motor</option><option>Manajemen Perkantoran</option></select></div>
-        <div class="fg"><label class="fl" for="pilihan3">Pilihan Ketiga</label><select id="pilihan3"><option value="">— Pilih Program Keahlian —</option><option>Akuntansi Keuangan Lembaga</option><option>Bisnis Digital</option><option>Desain Komunikasi Visual</option><option>Teknik Jaringan Komputer</option><option>Teknik Kendaraan Ringan</option><option>Teknik Sepeda Motor</option><option>Manajemen Perkantoran</option></select></div>
+        <div class="fg"><label class="fl" for="pilihan2">Pilihan Kedua</label><select id="pilihan2"><option value="">— Pilih Program Keahlian —</option><option>Akuntansi Keuangan Lembaga</option><option>Bisnis Digital</option><option>Desain Komunikasi Visual</option><option>Teknik Jaringan Komputer</option><option>Teknik Kendaraan Ringan</option><option>Teknik Sepeda Motor</option><option>Manajemen Perkantoran</option></select><div class="field-err" id="e-pilihan2">Pilihan kedua tidak boleh sama dengan pilihan pertama.</div></div>
+        <div class="fg"><label class="fl" for="pilihan3">Pilihan Ketiga</label><select id="pilihan3"><option value="">— Pilih Program Keahlian —</option><option>Akuntansi Keuangan Lembaga</option><option>Bisnis Digital</option><option>Desain Komunikasi Visual</option><option>Teknik Jaringan Komputer</option><option>Teknik Kendaraan Ringan</option><option>Teknik Sepeda Motor</option><option>Manajemen Perkantoran</option></select><div class="field-err" id="e-pilihan3">Pilihan ketiga tidak boleh sama dengan pilihan lainnya.</div></div>
         <div class="fn"><button type="button" class="btn-prev" onclick="goStep(2)">← Kembali</button><button type="button" class="btn-next" onclick="goStep(4)">Lanjut — Orang Tua/Wali →</button></div>
       </fieldset>
 
@@ -935,12 +936,15 @@ footer{background:#081e6a;color:rgba(255,255,255,.5);padding:48px 5% 22px}
     el.classList.toggle('show',show);
     const inputId=id.replace(/^e-/,'');
     const inp=$(inputId);
-    if(inp&&['INPUT','SELECT','TEXTAREA'].includes(inp.tagName))inp.classList.toggle('err',show);
-    // Also mark radio group containers
-    if(show&&!inp){
-      // find radio group by name matching the inputId
-      const rg=document.querySelector(`.rg input[name="${inputId}"]`);
-      if(rg)rg.closest('.rg').classList.add('err-ro');
+    if(inp&&['INPUT','SELECT','TEXTAREA'].includes(inp.tagName)){
+      inp.classList.toggle('err',show);
+    } else {
+      // Handle radio group containers
+      const rgInp=document.querySelector(`.rg input[name="${inputId}"]`);
+      if(rgInp){
+        const rg=rgInp.closest('.rg');
+        if(rg)rg.classList.toggle('err-ro',show);
+      }
     }
   }
   function clearErr(id){setErr(id,false)}
@@ -951,7 +955,7 @@ footer{background:#081e6a;color:rgba(255,255,255,.5);padding:48px 5% 22px}
     const ab=$('alertBox');if(ab)ab.classList.remove('show');
   }
   function scrollErr(){
-    const el=document.querySelector('.field-err.show,.alert.show');
+    const el=document.querySelector('.field-err.show,.alert.err.show');
     if(el)el.scrollIntoView({behavior:'smooth',block:'nearest'});
   }
 
@@ -985,6 +989,14 @@ footer{background:#081e6a;color:rgba(255,255,255,.5);padding:48px 5% 22px}
       ['kabupatenSekolah',v=>!!v,'e-kabupatenSekolah'],
       ['provinsiSekolah',v=>!!v,'e-provinsiSekolah'],
       ['pilihan1',v=>!!v,'e-pilihan1'],
+      ['pilihan2',()=>{
+        const p1=val('pilihan1'),p2=val('pilihan2');
+        return !p2||p2!==p1;
+      },'e-pilihan2'],
+      ['pilihan3',()=>{
+        const p1=val('pilihan1'),p2=val('pilihan2'),p3=val('pilihan3');
+        return !p3||(p3!==p1&&p3!==p2);
+      },'e-pilihan3'],
     ],
     4:[
       ['namaAyah',v=>!!v,'e-namaAyah'],
@@ -1011,13 +1023,35 @@ footer{background:#081e6a;color:rgba(255,255,255,.5);padding:48px 5% 22px}
     else if(step===4)Object.assign(fd,{namaAyah:val('namaAyah'),ayahHidup:rad('ayahHidup'),tempatLahirAyah:val('tempatLahirAyah'),tanggalLahirAyah:val('tanggalLahirAyah'),pekerjaanAyah:val('pekerjaanAyah'),pendidikanAyah:val('pendidikanAyah'),penghasilanAyah:val('penghasilanAyah'),noHpAyah:val('noHpAyah'),alamatAyah:val('alamatAyah'),namaIbu:val('namaIbu'),ibuHidup:rad('ibuHidup'),tempatLahirIbu:val('tempatLahirIbu'),tanggalLahirIbu:val('tanggalLahirIbu'),pekerjaanIbu:val('pekerjaanIbu'),pendidikanIbu:val('pendidikanIbu'),penghasilanIbu:val('penghasilanIbu'),noHpIbu:val('noHpIbu'),alamatIbu:val('alamatIbu'),namaWali:val('namaWali'),pekerjaanWali:val('pekerjaanWali'),tempatLahirWali:val('tempatLahirWali'),tanggalLahirWali:val('tanggalLahirWali'),pendidikanWali:val('pendidikanWali'),penghasilanWali:val('penghasilanWali'),noHpWali:val('noHpWali'),alamatWali:val('alamatWali')});
   }
 
+  // Restore visual .sel state for radio buttons from saved fd data
+  function restoreRadios(step){
+    const radioFields={
+      1:['jenisKelamin','pip'],
+      3:['jenisSekolah'],
+      4:['ayahHidup','ibuHidup']
+    };
+    (radioFields[step]||[]).forEach(function(name){
+      const saved=fd[name];
+      if(!saved)return;
+      document.querySelectorAll(`input[name="${name}"]`).forEach(function(inp){
+        const lbl=inp.closest('.ro');
+        if(!lbl)return;
+        if(inp.value===saved){lbl.classList.add('sel');inp.checked=true;}
+        else lbl.classList.remove('sel');
+      });
+    });
+  }
+
   window.goStep=function(next){
     if(next>cur&&!validate(cur))return;
     save(cur);
-    $('step'+cur).classList.remove('active');
-    $('step'+next).classList.add('active');
-    cur=next;updateUI(next);
-    $('daftar').scrollIntoView({behavior:'smooth',block:'start'});
+    const curEl=$('step'+cur),nextEl=$('step'+next);
+    if(curEl)curEl.classList.remove('active');
+    if(nextEl)nextEl.classList.add('active');
+    cur=next;
+    restoreRadios(next);
+    updateUI(next);
+    const anchor=$('daftar');if(anchor)anchor.scrollIntoView({behavior:'smooth',block:'start'});
   };
 
   function updateUI(step){
@@ -1040,7 +1074,10 @@ footer{background:#081e6a;color:rgba(255,255,255,.5);padding:48px 5% 22px}
 
   function makeRef(){
     const n=new Date();
-    return'SPMB'+String(n.getFullYear()).slice(2)+String(n.getMonth()+1).padStart(2,'0')+String(n.getDate()).padStart(2,'0')+'-'+(1000+Math.floor(Math.random()*9000));
+    const rand=typeof crypto!=='undefined'&&crypto.getRandomValues
+      ?crypto.getRandomValues(new Uint16Array(1))[0]%9000+1000
+      :1000+Math.floor(Math.random()*9000);
+    return'SPMB'+n.getFullYear()+String(n.getMonth()+1).padStart(2,'0')+String(n.getDate()).padStart(2,'0')+'-'+rand;
   }
 
   async function fetchRetry(url,body,tries=3,delay=800){
@@ -1066,16 +1103,19 @@ footer{background:#081e6a;color:rgba(255,255,255,.5);padding:48px 5% 22px}
     if(!validate(4))return;
     save(4);
     const btn=$('btnSub'),txt=$('btnTxt'),spin=$('btnSpin');
-    btn.disabled=true;txt.textContent='Mengirimkan data…';spin.style.display='block';
+    if(btn)btn.disabled=true;
+    if(txt)txt.textContent='Mengirimkan data…';
+    if(spin)spin.style.display='block';
     const ref=makeRef();fd.ref=ref;fd.timestamp=new Date().toLocaleString('id-ID',{timeZone:'Asia/Jakarta'});
     try{
       await fetchRetry(SCRIPT_URL,fd);
       showSuccess(ref);
     }catch(e){
       const box=$('alertBox');
-      box.textContent='⚠️ Gagal mengirim data. Periksa koneksi internet Anda, lalu coba kembali.';
-      box.classList.add('show');box.scrollIntoView({behavior:'smooth',block:'nearest'});
-      btn.disabled=false;txt.textContent='📨 Kirim Pendaftaran';spin.style.display='none';
+      if(box){box.textContent='⚠️ Gagal mengirim data. Periksa koneksi internet Anda, lalu coba kembali.';box.classList.add('show');box.scrollIntoView({behavior:'smooth',block:'nearest'});}
+      if(btn)btn.disabled=false;
+      if(txt)txt.textContent='📨 Kirim Pendaftaran';
+      if(spin)spin.style.display='none';
     }
   };
 
@@ -1085,7 +1125,7 @@ footer{background:#081e6a;color:rgba(255,255,255,.5);padding:48px 5% 22px}
     const fpb=$('fpBar');if(fpb)fpb.style.display='none';
     const rn=$('refNum');if(rn)rn.textContent=ref;
     const ss=$('successScreen');
-    if(ss){ss.style.display='block';ss.scrollIntoView({behavior:'smooth',block:'start'});}
+    if(ss){ss.classList.add('visible');ss.scrollIntoView({behavior:'smooth',block:'start'});}
   }
 })();
 </script>
