@@ -7,7 +7,7 @@
 <title>SPMB Online SMK Ciledug Al Musaddadiyah Garut 2026/2027</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap&font-display=swap" rel="stylesheet">
 <style>
 /* ── RESET ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -101,6 +101,9 @@ body{font-family:var(--font);background:var(--g50);color:var(--g800);line-height
 }
 .badge-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
 .hero h1{
   font-size:clamp(28px,4.5vw,52px);color:#fff;
   line-height:1.08;margin-bottom:20px;font-weight:800;letter-spacing:-.5px;
@@ -271,6 +274,7 @@ body{font-family:var(--font);background:var(--g50);color:var(--g800);line-height
 .fc{
   background:var(--white);border-radius:18px;padding:36px;
   box-shadow:0 24px 80px rgba(0,0,0,.3),0 4px 20px rgba(0,0,0,.14);
+  contain:layout;
 }
 
 /* ── STEP INDICATOR ── */
@@ -294,7 +298,7 @@ body{font-family:var(--font);background:var(--g50);color:var(--g800);line-height
 .fp{margin-bottom:24px}
 .fp-meta{font-size:11.5px;color:var(--g600);margin-bottom:7px;display:flex;justify-content:space-between;font-weight:500}
 .fp-bar{height:5px;background:var(--g100);border-radius:5px;overflow:hidden}
-.fp-fill{height:100%;background:linear-gradient(90deg,var(--navy) 0%,#4F87F7 100%);border-radius:5px;transition:width .45s cubic-bezier(.4,0,.2,1)}
+.fp-fill{height:100%;background:linear-gradient(90deg,var(--navy) 0%,#4F87F7 100%);border-radius:5px;transition:width .45s cubic-bezier(.4,0,.2,1);will-change:width}
 
 /* ── DIVIDER ── */
 .fdiv{border:none;border-top:1px solid var(--g200);margin:24px 0}
@@ -679,7 +683,7 @@ footer{background:#081e6a;color:rgba(255,255,255,.5);padding:48px 5% 22px}
           <div class="fg"><label class="fl" for="tanggalLahir">Tanggal Lahir <span class="req" aria-hidden="true">*</span></label><input type="date" id="tanggalLahir" max="2012-12-31" min="2006-01-01"><div class="field-err" id="e-tanggalLahir">Tanggal lahir wajib diisi.</div></div>
         </div>
         <div class="frow">
-          <div class="fg"><label class="fl" for="noHpSiswa">No. HP / WhatsApp Aktif <span class="req" aria-hidden="true">*</span></label><input type="tel" id="noHpSiswa" inputmode="tel" placeholder="08xx-xxxx-xxxx" autocomplete="tel"><div class="field-err" id="e-noHpSiswa">Nomor HP/WA wajib diisi.</div></div>
+          <div class="fg"><label class="fl" for="noHpSiswa">No. HP / WhatsApp Aktif <span class="req" aria-hidden="true">*</span></label><input type="tel" id="noHpSiswa" inputmode="tel" placeholder="08xx-xxxx-xxxx" autocomplete="tel"><div class="field-err" id="e-noHpSiswa">Nomor HP/WA tidak valid (8–16 digit).</div></div>
           <div class="fg"><label class="fl" for="emailSiswa">Email Aktif <span class="req" aria-hidden="true">*</span></label><input type="email" id="emailSiswa" inputmode="email" placeholder="contoh@gmail.com" autocomplete="email"><div class="field-err" id="e-emailSiswa">Alamat email tidak valid.</div></div>
         </div>
         <div class="frow">
@@ -773,7 +777,7 @@ footer{background:#081e6a;color:rgba(255,255,255,.5);padding:48px 5% 22px}
         </div>
         <div class="frow">
           <div class="fg"><label class="fl" for="penghasilanIbu">Penghasilan Ibu/Bulan</label><select id="penghasilanIbu"><option value="">— Pilih —</option><option>&lt; 1 juta</option><option>1 – 2 juta</option><option>2 – 3 juta</option><option>3 – 5 juta</option><option>5 – 10 juta</option><option>&gt; 10 juta</option></select></div>
-          <div class="fg"><label class="fl" for="noHpIbu">No. HP Ibu <span class="req" aria-hidden="true">*</span></label><input type="tel" id="noHpIbu" inputmode="tel" placeholder="08xx-xxxx-xxxx"><div class="field-err" id="e-noHpIbu">No. HP ibu wajib diisi.</div></div>
+          <div class="fg"><label class="fl" for="noHpIbu">No. HP Ibu <span class="req" aria-hidden="true">*</span></label><input type="tel" id="noHpIbu" inputmode="tel" placeholder="08xx-xxxx-xxxx"><div class="field-err" id="e-noHpIbu">No. HP ibu tidak valid (8–16 digit).</div></div>
         </div>
         <div class="fg"><label class="fl" for="alamatIbu">Alamat Lengkap Ibu</label><textarea id="alamatIbu" rows="2" placeholder="Dusun / RT-RW / Desa / Kecamatan"></textarea></div>
         <hr class="fdiv">
@@ -901,11 +905,22 @@ footer{background:#081e6a;color:rgba(255,255,255,.5);padding:48px 5% 22px}
   const isPhone=s=>/^[0-9+\-\s]{8,16}$/.test(s);
   const digits=s=>/^[0-9]+$/.test(s);
 
+  // Cache step indicator elements for updateUI performance
+  const fsiEls=[null];for(let i=1;i<=TOTAL;i++)fsiEls.push($('fsi'+i));
+  const flEls=[null];for(let i=1;i<TOTAL;i++)flEls.push($('fl'+i));
+  const fpLblEl=$('fpLbl'),fpPctEl=$('fpPct'),fpFillEl=$('fpFill'),fpBarEl=$('fpBar');
+
   window.pickRadio=function(lbl,name,value){
-    document.querySelectorAll(`[onclick*="'${name}'"]`).forEach(el=>el.classList.remove('sel'));
+    // Use name attribute on the radio inputs for reliable sibling lookup
+    document.querySelectorAll(`input[name="${name}"]`).forEach(function(inp){
+      inp.closest('.ro').classList.remove('sel');
+    });
     lbl.classList.add('sel');
     const radio=lbl.querySelector('input[type="radio"]');
     if(radio){radio.value=value;radio.checked=true;}
+    // Clear error on the radio group container
+    const rg=lbl.closest('.rg');
+    if(rg)rg.classList.remove('err-ro');
     clearErr('e-'+name);
   };
 
@@ -921,13 +936,19 @@ footer{background:#081e6a;color:rgba(255,255,255,.5);padding:48px 5% 22px}
     const inputId=id.replace(/^e-/,'');
     const inp=$(inputId);
     if(inp&&['INPUT','SELECT','TEXTAREA'].includes(inp.tagName))inp.classList.toggle('err',show);
+    // Also mark radio group containers
+    if(show&&!inp){
+      // find radio group by name matching the inputId
+      const rg=document.querySelector(`.rg input[name="${inputId}"]`);
+      if(rg)rg.closest('.rg').classList.add('err-ro');
+    }
   }
   function clearErr(id){setErr(id,false)}
   function clearAll(){
     document.querySelectorAll('.field-err').forEach(e=>e.classList.remove('show'));
     document.querySelectorAll('input.err,select.err,textarea.err').forEach(e=>e.classList.remove('err'));
     document.querySelectorAll('.err-ro').forEach(e=>e.classList.remove('err-ro'));
-    $('alertBox').classList.remove('show');
+    const ab=$('alertBox');if(ab)ab.classList.remove('show');
   }
   function scrollErr(){
     const el=document.querySelector('.field-err.show,.alert.show');
@@ -1002,18 +1023,18 @@ footer{background:#081e6a;color:rgba(255,255,255,.5);padding:48px 5% 22px}
   function updateUI(step){
     const labels=['Identitas Peserta Didik','Alamat & Informasi','Asal Sekolah & Jurusan','Data Orang Tua / Wali'];
     const pcts=[25,50,75,100];
-    $('fpLbl').textContent=`Langkah ${step} dari ${TOTAL} — ${labels[step-1]}`;
-    $('fpPct').textContent=pcts[step-1]+'%';
-    $('fpFill').style.width=pcts[step-1]+'%';
-    $('fpBar').setAttribute('aria-valuenow',pcts[step-1]);
+    fpLblEl.textContent=`Langkah ${step} dari ${TOTAL} — ${labels[step-1]}`;
+    fpPctEl.textContent=pcts[step-1]+'%';
+    fpFillEl.style.width=pcts[step-1]+'%';
+    fpBarEl.setAttribute('aria-valuenow',pcts[step-1]);
     for(let i=1;i<=TOTAL;i++){
-      const el=$('fsi'+i);
+      const el=fsiEls[i];if(!el)continue;
       el.classList.remove('active','done');el.removeAttribute('aria-current');
       if(i<step)el.classList.add('done');
       else if(i===step){el.classList.add('active');el.setAttribute('aria-current','step')}
     }
     for(let i=1;i<TOTAL;i++){
-      const ln=$('fl'+i);if(ln)ln.classList.toggle('done',i<step);
+      const ln=flEls[i];if(ln)ln.classList.toggle('done',i<step);
     }
   }
 
@@ -1025,14 +1046,18 @@ footer{background:#081e6a;color:rgba(255,255,255,.5);padding:48px 5% 22px}
   async function fetchRetry(url,body,tries=3,delay=800){
     for(let i=0;i<tries;i++){
       try{
+        const ctrl=typeof AbortController!=='undefined'?new AbortController():null;
+        let timer;
+        if(ctrl){timer=setTimeout(()=>ctrl.abort(),15000);}
         const opts={method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(body)};
-        if(typeof AbortSignal!=='undefined'&&AbortSignal.timeout)opts.signal=AbortSignal.timeout(15000);
-        const r=await fetch(url,opts);
-        if(r.ok||r.status===302)return true;
-        throw new Error('HTTP '+r.status);
+        if(ctrl)opts.signal=ctrl.signal;
+        const res=await fetch(url,opts);
+        if(ctrl)clearTimeout(timer);
+        if(res.ok||res.status===302)return true;
+        throw new Error('HTTP '+res.status);
       }catch(e){
         if(i===tries-1)throw e;
-        await new Promise(r=>setTimeout(r,delay*Math.pow(2,i)));
+        await new Promise(resolve=>setTimeout(resolve,delay*Math.pow(2,i)));
       }
     }
   }
@@ -1055,11 +1080,12 @@ footer{background:#081e6a;color:rgba(255,255,255,.5);padding:48px 5% 22px}
   };
 
   function showSuccess(ref){
-    $('step4').classList.remove('active');
-    $('fsiNav').style.display='none';$('fpBar').style.display='none';
-    $('refNum').textContent=ref;
-    const ss=$('successScreen');ss.style.display='block';
-    ss.scrollIntoView({behavior:'smooth',block:'start'});
+    const s4=$('step4');if(s4)s4.classList.remove('active');
+    const nav=$('fsiNav');if(nav)nav.style.display='none';
+    const fpb=$('fpBar');if(fpb)fpb.style.display='none';
+    const rn=$('refNum');if(rn)rn.textContent=ref;
+    const ss=$('successScreen');
+    if(ss){ss.style.display='block';ss.scrollIntoView({behavior:'smooth',block:'start'});}
   }
 })();
 </script>
