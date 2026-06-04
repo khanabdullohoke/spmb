@@ -1,1136 +1,1184 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="SPMB Online SMK Ciledug Al Musaddadiyah Garut 2026/2027 — Pendaftaran Peserta Didik Baru">
-<title>SPMB Online SMK Ciledug Al Musaddadiyah Garut 2026/2027</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Infografis Pendaftar SPMB — SMKS Ciledug Al Musaddadiyah 2026/2027</title>
+<meta name="description" content="Visualisasi data pendaftar SPMB SMKS Ciledug Al Musaddadiyah Garut 2026/2027 — real-time, interaktif."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,700;0,800;0,900;1,900&family=DM+Sans:wght@400;600&display=swap"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,700;0,800;0,900;1,900&family=DM+Sans:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,700;0,800;0,900;1,900&family=DM+Sans:wght@400;600&display=swap" rel="stylesheet"/></noscript>
 <style>
-/* ── RESET ── */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
-/* ── TOKENS ── */
 :root{
-  /* Deep Royal Blue palette — #0b3d91 → #1565c0 → #1e88e5 */
-  --navy:#0b3d91;--navy-m:#1565c0;--navy-l:#1e88e5;--navy-d:#082d6e;--navy-xl:#061f52;--navy-rgb:11,61,145;
-  --gold:#ffb300;--gold-l:#ffd54f;--gold-d:#e65100;--gold-p:#fffde7;--gold-rgb:255,179,0;
-  --white:#fff;--g50:#f5f9ff;--g100:#e8f0fe;--g150:#d2e3fc;--g200:#b8d0f7;
-  --g400:#7a9cc8;--g600:#3d5a8a;--g800:#0a1e40;
-  --green:#18A374;--green-l:#E3F8F1;--green-d:#0E7A55;
-  --red:#D93025;--red-l:#FDF0EE;
-  --font:'Plus Jakarta Sans',sans-serif;
-  --font-body:'DM Sans',sans-serif;
-  --r:14px;--rs:10px;--rxs:6px;
-  --sh-xs:0 1px 3px rgba(var(--navy-rgb),.08);
-  --sh:0 4px 20px rgba(var(--navy-rgb),.12);
-  --sh-md:0 8px 40px rgba(var(--navy-rgb),.16);
-  --sh-lg:0 20px 60px rgba(var(--navy-rgb),.22);
-  --t:.18s ease;
+  --blue-deep:#0b3d91;--blue-mid:#1565c0;--blue-bright:#1e88e5;--blue-light:#42a5f5;
+  --blue-pale:#e3f2fd;--sky:#bbdefb;--cream:#f5f9ff;--white:#fff;
+  --text-dark:#0d1b3e;--text-mid:#2c4a7c;--text-muted:#607d9e;
+  --gold:#ffb300;--gold-light:#ffd54f;
+  --green:#1e8c4e;--green-light:#e8f5e9;
+  --red:#e53935;--red-light:#fce4ec;
+  --shadow:0 4px 24px rgba(21,101,192,.12);--shadow-lg:0 12px 48px rgba(21,101,192,.18);
+  --radius:16px;--radius-sm:10px;
+  --transition:.2s cubic-bezier(.4,0,.2,1);
 }
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:var(--font-body);background:var(--g50);color:var(--g800);line-height:1.6;overflow-x:hidden}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px;-webkit-font-smoothing:antialiased}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);overflow-x:hidden;line-height:1.6}
+h1,h2,h3,h4,h5,h6{font-family:'Plus Jakarta Sans',sans-serif;line-height:1.15}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer}
+img,svg{display:block}
 
-/* ── A11Y ── */
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-:focus-visible{outline:2.5px solid var(--gold);outline-offset:3px;border-radius:4px}
-
-/* ── NAVBAR ── */
-.navbar{
-  position:sticky;top:0;z-index:100;
+/* ── NAV ── */
+#spmb-nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:60px;
   background:rgba(11,61,145,.96);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(var(--gold-rgb),.25);
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 5%;height:62px;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(66,165,245,.15);
+  transition:box-shadow var(--transition);
+  contain:layout style;
 }
-.nav-brand{display:flex;align-items:center;gap:11px;text-decoration:none}
-.nav-logo{
-  width:38px;height:38px;border-radius:9px;flex-shrink:0;
-  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-d) 100%);
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--font);font-weight:800;font-size:11px;color:#fff;letter-spacing:.3px;
-  box-shadow:0 2px 10px rgba(var(--gold-rgb),.5);
+#spmb-nav.scrolled{box-shadow:0 4px 32px rgba(11,61,145,.5)}
+.nav-inner{
+  max-width:1200px;margin:0 auto;padding:0 20px;
+  height:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;
 }
-.nav-name{font-family:var(--font);font-size:12.5px;font-weight:700;color:#fff;line-height:1.25;white-space:nowrap}
-.nav-name small{color:rgba(var(--gold-rgb),.9);display:block;font-size:10px;font-weight:500;margin-top:1px;font-family:var(--font-body)}
-.nav-links{display:flex;gap:26px;list-style:none}
-.nav-links a{
-  font-family:var(--font-body);color:rgba(255,255,255,.75);font-size:13px;font-weight:500;
-  text-decoration:none;transition:color var(--t);position:relative;padding-bottom:2px;
+.nav-brand{display:flex;align-items:center;gap:10px;color:#fff;flex-shrink:0;text-decoration:none}
+.nav-brand-icon{
+  width:34px;height:34px;border-radius:9px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  display:flex;align-items:center;justify-content:center;font-size:17px;
 }
-.nav-links a::after{
-  content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;
-  background:var(--gold);border-radius:2px;transition:width var(--t);
+.nav-brand-text span:first-child{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:13.5px;font-weight:900;color:#fff;line-height:1.2}
+.nav-brand-text span:last-child{display:block;font-size:9.5px;color:var(--sky);letter-spacing:.08em;text-transform:uppercase;line-height:1.2}
+
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-link{
+  color:rgba(255,255,255,.65);font-size:13px;font-weight:600;
+  padding:7px 14px;border-radius:50px;border:none;background:none;
+  font-family:'DM Sans',sans-serif;white-space:nowrap;
+  transition:color var(--transition),background var(--transition);
 }
-.nav-links a:hover{color:var(--gold-l)}
-.nav-links a:hover::after{width:100%}
-.nav-cta{
-  background:linear-gradient(135deg,var(--gold) 0%,#f57c00 100%);
-  color:#fff;font-family:var(--font);font-weight:700;font-size:12.5px;
-  padding:8px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;flex-shrink:0;
-  transition:opacity var(--t),transform var(--t),box-shadow var(--t);
-  box-shadow:0 3px 12px rgba(var(--gold-rgb),.45),0 1px 3px rgba(0,0,0,.15);
+.nav-link:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav-link.active{color:#fff;background:rgba(255,255,255,.13)}
+
+.nav-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+
+.btn-gold{
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:var(--blue-deep);font-family:'Plus Jakarta Sans',sans-serif;
+  font-weight:800;font-size:12.5px;padding:8px 18px;border-radius:50px;
+  border:none;display:inline-flex;align-items:center;gap:6px;
+  box-shadow:0 4px 16px rgba(255,179,0,.35);
+  transition:transform var(--transition),box-shadow var(--transition);white-space:nowrap;
 }
-.nav-cta:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 6px 20px rgba(var(--gold-rgb),.55)}
+.btn-gold:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(255,179,0,.45)}
+.btn-gold:active{transform:translateY(0)}
+
+/* Mobile nav */
+.mobile-nav-bar{
+  display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;
+  background:rgba(11,61,145,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-top:1px solid rgba(66,165,245,.2);
+  padding:6px 16px calc(6px + env(safe-area-inset-bottom,0px));
+}
+.mobile-nav-inner{display:flex;align-items:center;justify-content:space-around}
+.mobile-nav-btn{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;
+  background:none;border:none;padding:7px 4px;border-radius:10px;
+  color:rgba(255,255,255,.55);transition:all var(--transition);
+}
+.mobile-nav-btn .mn-icon{font-size:19px;line-height:1}
+.mobile-nav-btn .mn-label{font-size:9.5px;font-weight:600;letter-spacing:.02em}
+.mobile-nav-btn.active{background:rgba(255,255,255,.1);color:#fff}
 
 /* ── HERO ── */
-.hero{
-  background:linear-gradient(160deg,var(--navy-xl) 0%,var(--navy) 45%,var(--navy-m) 75%,var(--navy-l) 100%);
-  padding:72px 5% 0;overflow:hidden;position:relative;
+#dashboard-hero{
+  min-height:460px;padding:80px 20px 56px;
+  background:linear-gradient(140deg,#061e5c 0%,#0b3d91 40%,#1565c0 72%,#1e88e5 100%);
+  position:relative;overflow:hidden;display:flex;align-items:center;
 }
-.hero::before{
+#dashboard-hero::before{
   content:'';position:absolute;inset:0;
-  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1.5' cy='1.5' r='1.5' fill='%23E2C251' fill-opacity='.05'/%3E%3C/svg%3E");
-  pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:30px 30px;
 }
-.hero::after{
-  content:'';position:absolute;top:-160px;right:-160px;
-  width:560px;height:560px;border-radius:50%;
-  background:radial-gradient(circle,rgba(var(--gold-rgb),.1) 0%,transparent 70%);
-  pointer-events:none;
+.hero-glow{
+  position:absolute;width:540px;height:540px;border-radius:50%;
+  background:radial-gradient(circle,rgba(66,165,245,.16) 0%,transparent 70%);
+  top:-180px;right:-80px;pointer-events:none;
 }
-.hero-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;align-items:end;gap:52px;position:relative;z-index:1}
-.badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(var(--gold-rgb),.15);border:1px solid rgba(var(--gold-rgb),.35);
-  color:var(--gold-l);font-family:var(--font);font-size:10.5px;font-weight:700;
-  padding:5px 13px;border-radius:999px;margin-bottom:20px;
-  letter-spacing:.8px;text-transform:uppercase;
+.hero-inner{
+  max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:2;
+  display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;
 }
-.badge-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
-@media(prefers-reduced-motion:reduce){
-  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(255,179,0,.12);border:1px solid rgba(255,179,0,.35);
+  color:var(--gold-light);padding:5px 14px;border-radius:50px;
+  font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;
 }
-.hero h1{
-  font-family:var(--font);
-  font-size:clamp(28px,4.5vw,52px);color:#fff;
-  line-height:1.08;margin-bottom:20px;font-weight:800;letter-spacing:-.5px;
+.hero-badge-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+#dashboard-hero h1{
+  font-size:clamp(22px,4.2vw,50px);font-weight:900;color:#fff;
+  letter-spacing:-.02em;margin-bottom:12px;
 }
-.hero h1 em{
-  color:var(--gold);font-style:normal;
-  background:linear-gradient(90deg,var(--gold) 0%,var(--gold-l) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+#dashboard-hero h1 em{color:var(--gold-light);font-style:italic}
+#dashboard-hero p{font-size:14.5px;color:rgba(255,255,255,.72);max-width:500px;line-height:1.8;margin-bottom:26px}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-ghost{
+  background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.25);
+  color:#fff;font-weight:600;font-size:12.5px;padding:9px 20px;border-radius:50px;
+  display:inline-flex;align-items:center;gap:7px;
+  transition:all var(--transition);
 }
-.hero-desc{font-family:var(--font-body);color:rgba(255,255,255,.72);font-size:15px;line-height:1.8;margin-bottom:30px;max-width:440px}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
-/* ── BUTTONS ── */
-.btn-primary,.btn-gold{
-  background:linear-gradient(135deg,var(--gold) 0%,#f57c00 100%);
-  color:#fff;font-family:var(--font);font-weight:700;font-size:14px;
-  padding:13px 26px;border:none;border-radius:var(--rs);cursor:pointer;
-  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
-  transition:opacity var(--t),transform var(--t),box-shadow var(--t);
-  box-shadow:0 4px 18px rgba(var(--gold-rgb),.5),0 1px 4px rgba(0,0,0,.2);
-}
-.btn-primary:hover,.btn-gold:hover{opacity:.92;transform:translateY(-2px);box-shadow:0 8px 28px rgba(var(--gold-rgb),.55)}
-.btn-outline{
-  background:rgba(255,255,255,.08);color:rgba(255,255,255,.88);font-family:var(--font-body);
-  font-weight:600;font-size:14px;padding:12px 22px;
-  border:1.5px solid rgba(255,255,255,.25);border-radius:var(--rs);cursor:pointer;
-  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
-  transition:all var(--t);backdrop-filter:blur(8px);
-}
-.btn-outline:hover{border-color:var(--gold-l);color:var(--gold-l);background:rgba(var(--gold-rgb),.1)}
+.btn-ghost:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.4)}
 
-/* Hero Float Card */
-.hfc{
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.14);
-  border-radius:var(--r) var(--r) 0 0;
-  padding:26px 24px 0;
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;min-width:270px}
+.hero-stat{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
+  border-radius:14px;padding:18px 14px;text-align:center;
+  backdrop-filter:blur(4px);transition:background var(--transition);
 }
-.hfc-lbl{font-family:var(--font-body);font-size:9.5px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:4px}
-.hfc-ttl{font-family:var(--font);font-weight:700;font-size:14.5px;color:#fff;margin-bottom:18px}
-.hfc-row{display:flex;align-items:center;gap:11px;margin-bottom:11px}
-.hfc-ico{
-  width:34px;height:34px;border-radius:9px;flex-shrink:0;
-  background:rgba(var(--gold-rgb),.12);border:1px solid rgba(var(--gold-rgb),.2);
-  display:flex;align-items:center;justify-content:center;font-size:14px;
-}
-.hfc-txt{font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.6)}
-.hfc-txt strong{font-family:var(--font);color:rgba(255,255,255,.95);font-weight:600;display:block;font-size:12.5px;margin-bottom:1px}
-.hfc-bar{height:3px;background:rgba(255,255,255,.08);border-radius:4px;margin:18px 0 18px}
-.hfc-fill{height:100%;width:68%;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-l) 100%);border-radius:4px}
-.hfc-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
-.hfc-stat{
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
-  border-radius:10px;padding:12px 14px;
-}
-.hfc-val{font-family:var(--font);font-size:22px;font-weight:800;color:var(--gold-l);line-height:1}
-.hfc-sl{font-family:var(--font-body);font-size:10px;color:rgba(255,255,255,.4);margin-top:4px}
+.hero-stat:hover{background:rgba(255,255,255,.13)}
+.hero-stat .num{font-family:'Plus Jakarta Sans',sans-serif;font-size:27px;font-weight:900;color:var(--gold-light);line-height:1;min-height:27px}
+.hero-stat .lbl{font-size:10.5px;color:rgba(255,255,255,.6);margin-top:5px}
 
-/* ── STATS BAR ── */
-.stats-bar{background:var(--white);border-bottom:1px solid var(--g200);box-shadow:var(--sh-xs)}
-.stats-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-around;padding:22px 5%;gap:16px;flex-wrap:wrap}
-.s-item{text-align:center}
-.s-num{font-family:var(--font);font-size:26px;font-weight:800;color:var(--navy-m);line-height:1;letter-spacing:-.5px}
-.s-num span{color:var(--gold)}
-.s-lbl{font-family:var(--font-body);font-size:11.5px;color:var(--g600);margin-top:3px;font-weight:500}
-.s-div{width:1px;height:40px;background:var(--g200)}
+/* ── SECTION BASE ── */
+.section{padding:68px 0}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.section-header{text-align:center;margin-bottom:44px}
+.section-label{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-bright);margin-bottom:9px;
+}
+.section-label::before{content:'';width:18px;height:3px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.section-title{font-size:clamp(20px,3.2vw,36px);font-weight:900;color:var(--text-dark);letter-spacing:-.02em}
+.section-title em{color:var(--blue-bright);font-style:normal}
+.section-sub{font-size:14px;color:var(--text-muted);margin-top:10px;max-width:500px;margin-inline:auto;line-height:1.75}
 
-/* ── SECTION ── */
-.sec{padding:72px 5%}
-.sec-in{max-width:1100px;margin:0 auto}
-.sec-hd{text-align:center;margin-bottom:48px}
-.sec-tag{
-  display:inline-block;background:var(--g100);color:var(--navy-m);
-  font-family:var(--font);font-size:10.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
-  padding:4px 13px;border-radius:5px;margin-bottom:13px;
-  border:1px solid rgba(var(--navy-rgb),.18);
-}
-.sec-ttl{font-family:var(--font);font-size:clamp(22px,3.5vw,36px);color:var(--navy);line-height:1.15;font-weight:800;letter-spacing:-.3px}
-.sec-sub{font-family:var(--font-body);font-size:14.5px;color:var(--g600);margin-top:9px}
+/* data status */
+.data-status{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;padding:3px 11px;border-radius:50px;font-weight:600;margin-top:7px}
+.data-status.live{background:#e8f5e9;color:var(--green)}
+.data-status.live::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.5s infinite;flex-shrink:0}
+.data-status.error{background:#fce4ec;color:#c62828}
 
-/* ── JURUSAN ── */
-.jurusan-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:15px}
-.j-card{
-  background:var(--white);border:1px solid var(--g200);border-radius:var(--r);
-  padding:24px 20px;
-  transition:box-shadow var(--t),transform var(--t),border-color var(--t);
-  cursor:default;position:relative;overflow:hidden;
+.refresh-btn{
+  background:var(--blue-pale);border:none;border-radius:50px;padding:5px 13px;
+  font-size:10.5px;font-weight:700;color:var(--blue-mid);cursor:pointer;
+  transition:all var(--transition);display:inline-flex;align-items:center;gap:5px;margin-top:7px;
 }
-.j-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--navy) 0%,var(--navy-l) 100%);
-  transform:scaleX(0);transform-origin:left;transition:transform .3s ease;
-  border-radius:var(--r) var(--r) 0 0;
-}
-.j-card:hover{box-shadow:var(--sh-md);transform:translateY(-4px);border-color:var(--g150)}
-.j-card:hover::before{transform:scaleX(1)}
-.j-ico{
-  width:48px;height:48px;border-radius:12px;
-  background:linear-gradient(135deg,var(--g100) 0%,var(--g150) 100%);
-  border:1px solid rgba(var(--navy-rgb),.12);
-  display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:15px;
-}
-.j-name{font-family:var(--font);font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.35}
-.j-desc{font-family:var(--font-body);font-size:12.5px;color:var(--g600);line-height:1.6}
-.j-badge{
-  display:inline-block;margin-top:13px;
-  background:var(--g100);color:var(--navy-m);
-  font-family:var(--font-body);font-size:10.5px;font-weight:600;padding:3px 10px;border-radius:5px;
-  border:1px solid rgba(var(--navy-rgb),.15);
-}
-
-/* ── TIMELINE ── */
-.tl-wrap{display:grid;grid-template-columns:repeat(5,1fr);position:relative;gap:0}
-.tl-wrap::before{content:'';position:absolute;top:25px;left:calc(10% - 2px);right:calc(10% - 2px);height:2px;background:var(--g200);z-index:0}
-.tl-item{text-align:center;position:relative;z-index:1;padding:0 10px}
-.tl-dot{
-  width:52px;height:52px;border-radius:50%;background:var(--white);
-  border:2px solid var(--g200);display:flex;align-items:center;justify-content:center;
-  margin:0 auto 13px;font-family:var(--font);font-weight:700;font-size:15px;color:var(--g400);
-  transition:all .25s;
-}
-.tl-item.active .tl-dot{
-  background:linear-gradient(135deg,var(--gold) 0%,#f57c00 100%);
-  border-color:var(--gold);color:#fff;
-  box-shadow:0 0 0 6px rgba(var(--gold-rgb),.18),var(--sh);
-}
-.tl-item.done .tl-dot{background:var(--navy-m);border-color:var(--navy-m);color:#fff;box-shadow:0 0 0 6px rgba(var(--navy-rgb),.1)}
-.tl-title{font-family:var(--font);font-size:13px;font-weight:700;color:var(--navy);margin-bottom:3px}
-.tl-date{font-family:var(--font-body);font-size:11.5px;color:var(--g600)}
-
-/* ── INFO STRIP — elegant gold on deep navy ── */
-.info-strip{
-  display:flex;
-  background:linear-gradient(135deg,var(--navy-xl) 0%,var(--navy) 55%,var(--navy-d) 100%);
-  border:1px solid rgba(var(--gold-rgb),.35);
-  border-radius:var(--r);overflow:hidden;margin-bottom:28px;
-  box-shadow:0 4px 24px rgba(0,0,0,.22),inset 0 1px 0 rgba(var(--gold-rgb),.15);
-  position:relative;
-}
-.info-strip::before{
-  content:'';position:absolute;inset:0;
-  background:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23ffb300' fill-opacity='.04'/%3E%3C/svg%3E");
-  pointer-events:none;
-}
-.is-item{flex:1;display:flex;align-items:center;gap:13px;padding:18px 20px;border-right:1px solid rgba(var(--gold-rgb),.18);position:relative;z-index:1;transition:background var(--t)}
-.is-item:last-child{border-right:none}
-.is-item:hover{background:rgba(var(--gold-rgb),.07)}
-.is-ico{font-size:24px;flex-shrink:0;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))}
-.is-txt{font-family:var(--font-body);font-size:12.5px;color:rgba(255,213,79,.75);line-height:1.5}
-.is-txt strong{
-  font-family:var(--font);color:var(--gold-l);font-size:13.5px;display:block;margin-bottom:3px;font-weight:700;
-  letter-spacing:.1px;text-shadow:0 1px 6px rgba(var(--gold-rgb),.3);
-}
-
-/* ── FORM SECTION ── */
-.form-sec{background:linear-gradient(160deg,var(--navy-xl) 0%,var(--navy) 50%,var(--navy-m) 100%);padding:72px 5%;position:relative;overflow:hidden}
-.form-sec::before{
-  content:'';position:absolute;inset:0;
-  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1.5' cy='1.5' r='1.5' fill='%23ffb300' fill-opacity='.04'/%3E%3C/svg%3E");
-  pointer-events:none;
-}
-.form-in{max-width:720px;margin:0 auto;position:relative;z-index:1}
-.form-hd{text-align:center;margin-bottom:28px}
-.form-hd .sec-tag{background:rgba(var(--gold-rgb),.15);color:var(--gold-l);border-color:rgba(var(--gold-rgb),.3)}
-.form-hd .sec-ttl{color:#fff}
-.form-hd .sec-sub{color:rgba(255,255,255,.55);font-family:var(--font-body)}
-
-/* ── FORM CARD ── */
-.fc{
-  background:var(--white);border-radius:18px;padding:36px;
-  box-shadow:0 24px 80px rgba(0,0,0,.3),0 4px 20px rgba(0,0,0,.14);
-  contain:content;
-}
-
-/* ── STEP INDICATOR ── */
-.fsi{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:28px}
-.fsi-s{display:flex;align-items:center;gap:7px;font-family:var(--font);font-size:11.5px;font-weight:600;color:var(--g400);flex-shrink:0;white-space:nowrap}
-.fsi-s.active{color:var(--navy-m)}
-.fsi-s.done{color:var(--navy-l)}
-.fsi-n{
-  width:28px;height:28px;border-radius:50%;
-  background:var(--g100);border:1.5px solid var(--g200);
-  display:flex;align-items:center;justify-content:center;
-  font-size:11px;font-weight:700;flex-shrink:0;transition:all var(--t);
-}
-.fsi-s.active .fsi-n{background:var(--navy-m);color:#fff;border-color:var(--navy-m);box-shadow:0 0 0 4px rgba(var(--navy-rgb),.12)}
-.fsi-s.done .fsi-n{background:var(--navy-l);color:#fff;border-color:var(--navy-l)}
-.fsi-lbl{display:inline}
-.fsi-ln{width:24px;height:2px;background:var(--g200);margin:0 5px;flex-shrink:0;transition:background .4s;border-radius:2px}
-.fsi-ln.done{background:var(--navy-l)}
-
-/* ── PROGRESS ── */
-.fp{margin-bottom:24px}
-.fp-meta{font-family:var(--font-body);font-size:11.5px;color:var(--g600);margin-bottom:7px;display:flex;justify-content:space-between;font-weight:500}
-.fp-bar{height:5px;background:var(--g100);border-radius:5px;overflow:hidden}
-.fp-fill{height:100%;background:linear-gradient(90deg,var(--navy-m) 0%,var(--navy-l) 100%);border-radius:5px;transition:width .45s cubic-bezier(.4,0,.2,1);will-change:width}
-
-/* ── DIVIDER ── */
-.fdiv{border:none;border-top:1px solid var(--g200);margin:24px 0}
-.fsttl{font-family:var(--font);font-size:10.5px;font-weight:700;color:var(--g600);text-transform:uppercase;letter-spacing:1.3px;margin-bottom:18px}
-
-/* ── FORM FIELDS ── */
-.fg{margin-bottom:18px}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-.fl{display:block;font-family:var(--font);font-size:12.5px;font-weight:600;color:var(--g800);margin-bottom:7px}
-.fl .req{color:var(--red);margin-left:2px}
-input[type="text"],input[type="date"],input[type="tel"],input[type="email"],select,textarea{
-  width:100%;padding:10px 13px;
-  border:1.5px solid var(--g200);border-radius:var(--rs);
-  font-family:var(--font-body);font-size:13.5px;color:var(--g800);
-  background:var(--white);
-  transition:border-color var(--t),box-shadow var(--t),background var(--t);
-  outline:none;appearance:none;-webkit-appearance:none;
-}
-select{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239BA5C0' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 13px center;
-  padding-right:36px;
-}
-select option[value=""]{color:var(--g400)}
-select:invalid,select option:first-child{color:var(--g400)}
-input:hover,select:hover,textarea:hover{border-color:var(--g400)}
-input:focus,select:focus,textarea:focus{
-  border-color:var(--navy-m);
-  box-shadow:0 0 0 3px rgba(var(--navy-rgb),.1);
-  background:var(--g50);
-}
-input.err,select.err,textarea.err{border-color:var(--red);box-shadow:0 0 0 3px rgba(217,48,37,.07)}
-.field-err{font-family:var(--font-body);font-size:11.5px;color:var(--red);margin-top:5px;display:none;font-weight:500}
-.field-err.show{display:block}
-
-/* ── RADIO ── */
-.rg{display:flex;gap:9px;flex-wrap:wrap}
-.ro{
-  flex:1;min-width:88px;border:1.5px solid var(--g200);border-radius:var(--rs);
-  padding:9px 12px;cursor:pointer;
-  transition:all var(--t);display:flex;align-items:center;gap:8px;
-  font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--g600);user-select:none;
-}
-.ro input[type="radio"]{display:none}
-.ro:hover{border-color:var(--navy-m);color:var(--navy-m);background:var(--g50)}
-.ro.sel{border-color:var(--navy-m);background:var(--g100);color:var(--navy)}
-.ro.err-ro{border-color:var(--red)}
-.rd{
-  width:15px;height:15px;border-radius:50%;border:2px solid var(--g200);
-  flex-shrink:0;transition:all var(--t);display:flex;align-items:center;justify-content:center;
-}
-.ro.sel .rd{border-color:var(--navy-m)}
-.ro.sel .rd::after{content:'';width:7px;height:7px;border-radius:50%;background:var(--navy-m)}
-
-/* ── ALERT ── */
-.alert{font-family:var(--font-body);padding:11px 14px;border-radius:var(--rs);font-size:13px;margin-bottom:14px;display:none;align-items:flex-start;gap:8px}
-.alert.err{background:var(--red-l);color:var(--red);border:1px solid rgba(217,48,37,.2)}
-.alert.show{display:flex}
-
-/* ── NAV BUTTONS ── */
-.fn{display:flex;justify-content:space-between;align-items:center;margin-top:28px;gap:12px}
-.btn-prev{
-  background:var(--white);color:var(--g800);border:1.5px solid var(--g200);
-  font-family:var(--font-body);font-weight:600;font-size:13.5px;padding:10px 20px;
-  border-radius:var(--rs);cursor:pointer;transition:all var(--t);
-  display:flex;align-items:center;gap:6px;
-}
-.btn-prev:hover{border-color:var(--navy-m);color:var(--navy-m);background:var(--g50)}
-.btn-next{
-  background:linear-gradient(135deg,var(--navy-m) 0%,var(--navy) 100%);
-  color:#fff;border:none;font-family:var(--font);font-weight:700;font-size:13.5px;
-  padding:10px 24px;border-radius:var(--rs);cursor:pointer;
-  transition:opacity var(--t),transform var(--t);
-  display:flex;align-items:center;gap:6px;box-shadow:0 3px 12px rgba(var(--navy-rgb),.35);
-}
-.btn-next:hover{opacity:.88;transform:translateY(-1px)}
-.btn-sub{
-  background:linear-gradient(135deg,var(--gold) 0%,#f57c00 100%);
-  color:#fff;border:none;font-family:var(--font);font-weight:800;font-size:14.5px;
-  padding:14px 32px;border-radius:var(--rs);cursor:pointer;
-  transition:opacity var(--t),transform var(--t),box-shadow var(--t);
-  display:flex;align-items:center;gap:9px;width:100%;justify-content:center;margin-top:6px;
-  box-shadow:0 4px 20px rgba(var(--gold-rgb),.5);
-}
-.btn-sub:hover:not(:disabled){opacity:.9;transform:translateY(-1px);box-shadow:0 8px 28px rgba(var(--gold-rgb),.55)}
-.btn-sub:disabled{opacity:.55;cursor:not-allowed;transform:none}
-
-/* ── BACK TO WEBSITE BUTTON ── */
-.btn-back-web{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,.1);color:rgba(255,255,255,.85);
-  border:1.5px solid rgba(255,255,255,.22);border-radius:var(--rs);
-  font-family:var(--font-body);font-weight:600;font-size:13px;
-  padding:10px 20px;text-decoration:none;
-  transition:all var(--t);backdrop-filter:blur(8px);
-  margin-top:14px;
-}
-.btn-back-web:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.4);color:#fff;transform:translateY(-1px)}
-.btn-back-web-wrap{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.07)}
-
-/* ── FIELDSET RESET ── */
-fieldset{border:none;padding:0;margin:0;min-width:0}
-
-/* ── STEPS ── */
-.fstep{display:none}
-.fstep.active{display:block;animation:fadeUp .3s ease both}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-
-/* ── SPINNER ── */
-.spin{width:16px;height:16px;border:2px solid rgba(27,49,58,.2);border-top-color:var(--navy);border-radius:50%;animation:spin .7s linear infinite;display:none;flex-shrink:0}
+.refresh-btn:hover{background:var(--sky)}
+.refresh-btn.spinning .refresh-icon{animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ── NOTE ── */
-.fnote{font-family:var(--font-body);background:var(--g50);border:1px solid var(--g200);border-radius:10px;padding:13px 15px;margin-bottom:18px;display:flex;align-items:flex-start;gap:9px}
-.fnote p{font-size:12px;color:var(--g600);line-height:1.7;margin:0}
+/* ── INFOGRAFIS ── */
+#infografis{background:#fff}
+.infographic-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+.info-card{
+  background:var(--cream);border-radius:var(--radius);padding:22px 16px;text-align:center;
+  border:1px solid rgba(30,136,229,.1);
+  transition:transform var(--transition),box-shadow var(--transition);
+}
+.info-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.info-card .icon-wrap{width:46px;height:46px;border-radius:12px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.info-card .big-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:900;line-height:1;margin-bottom:5px;min-height:32px}
+.info-card .card-lbl{font-size:11.5px;color:var(--text-muted);line-height:1.5}
 
-/* ── SUCCESS ── */
-.success{text-align:center;padding:32px 16px;display:none}
-.success.visible{display:block;animation:fadeUp .5s ease both}
-.success-ico{
-  width:76px;height:76px;
-  background:linear-gradient(135deg,var(--g100) 0%,var(--g150) 100%);
-  border:1px solid rgba(var(--navy-rgb),.15);border-radius:50%;
+.charts-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+.chart-box{
+  background:var(--cream);border-radius:var(--radius);padding:24px;
+  border:1px solid rgba(30,136,229,.1);
+}
+.chart-box h3{
+  font-size:13.5px;font-weight:700;color:var(--text-dark);margin-bottom:18px;
+  display:flex;align-items:center;gap:8px;
+}
+.chart-box h3::before{content:'';display:block;width:12px;height:4px;background:var(--gold);border-radius:2px;flex-shrink:0}
+
+.bar-chart{display:flex;flex-direction:column;gap:10px}
+.bar-row{display:flex;align-items:center;gap:10px}
+.bar-label{font-size:10.5px;color:var(--text-mid);width:86px;flex-shrink:0;text-align:right;line-height:1.3}
+.bar-track{flex:1;height:28px;background:var(--blue-pale);border-radius:7px;overflow:hidden}
+.bar-fill{height:100%;border-radius:7px;display:flex;align-items:center;padding-left:8px;font-size:10.5px;font-weight:700;color:#fff;transition:width 1s cubic-bezier(.22,1,.36,1)}
+.bar-pct{font-size:10.5px;color:var(--text-muted);width:26px;text-align:right;flex-shrink:0}
+
+.donut-wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.donut-legend{display:flex;flex-direction:column;gap:9px;flex:1}
+.legend-item{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--text-mid)}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.legend-pct{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;color:var(--text-dark);margin-left:auto}
+
+/* ── WILAYAH CARD ── */
+.map-card{background:var(--cream);border-radius:var(--radius);padding:24px;border:1px solid rgba(30,136,229,.1)}
+.map-card-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.wilayah-tables-wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.wilayah-table-title{
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:800;
+  color:var(--text-dark);margin-bottom:12px;display:flex;align-items:center;gap:8px;
+  padding-bottom:8px;border-bottom:2px solid var(--blue-pale);
+}
+.wilayah-table-title .wtitle-icon{font-size:16px}
+.wilayah-table-title .wtitle-badge{
+  font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:50px;
+  background:var(--blue-pale);color:var(--blue-mid);margin-left:auto;
+}
+.wilayah-table{width:100%;border-collapse:collapse;font-size:12px}
+.wilayah-table thead tr{background:var(--blue-deep)}
+.wilayah-table thead th{
+  padding:7px 10px;text-align:left;font-size:10px;font-weight:700;
+  color:rgba(255,255,255,.85);letter-spacing:.06em;text-transform:uppercase;
+}
+.wilayah-table thead th:last-child{text-align:right}
+.wilayah-table thead th:first-child{border-radius:8px 0 0 8px}
+.wilayah-table thead th:last-child{border-radius:0 8px 8px 0}
+.wilayah-table tbody tr{border-bottom:1px solid rgba(30,136,229,.07);transition:background var(--transition)}
+.wilayah-table tbody tr:hover{background:rgba(30,136,229,.04)}
+.wilayah-table tbody tr:last-child{border-bottom:none}
+.wilayah-table tbody td{padding:8px 10px;color:var(--text-mid);vertical-align:middle}
+.wilayah-table tbody td:last-child{text-align:right}
+.wt-rank{
+  width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+  font-size:9.5px;font-weight:800;color:#fff;flex-shrink:0;
+}
+.wt-rank.r1{background:var(--gold)}
+.wt-rank.r2{background:#90a4ae}
+.wt-rank.r3{background:#a1887f}
+.wt-rank.rn{background:var(--blue-pale);color:var(--blue-mid)}
+.wt-name{font-weight:600;color:var(--text-dark);display:flex;align-items:center;gap:7px}
+.wt-count{
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:14px;color:var(--blue-deep);
+}
+.wt-bar-mini{
+  display:inline-block;height:6px;border-radius:3px;
+  background:linear-gradient(90deg,var(--blue-bright),var(--blue-light));
+  vertical-align:middle;margin-left:8px;transition:width .8s ease;min-width:4px;
+}
+.wt-count-wrap{display:flex;align-items:center;justify-content:flex-end;gap:6px}
+.wilayah-empty{
+  text-align:center;padding:28px 12px;color:var(--text-muted);font-size:12.5px;
+  background:#fff;border-radius:var(--radius-sm);border:1.5px dashed rgba(30,136,229,.15);
+}
+
+/* Skeleton */
+.skeleton{
+  background:linear-gradient(90deg,#e3f2fd 25%,#bbdefb 50%,#e3f2fd 75%);
+  background-size:200% 100%;animation:shimmer 1.5s infinite;
+  border-radius:6px;height:22px;display:inline-block;width:52px;
+}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* ── PENDAFTAR TABLE SECTION ── */
+#pendaftar-section{background:linear-gradient(145deg,var(--blue-deep),var(--blue-mid));position:relative;overflow:hidden}
+#pendaftar-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.035) 1px,transparent 1px);background-size:28px 28px}
+#pendaftar-section .section-label{color:var(--gold)}
+#pendaftar-section .section-title{color:#fff}
+#pendaftar-section .section-title em{color:var(--gold-light)}
+#pendaftar-section .section-sub{color:rgba(255,255,255,.6)}
+
+.timeline-list{display:flex;flex-direction:column;position:relative}
+.timeline-list::before{content:'';position:absolute;left:31px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,rgba(255,179,0,.55),rgba(30,136,229,.2));border-radius:2px}
+.tl-item{display:flex;gap:22px;align-items:flex-start;padding-bottom:26px}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:var(--gold);border:2.5px solid rgba(255,255,255,.25);flex-shrink:0;margin-top:20px;margin-left:25px;position:relative;z-index:2}
+.tl-card{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;padding:16px 20px;flex:1;
+  transition:background var(--transition);
+}
+.tl-card:hover{background:rgba(255,255,255,.12)}
+.tl-year{font-size:10.5px;font-weight:700;letter-spacing:.1em;color:var(--gold-light);margin-bottom:4px}
+.tl-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:14.5px;font-weight:800;color:#fff;margin-bottom:4px}
+.tl-desc{font-size:12.5px;color:rgba(255,255,255,.6);line-height:1.7}
+
+/* ── TABEL PENDAFTAR (Stories-style) ── */
+#pendaftar-list{background:var(--cream)}
+.pendaftar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pendaftar-card{
+  background:#fff;border-radius:var(--radius);
+  border:1px solid rgba(30,136,229,.1);overflow:hidden;
+  transition:transform var(--transition),box-shadow var(--transition);
+}
+.pendaftar-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.pd-header{padding:20px;display:flex;align-items:center;gap:12px}
+.pd-avatar{
+  width:44px;height:44px;border-radius:50%;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
-  margin:0 auto 22px;font-size:32px;
-  box-shadow:0 0 0 10px rgba(var(--navy-rgb),.06);
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:900;color:#fff;
 }
-.success h3{font-family:var(--font);font-size:26px;color:var(--navy);margin-bottom:11px;font-weight:800;letter-spacing:-.3px}
-.success p{font-family:var(--font-body);font-size:14px;color:var(--g600);max-width:380px;margin:0 auto 24px;line-height:1.75}
-.ref-box{
-  background:linear-gradient(135deg,var(--g50) 0%,var(--g100) 100%);
-  border:1px solid var(--g200);border-radius:12px;
-  padding:16px 28px;display:inline-block;margin-bottom:24px;
-}
-.ref-lbl{font-family:var(--font-body);font-size:10.5px;color:var(--g600);text-transform:uppercase;letter-spacing:1.2px;font-weight:600}
-.ref-num{font-family:var(--font);font-size:22px;font-weight:800;color:var(--navy-m);margin-top:4px;letter-spacing:2px}
+.pd-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:14.5px;font-weight:800;color:#fff}
+.pd-sub{font-size:11px;color:rgba(255,255,255,.7);margin-top:2px}
+.pd-body{padding:16px 20px}
+.pd-badge{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;padding:3px 10px;border-radius:50px;margin-bottom:10px}
+.pd-info{font-size:12.5px;color:var(--text-mid);line-height:1.8}
+.pd-info strong{color:var(--text-dark);font-weight:700}
+.pd-footer{padding:12px 20px;border-top:1px solid rgba(30,136,229,.08);display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--text-muted)}
 
-/* ── FAQ ── */
-.faq-wrap{max-width:700px;margin:0 auto}
-.faq-item{
-  border:1px solid var(--g200);border-radius:var(--r);
-  margin-bottom:8px;overflow:hidden;
-  transition:box-shadow var(--t);
+/* Pagination nav */
+.stories-nav{display:none;align-items:center;justify-content:center;gap:12px;margin-top:28px;flex-wrap:wrap}
+.stories-nav-btn{
+  background:#fff;border:1.5px solid rgba(30,136,229,.2);border-radius:50px;
+  padding:7px 18px;font-size:12.5px;font-weight:700;color:var(--blue-mid);
+  transition:all var(--transition);display:flex;align-items:center;gap:6px;
 }
-.faq-item:hover{box-shadow:var(--sh-xs)}
-.faq-q{
-  width:100%;background:var(--white);border:none;
-  padding:17px 20px;display:flex;align-items:center;justify-content:space-between;
-  font-family:var(--font);font-size:14px;font-weight:600;color:var(--navy);
-  cursor:pointer;text-align:left;transition:background var(--t);
+.stories-nav-btn:hover:not(:disabled){background:var(--blue-pale);border-color:var(--blue-bright)}
+.stories-nav-btn:disabled{opacity:.35;cursor:not-allowed}
+.stories-page-info{font-size:12px;color:var(--text-muted);font-weight:600}
+.stories-dots{display:flex;gap:6px;align-items:center}
+.stories-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--sky);border:none;padding:0;
+  transition:all var(--transition);cursor:pointer;
 }
-.faq-q:hover{background:var(--g50)}
-.faq-arr{font-size:18px;color:var(--g400);transition:transform .3s;flex-shrink:0;margin-left:12px}
-.faq-item.open .faq-arr{transform:rotate(180deg);color:var(--navy-m)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s ease;padding:0 20px}
-.faq-item.open .faq-a{max-height:400px;padding:0 20px 17px}
-.faq-a p{font-family:var(--font-body);font-size:13.5px;color:var(--g600);line-height:1.75}
+.stories-dot.active{width:22px;border-radius:4px;background:var(--blue-mid)}
+.stories-empty{
+  grid-column:1/-1;text-align:center;padding:56px 20px;
+  color:var(--text-muted);font-size:14px;background:#fff;
+  border-radius:var(--radius);border:1.5px dashed rgba(30,136,229,.15);
+}
+
+/* ── CTA SECTION ── */
+#cta-section{background:#fff;border-top:1px solid rgba(30,136,229,.08)}
+.cta-box{
+  max-width:640px;margin:0 auto;text-align:center;
+  background:linear-gradient(140deg,#061e5c,#0b3d91,#1e88e5);
+  border-radius:24px;padding:52px 40px;
+  box-shadow:0 24px 64px rgba(11,61,145,.3);
+  position:relative;overflow:hidden;
+}
+.cta-box::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:28px 28px}
+.cta-box>*{position:relative;z-index:1}
+.cta-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,179,0,.12);border:1px solid rgba(255,179,0,.35);color:var(--gold-light);padding:5px 14px;border-radius:50px;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px}
+.cta-box h2{font-size:clamp(20px,4vw,32px);font-weight:900;color:#fff;letter-spacing:-.02em;margin-bottom:12px}
+.cta-box h2 em{color:var(--gold-light);font-style:normal}
+.cta-box p{font-size:14px;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:28px}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
 /* ── FOOTER ── */
-footer{background:var(--navy-xl);color:rgba(255,255,255,.5);padding:48px 5% 22px}
-.ft-in{max-width:1100px;margin:0 auto}
-.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.08)}
-.ft-name{font-family:var(--font);font-weight:800;font-size:15px;color:#fff;margin-bottom:5px;letter-spacing:-.2px}
-.ft-sub{font-family:var(--font-body);font-size:12px;margin-bottom:15px}
-.ft-addr{font-family:var(--font-body);font-size:12.5px;line-height:2}
-.ft-addr a{color:var(--gold-l);text-decoration:none;transition:opacity var(--t)}
-.ft-addr a:hover{opacity:.75}
-.ft-ctitle{font-family:var(--font);font-weight:700;font-size:11px;color:rgba(255,255,255,.5);margin-bottom:15px;text-transform:uppercase;letter-spacing:1px}
-.ft-links{list-style:none}
-.ft-links li{margin-bottom:10px}
-.ft-links a{font-family:var(--font-body);color:rgba(255,255,255,.45);font-size:13px;text-decoration:none;transition:color var(--t)}
-.ft-links a:hover{color:var(--gold-l)}
-.ft-bot{display:flex;align-items:center;justify-content:space-between;padding-top:20px;flex-wrap:wrap;gap:10px}
-.ft-copy{font-family:var(--font-body);font-size:12px}
-.ft-badge{
-  background:rgba(var(--gold-rgb),.15);border:1px solid rgba(var(--gold-rgb),.25);
-  color:var(--gold-l);font-family:var(--font);font-size:11px;font-weight:600;padding:4px 12px;border-radius:5px;
-}
-.fadein{animation:fadeUp .5s ease both}
+#spmb-footer{background:#060d1f;padding:28px 24px;text-align:center}
+#spmb-footer p{font-size:11.5px;color:rgba(255,255,255,.28);margin-bottom:5px}
+#spmb-footer a{color:rgba(66,165,245,.55);transition:color var(--transition)}
+#spmb-footer a:hover{color:var(--blue-light)}
 
-/* ═══ RESPONSIVE ═══ */
+/* ── TOAST ── */
+#toast{
+  position:fixed;bottom:76px;left:50%;transform:translateX(-50%) translateY(16px);
+  padding:10px 20px;border-radius:50px;font-size:12.5px;font-weight:700;
+  box-shadow:0 8px 24px rgba(0,0,0,.2);opacity:0;
+  transition:all .28s;z-index:9999;pointer-events:none;
+  white-space:nowrap;max-width:90vw;text-align:center;color:#fff;
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:none}
+.counter-num{display:inline-block;min-width:3ch}
+@keyframes slideAnimOut{to{opacity:0;transform:translateX(-22px)}}
+@keyframes slideAnimIn{from{opacity:0;transform:translateX(22px)}to{opacity:1;transform:none}}
+.pendaftar-grid.animating{animation:slideAnimOut .23s ease both}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .infographic-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:repeat(3,1fr);min-width:0;width:100%;max-width:400px}
+}
 @media(max-width:768px){
-  .navbar{padding:0 4%;height:56px}
-  .nav-links{display:none}
-  .hero{padding:48px 4% 0}
-  .hero-in{grid-template-columns:1fr}
-  .hero-visual{display:none}
-  .hero-desc{font-size:14px;max-width:100%}
-  .stats-in{padding:18px 4%;gap:14px}
-  .s-div{display:none}
-  .s-num{font-size:22px}
-  .sec{padding:52px 4%}
-  .jurusan-grid{grid-template-columns:1fr 1fr;gap:10px}
-  .j-card{padding:16px 14px}
-  .tl-wrap{grid-template-columns:1fr;gap:0}
-  .tl-wrap::before{display:none}
-  .tl-item{display:flex;align-items:flex-start;gap:14px;text-align:left;padding-bottom:20px}
-  .tl-item:last-child{padding-bottom:0}
-  .tl-dot{margin:0;flex-shrink:0;width:44px;height:44px;font-size:13px}
-  .info-strip{flex-direction:column}
-  .is-item{border-right:none;border-bottom:1px solid rgba(var(--gold-rgb),.18)}
-  .is-item:last-child{border-bottom:none}
-  .form-sec{padding:52px 4%}
-  .fc{padding:22px 16px;border-radius:14px}
-  .fsi-lbl{display:none}
-  .fsi-s{gap:0}
-  .fsi-ln{width:16px;margin:0 3px}
-  .fsi-n{width:30px;height:30px;font-size:12px}
-  .frow{grid-template-columns:1fr;gap:0}
-  .frow .fg{margin-bottom:16px}
-  .frow .fg:last-child{margin-bottom:0}
-  .fn{flex-direction:column-reverse;gap:10px}
-  .btn-prev,.btn-next{width:100%;justify-content:center}
-  .btn-sub{font-size:14px;padding:13px 24px}
-  .rg{gap:8px}
-  .ro{font-size:12.5px;padding:8px 10px}
-  .ft-top{grid-template-columns:1fr;gap:28px}
-  .ft-bot{flex-direction:column;align-items:flex-start;gap:8px}
-  .btn-back-web{font-size:12px;padding:9px 16px}
+  .charts-row{grid-template-columns:1fr}
+  .pendaftar-grid{grid-template-columns:1fr}
+  .wilayah-tables-wrap{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .nav-links,.nav-right .btn-gold{display:none!important}
+  .mobile-nav-bar{display:block}
+  body{padding-bottom:76px}
+  #spmb-footer{padding-bottom:88px}
+  #toast{bottom:86px}
+  .infographic-grid{grid-template-columns:1fr 1fr}
+  .hero-stats{grid-template-columns:1fr 1fr;max-width:100%}
+  .hero-stats .hero-stat:last-child{grid-column:1/-1}
+  .cta-btns{flex-direction:column;align-items:center}
+  .hero-btns{flex-direction:column;gap:8px}
+  #dashboard-hero{padding:76px 16px 44px}
+  .cta-box{padding:36px 22px;border-radius:18px}
+  .wilayah-tables-wrap{grid-template-columns:1fr}
 }
 @media(max-width:400px){
-  .jurusan-grid{grid-template-columns:1fr}
-  .nav-cta{font-size:11.5px;padding:7px 12px}
+  .infographic-grid{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:1fr 1fr}
 }
+:focus-visible{outline:2px solid var(--blue-bright);outline-offset:2px}
 </style>
 </head>
 <body>
 
-<a class="sr-only" href="#daftar">Lompat ke formulir pendaftaran</a>
-
-<!-- NAVBAR -->
-<nav class="navbar" role="navigation" aria-label="Navigasi utama">
-  <a class="nav-brand" href="#" aria-label="SMK Ciledug Al Musaddadiyah Garut">
-    <div class="nav-logo" aria-hidden="true">SMK</div>
-    <div class="nav-name">Al Musaddadiyah Ciledug<small>Garut · Tahun Ajaran 2026/2027</small></div>
-  </a>
-  <ul class="nav-links" role="list">
-    <li><a href="#jurusan">Jurusan</a></li>
-    <li><a href="#jadwal">Jadwal</a></li>
-    <li><a href="#daftar">Pendaftaran</a></li>
-    <li><a href="#faq">FAQ</a></li>
-  </ul>
-  <a href="#daftar" class="nav-cta">Daftar Sekarang →</a>
-</nav>
-
-<!-- HERO -->
-<section class="hero" aria-label="Informasi SPMB">
-  <div class="hero-in">
-    <div class="fadein">
-      <div class="badge" role="status"><span class="badge-dot" aria-hidden="true"></span>SPMB 2026/2027 Dibuka</div>
-      <h1>Wujudkan <em>Masa Depan</em><br>Bersama Kami</h1>
-      <p class="hero-desc">SMK Ciledug Al Musaddadiyah Garut membuka pendaftaran peserta didik baru Tahun Ajaran 2026/2027. Bergabunglah bersama ribuan alumni yang telah sukses di bidangnya.</p>
-      <div class="hero-actions">
-        <a href="#daftar" class="btn-primary">📝 Daftar Sekarang</a>
-        <a href="https://www.smkciledugalmusaddadiyah.sch.id/" target="_blank" rel="noopener" class="btn-outline">🌐 Website Sekolah</a>
+<!-- NAV -->
+<nav id="spmb-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#beranda" aria-label="Infografis SPMB Beranda">
+      <div class="nav-brand-icon">📋</div>
+      <div class="nav-brand-text">
+        <span>Infografis SPMB</span>
+        <span>SMKS Ciledug Al Musaddadiyah</span>
       </div>
+    </a>
+    <div class="nav-links" role="navigation" aria-label="Menu utama">
+      <a class="nav-link active" href="#beranda">📊 Dashboard</a>
+      <a class="nav-link" href="#infografis">📈 Infografis</a>
+      <a class="nav-link" href="#pendaftar-list">👥 Pendaftar</a>
     </div>
-    <div class="hero-visual" aria-hidden="true">
-      <div class="hfc">
-        <div class="hfc-lbl">SPMB 2026/2027</div>
-        <div class="hfc-ttl">Formulir Pendaftaran Online</div>
-        <div class="hfc-row"><div class="hfc-ico">📋</div><div class="hfc-txt"><strong>Identitas Lengkap</strong>Data diri &amp; dokumen siswa</div></div>
-        <div class="hfc-row"><div class="hfc-ico">🏫</div><div class="hfc-txt"><strong>Program Keahlian</strong>Sesuaikan minat &amp; bakat</div></div>
-        <div class="hfc-row"><div class="hfc-ico">👨‍👩‍👧</div><div class="hfc-txt"><strong>Data Orang Tua / Wali</strong>Informasi kontak darurat</div></div>
-        <div class="hfc-bar"><div class="hfc-fill"></div></div>
-        <div class="hfc-stats">
-          <div class="hfc-stat"><div class="hfc-val">68%</div><div class="hfc-sl">Kuota Terisi</div></div>
-          <div class="hfc-stat"><div class="hfc-val">180</div><div class="hfc-sl">Sisa Tempat</div></div>
-        </div>
-      </div>
+    <div class="nav-right">
+      <a class="btn-gold" href="https://www.smkciledugalmusaddadiyah.sch.id" target="_blank" rel="noopener">
+        🏫 Website Sekolah
+      </a>
     </div>
   </div>
-</section>
+</nav>
 
-<!-- STATS BAR -->
-<div class="stats-bar" role="region" aria-label="Statistik sekolah">
-  <div class="stats-in">
-    <div class="s-item"><div class="s-num">28<span>+</span></div><div class="s-lbl">Tahun Berpengalaman</div></div>
-    <div class="s-div" aria-hidden="true"></div>
-    <div class="s-item"><div class="s-num">5000<span>+</span></div><div class="s-lbl">Alumni Berprestasi dan Berkarier</div></div>
-    <div class="s-div" aria-hidden="true"></div>
-    <div class="s-item"><div class="s-num">7</div><div class="s-lbl">Program Keahlian</div></div>
-    <div class="s-div" aria-hidden="true"></div>
-    <div class="s-item"><div class="s-num">30<span>+</span></div><div class="s-lbl">Guru Tersertifikasi Profesional</div></div>
-    <div class="s-div" aria-hidden="true"></div>
-    <div class="s-item"><div class="s-num">A<span>+</span></div><div class="s-lbl">Akreditasi BAN-S/M</div></div>
+<!-- MOBILE BOTTOM NAV -->
+<div class="mobile-nav-bar" role="navigation" aria-label="Menu mobile">
+  <div class="mobile-nav-inner">
+    <a class="mobile-nav-btn active" href="#beranda">
+      <div class="mn-icon">📊</div>
+      <div class="mn-label">Dashboard</div>
+    </a>
+    <a class="mobile-nav-btn" href="#infografis">
+      <div class="mn-icon">📈</div>
+      <div class="mn-label">Infografis</div>
+    </a>
+    <a class="mobile-nav-btn" href="#pendaftar-list">
+      <div class="mn-icon">👥</div>
+      <div class="mn-label">Pendaftar</div>
+    </a>
   </div>
 </div>
 
-<!-- JURUSAN -->
-<section class="sec" id="jurusan" aria-labelledby="ttl-jurusan">
-  <div class="sec-in">
-    <div class="sec-hd">
-      <div class="sec-tag">Program Keahlian</div>
-      <h2 class="sec-ttl" id="ttl-jurusan">Pilih Jurusan Sesuai Passionmu</h2>
-      <p class="sec-sub">7 program keahlian unggulan yang relevan dengan kebutuhan industri masa kini</p>
-    </div>
-    <div class="jurusan-grid">
-      <article class="j-card"><div class="j-ico">📊</div><h3 class="j-name">Akuntansi Keuangan Lembaga</h3><p class="j-desc">Kuasai ilmu keuangan, pembukuan, dan manajemen akuntansi untuk karir di perbankan dan perusahaan.</p><span class="j-badge">Kuota Tersisa</span></article>
-      <article class="j-card"><div class="j-ico">🛒</div><h3 class="j-name">Bisnis Digital</h3><p class="j-desc">Pelajari e-commerce, digital marketing, dan strategi bisnis online untuk era ekonomi digital.</p><span class="j-badge">Kuota Tersisa</span></article>
-      <article class="j-card"><div class="j-ico">🎨</div><h3 class="j-name">Desain Komunikasi Visual</h3><p class="j-desc">Ekspresikan kreativitasmu lewat desain grafis, branding, dan multimedia visual profesional.</p><span class="j-badge">Kuota Tersisa</span></article>
-      <article class="j-card"><div class="j-ico">🌐</div><h3 class="j-name">Teknik Komputer &amp; Jaringan</h3><p class="j-desc">Kuasai infrastruktur IT, networking, dan keamanan siber yang dibutuhkan industri teknologi.</p><span class="j-badge">Kuota Tersisa</span></article>
-      <article class="j-card"><div class="j-ico">🚗</div><h3 class="j-name">Teknik Kendaraan Ringan</h3><p class="j-desc">Teknik perawatan dan perbaikan kendaraan ringan sesuai standar bengkel resmi.</p><span class="j-badge">Kuota Tersisa</span></article>
-      <article class="j-card"><div class="j-ico">🏍️</div><h3 class="j-name">Teknik Sepeda Motor</h3><p class="j-desc">Spesialisasi sepeda motor dengan bekal teknis dan jiwa wirausaha untuk membuka usaha sendiri.</p><span class="j-badge">Kuota Tersisa</span></article>
-      <article class="j-card"><div class="j-ico">🗂️</div><h3 class="j-name">Manajemen Perkantoran</h3><p class="j-desc">Kuasai administrasi modern, korespondensi, dan manajemen kantor berbasis teknologi terkini.</p><span class="j-badge">Kuota Tersisa</span></article>
-    </div>
-  </div>
-</section>
-
-<!-- JADWAL -->
-<section class="sec" id="jadwal" style="background:var(--white);padding:64px 5%" aria-labelledby="ttl-jadwal">
-  <div class="sec-in">
-    <div class="sec-hd">
-      <div class="sec-tag">Jadwal SPMB</div>
-      <h2 class="sec-ttl" id="ttl-jadwal">Tahapan Pendaftaran</h2>
-      <p class="sec-sub">Pastikan mendaftar sebelum batas waktu yang ditentukan</p>
-    </div>
-    <ol class="tl-wrap" aria-label="Tahapan SPMB">
-      <li class="tl-item done"><div class="tl-dot" aria-label="Selesai">✓</div><div><div class="tl-title">Pengumuman SPMB</div><div class="tl-date">1 April 2026</div></div></li>
-      <li class="tl-item active"><div class="tl-dot" aria-label="Aktif">2</div><div><div class="tl-title">Pendaftaran Online</div><div class="tl-date">1 Mei – 30 Jun 2026</div></div></li>
-      <li class="tl-item"><div class="tl-dot">3</div><div><div class="tl-title">Verifikasi Dokumen</div><div class="tl-date">1 – 10 Jul 2026</div></div></li>
-      <li class="tl-item"><div class="tl-dot">4</div><div><div class="tl-title">Pengumuman Hasil</div><div class="tl-date">12 Juli 2026</div></div></li>
-      <li class="tl-item"><div class="tl-dot">5</div><div><div class="tl-title">Daftar Ulang</div><div class="tl-date">13 – 20 Jul 2026</div></div></li>
-    </ol>
-  </div>
-</section>
-
-<!-- FORM -->
-<section class="form-sec" id="daftar" aria-labelledby="ttl-daftar">
-  <div class="form-in">
-    <div class="form-hd">
-      <div class="sec-tag">Pendaftaran Online</div>
-      <h2 class="sec-ttl" id="ttl-daftar">Formulir Pendaftaran SPMB</h2>
-      <p class="sec-sub">Isi formulir dengan data yang benar sesuai dokumen resmi. Data akan tersimpan otomatis ke sistem panitia.</p>
-    </div>
-
-    <div class="info-strip" role="note" aria-label="Persiapan pendaftaran">
-      <div class="is-item"><div class="is-ico">📄</div><div class="is-txt"><strong>Siapkan Dokumen</strong>Ijazah, KK, Akta Lahir, NISN</div></div>
-      <div class="is-item"><div class="is-ico">✍️</div><div class="is-txt"><strong>Isi Data Lengkap</strong>Sesuai dokumen asli yang dimiliki</div></div>
-      <div class="is-item"><div class="is-ico">✅</div><div class="is-txt"><strong>Tersimpan Otomatis</strong>Langsung masuk ke sistem panitia</div></div>
-    </div>
-
-    <div class="fc" role="main">
-
-      <!-- Step Indicator -->
-      <nav class="fsi" aria-label="Langkah formulir" id="fsiNav">
-        <div class="fsi-s active" id="fsi1" aria-current="step"><div class="fsi-n">1</div><span class="fsi-lbl">Data Siswa</span></div>
-        <div class="fsi-ln" id="fl1" aria-hidden="true"></div>
-        <div class="fsi-s" id="fsi2"><div class="fsi-n">2</div><span class="fsi-lbl">Alamat &amp; Info</span></div>
-        <div class="fsi-ln" id="fl2" aria-hidden="true"></div>
-        <div class="fsi-s" id="fsi3"><div class="fsi-n">3</div><span class="fsi-lbl">Asal Sekolah</span></div>
-        <div class="fsi-ln" id="fl3" aria-hidden="true"></div>
-        <div class="fsi-s" id="fsi4"><div class="fsi-n">4</div><span class="fsi-lbl">Orang Tua</span></div>
-      </nav>
-
-      <!-- Progress -->
-      <div class="fp" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" id="fpBar">
-        <div class="fp-meta">
-          <span id="fpLbl">Langkah 1 dari 4 — Identitas Peserta Didik</span>
-          <span id="fpPct">25%</span>
+<!-- ══ HERO ══ -->
+<header id="beranda">
+  <div id="dashboard-hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          SPMB 2026/2027 — Data Real-Time
         </div>
-        <div class="fp-bar"><div class="fp-fill" id="fpFill" style="width:25%"></div></div>
+        <h1>Selamat Datang di <em>SMKS Ciledug</em><br>Al Musaddadiyah Garut</h1>
+        <p>Pantau data pendaftar SPMB 2026/2027 secara real-time. Infografis interaktif, sebaran jurusan, dan statistik lengkap calon peserta didik baru.</p>
+        <div class="hero-btns">
+          <a class="btn-gold" href="#infografis">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="10" width="3" height="4" rx="1"/><rect x="6.5" y="6" width="3" height="8" rx="1"/><rect x="11" y="2" width="3" height="12" rx="1"/></svg>
+            Lihat Infografis
+          </a>
+          <a href="#pendaftar-list" class="btn-ghost">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.314 2.686-6 6-6s6 2.686 6 6"/></svg>
+            Daftar Pendaftar
+          </a>
+        </div>
       </div>
-
-      <!-- Alert -->
-      <div class="alert err" id="alertBox" role="alert" aria-live="assertive"></div>
-
-      <!-- STEP 1 -->
-      <fieldset class="fstep active" id="step1" aria-labelledby="s1-ttl">
-        <legend class="fsttl" id="s1-ttl">📋 Identitas Calon Peserta Didik</legend>
-        <div class="fg"><label class="fl" for="namaLengkap">Nama Lengkap <span class="req" aria-hidden="true">*</span></label><input type="text" id="namaLengkap" autocomplete="name" placeholder="Sesuai ijazah / akta lahir" required><div class="field-err" id="e-namaLengkap">Nama lengkap wajib diisi.</div></div>
-        <div class="fg"><label class="fl">Jenis Kelamin <span class="req" aria-hidden="true">*</span></label><div class="rg" role="radiogroup" aria-required="true"><label class="ro" onclick="pickRadio(this,'jenisKelamin','Laki-Laki')"><input type="radio" name="jenisKelamin" value="Laki-Laki"><div class="rd" aria-hidden="true"></div>Laki-Laki</label><label class="ro" onclick="pickRadio(this,'jenisKelamin','Perempuan')"><input type="radio" name="jenisKelamin" value="Perempuan"><div class="rd" aria-hidden="true"></div>Perempuan</label></div><div class="field-err" id="e-jenisKelamin">Jenis kelamin wajib dipilih.</div></div>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="nisn">NISN <span class="req" aria-hidden="true">*</span></label><input type="text" id="nisn" inputmode="numeric" pattern="[0-9]*" placeholder="10 digit" maxlength="10" autocomplete="off"><div class="field-err" id="e-nisn">NISN harus 10 digit angka.</div></div>
-          <div class="fg"><label class="fl" for="nik">NIK <span class="req" aria-hidden="true">*</span></label><input type="text" id="nik" inputmode="numeric" pattern="[0-9]*" placeholder="16 digit sesuai KK" maxlength="16" autocomplete="off"><div class="field-err" id="e-nik">NIK harus 16 digit angka.</div></div>
+      <div class="hero-stats" role="region" aria-label="Statistik pendaftar">
+        <div class="hero-stat">
+          <div class="num counter-num" data-target="0" data-suffix="" data-id="total"><span class="skeleton" aria-hidden="true"></span></div>
+          <div class="lbl">Total Pendaftar</div>
         </div>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="nomorIjazah">No. Seri Ijazah SMP/MTs <span class="req" aria-hidden="true">*</span></label><input type="text" id="nomorIjazah" placeholder="Contoh: 124202500998009"><div class="field-err" id="e-nomorIjazah">Nomor seri ijazah wajib diisi.</div></div>
-          <div class="fg"><label class="fl" for="nomorSkhun">No. Seri SKHUN <span class="req" aria-hidden="true">*</span></label><input type="text" id="nomorSkhun" placeholder="Contoh: 400.3.11.1/11/PKBM"><div class="field-err" id="e-nomorSkhun">Nomor SKHUN wajib diisi.</div></div>
+        <div class="hero-stat">
+          <div class="num counter-num" data-target="0" data-suffix="%" data-id="persen-laki"><span class="skeleton" aria-hidden="true"></span></div>
+          <div class="lbl">Laki-laki</div>
         </div>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="tempatLahir">Tempat Lahir <span class="req" aria-hidden="true">*</span></label><input type="text" id="tempatLahir" placeholder="Nama kota / kabupaten" autocomplete="off"><div class="field-err" id="e-tempatLahir">Tempat lahir wajib diisi.</div></div>
-          <div class="fg"><label class="fl" for="tanggalLahir">Tanggal Lahir <span class="req" aria-hidden="true">*</span></label><input type="date" id="tanggalLahir" max="2012-12-31" min="2006-01-01"><div class="field-err" id="e-tanggalLahir">Tanggal lahir wajib diisi.</div></div>
+        <div class="hero-stat">
+          <div class="num counter-num" data-target="0" data-suffix="" data-id="jumlah-jurusan"><span class="skeleton" aria-hidden="true"></span></div>
+          <div class="lbl">Jurusan Dipilih</div>
         </div>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="noHpSiswa">No. HP / WhatsApp Aktif <span class="req" aria-hidden="true">*</span></label><input type="tel" id="noHpSiswa" inputmode="tel" placeholder="08xx-xxxx-xxxx" autocomplete="tel"><div class="field-err" id="e-noHpSiswa">Nomor HP/WA tidak valid (8–16 digit).</div></div>
-          <div class="fg"><label class="fl" for="emailSiswa">Email Aktif <span class="req" aria-hidden="true">*</span></label><input type="email" id="emailSiswa" inputmode="email" placeholder="contoh@gmail.com" autocomplete="email"><div class="field-err" id="e-emailSiswa">Alamat email tidak valid.</div></div>
-        </div>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="medsos">Nama Media Sosial</label><input type="text" id="medsos" placeholder="@namaakun"></div>
-          <div class="fg"><label class="fl" for="berkebutuhanKhusus">Berkebutuhan Khusus <span class="req" aria-hidden="true">*</span></label><select id="berkebutuhanKhusus" required><option value="">— Pilih —</option><option>Tidak</option><option>Tunanetra</option><option>Tunarungu</option><option>Tunawicara</option><option>Tunadaksa</option><option>Tunagrahita</option><option>Autis</option><option>Lainnya</option></select><div class="field-err" id="e-berkebutuhanKhusus">Wajib dipilih.</div></div>
-        </div>
-        <div class="frow">
-          <div class="fg"><label class="fl">Penerima PIP <span class="req" aria-hidden="true">*</span></label><div class="rg" role="radiogroup"><label class="ro" onclick="pickRadio(this,'pip','Ya')"><input type="radio" name="pip" value="Ya"><div class="rd" aria-hidden="true"></div>Ya</label><label class="ro" onclick="pickRadio(this,'pip','Tidak')"><input type="radio" name="pip" value="Tidak"><div class="rd" aria-hidden="true"></div>Tidak</label></div><div class="field-err" id="e-pip">Status PIP wajib dipilih.</div></div>
-          <div class="fg"><label class="fl" for="tinggiBadan">Tinggi Badan (cm) <span class="req" aria-hidden="true">*</span></label><input type="text" id="tinggiBadan" inputmode="numeric" placeholder="Contoh: 165" maxlength="3"><div class="field-err" id="e-tinggiBadan">Tinggi badan wajib diisi.</div></div>
-        </div>
-        <div class="fn"><div></div><button type="button" class="btn-next" onclick="goStep(2)">Lanjut — Alamat &amp; Info →</button></div>
-      </fieldset>
-
-      <!-- STEP 2 -->
-      <fieldset class="fstep" id="step2" aria-labelledby="s2-ttl">
-        <legend class="fsttl" id="s2-ttl">🏠 Alamat Tempat Tinggal</legend>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="dusunRtRw">Dusun / RT / RW <span class="req" aria-hidden="true">*</span></label><input type="text" id="dusunRtRw" placeholder="Kp. Jangkurang RT 01/02" autocomplete="address-line1"><div class="field-err" id="e-dusunRtRw">Wajib diisi.</div></div>
-          <div class="fg"><label class="fl" for="kelurahan">Kelurahan / Desa <span class="req" aria-hidden="true">*</span></label><input type="text" id="kelurahan" placeholder="Contoh: Sukamentri" autocomplete="address-level3"><div class="field-err" id="e-kelurahan">Wajib diisi.</div></div>
-        </div>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="kecamatan">Kecamatan <span class="req" aria-hidden="true">*</span></label><input type="text" id="kecamatan" placeholder="Contoh: Garut Kota" autocomplete="address-level2"><div class="field-err" id="e-kecamatan">Wajib diisi.</div></div>
-          <div class="fg"><label class="fl" for="kabupaten">Kabupaten / Kota <span class="req" aria-hidden="true">*</span></label><input type="text" id="kabupaten" placeholder="Contoh: Garut" autocomplete="address-level1"><div class="field-err" id="e-kabupaten">Wajib diisi.</div></div>
-        </div>
-        <div class="fg"><label class="fl" for="provinsi">Provinsi <span class="req" aria-hidden="true">*</span></label><select id="provinsi" required><option value="">— Pilih Provinsi —</option><option>Jawa Barat</option><option>Jawa Tengah</option><option>Jawa Timur</option><option>DKI Jakarta</option><option>DI Yogyakarta</option><option>Banten</option><option>Sumatera Utara</option><option>Sumatera Selatan</option><option>Sumatera Barat</option><option>Kalimantan Barat</option><option>Kalimantan Timur</option><option>Sulawesi Selatan</option><option>Lainnya</option></select><div class="field-err" id="e-provinsi">Provinsi wajib dipilih.</div></div>
-        <hr class="fdiv">
-        <div class="fsttl">🚌 Informasi Perjalanan &amp; Tempat Tinggal</div>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="jenisTinggal">Jenis Tempat Tinggal <span class="req" aria-hidden="true">*</span></label><select id="jenisTinggal" required><option value="">— Pilih —</option><option>Bersama Kedua Orangtua</option><option>Bersama Ayah</option><option>Bersama Ibu</option><option>Bersama Wali</option><option>Kos / Indekos</option><option>Asrama</option><option>Lainnya</option></select><div class="field-err" id="e-jenisTinggal">Wajib dipilih.</div></div>
-          <div class="fg"><label class="fl" for="transportasi">Transportasi ke Sekolah <span class="req" aria-hidden="true">*</span></label><select id="transportasi" required><option value="">— Pilih —</option><option>Jalan Kaki</option><option>Sepeda</option><option>Kendaraan Sendiri</option><option>Angkutan Umum</option><option>Diantar Orang Tua</option><option>Ojek Online</option><option>Lainnya</option></select><div class="field-err" id="e-transportasi">Wajib dipilih.</div></div>
-        </div>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="jarakTempuh">Jarak ke Sekolah (km) <span class="req" aria-hidden="true">*</span></label><input type="text" id="jarakTempuh" inputmode="decimal" placeholder="Contoh: 2.8" maxlength="6"><div class="field-err" id="e-jarakTempuh">Wajib diisi.</div></div>
-          <div class="fg"><label class="fl" for="waktuTempuh">Waktu Tempuh (menit) <span class="req" aria-hidden="true">*</span></label><input type="text" id="waktuTempuh" inputmode="numeric" placeholder="Contoh: 10" maxlength="4"><div class="field-err" id="e-waktuTempuh">Wajib diisi.</div></div>
-        </div>
-        <div class="fg"><label class="fl" for="jumlahSaudara">Jumlah Saudara Kandung <span class="req" aria-hidden="true">*</span></label><input type="text" id="jumlahSaudara" inputmode="numeric" placeholder="Contoh: 2" maxlength="2"><div class="field-err" id="e-jumlahSaudara">Wajib diisi.</div></div>
-        <div class="fn"><button type="button" class="btn-prev" onclick="goStep(1)">← Kembali</button><button type="button" class="btn-next" onclick="goStep(3)">Lanjut — Asal Sekolah →</button></div>
-      </fieldset>
-
-      <!-- STEP 3 -->
-      <fieldset class="fstep" id="step3" aria-labelledby="s3-ttl">
-        <legend class="fsttl" id="s3-ttl">🏫 Data Asal Sekolah</legend>
-        <div class="fg"><label class="fl">Jenis Asal Sekolah <span class="req" aria-hidden="true">*</span></label><div class="rg" role="radiogroup"><label class="ro" onclick="pickRadio(this,'jenisSekolah','Negeri')"><input type="radio" name="jenisSekolah" value="Negeri"><div class="rd" aria-hidden="true"></div>Negeri</label><label class="ro" onclick="pickRadio(this,'jenisSekolah','Swasta')"><input type="radio" name="jenisSekolah" value="Swasta"><div class="rd" aria-hidden="true"></div>Swasta</label></div><div class="field-err" id="e-jenisSekolah">Jenis sekolah wajib dipilih.</div></div>
-        <div class="fg"><label class="fl" for="namaSekolah">Nama Sekolah Asal <span class="req" aria-hidden="true">*</span></label><input type="text" id="namaSekolah" placeholder="Contoh: PKBM AL-MANSHUR"><div class="field-err" id="e-namaSekolah">Nama sekolah wajib diisi.</div></div>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="kecamatanSekolah">Kecamatan Sekolah Asal <span class="req" aria-hidden="true">*</span></label><input type="text" id="kecamatanSekolah" placeholder="Contoh: Cilawu"><div class="field-err" id="e-kecamatanSekolah">Wajib diisi.</div></div>
-          <div class="fg"><label class="fl" for="kabupatenSekolah">Kabupaten Sekolah Asal <span class="req" aria-hidden="true">*</span></label><input type="text" id="kabupatenSekolah" placeholder="Contoh: Garut"><div class="field-err" id="e-kabupatenSekolah">Wajib diisi.</div></div>
-        </div>
-        <div class="fg"><label class="fl" for="provinsiSekolah">Provinsi Sekolah Asal <span class="req" aria-hidden="true">*</span></label><select id="provinsiSekolah" required><option value="">— Pilih Provinsi —</option><option>Jawa Barat</option><option>Jawa Tengah</option><option>Jawa Timur</option><option>DKI Jakarta</option><option>DI Yogyakarta</option><option>Banten</option><option>Lainnya</option></select><div class="field-err" id="e-provinsiSekolah">Wajib dipilih.</div></div>
-        <hr class="fdiv">
-        <div class="fsttl">🎯 Pilihan Program Keahlian</div>
-        <div class="fg"><label class="fl" for="pilihan1">Pilihan Pertama <span class="req" aria-hidden="true">*</span></label><select id="pilihan1" required><option value="">— Pilih Program Keahlian —</option><option>Akuntansi Keuangan Lembaga</option><option>Bisnis Digital</option><option>Desain Komunikasi Visual</option><option>Teknik Jaringan Komputer</option><option>Teknik Kendaraan Ringan</option><option>Teknik Sepeda Motor</option><option>Manajemen Perkantoran</option></select><div class="field-err" id="e-pilihan1">Pilihan pertama wajib dipilih.</div></div>
-        <div class="fg"><label class="fl" for="pilihan2">Pilihan Kedua</label><select id="pilihan2"><option value="">— Pilih Program Keahlian —</option><option>Akuntansi Keuangan Lembaga</option><option>Bisnis Digital</option><option>Desain Komunikasi Visual</option><option>Teknik Jaringan Komputer</option><option>Teknik Kendaraan Ringan</option><option>Teknik Sepeda Motor</option><option>Manajemen Perkantoran</option></select><div class="field-err" id="e-pilihan2">Pilihan kedua tidak boleh sama dengan pilihan pertama.</div></div>
-        <div class="fg"><label class="fl" for="pilihan3">Pilihan Ketiga</label><select id="pilihan3"><option value="">— Pilih Program Keahlian —</option><option>Akuntansi Keuangan Lembaga</option><option>Bisnis Digital</option><option>Desain Komunikasi Visual</option><option>Teknik Jaringan Komputer</option><option>Teknik Kendaraan Ringan</option><option>Teknik Sepeda Motor</option><option>Manajemen Perkantoran</option></select><div class="field-err" id="e-pilihan3">Pilihan ketiga tidak boleh sama dengan pilihan lainnya.</div></div>
-        <div class="fn"><button type="button" class="btn-prev" onclick="goStep(2)">← Kembali</button><button type="button" class="btn-next" onclick="goStep(4)">Lanjut — Orang Tua/Wali →</button></div>
-      </fieldset>
-
-      <!-- STEP 4 -->
-      <fieldset class="fstep" id="step4" aria-labelledby="s4-ttl">
-        <legend class="fsttl" id="s4-ttl">👨 Data Ayah Kandung</legend>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="namaAyah">Nama Lengkap Ayah <span class="req" aria-hidden="true">*</span></label><input type="text" id="namaAyah" placeholder="Nama lengkap" autocomplete="off"><div class="field-err" id="e-namaAyah">Nama ayah wajib diisi.</div></div>
-          <div class="fg"><label class="fl">Status <span class="req" aria-hidden="true">*</span></label><div class="rg" role="radiogroup"><label class="ro" onclick="pickRadio(this,'ayahHidup','Ya')"><input type="radio" name="ayahHidup" value="Ya"><div class="rd" aria-hidden="true"></div>Masih Hidup</label><label class="ro" onclick="pickRadio(this,'ayahHidup','Tidak')"><input type="radio" name="ayahHidup" value="Tidak"><div class="rd" aria-hidden="true"></div>Almarhum</label></div><div class="field-err" id="e-ayahHidup">Wajib dipilih.</div></div>
-        </div>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="tempatLahirAyah">Tempat Lahir Ayah</label><input type="text" id="tempatLahirAyah" placeholder="Kota / Kabupaten"></div>
-          <div class="fg"><label class="fl" for="tanggalLahirAyah">Tanggal Lahir Ayah</label><input type="date" id="tanggalLahirAyah"></div>
-        </div>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="pekerjaanAyah">Pekerjaan Ayah</label><input type="text" id="pekerjaanAyah" placeholder="Contoh: Wiraswasta"></div>
-          <div class="fg"><label class="fl" for="pendidikanAyah">Pendidikan Terakhir Ayah</label><select id="pendidikanAyah"><option value="">— Pilih —</option><option>Tidak Sekolah</option><option>SD/Sederajat</option><option>SMP/Sederajat</option><option>SMA/SMK</option><option>D1/D2/D3</option><option>S1/D4</option><option>S2/S3</option></select></div>
-        </div>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="penghasilanAyah">Penghasilan Ayah/Bulan</label><select id="penghasilanAyah"><option value="">— Pilih —</option><option>&lt; 1 juta</option><option>1 – 2 juta</option><option>2 – 3 juta</option><option>3 – 5 juta</option><option>5 – 10 juta</option><option>&gt; 10 juta</option></select></div>
-          <div class="fg"><label class="fl" for="noHpAyah">No. HP Ayah</label><input type="tel" id="noHpAyah" inputmode="tel" placeholder="08xx-xxxx-xxxx"></div>
-        </div>
-        <div class="fg"><label class="fl" for="alamatAyah">Alamat Lengkap Ayah</label><textarea id="alamatAyah" rows="2" placeholder="Dusun / RT-RW / Desa / Kecamatan"></textarea></div>
-        <hr class="fdiv">
-        <div class="fsttl">👩 Data Ibu Kandung</div>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="namaIbu">Nama Lengkap Ibu <span class="req" aria-hidden="true">*</span></label><input type="text" id="namaIbu" placeholder="Nama lengkap" autocomplete="off"><div class="field-err" id="e-namaIbu">Nama ibu wajib diisi.</div></div>
-          <div class="fg"><label class="fl">Status <span class="req" aria-hidden="true">*</span></label><div class="rg" role="radiogroup"><label class="ro" onclick="pickRadio(this,'ibuHidup','Ya')"><input type="radio" name="ibuHidup" value="Ya"><div class="rd" aria-hidden="true"></div>Masih Hidup</label><label class="ro" onclick="pickRadio(this,'ibuHidup','Tidak')"><input type="radio" name="ibuHidup" value="Tidak"><div class="rd" aria-hidden="true"></div>Almarhumah</label></div><div class="field-err" id="e-ibuHidup">Wajib dipilih.</div></div>
-        </div>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="tempatLahirIbu">Tempat Lahir Ibu</label><input type="text" id="tempatLahirIbu" placeholder="Kota / Kabupaten"></div>
-          <div class="fg"><label class="fl" for="tanggalLahirIbu">Tanggal Lahir Ibu</label><input type="date" id="tanggalLahirIbu"></div>
-        </div>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="pekerjaanIbu">Pekerjaan Ibu</label><input type="text" id="pekerjaanIbu" placeholder="Contoh: Ibu Rumah Tangga"></div>
-          <div class="fg"><label class="fl" for="pendidikanIbu">Pendidikan Terakhir Ibu</label><select id="pendidikanIbu"><option value="">— Pilih —</option><option>Tidak Sekolah</option><option>SD/Sederajat</option><option>SMP/Sederajat</option><option>SMA/SMK</option><option>D1/D2/D3</option><option>S1/D4</option><option>S2/S3</option></select></div>
-        </div>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="penghasilanIbu">Penghasilan Ibu/Bulan</label><select id="penghasilanIbu"><option value="">— Pilih —</option><option>&lt; 1 juta</option><option>1 – 2 juta</option><option>2 – 3 juta</option><option>3 – 5 juta</option><option>5 – 10 juta</option><option>&gt; 10 juta</option></select></div>
-          <div class="fg"><label class="fl" for="noHpIbu">No. HP Ibu <span class="req" aria-hidden="true">*</span></label><input type="tel" id="noHpIbu" inputmode="tel" placeholder="08xx-xxxx-xxxx"><div class="field-err" id="e-noHpIbu">No. HP ibu tidak valid (8–16 digit).</div></div>
-        </div>
-        <div class="fg"><label class="fl" for="alamatIbu">Alamat Lengkap Ibu</label><textarea id="alamatIbu" rows="2" placeholder="Dusun / RT-RW / Desa / Kecamatan"></textarea></div>
-        <hr class="fdiv">
-        <div class="fsttl">🧑‍💼 Data Wali (isi apabila berbeda dengan orang tua)</div>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="namaWali">Nama Lengkap Wali</label><input type="text" id="namaWali" placeholder="Kosongkan jika tidak ada"></div>
-          <div class="fg"><label class="fl" for="pekerjaanWali">Pekerjaan Wali</label><input type="text" id="pekerjaanWali" placeholder="Contoh: Wiraswasta"></div>
-        </div>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="tempatLahirWali">Tempat Lahir Wali</label><input type="text" id="tempatLahirWali" placeholder="Kota / Kabupaten"></div>
-          <div class="fg"><label class="fl" for="tanggalLahirWali">Tanggal Lahir Wali</label><input type="date" id="tanggalLahirWali"></div>
-        </div>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="pendidikanWali">Pendidikan Wali</label><select id="pendidikanWali"><option value="">— Pilih —</option><option>Tidak Sekolah</option><option>SD/Sederajat</option><option>SMP/Sederajat</option><option>SMA/SMK</option><option>D1/D2/D3</option><option>S1/D4</option><option>S2/S3</option></select></div>
-          <div class="fg"><label class="fl" for="penghasilanWali">Penghasilan Wali/Bulan</label><select id="penghasilanWali"><option value="">— Pilih —</option><option>&lt; 1 juta</option><option>1 – 2 juta</option><option>2 – 3 juta</option><option>3 – 5 juta</option><option>5 – 10 juta</option><option>&gt; 10 juta</option></select></div>
-        </div>
-        <div class="frow">
-          <div class="fg"><label class="fl" for="noHpWali">No. HP Wali</label><input type="tel" id="noHpWali" inputmode="tel" placeholder="08xx-xxxx-xxxx"></div>
-          <div class="fg"><label class="fl" for="alamatWali">Alamat Wali</label><input type="text" id="alamatWali" placeholder="Dusun / RT-RW / Desa"></div>
-        </div>
-        <hr class="fdiv">
-        <div class="fnote" role="note">
-          <span style="font-size:16px;flex-shrink:0" aria-hidden="true">ℹ️</span>
-          <p>Dengan mengklik <strong>Kirim Pendaftaran</strong>, Anda menyatakan bahwa seluruh data yang diisi adalah benar dan sesuai dengan dokumen resmi. Data akan disimpan secara otomatis di sistem panitia SPMB SMK Ciledug Al Musaddadiyah Garut.</p>
-        </div>
-        <div class="fn">
-          <button type="button" class="btn-prev" onclick="goStep(3)">← Kembali</button>
-          <button type="button" class="btn-sub" id="btnSub" onclick="doSubmit()">
-            <span id="btnTxt">📨 Kirim Pendaftaran</span>
-            <div class="spin" id="btnSpin" aria-hidden="true"></div>
-          </button>
-        </div>
-      </fieldset>
-
-      <!-- SUCCESS -->
-      <div class="success" id="successScreen" role="status" aria-live="polite">
-        <div class="success-ico" aria-hidden="true">🎉</div>
-        <h3>Pendaftaran Berhasil!</h3>
-        <p>Data Anda telah tersimpan di sistem SPMB kami. Panitia akan menghubungi Anda untuk proses verifikasi dokumen selanjutnya.</p>
-        <div class="ref-box">
-          <div class="ref-lbl">Nomor Referensi Pendaftaran</div>
-          <div class="ref-num" id="refNum">—</div>
-        </div>
-        <p style="font-size:12.5px;color:var(--g600);margin-bottom:22px">Simpan nomor referensi ini untuk keperluan verifikasi lebih lanjut.</p>
-        <a href="#jurusan" class="btn-primary" style="display:inline-flex;margin:0 auto">← Kembali ke Beranda</a>
       </div>
+    </div>
+  </div>
+</header>
 
+<!-- ══ INFOGRAFIS ══ -->
+<section id="infografis" class="section" style="background:#fff">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Data Pendaftar SPMB</div>
+      <h2 class="section-title">Infografis <em>Pendaftar SMKS Ciledug Al Musaddadiyah</em></h2>
+      <p class="section-sub">Visualisasi data pendaftar SPMB 2026/2027 real-time dari Google Sheets. <span id="data-timestamp" style="font-weight:600;color:var(--blue-mid)">Memuat data...</span></p>
+      <div id="data-status-badge" class="data-status" style="display:none" role="status" aria-live="polite"></div>
+      <button class="refresh-btn" onclick="loadData(true)" id="refresh-btn" aria-label="Perbarui data">
+        <span class="refresh-icon" id="refresh-icon">🔄</span> Perbarui Data
+      </button>
+    </div>
+
+    <!-- 4 KPI CARDS -->
+    <div class="infographic-grid reveal">
+      <article class="info-card">
+        <div class="icon-wrap" style="background:#e3f2fd">👦</div>
+        <div class="big-num" style="color:var(--blue-deep)" data-id="laki"><span class="skeleton" aria-hidden="true"></span></div>
+        <div class="card-lbl">Pendaftar Laki-laki<br><span style="color:var(--blue-bright);font-weight:600">Calon Peserta Didik Baru</span></div>
+      </article>
+      <article class="info-card">
+        <div class="icon-wrap" style="background:#fce4ec">👧</div>
+        <div class="big-num" style="color:#ad1457" data-id="perempuan"><span class="skeleton" aria-hidden="true"></span></div>
+        <div class="card-lbl">Pendaftar Perempuan<br><span style="color:#ad1457;font-weight:600">Calon Peserta Didik Baru</span></div>
+      </article>
+      <article class="info-card">
+        <div class="icon-wrap" style="background:#e8f5e9">✅</div>
+        <div class="big-num" style="color:var(--green)" data-id="pip"><span class="skeleton" aria-hidden="true"></span></div>
+        <div class="card-lbl">Penerima PIP<br><span style="color:var(--green);font-weight:600">Program Indonesia Pintar</span></div>
+      </article>
+      <article class="info-card">
+        <div class="icon-wrap" style="background:#fff8e1">🏫</div>
+        <div class="big-num" style="color:#e65100" data-id="asal-sekolah"><span class="skeleton" aria-hidden="true"></span></div>
+        <div class="card-lbl">Asal Sekolah<br><span style="color:#e65100;font-weight:600">SMP/MTs Berbeda</span></div>
+      </article>
+    </div>
+
+    <!-- BAR CHART + DONUT -->
+    <div class="charts-row reveal">
+      <div class="chart-box">
+        <h3>Pilihan Jurusan (Pilihan 1)</h3>
+        <div id="bar-chart-jurusan" class="bar-chart">
+          <div style="color:var(--text-muted);font-size:13px;padding:18px 0;text-align:center">⏳ Memuat data jurusan...</div>
+        </div>
+      </div>
+      <div class="chart-box">
+        <h3>Jenis Kelamin Pendaftar</h3>
+        <div class="donut-wrap">
+          <svg width="152" height="152" viewBox="0 0 160 160" style="flex-shrink:0" role="img" aria-label="Donut chart jenis kelamin">
+            <circle cx="80" cy="80" r="60" fill="none" stroke="#e3f2fd" stroke-width="26"/>
+            <circle id="donut-laki" cx="80" cy="80" r="60" fill="none" stroke="var(--blue-bright)" stroke-width="26" stroke-dasharray="0 376.99" stroke-dashoffset="0" transform="rotate(-90 80 80)" style="transition:stroke-dasharray 1s ease"/>
+            <circle id="donut-perempuan" cx="80" cy="80" r="60" fill="none" stroke="#ad1457" stroke-width="26" stroke-dasharray="0 376.99" stroke-dashoffset="0" transform="rotate(-90 80 80)" style="transition:stroke-dasharray 1s ease .2s,stroke-dashoffset 1s ease .2s"/>
+            <text id="donut-center" x="80" y="75" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="19" font-weight="900" fill="var(--blue-deep)">–</text>
+            <text x="80" y="93" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9.5" fill="#607d9e">Total</text>
+          </svg>
+          <div class="donut-legend">
+            <div class="legend-item"><div class="legend-dot" style="background:var(--blue-bright)"></div>Laki-laki<span id="legend-laki" class="legend-pct">–</span></div>
+            <div class="legend-item"><div class="legend-dot" style="background:#ad1457"></div>Perempuan<span id="legend-perempuan" class="legend-pct">–</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WILAYAH ASAL -->
+    <div class="map-card reveal" id="wilayah-card">
+      <div class="map-card-header">
+        <div>
+          <div class="section-label" style="margin-bottom:5px">Sebaran Asal Sekolah</div>
+          <h3 class="section-title" style="font-size:19px">Pendaftar dari <em>Berbagai Kecamatan</em></h3>
+        </div>
+        <span id="wilayah-badge" style="font-size:11.5px;color:var(--text-muted);background:var(--blue-pale);padding:5px 13px;border-radius:50px;font-weight:600">🗺️ Memuat...</span>
+      </div>
+      <div class="wilayah-tables-wrap">
+        <!-- Tabel Kecamatan Asal Sekolah -->
+        <div class="wilayah-table-section">
+          <div class="wilayah-table-title">
+            <span class="wtitle-icon">🏫</span> Kecamatan Asal Sekolah
+            <span class="wtitle-badge" id="badge-kec">–</span>
+          </div>
+          <div id="tabel-kecamatan">
+            <div class="wilayah-empty">⏳ Memuat data kecamatan...</div>
+          </div>
+        </div>
+        <!-- Tabel Kabupaten Asal Sekolah -->
+        <div class="wilayah-table-section">
+          <div class="wilayah-table-title">
+            <span class="wtitle-icon">🗺️</span> Kabupaten/Kota Asal
+            <span class="wtitle-badge" id="badge-kab" style="background:#fff8e1;color:#e65100">–</span>
+          </div>
+          <div id="tabel-kabupaten">
+            <div class="wilayah-empty">⏳ Memuat data kabupaten...</div>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="sec" id="faq" aria-labelledby="ttl-faq">
-  <div class="sec-in">
-    <div class="sec-hd">
-      <div class="sec-tag">FAQ</div>
-      <h2 class="sec-ttl" id="ttl-faq">Pertanyaan yang Sering Diajukan</h2>
+<!-- ══ JALUR & STATUS PENDAFTARAN ══ -->
+<section id="pendaftar-section" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Proses Pendaftaran</div>
+      <h2 class="section-title">Tahapan <em>SPMB 2026/2027</em></h2>
+      <p class="section-sub">Jadwal dan progres penerimaan peserta didik baru SMKS Ciledug Al Musaddadiyah Garut.</p>
     </div>
-    <div class="faq-wrap">
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Dokumen apa saja yang perlu disiapkan?<span class="faq-arr" aria-hidden="true">⌄</span></button><div class="faq-a"><p>Ijazah/STTB SMP/MTs, Kartu Keluarga, Akta Kelahiran, Foto 3×4, dan NISN.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Apakah pendaftaran dikenakan biaya?<span class="faq-arr" aria-hidden="true">⌄</span></button><div class="faq-a"><p>Pendaftaran online tidak dikenakan biaya. Informasi biaya lanjutan akan disampaikan pada saat verifikasi dokumen.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Bagaimana jika data yang diisi tidak sesuai?<span class="faq-arr" aria-hidden="true">⌄</span></button><div class="faq-a"><p>Segera hubungi panitia SPMB melalui WhatsApp atau datang langsung ke sekolah sebelum tahap verifikasi ditutup.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Kapan pengumuman hasil seleksi?<span class="faq-arr" aria-hidden="true">⌄</span></button><div class="faq-a"><p>Pengumuman dijadwalkan pada 12 Juli 2026 melalui website resmi dan WhatsApp ke nomor terdaftar.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Apakah tersedia beasiswa atau keringanan biaya?<span class="faq-arr" aria-hidden="true">⌄</span></button><div class="faq-a"><p>Tersedia beasiswa PIP dan program keringanan biaya. Silakan hubungi bagian administrasi untuk informasi lebih lanjut.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Bagaimana cara menghubungi panitia SPMB?<span class="faq-arr" aria-hidden="true">⌄</span></button><div class="faq-a"><p>Telepon (0262) 4892181 · Email: info@smkciledug.sch.id · Senin–Sabtu, pukul 07.30–14.30 WIB.</p></div></div>
+    <div class="timeline-list reveal">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">1 Apr – 30 Jun 2026</div>
+          <div class="tl-title">📋 Pendaftaran Online Dibuka</div>
+          <div class="tl-desc">Calon peserta didik baru mengisi formulir SPMB online. Semua data identitas, alamat, asal sekolah, dan pilihan jurusan dicatat.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">1 – 10 Jul 2026</div>
+          <div class="tl-title">📁 Verifikasi Berkas</div>
+          <div class="tl-desc">Panitia memverifikasi kelengkapan dokumen: ijazah/STTB SMP/MTs, KK, Akta Kelahiran, foto, dan NISN setiap pendaftar.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">12 Jul 2026</div>
+          <div class="tl-title">📢 Pengumuman Hasil Seleksi</div>
+          <div class="tl-desc">Pengumuman kelulusan disampaikan melalui website resmi sekolah dan notifikasi WhatsApp ke nomor yang terdaftar.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">14 – 18 Jul 2026</div>
+          <div class="tl-title">📝 Daftar Ulang</div>
+          <div class="tl-desc">Peserta yang dinyatakan diterima melakukan daftar ulang dan melengkapi berkas administrasi di sekolah.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">14 Jul 2026</div>
+          <div class="tl-title">🎓 Tahun Pelajaran Baru Dimulai</div>
+          <div class="tl-desc">Peserta didik baru resmi bergabung bersama keluarga besar SMKS Ciledug Al Musaddadiyah Garut Tahun Pelajaran 2026/2027.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TABEL PENDAFTAR ══ -->
+<section id="pendaftar-list" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Data Pendaftar</div>
+      <h2 class="section-title">Calon Peserta Didik <em>Baru 2026/2027</em></h2>
+      <p class="section-sub">Data ringkasan pendaftar SPMB yang telah mengisi formulir online. <span id="pendaftar-count" style="color:var(--blue-mid);font-weight:700">Memuat...</span></p>
+    </div>
+    <div id="pendaftar-grid" class="pendaftar-grid">
+      <!-- diisi JS -->
+      <div class="stories-empty">⏳ Memuat data pendaftar...</div>
+    </div>
+    <nav class="stories-nav" id="pendaftar-nav" aria-label="Navigasi halaman pendaftar">
+      <button class="stories-nav-btn" id="pendaftar-prev" onclick="pendaftarPage(-1)" disabled>← Sebelumnya</button>
+      <div class="stories-dots" id="pendaftar-dots"></div>
+      <span class="stories-page-info" id="pendaftar-page-info"></span>
+      <button class="stories-nav-btn" id="pendaftar-next" onclick="pendaftarPage(1)">Selanjutnya →</button>
+    </nav>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section id="cta-section" class="section">
+  <div class="container">
+    <div class="cta-box reveal">
+      <div class="cta-badge">📋 Daftar Sekarang</div>
+      <h2>Bergabunglah bersama<br><em>SMKS Ciledug Al Musaddadiyah</em></h2>
+      <p>Pendaftaran SPMB Online 2026/2027 masih dibuka. Pilih jurusanmu dan wujudkan masa depan bersama kami.</p>
+      <div class="cta-btns">
+        <a class="btn-gold" href="https://www.smkciledugalmusaddadiyah.sch.id" target="_blank" rel="noopener">
+          📋 Daftar Online Sekarang
+        </a>
+        <a class="btn-ghost" href="https://wa.me/+62262489218" target="_blank" rel="noopener">
+          📞 Hubungi Panitia
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="ft-in">
-    <div class="ft-top">
-      <div>
-        <div class="ft-name">SMK Ciledug Al Musaddadiyah Garut</div>
-        <div class="ft-sub">Sekolah Menengah Kejuruan Unggulan</div>
-        <address class="ft-addr">
-          📍 Jl. Mayor Syamsu No. 02 Garut 44151<br>
-          📞 <a href="tel:+62624892181">(0262) 4892181</a><br>
-          📧 <a href="mailto:info@smkciledug.sch.id">info@smkciledug.sch.id</a><br>
-          🌐 <a href="https://www.smkciledugalmusaddadiyah.sch.id/" target="_blank" rel="noopener">www.smkciledugalmusaddadiyah.sch.id</a>
-        </address>
-      </div>
-      <div>
-        <div class="ft-ctitle">Navigasi</div>
-        <ul class="ft-links" role="list">
-          <li><a href="#jurusan">Program Keahlian</a></li>
-          <li><a href="#jadwal">Jadwal SPMB</a></li>
-          <li><a href="#daftar">Pendaftaran</a></li>
-          <li><a href="#faq">FAQ</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="ft-ctitle">Informasi</div>
-        <ul class="ft-links" role="list">
-          <li><a href="https://www.smkciledugalmusaddadiyah.sch.id/" target="_blank" rel="noopener">Website Resmi</a></li>
-          <li><a href="#daftar">Formulir Pendaftaran</a></li>
-          <li><a href="mailto:info@smkciledug.sch.id">Hubungi Kami</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="ft-bot">
-      <div class="ft-copy">© 2026 SMK Ciledug Al Musaddadiyah Garut. Hak Cipta Dilindungi.</div>
-      <div class="ft-badge">SPMB 2026/2027</div>
-    </div>
-    <div class="btn-back-web-wrap">
-      <a href="https://www.smkciledugalmusaddadiyah.sch.id/" target="_blank" rel="noopener" class="btn-back-web">
-        🌐 Kembali ke Website Sekolah
-      </a>
-    </div>
-  </div>
+<footer id="spmb-footer">
+  <p style="color:rgba(255,255,255,.55);font-size:13px;margin-bottom:10px;font-weight:700">SMKS Ciledug Al Musaddadiyah Garut</p>
+  <p>📍 Jl. Mayor Syamsu No. 02 Garut 44151 · 📞 <a href="tel:+62262489218">(0262) 489218</a></p>
+  <p style="margin-top:8px">
+    <a href="https://www.smkciledugalmusaddadiyah.sch.id" target="_blank" rel="noopener">Website Sekolah</a> ·
+    <a href="https://www.instagram.com/smkscalm_official/" target="_blank" rel="noopener">Instagram</a>
+  </p>
+  <p style="margin-top:12px">© 2026 SMKS Ciledug Al Musaddadiyah · Infografis SPMB 2026/2027</p>
 </footer>
 
+<!-- TOAST -->
+<div id="toast" role="status" aria-live="polite"></div>
+
 <script>
-(function(){
-  'use strict';
-  const SCRIPT_URL='https://script.google.com/macros/s/AKfycbzJuZDxkC-mGEWzwplPTU5Y8ucW9BZGp2ZEhRiFFQGPSiYQ8NpEC1TA5KmQzgaYAIqw/exec';
-  const TOTAL=4;
-  let cur=1,fd={};
-  const $=id=>document.getElementById(id);
-  const val=id=>{const e=$(id);return e?e.value.trim():''};
-  const rad=name=>{const e=document.querySelector(`input[name="${name}"]:checked`);return e?e.value:''};
-  const isEmail=s=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
-  const isPhone=s=>/^[0-9+\-\s]{8,16}$/.test(s);
-  const digits=s=>/^[0-9]+$/.test(s);
+/* ── CONFIG ── */
+/* URL Apps Script SPMB — ambil dari endpoint yang sama dengan form SPMB */
+const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbzJuZDxkC-mGEWzwplPTU5Y8ucW9BZGp2ZEhRiFFQGPSiYQ8NpEC1TA5KmQzgaYAIqw/exec';
 
-  // Cache step indicator elements for updateUI performance
-  const fsiEls=[null];for(let i=1;i<=TOTAL;i++)fsiEls.push($('fsi'+i));
-  const flEls=[null];for(let i=1;i<TOTAL;i++)flEls.push($('fl'+i));
-  const fpLblEl=$('fpLbl'),fpPctEl=$('fpPct'),fpFillEl=$('fpFill'),fpBarEl=$('fpBar');
+/* ── JURUSAN MAP (normalisasi) ── */
+const JURUSAN_MAP={
+  'akuntansi keuangan lembaga':'Akuntansi Keuangan Lembaga','akl':'Akuntansi Keuangan Lembaga','akuntansi':'Akuntansi Keuangan Lembaga',
+  'bisnis digital':'Bisnis Digital','bd':'Bisnis Digital','bisnis daring dan pemasaran':'Bisnis Digital','bdp':'Bisnis Digital','pemasaran':'Bisnis Digital',
+  'manajemen perkantoran':'Manajemen Perkantoran','mp':'Manajemen Perkantoran','otomatisasi tata kelola perkantoran':'Manajemen Perkantoran','otkp':'Manajemen Perkantoran','administrasi perkantoran':'Manajemen Perkantoran',
+  'desain komunikasi visual':'Desain Komunikasi Visual','dkv':'Desain Komunikasi Visual','multimedia':'Desain Komunikasi Visual',
+  'teknik jaringan komputer':'Teknik Jaringan Komputer','tjk':'Teknik Jaringan Komputer','teknik komputer dan jaringan':'Teknik Jaringan Komputer','tkj':'Teknik Jaringan Komputer',
+  'teknik kendaraan ringan':'Teknik Kendaraan Ringan','tkr':'Teknik Kendaraan Ringan',
+  'teknik sepeda motor':'Teknik Sepeda Motor','tsm':'Teknik Sepeda Motor',
+};
+function normJurusan(raw){
+  if(!raw)return'Lainnya';
+  return JURUSAN_MAP[raw.trim().toLowerCase()]||raw.trim();
+}
 
-  window.pickRadio=function(lbl,name,value){
-    // Use name attribute on the radio inputs for reliable sibling lookup
-    document.querySelectorAll(`input[name="${name}"]`).forEach(function(inp){
-      inp.closest('.ro').classList.remove('sel');
-    });
-    lbl.classList.add('sel');
-    const radio=lbl.querySelector('input[type="radio"]');
-    if(radio){radio.value=value;radio.checked=true;}
-    // Clear error on the radio group container
-    const rg=lbl.closest('.rg');
-    if(rg)rg.classList.remove('err-ro');
-    clearErr('e-'+name);
-  };
+/* ── KECAMATAN / KABUPATEN FLAG ── */
+const FLAG_KEC={
+  'garut kota':'🏙️','tarogong kidul':'🏙️','tarogong kaler':'🌿','banyuresmi':'🌿',
+  'cilawu':'⛰️','karangtengah':'🌋','samarang':'🌸','pasirwangi':'⛰️',
+  'bayongbong':'🌊','cikajang':'🌿','cigedug':'🌿','wanaraja':'🌳',
+  'sucinaraja':'🌱','leuwigoong':'🌱','karangpawitan':'🌾','leles':'🌺',
+  'kadungora':'🌾','malangbong':'🌋','kersamanah':'🌿','pangatikan':'🌻',
+};
+function getKecFlag(name){
+  const lower=name.toLowerCase().trim();
+  for(const[k,f]of Object.entries(FLAG_KEC)){if(lower.includes(k))return f;}
+  return'📍';
+}
+function getKabFlag(name){
+  const lower=name.toLowerCase().trim();
+  if(lower.includes('garut'))return'🌋';
+  if(lower.includes('bandung'))return'🏙️';
+  if(lower.includes('tasikmalaya'))return'🌊';
+  if(lower.includes('ciamis'))return'🌿';
+  if(lower.includes('sumedang'))return'⛰️';
+  if(lower.includes('majalengka'))return'🌾';
+  return'🗺️';
+}
 
-  window.toggleFaq=function(btn){
-    const item=btn.closest('.faq-item'),wasOpen=item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-q').setAttribute('aria-expanded','false')});
-    if(!wasOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true')}
-  };
-
-  function setErr(id,show){
-    const el=$(id);if(!el)return;
-    el.classList.toggle('show',show);
-    const inputId=id.replace(/^e-/,'');
-    const inp=$(inputId);
-    if(inp&&['INPUT','SELECT','TEXTAREA'].includes(inp.tagName)){
-      inp.classList.toggle('err',show);
-    } else {
-      // Handle radio group containers
-      const rgInp=document.querySelector(`.rg input[name="${inputId}"]`);
-      if(rgInp){
-        const rg=rgInp.closest('.rg');
-        if(rg)rg.classList.toggle('err-ro',show);
-      }
-    }
+/* ── COUNTER ANIMATION ── */
+function animateCounter(el,target,suffix){
+  const t=target!==undefined?target:parseInt(el.dataset.target,10);
+  const s=suffix!==undefined?suffix:(el.dataset.suffix||'');
+  if(isNaN(t))return;
+  const dur=1500;
+  const start=performance.now();
+  function step(now){
+    const p=Math.min((now-start)/dur,1);
+    const ease=1-Math.pow(1-p,4);
+    el.textContent=Math.round(t*ease)+s;
+    if(p<1)requestAnimationFrame(step);
   }
-  function clearErr(id){setErr(id,false)}
-  function clearAll(){
-    document.querySelectorAll('.field-err').forEach(e=>e.classList.remove('show'));
-    document.querySelectorAll('input.err,select.err,textarea.err').forEach(e=>e.classList.remove('err'));
-    document.querySelectorAll('.err-ro').forEach(e=>e.classList.remove('err-ro'));
-    const ab=$('alertBox');if(ab)ab.classList.remove('show');
-  }
-  function scrollErr(){
-    const el=document.querySelector('.field-err.show,.alert.err.show');
-    if(el)el.scrollIntoView({behavior:'smooth',block:'nearest'});
-  }
+  requestAnimationFrame(step);
+}
 
-  const rules={
-    1:[
-      ['namaLengkap',v=>!!v,'e-namaLengkap'],
-      ['jenisKelamin',(v,r)=>!!r('jenisKelamin'),'e-jenisKelamin'],
-      ['nisn',v=>digits(v)&&v.length===10,'e-nisn'],
-      ['nik',v=>digits(v)&&v.length===16,'e-nik'],
-      ['nomorIjazah',v=>!!v,'e-nomorIjazah'],
-      ['nomorSkhun',v=>!!v,'e-nomorSkhun'],
-      ['tempatLahir',v=>!!v,'e-tempatLahir'],
-      ['tanggalLahir',v=>!!v,'e-tanggalLahir'],
-      ['noHpSiswa',v=>isPhone(v),'e-noHpSiswa'],
-      ['emailSiswa',v=>isEmail(v),'e-emailSiswa'],
-      ['berkebutuhanKhusus',v=>!!v,'e-berkebutuhanKhusus'],
-      ['pip',(v,r)=>!!r('pip'),'e-pip'],
-      ['tinggiBadan',v=>!!v&&!isNaN(parseFloat(v)),'e-tinggiBadan'],
-    ],
-    2:[
-      ['dusunRtRw',v=>!!v,'e-dusunRtRw'],['kelurahan',v=>!!v,'e-kelurahan'],
-      ['kecamatan',v=>!!v,'e-kecamatan'],['kabupaten',v=>!!v,'e-kabupaten'],
-      ['provinsi',v=>!!v,'e-provinsi'],['jenisTinggal',v=>!!v,'e-jenisTinggal'],
-      ['transportasi',v=>!!v,'e-transportasi'],['jarakTempuh',v=>!!v,'e-jarakTempuh'],
-      ['waktuTempuh',v=>!!v,'e-waktuTempuh'],['jumlahSaudara',v=>!!v,'e-jumlahSaudara'],
-    ],
-    3:[
-      ['jenisSekolah',(v,r)=>!!r('jenisSekolah'),'e-jenisSekolah'],
-      ['namaSekolah',v=>!!v,'e-namaSekolah'],
-      ['kecamatanSekolah',v=>!!v,'e-kecamatanSekolah'],
-      ['kabupatenSekolah',v=>!!v,'e-kabupatenSekolah'],
-      ['provinsiSekolah',v=>!!v,'e-provinsiSekolah'],
-      ['pilihan1',v=>!!v,'e-pilihan1'],
-      ['pilihan2',()=>{
-        const p1=val('pilihan1'),p2=val('pilihan2');
-        return !p2||p2!==p1;
-      },'e-pilihan2'],
-      ['pilihan3',()=>{
-        const p1=val('pilihan1'),p2=val('pilihan2'),p3=val('pilihan3');
-        return !p3||(p3!==p1&&p3!==p2);
-      },'e-pilihan3'],
-    ],
-    4:[
-      ['namaAyah',v=>!!v,'e-namaAyah'],
-      ['ayahHidup',(v,r)=>!!r('ayahHidup'),'e-ayahHidup'],
-      ['namaIbu',v=>!!v,'e-namaIbu'],
-      ['ibuHidup',(v,r)=>!!r('ibuHidup'),'e-ibuHidup'],
-      ['noHpIbu',v=>isPhone(v),'e-noHpIbu'],
-    ],
-  };
+function setHeroCounter(id,value,suffix){
+  const el=document.querySelector(`[data-id="${id}"]`);
+  if(!el)return;
+  const sk=el.querySelector('.skeleton');
+  if(sk)sk.remove();
+  el.dataset.target=value;el.dataset.suffix=suffix;
+  animateCounter(el,value,suffix);
+}
+function setBigNum(id,value){
+  const el=document.querySelector(`[data-id="${id}"]`);
+  if(!el)return;
+  const sk=el.querySelector('.skeleton');
+  if(sk)sk.remove();
+  el.dataset.target=value;
+  animateCounter(el,value,'');
+}
 
-  function validate(step){
-    clearAll();let ok=true;
-    for(const[field,fn,eid]of(rules[step]||[])){
-      if(!fn(val(field),rad)){setErr(eid,true);ok=false}
-    }
-    if(!ok)scrollErr();
-    return ok;
-  }
-
-  function save(step){
-    if(step===1)Object.assign(fd,{namaLengkap:val('namaLengkap'),jenisKelamin:rad('jenisKelamin'),nisn:val('nisn'),nik:val('nik'),nomorIjazah:val('nomorIjazah'),nomorSkhun:val('nomorSkhun'),tempatLahir:val('tempatLahir'),tanggalLahir:val('tanggalLahir'),noHpSiswa:val('noHpSiswa'),emailSiswa:val('emailSiswa'),medsos:val('medsos'),berkebutuhanKhusus:val('berkebutuhanKhusus'),pip:rad('pip'),tinggiBadan:val('tinggiBadan')});
-    else if(step===2)Object.assign(fd,{dusunRtRw:val('dusunRtRw'),kelurahan:val('kelurahan'),kecamatan:val('kecamatan'),kabupaten:val('kabupaten'),provinsi:val('provinsi'),jenisTinggal:val('jenisTinggal'),transportasi:val('transportasi'),jarakTempuh:val('jarakTempuh'),waktuTempuh:val('waktuTempuh'),jumlahSaudara:val('jumlahSaudara')});
-    else if(step===3)Object.assign(fd,{jenisSekolah:rad('jenisSekolah'),namaSekolah:val('namaSekolah'),kecamatanSekolah:val('kecamatanSekolah'),kabupatenSekolah:val('kabupatenSekolah'),provinsiSekolah:val('provinsiSekolah'),pilihan1:val('pilihan1'),pilihan2:val('pilihan2'),pilihan3:val('pilihan3')});
-    else if(step===4)Object.assign(fd,{namaAyah:val('namaAyah'),ayahHidup:rad('ayahHidup'),tempatLahirAyah:val('tempatLahirAyah'),tanggalLahirAyah:val('tanggalLahirAyah'),pekerjaanAyah:val('pekerjaanAyah'),pendidikanAyah:val('pendidikanAyah'),penghasilanAyah:val('penghasilanAyah'),noHpAyah:val('noHpAyah'),alamatAyah:val('alamatAyah'),namaIbu:val('namaIbu'),ibuHidup:rad('ibuHidup'),tempatLahirIbu:val('tempatLahirIbu'),tanggalLahirIbu:val('tanggalLahirIbu'),pekerjaanIbu:val('pekerjaanIbu'),pendidikanIbu:val('pendidikanIbu'),penghasilanIbu:val('penghasilanIbu'),noHpIbu:val('noHpIbu'),alamatIbu:val('alamatIbu'),namaWali:val('namaWali'),pekerjaanWali:val('pekerjaanWali'),tempatLahirWali:val('tempatLahirWali'),tanggalLahirWali:val('tanggalLahirWali'),pendidikanWali:val('pendidikanWali'),penghasilanWali:val('penghasilanWali'),noHpWali:val('noHpWali'),alamatWali:val('alamatWali')});
-  }
-
-  // Restore visual .sel state for radio buttons from saved fd data
-  function restoreRadios(step){
-    const radioFields={
-      1:['jenisKelamin','pip'],
-      3:['jenisSekolah'],
-      4:['ayahHidup','ibuHidup']
-    };
-    (radioFields[step]||[]).forEach(function(name){
-      const saved=fd[name];
-      if(!saved)return;
-      document.querySelectorAll(`input[name="${name}"]`).forEach(function(inp){
-        const lbl=inp.closest('.ro');
-        if(!lbl)return;
-        if(inp.value===saved){lbl.classList.add('sel');inp.checked=true;}
-        else lbl.classList.remove('sel');
+/* ── INTERSECTION OBSERVER ── */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      e.target.querySelectorAll('.big-num[data-target]').forEach(el=>{
+        const t=parseInt(el.dataset.target,10);
+        if(!isNaN(t))animateCounter(el,t,'');
       });
-    });
-  }
-
-  window.goStep=function(next){
-    if(next>cur&&!validate(cur))return;
-    save(cur);
-    const curEl=$('step'+cur),nextEl=$('step'+next);
-    if(curEl)curEl.classList.remove('active');
-    if(nextEl)nextEl.classList.add('active');
-    cur=next;
-    restoreRadios(next);
-    updateUI(next);
-    const anchor=$('daftar');if(anchor)anchor.scrollIntoView({behavior:'smooth',block:'start'});
-  };
-
-  function updateUI(step){
-    const labels=['Identitas Peserta Didik','Alamat & Informasi','Asal Sekolah & Jurusan','Data Orang Tua / Wali'];
-    const pcts=[25,50,75,100];
-    fpLblEl.textContent=`Langkah ${step} dari ${TOTAL} — ${labels[step-1]}`;
-    fpPctEl.textContent=pcts[step-1]+'%';
-    fpFillEl.style.width=pcts[step-1]+'%';
-    fpBarEl.setAttribute('aria-valuenow',pcts[step-1]);
-    for(let i=1;i<=TOTAL;i++){
-      const el=fsiEls[i];if(!el)continue;
-      el.classList.remove('active','done');el.removeAttribute('aria-current');
-      if(i<step)el.classList.add('done');
-      else if(i===step){el.classList.add('active');el.setAttribute('aria-current','step')}
+      io.unobserve(e.target);
     }
-    for(let i=1;i<TOTAL;i++){
-      const ln=flEls[i];if(ln)ln.classList.toggle('done',i<step);
-    }
-  }
+  });
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  function makeRef(){
-    const n=new Date();
-    const rand=typeof crypto!=='undefined'&&crypto.getRandomValues
-      ?crypto.getRandomValues(new Uint16Array(1))[0]%9000+1000
-      :1000+Math.floor(Math.random()*9000);
-    return'SPMB'+n.getFullYear()+String(n.getMonth()+1).padStart(2,'0')+String(n.getDate()).padStart(2,'0')+'-'+rand;
-  }
+/* ── NAV SCROLL ── */
+let _raf=false;
+window.addEventListener('scroll',()=>{
+  if(_raf)return;_raf=true;
+  requestAnimationFrame(()=>{
+    document.getElementById('spmb-nav').classList.toggle('scrolled',window.scrollY>30);
+    _raf=false;
+  });
+},{passive:true});
 
-  async function fetchRetry(url,body,tries=3,delay=800){
-    for(let i=0;i<tries;i++){
-      try{
-        const ctrl=typeof AbortController!=='undefined'?new AbortController():null;
-        let timer;
-        if(ctrl){timer=setTimeout(()=>ctrl.abort(),15000);}
-        const opts={method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(body)};
-        if(ctrl)opts.signal=ctrl.signal;
-        const res=await fetch(url,opts);
-        if(ctrl)clearTimeout(timer);
-        if(res.ok||res.status===302)return true;
-        throw new Error('HTTP '+res.status);
-      }catch(e){
-        if(i===tries-1)throw e;
-        await new Promise(resolve=>setTimeout(resolve,delay*Math.pow(2,i)));
+/* ── TOAST ── */
+function showToast(msg,isErr=true){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.style.background=isErr?'#e53935':'var(--green)';
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3500);
+}
+
+/* ── HTML ESCAPE ── */
+function esc(str){if(!str)return'';return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+/* ── BAR CHART JURUSAN ── */
+function updateBarChart(jurusanData){
+  const container=document.getElementById('bar-chart-jurusan');
+  if(!container)return;
+  const sorted=Object.entries(jurusanData).sort((a,b)=>b[1]-a[1]);
+  const max=sorted[0]?.[1]||1;
+  const colors=['linear-gradient(90deg,#1565c0,#1e88e5)','linear-gradient(90deg,#7b1fa2,#9c27b0)','linear-gradient(90deg,#1e8c4e,#4caf50)','linear-gradient(90deg,#e65100,#ff6d00)','linear-gradient(90deg,#ffb300,#ffd54f)','linear-gradient(90deg,#0097a7,#00bcd4)','linear-gradient(90deg,#ad1457,#ec407a)','linear-gradient(90deg,#33691e,#558b2f)'];
+  container.innerHTML=sorted.slice(0,8).map(([nama,jumlah],i)=>{
+    const pct=Math.round((jumlah/max)*100);
+    const shortName=nama.length>14?nama.substring(0,14)+'…':nama;
+    return`<div class="bar-row"><div class="bar-label" title="${esc(nama)}">${esc(shortName)}</div><div class="bar-track"><div class="bar-fill" style="width:0%;background:${colors[i%colors.length]}" data-pct="${pct}">${parseInt(jumlah)||0}</div></div><div class="bar-pct">${parseInt(jumlah)||0}</div></div>`;
+  }).join('');
+  requestAnimationFrame(()=>{
+    container.querySelectorAll('.bar-fill').forEach(bar=>{bar.style.width=bar.dataset.pct+'%';});
+  });
+}
+
+/* ── DONUT JENIS KELAMIN ── */
+function updateDonut(laki,perempuan){
+  const circ=2*Math.PI*60;
+  const total=(laki+perempuan)||1;
+  const lenLaki=(laki/total)*circ;
+  const lenPerempuan=(perempuan/total)*circ;
+  const dL=document.getElementById('donut-laki');
+  const dP=document.getElementById('donut-perempuan');
+  const dc=document.getElementById('donut-center');
+  const legL=document.getElementById('legend-laki');
+  const legP=document.getElementById('legend-perempuan');
+  if(dL){dL.style.strokeDasharray=`${lenLaki} ${circ}`;dL.style.strokeDashoffset='0';}
+  if(dP){dP.style.strokeDasharray=`${lenPerempuan} ${circ}`;dP.style.strokeDashoffset=`-${lenLaki}`;}
+  if(dc)dc.textContent=total;
+  if(legL)legL.textContent=((laki/total)*100).toFixed(1)+'%';
+  if(legP)legP.textContent=((perempuan/total)*100).toFixed(1)+'%';
+}
+
+/* ── WILAYAH TABLE ── */
+function buildWilayahTable(data,maxRow,isKab){
+  if(data.length===0){
+    return`<div class="wilayah-empty">${isKab?'🗺️ Belum ada data kabupaten.':'🏫 Belum ada data kecamatan.'}</div>`;
+  }
+  const maxVal=data[0]?.[1]||1;
+  const rows=data.slice(0,maxRow).map(([nama,jumlah],i)=>{
+    const rankClass=i===0?'r1':i===1?'r2':i===2?'r3':'rn';
+    const flag=isKab?getKabFlag(nama):getKecFlag(nama);
+    const barPct=Math.round((jumlah/maxVal)*100);
+    const barWidth=Math.max(barPct,4);
+    const color=isKab?'linear-gradient(90deg,#e65100,#ff6d00)':'linear-gradient(90deg,#1565c0,#1e88e5)';
+    return`<tr>
+      <td style="width:32px"><span class="wt-rank ${rankClass}">${i+1}</span></td>
+      <td><span class="wt-name"><span>${flag}</span>${esc(nama)}</span></td>
+      <td>
+        <div class="wt-count-wrap">
+          <span class="wt-bar-mini" style="width:${barWidth}px;background:${color}"></span>
+          <span class="wt-count">${parseInt(jumlah)||0}</span>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+  return`<table class="wilayah-table">
+    <thead><tr>
+      <th style="width:32px">#</th>
+      <th>${isKab?'Kabupaten/Kota':'Kecamatan'}</th>
+      <th style="text-align:right">Pendaftar</th>
+    </tr></thead>
+    <tbody>${rows}</tbody>
+  </table>`;
+}
+
+function updateWilayah(kecData,kabData){
+  const badge=document.getElementById('wilayah-badge');
+  const badgeKec=document.getElementById('badge-kec');
+  const badgeKab=document.getElementById('badge-kab');
+  const tblKec=document.getElementById('tabel-kecamatan');
+  const tblKab=document.getElementById('tabel-kabupaten');
+  const kecArr=Object.entries(kecData||{}).sort((a,b)=>b[1]-a[1]);
+  const kabArr=Object.entries(kabData||{}).sort((a,b)=>b[1]-a[1]);
+  const totalKec=kecArr.reduce((s,[,v])=>s+(parseInt(v)||0),0);
+  const totalKab=kabArr.reduce((s,[,v])=>s+(parseInt(v)||0),0);
+  if(badge)badge.textContent=`🗺️ ${kecArr.length} Kecamatan · ${kabArr.length} Kabupaten/Kota`;
+  if(badgeKec)badgeKec.textContent=`${kecArr.length} lokasi · ${totalKec} pendaftar`;
+  if(badgeKab)badgeKab.textContent=`${kabArr.length} kabupaten · ${totalKab} pendaftar`;
+  if(tblKec)tblKec.innerHTML=buildWilayahTable(kecArr,12,false);
+  if(tblKab)tblKab.innerHTML=buildWilayahTable(kabArr,10,true);
+}
+
+/* ── PENDAFTAR GRID ── */
+let _allPendaftar=[];
+let _pendaftarPage=0;
+const PER_PAGE=6;
+const GRADIENTS=['linear-gradient(135deg,#1565c0,#1e88e5)','linear-gradient(135deg,#7b1fa2,#ab47bc)','linear-gradient(135deg,#1b5e20,#388e3c)','linear-gradient(135deg,#e65100,#ff6d00)','linear-gradient(135deg,#0097a7,#00bcd4)','linear-gradient(135deg,#ad1457,#ec407a)'];
+
+function renderPendaftarPage(){
+  const grid=document.getElementById('pendaftar-grid');
+  const nav=document.getElementById('pendaftar-nav');
+  const prevBtn=document.getElementById('pendaftar-prev');
+  const nextBtn=document.getElementById('pendaftar-next');
+  const dotsEl=document.getElementById('pendaftar-dots');
+  const pageInfo=document.getElementById('pendaftar-page-info');
+  if(!grid)return;
+  const totalPages=Math.ceil(_allPendaftar.length/PER_PAGE);
+  const start=_pendaftarPage*PER_PAGE;
+  const slice=_allPendaftar.slice(start,start+PER_PAGE);
+  if(slice.length===0){
+    grid.innerHTML='<div class="stories-empty" style="grid-column:1/-1">Belum ada data pendaftar yang tersedia.</div>';
+    if(nav)nav.style.display='none';
+    return;
+  }
+  grid.innerHTML=slice.map((p,i)=>{
+    const gi=start+i;
+    const initial=(p.namaLengkap||p.nama||'?').split(' ').filter(Boolean).map(w=>w[0]).join('').toUpperCase().slice(0,2);
+    const grad=GRADIENTS[gi%GRADIENTS.length];
+    const jk=(p.jenisKelamin||'').toLowerCase();
+    const jkEmoji=jk==='perempuan'?'👧':'👦';
+    const jkLabel=jk==='perempuan'?'Perempuan':'Laki-laki';
+    const jurusan1=normJurusan(p.pilihan1||p.jurusan||'');
+    const jurusan2=normJurusan(p.pilihan2||'');
+    const asalSek=p.namaSekolah||p.asalSekolah||'–';
+    const kec=p.kecamatanSekolah||p.kecamatan||'–';
+    const pipStatus=((p.pip||'').toLowerCase()==='ya'||p.pip==='1'||p.pip===true)?'✅ PIP':'';
+    const nama=p.namaLengkap||p.nama||'Anonim';
+    return`<article class="pendaftar-card">
+      <div class="pd-header" style="background:${grad}">
+        <div class="pd-avatar" style="background:rgba(255,255,255,.15)">${esc(initial)}</div>
+        <div>
+          <div class="pd-name">${esc(nama)}</div>
+          <div class="pd-sub">${jkEmoji} ${jkLabel}${pipStatus?' · '+pipStatus:''}</div>
+        </div>
+      </div>
+      <div class="pd-body">
+        <div class="pd-badge" style="background:var(--blue-pale);color:var(--blue-mid)">🎓 ${esc(jurusan1)||'Belum dipilih'}</div>
+        <div class="pd-info">
+          <strong>Asal Sekolah:</strong> ${esc(asalSek)}<br>
+          <strong>Kecamatan:</strong> ${esc(kec)}${jurusan2?`<br><strong>Pilihan 2:</strong> ${esc(jurusan2)}`:''}
+        </div>
+      </div>
+      <div class="pd-footer">📍 ${esc(p.kabupatenSekolah||p.kabupaten||'Garut')}</div>
+    </article>`;
+  }).join('');
+  /* nav */
+  if(nav){
+    if(totalPages>1){
+      nav.style.display='flex';
+      if(prevBtn)prevBtn.disabled=_pendaftarPage===0;
+      if(nextBtn)nextBtn.disabled=_pendaftarPage===totalPages-1;
+      if(pageInfo)pageInfo.textContent=`${_pendaftarPage+1} / ${totalPages}`;
+      if(dotsEl){
+        dotsEl.innerHTML=Array.from({length:totalPages},(_,i)=>
+          `<button class="stories-dot${i===_pendaftarPage?' active':''}" onclick="pendaftarGoTo(${i})" aria-label="Halaman ${i+1}"></button>`
+        ).join('');
       }
-    }
+    }else{nav.style.display='none';}
+  }
+  const cnt=document.getElementById('pendaftar-count');
+  if(cnt)cnt.textContent=`${_allPendaftar.length} pendaftar terdaftar`;
+}
+
+function pendaftarPage(dir){
+  const totalPages=Math.ceil(_allPendaftar.length/PER_PAGE);
+  const newPage=_pendaftarPage+dir;
+  if(newPage<0||newPage>=totalPages)return;
+  const grid=document.getElementById('pendaftar-grid');
+  if(grid){
+    grid.classList.add('animating');
+    setTimeout(()=>{
+      _pendaftarPage=newPage;
+      renderPendaftarPage();
+      grid.classList.remove('animating');
+    },230);
+  }else{_pendaftarPage=newPage;renderPendaftarPage();}
+}
+function pendaftarGoTo(page){
+  const dir=page-_pendaftarPage;
+  if(dir===0)return;
+  _pendaftarPage=page;
+  renderPendaftarPage();
+}
+
+/* ── CACHE ── */
+const CACHE_KEY='spmb_infografis_v1';
+const CACHE_TTL=10*60*1000;
+function saveCache(data){try{localStorage.setItem(CACHE_KEY,JSON.stringify({ts:Date.now(),data}));}catch(_){}}
+function loadCache(){
+  try{
+    const raw=localStorage.getItem(CACHE_KEY);if(!raw)return null;
+    const obj=JSON.parse(raw);
+    if(Date.now()-obj.ts>CACHE_TTL)return null;
+    return obj.data;
+  }catch(_){return null;}
+}
+function clearCache(){try{localStorage.removeItem(CACHE_KEY);}catch(_){}}
+
+/* ── RENDER DATA ── */
+function renderData(d,source){
+  /* ----- Hitung statistik dari data mentah jika tersedia ----- */
+  let total=0,laki=0,perempuan=0,pip=0,asalSekolahSet=new Set();
+  const jurusanCount={},kecCount={},kabCount={};
+
+  /* Coba parse rows mentah dari Apps Script SPMB */
+  const rows=d.rows||d.data||d.pendaftar||[];
+  if(rows.length>0){
+    rows.forEach(r=>{
+      total++;
+      const jk=(r.jenisKelamin||r.jenis_kelamin||'').toLowerCase();
+      if(jk==='perempuan')perempuan++;else laki++;
+      if((r.pip||'').toLowerCase()==='ya'||(r.pip||'')==='1')pip++;
+      const sek=r.namaSekolah||r.nama_sekolah||'';
+      if(sek)asalSekolahSet.add(sek.trim().toLowerCase());
+      const j1=normJurusan(r.pilihan1||r.jurusan||'');
+      if(j1&&j1!=='Lainnya')jurusanCount[j1]=(jurusanCount[j1]||0)+1;
+      const kec=(r.kecamatanSekolah||r.kecamatan_sekolah||r.kecamatan||'').trim();
+      if(kec){const norm=kec.charAt(0).toUpperCase()+kec.slice(1).toLowerCase();kecCount[norm]=(kecCount[norm]||0)+1;}
+      const kab=(r.kabupatenSekolah||r.kabupaten_sekolah||r.kabupaten||'').trim();
+      if(kab){const norm=kab.charAt(0).toUpperCase()+kab.slice(1).toLowerCase();kabCount[norm]=(kabCount[norm]||0)+1;}
+    });
+  } else {
+    /* Fallback: server mungkin sudah kirim aggregat */
+    total=d.total||0;
+    laki=d.laki||d.lakiLaki||0;
+    perempuan=d.perempuan||0;
+    pip=d.pip||0;
+    if(d.jurusan)Object.assign(jurusanCount,d.jurusan);
+    if(d.kecamatan)Object.assign(kecCount,d.kecamatan);
+    if(d.kabupaten)Object.assign(kabCount,d.kabupaten);
+    if(d.asalSekolah)asalSekolahSet=new Set(Object.keys(d.asalSekolah||{}));
   }
 
-  window.doSubmit=async function(){
-    if(!validate(4))return;
-    save(4);
-    const btn=$('btnSub'),txt=$('btnTxt'),spin=$('btnSpin');
-    if(btn)btn.disabled=true;
-    if(txt)txt.textContent='Mengirimkan data…';
-    if(spin)spin.style.display='block';
-    const ref=makeRef();fd.ref=ref;fd.timestamp=new Date().toLocaleString('id-ID',{timeZone:'Asia/Jakarta'});
-    try{
-      await fetchRetry(SCRIPT_URL,fd);
-      showSuccess(ref);
-    }catch(e){
-      const box=$('alertBox');
-      if(box){box.textContent='⚠️ Gagal mengirim data. Periksa koneksi internet Anda, lalu coba kembali.';box.classList.add('show');box.scrollIntoView({behavior:'smooth',block:'nearest'});}
-      if(btn)btn.disabled=false;
-      if(txt)txt.textContent='📨 Kirim Pendaftaran';
-      if(spin)spin.style.display='none';
-    }
-  };
+  const pctLaki=total>0?Math.round((laki/total)*100):0;
+  const jmlJurusan=Object.keys(jurusanCount).length;
 
-  function showSuccess(ref){
-    const s4=$('step4');if(s4)s4.classList.remove('active');
-    const nav=$('fsiNav');if(nav)nav.style.display='none';
-    const fpb=$('fpBar');if(fpb)fpb.style.display='none';
-    const rn=$('refNum');if(rn)rn.textContent=ref;
-    const ss=$('successScreen');
-    if(ss){ss.classList.add('visible');ss.scrollIntoView({behavior:'smooth',block:'start'});}
+  setHeroCounter('total',total,'');
+  setHeroCounter('persen-laki',pctLaki,'%');
+  setHeroCounter('jumlah-jurusan',jmlJurusan||7,'');
+  setBigNum('laki',laki);
+  setBigNum('perempuan',perempuan);
+  setBigNum('pip',pip);
+  setBigNum('asal-sekolah',asalSekolahSet.size||d.asalSekolahCount||0);
+
+  if(Object.keys(jurusanCount).length>0){updateBarChart(jurusanCount);}
+  else{document.getElementById('bar-chart-jurusan').innerHTML='<div style="color:var(--text-muted);font-size:13px;padding:18px 0;text-align:center">Belum ada data pilihan jurusan.</div>';}
+
+  if(total>0)updateDonut(laki,perempuan);
+  updateWilayah(kecCount,kabCount);
+
+  /* Pendaftar grid */
+  if(rows.length>0){
+    _allPendaftar=rows;
+    _pendaftarPage=0;
+    renderPendaftarPage();
   }
-})();
+
+  /* Timestamp & status */
+  const ts=document.getElementById('data-timestamp');
+  const badge=document.getElementById('data-status-badge');
+  if(source==='live'){
+    if(ts)ts.textContent=d.lastUpdated?'Data per '+d.lastUpdated:'Data ter-update barusan';
+    if(badge){badge.style.display='inline-flex';badge.className='data-status live';badge.textContent='Data Live dari Google Sheets';}
+  } else if(source==='cache'){
+    if(ts)ts.textContent='Data dari cache lokal';
+    if(badge){badge.style.display='inline-flex';badge.className='data-status live';badge.textContent='Cache — memperbarui...';}
+  }
+}
+
+/* ── FALLBACK DATA (estimasi) ── */
+function loadFallbackData(){
+  setHeroCounter('total',247,'');
+  setHeroCounter('persen-laki',58,'%');
+  setHeroCounter('jumlah-jurusan',7,'');
+  setBigNum('laki',143);
+  setBigNum('perempuan',104);
+  setBigNum('pip',89);
+  setBigNum('asal-sekolah',32);
+  updateBarChart({
+    'Teknik Kendaraan Ringan':62,'Teknik Jaringan Komputer':48,'Bisnis Digital':38,
+    'Akuntansi Keuangan Lembaga':34,'Desain Komunikasi Visual':28,
+    'Manajemen Perkantoran':22,'Teknik Sepeda Motor':15,
+  });
+  updateDonut(143,104);
+  updateWilayah(
+    {'Garut Kota':68,'Tarogong Kidul':42,'Banyuresmi':28,'Cilawu':22,'Karangtengah':18,'Wanaraja':16,'Samarang':15,'Bayongbong':14,'Karangpawitan':12,'Tarogong Kaler':12},
+    {'Garut':236,'Tasikmalaya':5,'Bandung':4,'Ciamis':2}
+  );
+  /* Contoh pendaftar sampel */
+  _allPendaftar=[
+    {namaLengkap:'Ahmad Fauzi',jenisKelamin:'Laki-laki',pip:'Ya',pilihan1:'tkr',namaSekolah:'SMP N 1 Garut',kecamatanSekolah:'Garut Kota',kabupatenSekolah:'Garut'},
+    {namaLengkap:'Siti Rahayu',jenisKelamin:'Perempuan',pip:'Tidak',pilihan1:'akl',namaSekolah:'MTs Al Musaddadiyah',kecamatanSekolah:'Tarogong Kidul',kabupatenSekolah:'Garut'},
+    {namaLengkap:'Rizki Maulana',jenisKelamin:'Laki-laki',pip:'Ya',pilihan1:'tjk',pilihan2:'bd',namaSekolah:'SMP N 3 Garut',kecamatanSekolah:'Banyuresmi',kabupatenSekolah:'Garut'},
+    {namaLengkap:'Dewi Sartika',jenisKelamin:'Perempuan',pip:'Tidak',pilihan1:'dkv',namaSekolah:'SMP Muhammadiyah 1 Garut',kecamatanSekolah:'Karangtengah',kabupatenSekolah:'Garut'},
+    {namaLengkap:'Muhamad Haikal',jenisKelamin:'Laki-laki',pip:'Ya',pilihan1:'tsm',namaSekolah:'MTs Negeri 1 Garut',kecamatanSekolah:'Wanaraja',kabupatenSekolah:'Garut'},
+    {namaLengkap:'Nurul Fauziah',jenisKelamin:'Perempuan',pip:'Tidak',pilihan1:'mp',namaSekolah:'SMP N 2 Garut',kecamatanSekolah:'Cilawu',kabupatenSekolah:'Garut'},
+    {namaLengkap:'Dika Firmansyah',jenisKelamin:'Laki-laki',pip:'Ya',pilihan1:'tkr',pilihan2:'tsm',namaSekolah:'SMP N 5 Garut',kecamatanSekolah:'Samarang',kabupatenSekolah:'Garut'},
+    {namaLengkap:'Laila Nur Azizah',jenisKelamin:'Perempuan',pip:'Ya',pilihan1:'bd',namaSekolah:'SMP IT Al Amanah',kecamatanSekolah:'Tarogong Kaler',kabupatenSekolah:'Garut'},
+    {namaLengkap:'Yoga Pratama',jenisKelamin:'Laki-laki',pip:'Tidak',pilihan1:'tjk',namaSekolah:'SMP N 4 Garut',kecamatanSekolah:'Bayongbong',kabupatenSekolah:'Garut'},
+    {namaLengkap:'Fina Salsabila',jenisKelamin:'Perempuan',pip:'Tidak',pilihan1:'akl',pilihan2:'mp',namaSekolah:'MTs Ciledug',kecamatanSekolah:'Garut Kota',kabupatenSekolah:'Garut'},
+    {namaLengkap:'Ridwan Effendi',jenisKelamin:'Laki-laki',pip:'Ya',pilihan1:'tkr',namaSekolah:'SMP Pasundan 1 Garut',kecamatanSekolah:'Karangpawitan',kabupatenSekolah:'Garut'},
+    {namaLengkap:'Citra Amelia',jenisKelamin:'Perempuan',pip:'Tidak',pilihan1:'dkv',namaSekolah:'SMP N 6 Garut',kecamatanSekolah:'Leles',kabupatenSekolah:'Garut'},
+  ];
+  _pendaftarPage=0;
+  renderPendaftarPage();
+  const ts=document.getElementById('data-timestamp');
+  const badge=document.getElementById('data-status-badge');
+  if(ts)ts.textContent='Menampilkan data estimasi (koneksi ke server gagal)';
+  if(badge){badge.style.display='inline-flex';badge.className='data-status error';badge.textContent='Data Estimasi — Tekan Perbarui untuk coba lagi';}
+}
+
+/* ── DATA LOADER ── */
+let refreshTimer=setInterval(()=>loadData(false),10*60*1000);
+let _ctrl=null;
+
+async function loadData(forceRefresh=false){
+  if(_ctrl){try{_ctrl.abort();}catch(_){}_ctrl=null;}
+  if(forceRefresh){clearInterval(refreshTimer);refreshTimer=setInterval(()=>loadData(false),10*60*1000);clearCache();}
+  const refreshBtn=document.getElementById('refresh-btn');
+  if(refreshBtn)refreshBtn.classList.add('spinning');
+
+  /* 1) Tampilkan cache segera */
+  const cached=loadCache();
+  if(cached&&!forceRefresh){
+    renderData(cached,'cache');
+  } else {
+    loadFallbackData();
+  }
+
+  /* 2) Fetch live */
+  const ctrl=new AbortController();
+  _ctrl=ctrl;
+  const timeoutId=setTimeout(()=>{try{ctrl.abort();}catch(_){}},10000);
+  /* Kirim action=getInfografis agar Apps Script bisa merespons khusus */
+  const url=APPS_SCRIPT_URL+'?action=getInfografis'+(forceRefresh?'&t='+Date.now():'');
+  try{
+    const res=await fetch(url,{signal:ctrl.signal,cache:'no-store'});
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    const d=await res.json();
+    if(d.error)throw new Error(d.error);
+    saveCache(d);
+    renderData(d,'live');
+    if(forceRefresh)showToast('Data berhasil diperbarui! ✅',false);
+  }catch(e){
+    if(e&&e.name==='AbortError'){
+      if(!cached)loadFallbackData();
+      return;
+    }
+    if(!cached)loadFallbackData();
+    if(forceRefresh)showToast('Gagal memperbarui. Cek koneksimu.',true);
+  }finally{
+    clearTimeout(timeoutId);
+    _ctrl=null;
+    if(refreshBtn)refreshBtn.classList.remove('spinning');
+  }
+}
+
+/* Auto pause saat tab tersembunyi */
+document.addEventListener('visibilitychange',()=>{
+  if(document.hidden){
+    clearInterval(refreshTimer);
+  }else{
+    loadData(false);
+    refreshTimer=setInterval(()=>loadData(false),10*60*1000);
+  }
+});
+
+document.addEventListener('DOMContentLoaded',()=>loadData(false));
 </script>
 </body>
 </html>
