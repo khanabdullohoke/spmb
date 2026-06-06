@@ -915,14 +915,12 @@ footer{background:var(--navy-xl);color:rgba(255,255,255,.5);padding:48px 5% 22px
   const fpLblEl=$('fpLbl'),fpPctEl=$('fpPct'),fpFillEl=$('fpFill'),fpBarEl=$('fpBar');
 
   window.pickRadio=function(lbl,name,value){
-    // Use name attribute on the radio inputs for reliable sibling lookup
     document.querySelectorAll(`input[name="${name}"]`).forEach(function(inp){
-      inp.closest('.ro').classList.remove('sel');
+      const ro=inp.closest('.ro');if(ro)ro.classList.remove('sel');
     });
     lbl.classList.add('sel');
     const radio=lbl.querySelector('input[type="radio"]');
     if(radio){radio.value=value;radio.checked=true;}
-    // Clear error on the radio group container
     const rg=lbl.closest('.rg');
     if(rg)rg.classList.remove('err-ro');
     clearErr('e-'+name);
@@ -958,7 +956,7 @@ footer{background:var(--navy-xl);color:rgba(255,255,255,.5);padding:48px 5% 22px
     const ab=$('alertBox');if(ab)ab.classList.remove('show');
   }
   function scrollErr(){
-    const el=document.querySelector('.field-err.show,.alert.err.show');
+    const el=document.querySelector('.field-err.show')||document.querySelector('#alertBox.show');
     if(el)el.scrollIntoView({behavior:'smooth',block:'nearest'});
   }
 
@@ -1037,10 +1035,10 @@ footer{background:var(--navy-xl);color:rgba(255,255,255,.5);padding:48px 5% 22px
       const saved=fd[name];
       if(!saved)return;
       document.querySelectorAll(`input[name="${name}"]`).forEach(function(inp){
-        const lbl=inp.closest('.ro');
-        if(!lbl)return;
-        if(inp.value===saved){lbl.classList.add('sel');inp.checked=true;}
-        else lbl.classList.remove('sel');
+        const ro=inp.closest('.ro');
+        if(!ro)return;
+        if(inp.value===saved){ro.classList.add('sel');inp.checked=true;}
+        else ro.classList.remove('sel');
       });
     });
   }
@@ -1085,17 +1083,17 @@ footer{background:var(--navy-xl);color:rgba(255,255,255,.5);padding:48px 5% 22px
 
   async function fetchRetry(url,body,tries=3,delay=800){
     for(let i=0;i<tries;i++){
+      let timer=null;
+      const ctrl=typeof AbortController!=='undefined'?new AbortController():null;
       try{
-        const ctrl=typeof AbortController!=='undefined'?new AbortController():null;
-        let timer;
-        if(ctrl){timer=setTimeout(()=>ctrl.abort(),15000);}
         const opts={method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(body)};
-        if(ctrl)opts.signal=ctrl.signal;
+        if(ctrl){timer=setTimeout(()=>ctrl.abort(),15000);opts.signal=ctrl.signal;}
         const res=await fetch(url,opts);
         if(ctrl)clearTimeout(timer);
         if(res.ok||res.status===302)return true;
         throw new Error('HTTP '+res.status);
       }catch(e){
+        if(ctrl)clearTimeout(timer);
         if(i===tries-1)throw e;
         await new Promise(resolve=>setTimeout(resolve,delay*Math.pow(2,i)));
       }
