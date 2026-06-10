@@ -736,8 +736,8 @@ footer{background:var(--navy-xl);color:rgba(255,255,255,.5);padding:48px 5% 22px
           <div class="fg"><label class="fl" for="nik">NIK <span class="req" aria-hidden="true">*</span></label><input type="text" id="nik" inputmode="numeric" pattern="[0-9]*" placeholder="16 digit sesuai KK" maxlength="16" autocomplete="off"><div class="field-err" id="e-nik">NIK harus 16 digit angka.</div></div>
         </div>
         <div class="frow">
-          <div class="fg"><label class="fl" for="nomorIjazah">No. Seri Ijazah SMP/MTs <span class="req" aria-hidden="true">*</span></label><input type="text" id="nomorIjazah" placeholder="Contoh: 124202500998009"><div class="field-err" id="e-nomorIjazah">Format tidak valid. Isi 5–30 karakter: huruf, angka, tanda hubung (-), atau garis miring (/).</div></div>
-          <div class="fg"><label class="fl" for="nomorSkhun">No. Seri SKHUN <span class="req" aria-hidden="true">*</span></label><input type="text" id="nomorSkhun" placeholder="Contoh: 400.3.11.1/11/PKBM"><div class="field-err" id="e-nomorSkhun">Format tidak valid. Isi 5–30 karakter: huruf, angka, tanda hubung (-), atau garis miring (/).</div></div>
+          <div class="fg"><label class="fl" for="nomorIjazah">No. Seri Ijazah SMP/MTs <span class="req" aria-hidden="true">*</span></label><input type="text" id="nomorIjazah" placeholder="Contoh: DN-036/2024 atau B-12345678"><div class="field-err" id="e-nomorIjazah">Format tidak valid. Gunakan 5–30 karakter: huruf, angka, tanda hubung (-), atau garis miring (/).</div></div>
+          <div class="fg"><label class="fl" for="nomorSkhun">No. Seri SKHUN <span class="req" aria-hidden="true">*</span></label><input type="text" id="nomorSkhun" placeholder="Contoh: 400311/PKBM/2024"><div class="field-err" id="e-nomorSkhun">Format tidak valid. Gunakan 5–30 karakter: huruf, angka, tanda hubung (-), atau garis miring (/).</div></div>
         </div>
         <div class="frow">
           <div class="fg"><label class="fl" for="tempatLahir">Tempat Lahir <span class="req" aria-hidden="true">*</span></label><input type="text" id="tempatLahir" placeholder="Nama kota / kabupaten" autocomplete="off"><div class="field-err" id="e-tempatLahir">Tempat lahir wajib diisi.</div></div>
@@ -978,7 +978,7 @@ footer{background:var(--navy-xl);color:rgba(255,255,255,.5);padding:48px 5% 22px
   const $=id=>document.getElementById(id);
   const val=id=>{const e=$(id);return e?e.value.trim():''};
   const rad=name=>{const e=document.querySelector(`input[name="${name}"]:checked`);return e?e.value:''};
-  const isEmail=s=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
+  const isEmail=s=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s);
   const isPhone=s=>/^[0-9+\-\s]{8,20}$/.test(s);
   const digits=s=>/^[0-9]+$/.test(s);
 
@@ -1163,23 +1163,46 @@ footer{background:var(--navy-xl);color:rgba(255,255,255,.5);padding:48px 5% 22px
         if(ctrl){timer=setTimeout(()=>ctrl.abort(),15000);opts.signal=ctrl.signal;}
         const res=await fetch(url,opts);
         if(ctrl)clearTimeout(timer);
-        // Baca body JSON untuk mendapatkan pesan error dari server
+
+        // PENTING: Google Apps Script SELALU mengembalikan HTTP 200
+        // Status sukses/gagal harus dibaca dari body JSON, bukan HTTP status code
         let json=null;
-        try{json=await res.json();}catch(e){}
-        if((res.ok||res.status===302)&&(!json||json.status!=='error'))return json||true;
-        // Tangani kode error spesifik dari Apps Script
-        const serverMsg=json&&json.message?json.message:null;
-        if(json&&json.code===409){
+        try{json=await res.json();}catch(parseErr){}
+
+        // Jika respons bukan JSON sama sekali (misal halaman error Google)
+        if(!json){
+          throw new Error('Respons server tidak valid. Coba lagi.');
+        }
+
+        // Sukses: Apps Script mengembalikan { status: 'ok', ref: '...' }
+        if(json.status==='ok'){return json;}
+
+        // Error dari Apps Script: tangani berdasarkan kode
+        const serverMsg=json.message||'Terjadi kesalahan. Coba lagi.';
+        if(json.code===409){
           throw new Error('NISN sudah terdaftar. Anda tidak dapat mendaftar dua kali.');
         }
-        if(json&&json.code===422){
-          throw new Error(serverMsg||'Data tidak valid. Periksa kembali isian Anda.');
+        if(json.code===413){
+          throw new Error('Data terlalu besar. Periksa kembali isian Anda.');
         }
-        throw new Error(serverMsg||'HTTP '+res.status);
+        if(json.code===422){
+          throw new Error(serverMsg);
+        }
+        if(json.code===500){
+          throw new Error('Terjadi kesalahan server. Coba beberapa saat lagi.');
+        }
+        throw new Error(serverMsg);
+
       }catch(e){
         if(ctrl)clearTimeout(timer);
-        // Jangan retry untuk error yang bersifat final (bukan jaringan)
-        if(e.message&&(e.message.includes('NISN')||e.message.includes('tidak valid')))throw e;
+        // Error final (bukan masalah jaringan) — jangan retry
+        const isFinalError=e.message&&(
+          e.message.includes('NISN')||
+          e.message.includes('tidak valid')||
+          e.message.includes('sudah terdaftar')||
+          e.message.includes('terlalu besar')
+        );
+        if(isFinalError)throw e;
         if(i===tries-1)throw e;
         await new Promise(resolve=>setTimeout(resolve,delay*Math.pow(2,i)));
       }
@@ -1195,8 +1218,10 @@ footer{background:var(--navy-xl);color:rgba(255,255,255,.5);padding:48px 5% 22px
     if(spin)spin.style.display='block';
     const ref=makeRef();fd.ref=ref;fd.timestamp=new Date().toLocaleString('id-ID',{timeZone:'Asia/Jakarta'});
     try{
-      await fetchRetry(SCRIPT_URL,fd);
-      showSuccess(ref);
+      const result=await fetchRetry(SCRIPT_URL,fd);
+      // Gunakan ref dari server jika ada, fallback ke ref lokal
+      const confirmedRef=(result&&result.ref)?result.ref:ref;
+      showSuccess(confirmedRef);
     }catch(e){
       const box=$('alertBox');
       // Tampilkan pesan spesifik dari server jika ada, fallback ke pesan umum
