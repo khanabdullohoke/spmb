@@ -736,8 +736,8 @@ footer{background:var(--navy-xl);color:rgba(255,255,255,.5);padding:48px 5% 22px
           <div class="fg"><label class="fl" for="nik">NIK <span class="req" aria-hidden="true">*</span></label><input type="text" id="nik" inputmode="numeric" pattern="[0-9]*" placeholder="16 digit sesuai KK" maxlength="16" autocomplete="off"><div class="field-err" id="e-nik">NIK harus 16 digit angka.</div></div>
         </div>
         <div class="frow">
-          <div class="fg"><label class="fl" for="nomorIjazah">No. Seri Ijazah SMP/MTs <span class="req" aria-hidden="true">*</span></label><input type="text" id="nomorIjazah" placeholder="Contoh: 124202500998009"><div class="field-err" id="e-nomorIjazah">Nomor seri ijazah wajib diisi.</div></div>
-          <div class="fg"><label class="fl" for="nomorSkhun">No. Seri SKHUN <span class="req" aria-hidden="true">*</span></label><input type="text" id="nomorSkhun" placeholder="Contoh: 400.3.11.1/11/PKBM"><div class="field-err" id="e-nomorSkhun">Nomor SKHUN wajib diisi.</div></div>
+          <div class="fg"><label class="fl" for="nomorIjazah">No. Seri Ijazah SMP/MTs <span class="req" aria-hidden="true">*</span></label><input type="text" id="nomorIjazah" placeholder="Contoh: 124202500998009"><div class="field-err" id="e-nomorIjazah">Format tidak valid. Isi 5–30 karakter: huruf, angka, tanda hubung (-), atau garis miring (/).</div></div>
+          <div class="fg"><label class="fl" for="nomorSkhun">No. Seri SKHUN <span class="req" aria-hidden="true">*</span></label><input type="text" id="nomorSkhun" placeholder="Contoh: 400.3.11.1/11/PKBM"><div class="field-err" id="e-nomorSkhun">Format tidak valid. Isi 5–30 karakter: huruf, angka, tanda hubung (-), atau garis miring (/).</div></div>
         </div>
         <div class="frow">
           <div class="fg"><label class="fl" for="tempatLahir">Tempat Lahir <span class="req" aria-hidden="true">*</span></label><input type="text" id="tempatLahir" placeholder="Nama kota / kabupaten" autocomplete="off"><div class="field-err" id="e-tempatLahir">Tempat lahir wajib diisi.</div></div>
@@ -979,7 +979,7 @@ footer{background:var(--navy-xl);color:rgba(255,255,255,.5);padding:48px 5% 22px
   const val=id=>{const e=$(id);return e?e.value.trim():''};
   const rad=name=>{const e=document.querySelector(`input[name="${name}"]:checked`);return e?e.value:''};
   const isEmail=s=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
-  const isPhone=s=>/^[0-9+\-\s]{8,16}$/.test(s);
+  const isPhone=s=>/^[0-9+\-\s]{8,20}$/.test(s);
   const digits=s=>/^[0-9]+$/.test(s);
 
   // Cache step indicator elements for updateUI performance
@@ -1039,8 +1039,8 @@ footer{background:var(--navy-xl);color:rgba(255,255,255,.5);padding:48px 5% 22px
       ['jenisKelamin',(v,r)=>!!r('jenisKelamin'),'e-jenisKelamin'],
       ['nisn',v=>digits(v)&&v.length===10,'e-nisn'],
       ['nik',v=>digits(v)&&v.length===16,'e-nik'],
-      ['nomorIjazah',v=>!!v,'e-nomorIjazah'],
-      ['nomorSkhun',v=>!!v,'e-nomorSkhun'],
+      ['nomorIjazah',v=>/^[A-Za-z0-9\-\/]{5,30}$/.test(v),'e-nomorIjazah'],
+      ['nomorSkhun',v=>/^[A-Za-z0-9\-\/]{5,30}$/.test(v),'e-nomorSkhun'],
       ['tempatLahir',v=>!!v,'e-tempatLahir'],
       ['tanggalLahir',v=>!!v,'e-tanggalLahir'],
       ['noHpSiswa',v=>isPhone(v),'e-noHpSiswa'],
@@ -1163,10 +1163,23 @@ footer{background:var(--navy-xl);color:rgba(255,255,255,.5);padding:48px 5% 22px
         if(ctrl){timer=setTimeout(()=>ctrl.abort(),15000);opts.signal=ctrl.signal;}
         const res=await fetch(url,opts);
         if(ctrl)clearTimeout(timer);
-        if(res.ok||res.status===302)return true;
-        throw new Error('HTTP '+res.status);
+        // Baca body JSON untuk mendapatkan pesan error dari server
+        let json=null;
+        try{json=await res.json();}catch(e){}
+        if((res.ok||res.status===302)&&(!json||json.status!=='error'))return json||true;
+        // Tangani kode error spesifik dari Apps Script
+        const serverMsg=json&&json.message?json.message:null;
+        if(json&&json.code===409){
+          throw new Error('NISN sudah terdaftar. Anda tidak dapat mendaftar dua kali.');
+        }
+        if(json&&json.code===422){
+          throw new Error(serverMsg||'Data tidak valid. Periksa kembali isian Anda.');
+        }
+        throw new Error(serverMsg||'HTTP '+res.status);
       }catch(e){
         if(ctrl)clearTimeout(timer);
+        // Jangan retry untuk error yang bersifat final (bukan jaringan)
+        if(e.message&&(e.message.includes('NISN')||e.message.includes('tidak valid')))throw e;
         if(i===tries-1)throw e;
         await new Promise(resolve=>setTimeout(resolve,delay*Math.pow(2,i)));
       }
@@ -1186,7 +1199,11 @@ footer{background:var(--navy-xl);color:rgba(255,255,255,.5);padding:48px 5% 22px
       showSuccess(ref);
     }catch(e){
       const box=$('alertBox');
-      if(box){box.textContent='⚠️ Gagal mengirim data. Periksa koneksi internet Anda, lalu coba kembali.';box.classList.add('show');box.scrollIntoView({behavior:'smooth',block:'nearest'});}
+      // Tampilkan pesan spesifik dari server jika ada, fallback ke pesan umum
+      const msg=e&&e.message&&e.message.length<200
+        ?'⚠️ '+e.message
+        :'⚠️ Gagal mengirim data. Periksa koneksi internet Anda, lalu coba kembali.';
+      if(box){box.textContent=msg;box.classList.add('show');box.scrollIntoView({behavior:'smooth',block:'nearest'});}
       if(btn)btn.disabled=false;
       if(txt)txt.textContent='📨 Kirim Pendaftaran';
       if(spin)spin.style.display='none';
