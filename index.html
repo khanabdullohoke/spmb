@@ -527,75 +527,66 @@ footer{background:var(--navy-xl);color:rgba(255,255,255,.5);padding:48px 5% 22px
   .nav-cta{font-size:11.5px;padding:7px 12px}
 }
 
-/* ── WHATSAPP FLOATING BUTTON ── */
-.wa-float{
-  position:fixed;bottom:24px;right:24px;z-index:999;
-  display:flex;align-items:center;gap:10px;
-  background:#25D366;color:#fff;
-  font-family:var(--font);font-weight:700;font-size:13px;
-  padding:12px 18px 12px 14px;border-radius:50px;
-  text-decoration:none;
-  box-shadow:0 4px 20px rgba(37,211,102,.45),0 2px 8px rgba(0,0,0,.2);
-  transition:transform .2s ease,box-shadow .2s ease,padding .3s ease;
-  overflow:hidden;
-  max-width:52px;
-}
-.wa-float:hover{
-  transform:translateY(-3px);
-  box-shadow:0 8px 28px rgba(37,211,102,.55),0 3px 12px rgba(0,0,0,.2);
-  max-width:300px;padding:12px 18px 12px 14px;
-}
-.wa-float-ico{font-size:22px;flex-shrink:0;line-height:1}
-.wa-float-txt{white-space:nowrap;overflow:hidden;opacity:0;max-width:0;transition:opacity .25s ease .05s,max-width .3s ease}
-.wa-float:hover .wa-float-txt{opacity:1;max-width:200px}
-.wa-float-ping{
-  position:absolute;top:6px;right:8px;
-  width:10px;height:10px;background:#fff;border-radius:50%;
-  animation:waPing 2s infinite;
-}
-@keyframes waPing{
-  0%,100%{transform:scale(1);opacity:.9}
-  50%{transform:scale(1.5);opacity:0}
-}
-
 /* ── WHATSAPP SUCCESS BANNER ── */
 .wa-success{
-  background:linear-gradient(135deg,#128C7E 0%,#25D366 100%);
-  border-radius:14px;padding:22px 24px;margin:22px 0 6px;
-  display:flex;align-items:center;gap:16px;
-  box-shadow:0 6px 24px rgba(18,140,126,.35);
-  text-align:left;
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#064e44 0%,#0d7a6e 40%,#128C7E 100%);
+  border-radius:18px;padding:28px 28px 26px;margin:26px 0 10px;
+  display:flex;align-items:center;gap:22px;
+  box-shadow:0 16px 48px rgba(13,122,110,.32),0 4px 16px rgba(0,0,0,.14);
+  border:1px solid rgba(255,255,255,.1);
 }
-.wa-success-ico{font-size:36px;flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(0,0,0,.25))}
-.wa-success-body{flex:1}
-.wa-success-ttl{font-family:var(--font);font-weight:800;font-size:15px;color:#fff;margin-bottom:4px}
-.wa-success-sub{font-family:var(--font-body);font-size:13px;color:rgba(255,255,255,.82);line-height:1.55;margin-bottom:14px}
+.wa-success::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:240px;height:240px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.06) 0%,transparent 65%);
+  pointer-events:none;
+}
+.wa-success::after{
+  content:'';position:absolute;bottom:-40px;left:50px;
+  width:140px;height:140px;border-radius:50%;
+  background:radial-gradient(circle,rgba(37,211,102,.12) 0%,transparent 70%);
+  pointer-events:none;
+}
+.wa-success-icon{
+  flex-shrink:0;width:60px;height:60px;border-radius:18px;
+  background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);
+  display:flex;align-items:center;justify-content:center;font-size:28px;
+  position:relative;z-index:1;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 12px rgba(0,0,0,.15);
+}
+.wa-success-body{flex:1;position:relative;z-index:1}
+.wa-success-chip{
+  display:inline-flex;align-items:center;gap:5px;
+  background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);
+  color:rgba(255,255,255,.88);font-family:var(--font);font-size:9px;font-weight:700;
+  letter-spacing:1.2px;text-transform:uppercase;padding:3px 10px;border-radius:999px;
+  margin-bottom:9px;
+}
+.wa-success-chip-dot{width:5px;height:5px;border-radius:50%;background:#4ade80;box-shadow:0 0 6px #4ade80}
+.wa-success-ttl{font-family:var(--font);font-weight:800;font-size:17px;color:#fff;margin-bottom:5px;line-height:1.2;letter-spacing:-.2px}
+.wa-success-sub{font-family:var(--font-body);font-size:13px;color:rgba(255,255,255,.7);line-height:1.65;margin-bottom:18px}
 .wa-success-btn{
-  display:inline-flex;align-items:center;gap:8px;
-  background:#fff;color:#128C7E;
-  font-family:var(--font);font-weight:700;font-size:13px;
-  padding:10px 20px;border-radius:8px;text-decoration:none;
-  box-shadow:0 3px 10px rgba(0,0,0,.15);
-  transition:transform .2s,box-shadow .2s;
+  display:inline-flex;align-items:center;gap:10px;
+  background:#fff;color:#064e44;
+  font-family:var(--font);font-weight:800;font-size:14px;
+  padding:12px 24px;border-radius:12px;text-decoration:none;
+  box-shadow:0 6px 20px rgba(0,0,0,.2),0 1px 4px rgba(0,0,0,.1),inset 0 1px 0 rgba(255,255,255,.9);
+  transition:transform .2s ease,box-shadow .2s ease;
+  letter-spacing:.1px;
 }
-.wa-success-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.2)}
+.wa-success-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.25);color:#064e44}
+.wa-success-btn svg{width:20px;height:20px;flex-shrink:0}
 @media(max-width:480px){
-  .wa-float{bottom:16px;right:16px}
-  .wa-success{flex-direction:column;text-align:center}
-  .wa-success-btn{width:100%;justify-content:center}
+  .wa-success{flex-direction:column;text-align:center;padding:22px 18px;gap:16px}
+  .wa-success-icon{width:52px;height:52px;font-size:24px}
+  .wa-success-btn{width:100%;justify-content:center;font-size:13.5px}
 }
 </style>
 </head>
 <body>
 
 <a class="sr-only" href="#daftar">Lompat ke formulir pendaftaran</a>
-
-<!-- WHATSAPP FLOATING BUTTON -->
-<a href="https://chat.whatsapp.com/BJfiJp8B2fW63ilEuKpGC0" target="_blank" rel="noopener" class="wa-float" aria-label="Gabung Grup WhatsApp SPMB">
-  <div class="wa-float-ping" aria-hidden="true"></div>
-  <span class="wa-float-ico" aria-hidden="true">💬</span>
-  <span class="wa-float-txt">Gabung Grup WA SPMB</span>
-</a>
 
 <!-- NAVBAR -->
 <nav class="navbar" role="navigation" aria-label="Navigasi utama">
@@ -893,12 +884,14 @@ footer{background:var(--navy-xl);color:rgba(255,255,255,.5);padding:48px 5% 22px
         <p style="font-size:12.5px;color:var(--g600);margin-bottom:22px">Simpan nomor referensi ini untuk keperluan verifikasi lebih lanjut.</p>
         <!-- WA GROUP BANNER -->
         <div class="wa-success">
-          <div class="wa-success-ico" aria-hidden="true">📲</div>
+          <div class="wa-success-icon" aria-hidden="true">💬</div>
           <div class="wa-success-body">
-            <div class="wa-success-ttl">Bergabung ke Grup WhatsApp SPMB!</div>
-            <div class="wa-success-sub">Dapatkan info terbaru seputar jadwal verifikasi, pengumuman, dan kegiatan SPMB langsung di WhatsApp.</div>
+            <div class="wa-success-chip"><span class="wa-success-chip-dot"></span>Info Penting</div>
+            <div class="wa-success-ttl">Bergabung ke Grup WhatsApp SPMB</div>
+            <div class="wa-success-sub">Pantau jadwal verifikasi, pengumuman resmi, dan info kegiatan SPMB langsung di WhatsApp. Jangan sampai ketinggalan!</div>
             <a href="https://chat.whatsapp.com/BJfiJp8B2fW63ilEuKpGC0" target="_blank" rel="noopener" class="wa-success-btn">
-              <span>💬</span> Gabung Grup WhatsApp Sekarang
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Gabung Grup Sekarang
             </a>
           </div>
         </div>
